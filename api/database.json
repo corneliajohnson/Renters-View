@@ -1,0 +1,108 @@
+{
+  "properties": [
+    {
+      "id": 1,
+      "street": "123 Main Street",
+      "city": "Tallahassee",
+      "state": "FL",
+      "zip": "32301",
+      "tenantId": 1,
+      "leaseStartDate": "2020-10-07",
+      "leaseEndDate": "2021-10-30",
+      "rentAmount": 800,
+      "secuirtyDesposit": 800,
+      "paymentDay": 1,
+      "lastPaymentAmount": 800,
+      "leaseTerm": "12 months",
+      "leaseType": "annual",
+      "image": null,
+      "landlordId": 1
+    },
+    {
+      "id": 2,
+      "street": "778 Bryd Street",
+      "city": "Tallahassee",
+      "state": "FL",
+      "zip": "32301",
+      "tenantId": 1,
+      "leaseStartDate": "2020-10-07",
+      "leaseEndDate": "2021-10-30",
+      "rentAmount": 800,
+      "secuirtyDesposit": 800,
+      "paymentDay": 1,
+      "lastPaymentAmount": 800,
+      "leaseTerm": "12 months",
+      "image": null,
+      "landlordId": 1
+    },
+    {
+      "id": 3,
+      "street": "9990 Wilson Street",
+      "city": "Tallahassee",
+      "state": "FL",
+      "zip": "32301",
+      "tenantId": 1,
+      "leaseStartDate": "2020-10-07",
+      "leaseEndDate": "2021-10-30",
+      "rentAmount": 800,
+      "secuirtyDesposit": 800,
+      "paymentDay": 1,
+      "lastPaymentAmount": 800,
+      "leaseTerm": "12 months",
+      "image": null,
+      "landlordId": 1
+    },
+    {
+      "id": 4,
+      "street": "8876 CalmStreet",
+      "city": "Tallahassee",
+      "State": "FL",
+      "zip": "32301",
+      "tenantId": 1,
+      "leaseStartDate": "2020-10-07",
+      "leaseEndDate": "2021-10-30",
+      "rentAmount": 800,
+      "secuirtyDesposit": 800,
+      "paymentDay": 1,
+      "lastPaymentAmount": 800,
+      "leaseTerm": "12 months",
+      "image": null,
+      "landlordId": 1
+    }
+  ],
+  "landlords": [
+    {
+      "id": 1,
+      "customerId": 1
+    }
+  ],
+  "tenants": [
+    {
+      "id": 1,
+      "customerId": 3,
+      "propertyId": 1,
+      "landlordId": 1
+    }
+  ],
+  "customers": [
+    {
+      "email": "cj@gmail.com",
+      "password": "cj",
+      "name": "CJ",
+      "id": 1
+    },
+    {
+      "email": "cornelia@gmail.com",
+      "password": "Johnson",
+      "name": "Cornelia Johnson",
+      "id": 2
+    },
+    {
+      "email": "ddddd@gmail.com",
+      "password": "ddddd",
+      "name": "fffff ddddd",
+      "accountType": "tenant",
+      "id": 3
+    }
+  ]
+}
