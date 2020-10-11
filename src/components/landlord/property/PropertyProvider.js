@@ -24,12 +24,20 @@ export const PropertyProvider = (props) => {
     }).then(getProperties);
   };
 
+  const getPropertyById = (id) => {
+    return fetch(
+      `http://localhost:8088/properties/${id}?_expand=landlord`,
+      {}
+    ).then((res) => res.json());
+  };
+
   return (
     <PropertyContext.Provider
       value={{
         properties,
         getProperties,
         addProperty,
+        getPropertyById,
       }}
     >
       {props.children}

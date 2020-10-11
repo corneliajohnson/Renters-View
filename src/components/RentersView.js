@@ -2,17 +2,23 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
-import { ApplicationViews } from "./ApplicationViews";
-import { LandlordHome } from "./landlord/LandlordHome";
+import { LandlordApplicationViews } from "./LandlordApplicationViews";
+import { TenantApplicationViews } from "./TenantAplicationViews";
 
 export const RentersView = () => (
   <>
     <Route
       render={() => {
-        if (localStorage.getItem("rv_customer")) {
+        if (localStorage.getItem("landlord")) {
           return (
             <>
-              <LandlordHome />
+              <LandlordApplicationViews />
+            </>
+          );
+        } else if (localStorage.getItem("tenant")) {
+          return (
+            <>
+              <TenantApplicationViews />
             </>
           );
         } else {

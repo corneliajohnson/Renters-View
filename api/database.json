@@ -72,37 +72,104 @@
   ],
   "landlords": [
     {
-      "id": 1,
-      "customerId": 1
+      "firstName": "Cornelia",
+      "lastName": "Johnson",
+      "email": "cj@gmail.com",
+      "phone": 2223333444,
+      "image": null,
+      "id": 1
+    },
+    {
+      "firstName": "Tim",
+      "lastName": "Walker",
+      "email": "tim@gmail.com",
+      "phone": 3339998888,
+      "image": null,
+      "id": 2
+    },
+    {
+      "email": "jones@mail.com",
+      "firstName": "Jack",
+      "lastName": "Jones",
+      "phone": "2223334444",
+      "image": null,
+      "id": 3
     }
   ],
   "tenants": [
     {
-      "id": 1,
-      "customerId": 3,
+      "email": "moore@gmail.com",
+      "firstName": "Kenny",
+      "lastName": "Moore",
+      "phone": 2223338888,
       "propertyId": 1,
-      "landlordId": 1
-    }
-  ],
-  "customers": [
-    {
-      "email": "cj@gmail.com",
-      "password": "cj",
-      "name": "CJ",
+      "landlordId": 1,
       "id": 1
     },
     {
-      "email": "cornelia@gmail.com",
-      "password": "Johnson",
-      "name": "Cornelia Johnson",
+      "email": "tom@gmail.com",
+      "firstName": "Tom",
+      "lastName": "Green",
+      "phone": 6663339900,
+      "propertyId": 2,
+      "landlordId": 1,
       "id": 2
     },
     {
-      "email": "ddddd@gmail.com",
-      "password": "ddddd",
-      "name": "fffff ddddd",
-      "accountType": "tenant",
+      "email": "corey@gmail.com",
+      "firstName": "Corey",
+      "lastName": "Brown",
+      "phone": 6669990000,
+      "propertyId": 3,
+      "landlordId": 1,
       "id": 3
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "tenantId": 1,
+      "landlordId": 1,
+      "text": "Welcome",
+      "date": 1601479252450
+    },
+    {
+      "id": 2,
+      "tenantId": 1,
+      "landlordId": 1,
+      "text": "Hi how are you?",
+      "date": 1601479252450
+    },
+    {
+      "id": 3,
+      "tenantId": 1,
+      "landlordId": 1,
+      "text": "Doing fine",
+      "date": 1601479252450
+    }
+  ],
+  "maintenanceRequests": [
+    {
+      "id": 1,
+      "propertyId": 1,
+      "synopsis": "exchange door locks",
+      "price": 20,
+      "contractor": "Bob the Bulider",
+      "complete": false,
+      "note": "key was broken inside knob",
+      "dateComplete": null,
+      "dateAdded": 1601479252450
+    },
+    {
+      "id": 2,
+      "propertyId": 2,
+      "synopsis": "Grass Cut",
+      "price": 70,
+      "contractor": "Tallahassee Lawn Service",
+      "complete": true,
+      "note": "",
+      "dateComplete": "2020-10-01",
+      "dateAdded": 1601479252450
     }
   ]
 }
