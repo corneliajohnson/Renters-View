@@ -28,16 +28,14 @@ export const Login = (props) => {
         localStorage.setItem("landlord", exists.id);
         history.push("/landlord");
       } else {
-        existDialog.current.showModal();
-      }
-    });
-
-    existingTenantCheck().then((exists) => {
-      if (exists) {
-        localStorage.setItem("tenant", exists.id);
-        history.push("/tenant");
-      } else {
-        existDialog.current.showModal();
+        existingTenantCheck().then((exists) => {
+          if (exists) {
+            localStorage.setItem("tenant", exists.id);
+            history.push("/tenant");
+          } else {
+            existDialog.current.showModal();
+          }
+        });
       }
     });
   };
