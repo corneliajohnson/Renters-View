@@ -21,7 +21,6 @@ export const Register = (props) => {
 
   const handleRegister = (e) => {
     e.preventDefault();
-
     existingUserCheck().then((userExists) => {
       if (!userExists && accountType === "landlord") {
         fetch("http://localhost:8088/landlords", {
@@ -139,6 +138,7 @@ export const Register = (props) => {
             type="radio"
             value="landlord"
             name="accountType"
+            checked={true}
             onChange={(e) => setAccountType(e.target.value)}
           />{" "}
           Landlord
