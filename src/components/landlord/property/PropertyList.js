@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { PropertyContext } from "./PropertyProvider";
 import { PropertyCard } from "./PropertyCard";
 import { useHistory } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 import "./Property.css";
 
 export const PropertyList = () => {
@@ -16,14 +17,16 @@ export const PropertyList = () => {
   return (
     <>
       <h2>Properties</h2>
-      <button
+      <Button
+        variant="contained"
+        color="primary"
         className="button-primary"
         onClick={() => {
           history.push("/landlord/property");
         }}
       >
         Add Property
-      </button>
+      </Button>
       <div className="properties">
         {properties.map((property) => {
           return <PropertyCard key={property.id} property={property} />;
