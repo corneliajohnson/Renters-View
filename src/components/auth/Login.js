@@ -25,11 +25,13 @@ export const Login = (props) => {
 
     existingLandlordCheck().then((exists) => {
       if (exists) {
+        localStorage.removeItem("tenant");
         localStorage.setItem("landlord", exists.id);
         history.push("/landlord");
       } else {
         existingTenantCheck().then((exists) => {
           if (exists) {
+            localStorage.removeItem("landlord");
             localStorage.setItem("tenant", exists.id);
             history.push("/tenant");
           } else {

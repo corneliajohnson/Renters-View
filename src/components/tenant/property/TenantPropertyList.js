@@ -2,16 +2,27 @@ import React, { useContext, useEffect, useState } from "react";
 import { PropertyContext } from "../../landlord/property/PropertyProvider";
 
 export const TenantProperty = () => {
-  const { getPropertyById } = useContext(PropertyContext);
+  const { properties, getProperties, getPropertyById } = useContext(
+    PropertyContext
+  );
   const [property, setProperty] = useState({});
   const [landlord, setLandlord] = useState({});
 
   useEffect(() => {
-    getPropertyById(1).then((res) => {
-      setProperty(res);
-      setLandlord(res.landlord);
-    });
+    getProperties();
   }, []);
+
+  useEffect(() => {
+    const findProperty = properties.find(
+      (property) => property.tenantId === parseInt(localStorage.tenant)
+    );
+    if (findProperty) {
+      getPropertyById(findProperty.id).then((res) => {
+        setProperty(res);
+        setLandlord(res.landlord);
+      });
+    }
+  }, [properties]);
 
   return (
     <>

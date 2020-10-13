@@ -3,7 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 import { Login } from "./auth/Login";
 import { Register } from "./auth/Register";
 import { LandlordApplicationViews } from "./LandlordApplicationViews";
-import { TenantApplicationViews } from "./TenantAplicationViews";
+import { TenantApplicationViews } from "./TenantApplicationViews";
 
 export const RentersView = () => (
   <>
