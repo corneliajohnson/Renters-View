@@ -11,13 +11,13 @@ export const LandlordHome = () => {
       <NavBar />
       <PropertyProvider>
         <Route exact path="/landlord">
-          <PropertyList />
+          <PropertyForm />
         </Route>
       </PropertyProvider>
 
       <PropertyProvider>
-        <Route exact path="/landlord/property">
-          <PropertyForm />
+        <Route exact path="/landlord">
+          <PropertyList />
         </Route>
       </PropertyProvider>
     </>

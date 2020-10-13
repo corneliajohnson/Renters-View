@@ -26,17 +26,6 @@ export const PropertyList = () => {
   return (
     <>
       <Container>
-        <h2>Properties</h2>
-        <Button
-          variant="contained"
-          color="primary"
-          className="button-primary"
-          onClick={() => {
-            history.push("/landlord/property");
-          }}
-        >
-          Add Property
-        </Button>
         <div className="properties row wrap">
           {filteredProperies.map((property) => {
             return <PropertyCard key={property.id} property={property} />;
