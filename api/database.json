@@ -50,7 +50,7 @@
       "lastPaymentAmount": 800,
       "leaseTerm": "12 months",
       "image": null,
-      "landlordId": 1
+      "landlordId": 2
     },
     {
       "id": 4,
@@ -67,7 +67,7 @@
       "lastPaymentAmount": 800,
       "leaseTerm": "12 months",
       "image": null,
-      "landlordId": 1
+      "landlordId": 3
     }
   ],
   "landlords": [
