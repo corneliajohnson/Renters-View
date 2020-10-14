@@ -4,16 +4,19 @@ import { NavBar } from "./nav/NavBar";
 import { PropertyList } from "./property/PropertyList";
 import { PropertyProvider } from "./property/PropertyProvider";
 import { PropertyForm } from "./property/PropertyForm";
+import { TenantProvider } from "./tenants/TenantProvider";
 
 export const LandlordHome = () => {
   return (
     <>
       <NavBar />
-      <PropertyProvider>
-        <Route exact path="/landlord">
-          <PropertyForm />
-        </Route>
-      </PropertyProvider>
+      <TenantProvider>
+        <PropertyProvider>
+          <Route exact path="/landlord">
+            <PropertyForm />
+          </Route>
+        </PropertyProvider>
+      </TenantProvider>
 
       <PropertyProvider>
         <Route exact path="/landlord">

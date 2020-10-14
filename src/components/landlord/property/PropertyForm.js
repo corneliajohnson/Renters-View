@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { PropertyContext } from "./PropertyProvider";
+import { TenantContext } from "../tenants/TenantProvider";
 import { useHistory } from "react-router-dom";
 import {
   Button,
@@ -17,17 +18,40 @@ import {
 import "./Property.css";
 
 export const PropertyForm = (props) => {
-  const { addProperty } = useContext(PropertyContext);
+  const { getPropertyById, addProperty } = useContext(PropertyContext);
+  const { tenants, getTenants } = useContext(TenantContext);
+
+  const [property, setProperty] = useState({});
+
   const history = useHistory();
 
-  const [open, setOpen] = React.useState(false);
+  useEffect(() => {
+    getTenants();
+  });
 
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleControlledInputChange = (event) => {
+    const newProperty = { ...property };
+    newProperty[event.target.name] = event.target.value;
+    setProperty(newProperty);
   };
 
-  const handleClose = () => {
-    setOpen(false);
+  const constructPropertyObj = () => {
+    addProperty({
+      street: property.street,
+      city: property.city,
+      state: property.state,
+      zip: property.zip,
+      tenantId: parseInt(property.tenantId),
+      leaseStartDate: property.leaseStartDate,
+      leaseEndDate: property.leaseEndDate,
+      rentAmount: property.rentAmount,
+      secuirtyDesposit: property.secuirtyDesposit,
+      paymentDay: property.secuirtyDesposit,
+      lastPaymentAmount: property.lastPaymentAmount,
+      leaseTerm: property.leaseStartDate,
+      image: null,
+      landlord: parseInt(localStorage.landlord),
+    }).then(() => history.push("/landlord"));
   };
 
   //For Modal Form
@@ -48,48 +72,79 @@ export const PropertyForm = (props) => {
           <Form>
             <FormGroup>
               <Label for="address">Address</Label>
-              <Input type="text" name="street" placeholder="1234 Main St" />
+              <Input
+                type="text"
+                name="street"
+                placeholder="1234 Main St"
+                onChange={handleControlledInputChange}
+              />
             </FormGroup>
             <Row form>
               <Col md={6}>
                 <FormGroup>
                   <Label for="city">City</Label>
-                  <Input type="text" name="city" />
+                  <Input
+                    type="text"
+                    name="city"
+                    onChange={handleControlledInputChange}
+                  />
                 </FormGroup>
               </Col>
               <Col md={4}>
                 <FormGroup>
                   <Label for="state">State</Label>
-                  <Input type="text" name="state" id="exampleState" />
+                  <Input
+                    type="text"
+                    name="state"
+                    id="exampleState"
+                    onChange={handleControlledInputChange}
+                  />
                 </FormGroup>
               </Col>
               <Col md={2}>
                 <FormGroup>
                   <Label for="zip">Zip</Label>
-                  <Input type="text" name="zip" />
+                  <Input
+                    type="text"
+                    name="zip"
+                    onChange={handleControlledInputChange}
+                  />
                 </FormGroup>
               </Col>
             </Row>
             <FormGroup>
               <Label for="exampleSelect">Tenant</Label>
-              <Input type="select" name="tenantId" id="exampleSelect">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+              <Input
+                type="select"
+                name="tenantId"
+                onChange={handleControlledInputChange}
+              >
+                <option value="0">None</option>
+                {tenants.map((tenant) => (
+                  <option key={tenant.id} value={tenant.id}>
+                    {tenant.firstName} {tenant.lastName}
+                  </option>
+                ))}
               </Input>
               <Row>
                 <Col>
                   <FormGroup>
                     <Label for="leaseStartDate">Lease Begin</Label>
-                    <Input type="date" name="leaseStartDate" />
+                    <Input
+                      type="date"
+                      name="leaseStartDate"
+                      onChange={handleControlledInputChange}
+                    />
                   </FormGroup>
                 </Col>
                 <Col>
                   <FormGroup>
                     <Label for="leaseEndDate">Lease Ends</Label>
-                    <Input type="date" name="leaseEndDate" />
+                    <Input
+                      type="date"
+                      name="leaseEndDate"
+                      onChange={handleControlledInputChange}
+                    />
                   </FormGroup>
                 </Col>
               </Row>
@@ -97,19 +152,31 @@ export const PropertyForm = (props) => {
                 <Col>
                   <FormGroup>
                     <Label for="rentAmount">Rent</Label>
-                    <Input type="text" name="rentAmount" />
+                    <Input
+                      type="text"
+                      name="rentAmount"
+                      onChange={handleControlledInputChange}
+                    />
                   </FormGroup>
                 </Col>
                 <Col>
                   <FormGroup>
                     <Label for="secuirtyDesposit">Secuirty Desposit</Label>
-                    <Input type="text" name="secuirtyDesposit" />
+                    <Input
+                      type="text"
+                      name="secuirtyDesposit"
+                      onChange={handleControlledInputChange}
+                    />
                   </FormGroup>
                 </Col>
                 <Col>
                   <FormGroup>
                     <Label for="paymentDay">Monthly Due Date</Label>
-                    <Input type="number" name="paymentDay" />
+                    <Input
+                      type="number"
+                      name="paymentDay"
+                      onChange={handleControlledInputChange}
+                    />
                   </FormGroup>
                 </Col>
               </Row>
@@ -117,17 +184,26 @@ export const PropertyForm = (props) => {
                 <Col>
                   <FormGroup>
                     <Label for="lastPaymentAmount">Last Payment Made</Label>
-                    <Input type="date" name="lastPaymentAmount" />
+                    <Input
+                      type="date"
+                      name="lastPaymentAmount"
+                      onChange={handleControlledInputChange}
+                    />
                   </FormGroup>
                 </Col>
                 <Col>
                   <Label for="leaseTerm">Lease Term</Label>
-                  <Input type="select" name="leaseTerm" id="exampleSelect">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+                  <Input
+                    type="select"
+                    name="leaseTerm"
+                    onChange={handleControlledInputChange}
+                  >
+                    <option value="Vacant">Vacant</option>
+                    <option value="12 Month">12 Month</option>
+                    <option value="Month to Month">Month to Month</option>
+                    <option value="Seasonal">Seasonal</option>
+                    <option value="Air BnB">Air BnB</option>
+                    <option value="Under Repair">Under Repair</option>
                   </Input>
                 </Col>
               </Row>
@@ -135,7 +211,13 @@ export const PropertyForm = (props) => {
           </Form>
         </ModalBody>
         <ModalFooter>
-          <Button color="primary" onClick={toggle}>
+          <Button
+            color="primary"
+            onClick={(event) => {
+              event.preventDefault();
+              constructPropertyObj();
+            }}
+          >
             Add
           </Button>{" "}
           <Button color="secondary" onClick={toggle}>

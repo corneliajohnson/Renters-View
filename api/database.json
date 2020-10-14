@@ -68,6 +68,23 @@
       "leaseTerm": "12 months",
       "image": null,
       "landlordId": 3
+    },
+    {
+      "street": "1717 Harris Street",
+      "city": "Ocala ",
+      "state": "Fl",
+      "zip": "34488",
+      "tenantId": 1,
+      "leaseStartDate": "2020-10-14",
+      "leaseEndDate": "2021-10-14",
+      "rentAmount": "750",
+      "secuirtyDesposit": "750",
+      "paymentDay": "750",
+      "lastPaymentAmount": "2020-10-14",
+      "leaseTerm": "2020-10-14",
+      "image": null,
+      "landlord": 1,
+      "id": 5
     }
   ],
   "landlords": [
