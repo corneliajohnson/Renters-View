@@ -83,8 +83,19 @@
       "lastPaymentAmount": "2020-10-14",
       "leaseTerm": "2020-10-14",
       "image": null,
-      "landlord": 1,
+      "landlordId": 1,
       "id": 5
+    },
+    {
+      "street": "2345 Silver Street",
+      "city": "Jacksonville",
+      "state": "Fl",
+      "zip": "32010",
+      "tenantId": null,
+      "rentAmount": "900",
+      "image": null,
+      "landlordId": 1,
+      "id": 6
     }
   ],
   "landlords": [

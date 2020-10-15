@@ -25,6 +25,11 @@ export const PropertyForm = (props) => {
 
   const history = useHistory();
 
+  //For Modal Form
+  const { buttonLabel, className } = props;
+  const [modal, setModal] = useState(false);
+  const toggle = () => setModal(!modal);
+
   useEffect(() => {
     getTenants();
   });
@@ -50,14 +55,9 @@ export const PropertyForm = (props) => {
       lastPaymentAmount: property.lastPaymentAmount,
       leaseTerm: property.leaseStartDate,
       image: null,
-      landlord: parseInt(localStorage.landlord),
-    }).then(() => history.push("/landlord"));
+      landlordId: parseInt(localStorage.landlord),
+    }).then(toggle);
   };
-
-  //For Modal Form
-  const { buttonLabel, className } = props;
-  const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
 
   return (
     <div>
@@ -73,6 +73,7 @@ export const PropertyForm = (props) => {
             <FormGroup>
               <Label for="address">Address</Label>
               <Input
+                required
                 type="text"
                 name="street"
                 placeholder="1234 Main St"
@@ -84,6 +85,7 @@ export const PropertyForm = (props) => {
                 <FormGroup>
                   <Label for="city">City</Label>
                   <Input
+                    required
                     type="text"
                     name="city"
                     onChange={handleControlledInputChange}
@@ -94,6 +96,7 @@ export const PropertyForm = (props) => {
                 <FormGroup>
                   <Label for="state">State</Label>
                   <Input
+                    required
                     type="text"
                     name="state"
                     id="exampleState"
@@ -105,6 +108,7 @@ export const PropertyForm = (props) => {
                 <FormGroup>
                   <Label for="zip">Zip</Label>
                   <Input
+                    required
                     type="text"
                     name="zip"
                     onChange={handleControlledInputChange}
@@ -153,6 +157,7 @@ export const PropertyForm = (props) => {
                   <FormGroup>
                     <Label for="rentAmount">Rent</Label>
                     <Input
+                      required
                       type="text"
                       name="rentAmount"
                       onChange={handleControlledInputChange}

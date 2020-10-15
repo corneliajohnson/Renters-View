@@ -1,19 +1,72 @@
-import React from "react";
-import "./Property.css";
+import React, { useState } from "react";
+import {
+  Card,
+  CardImg,
+  CardText,
+  CardBody,
+  CardLink,
+  CardTitle,
+  CardSubtitle,
+  Button,
+  Collapse,
+} from "reactstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
-export const PropertyCard = ({ property }) => (
-  <div className="propertyCard">
+export const PropertyCard = ({ property }, props) => {
+  //For Modal Form
+  const { buttonLabel, className } = props;
+  const [isOpen, setIsOpen] = useState(false);
+  const toggle = () => setIsOpen(!isOpen);
+
+  return (
     <div>
-      <img src={require("../../../img/house.jpg")} />
-      <div>
-        <p>
-          {property.street} {property.city} {property.state}
-        </p>
-        <p variant="body2" color="textSecondary" component="p">
-          Tenant: {property.tenantId}
-        </p>
-        <p>Rent Price: ${property.rentAmount}</p>
-      </div>
+      <Card>
+        <CardBody>
+          <CardTitle>{property.street} </CardTitle>
+          <CardSubtitle>
+            {property.city} {property.state} {property.zip}
+          </CardSubtitle>
+        </CardBody>
+        <img
+          width="100%"
+          src={require("../../../img/house.jpg")}
+          alt="Card image cap"
+        />
+        <CardBody>
+          <CardText>Tenant: {property.tenantId}</CardText>
+          <CardText>Rent Price: ${property.rentAmount}</CardText>
+        </CardBody>
+        <CardLink onClick={toggle}>
+          {" "}
+          {isOpen ? (
+            <FontAwesomeIcon icon={faChevronUp} />
+          ) : (
+            <FontAwesomeIcon icon={faChevronDown} />
+          )}
+          {buttonLabel}
+        </CardLink>
+        <Collapse isOpen={isOpen}>
+          <CardText>
+            Lease Begin:
+            {property.leaseStartDate ? ` ${property.leaseStartDate}` : " None"}
+          </CardText>
+          <CardText>
+            Lease Ends:
+            {property.leaseEndDate ? ` ${property.leaseEndDate}` : " None"}
+          </CardText>
+          <CardText>
+            Lease Type:
+            {property.leaseTerm ? ` ${property.leaseTerm}` : " None"}
+          </CardText>
+          <CardText>
+            Last Payment:
+            {property.lastpayment
+              ? `${property.paymentAmount} ${property.leaseTerm}`
+              : " None"}
+          </CardText>
+        </Collapse>
+      </Card>
     </div>
-  </div>
-);
+  );
+};
