@@ -4,6 +4,7 @@ import { PropertyContext } from "./PropertyProvider";
 import { TenantContext } from "../tenants/TenantProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { useParams } from "react-router-dom";
 import {
   Button,
   ModalHeader,
@@ -17,16 +18,32 @@ import {
   Input,
   CardLink,
 } from "reactstrap";
+let propertyId = 0;
 
 const Modal = ({ onRequestClose }) => {
-  const { getPropertyById, addProperty } = useContext(PropertyContext);
+  const { getPropertyById, addProperty, updateProperty } = useContext(
+    PropertyContext
+  );
   const { tenants, getTenants } = useContext(TenantContext);
 
+  //for tenants drop down
   useEffect(() => {
     getTenants();
   }, []);
 
+  useEffect(() => {
+    if (propertyId) {
+      getPropertyById(propertyId).then((property) => {
+        setProperty(property);
+        setIsLoading(false);
+      });
+    } else {
+      setIsLoading(false);
+    }
+  }, []);
+
   const [property, setProperty] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleControlledInputChange = (event) => {
     const newProperty = { ...property };
@@ -35,22 +52,44 @@ const Modal = ({ onRequestClose }) => {
   };
 
   const constructPropertyObj = () => {
-    addProperty({
-      street: property.street,
-      city: property.city,
-      state: property.state,
-      zip: property.zip,
-      tenantId: parseInt(property.tenantId),
-      leaseStartDate: property.leaseStartDate,
-      leaseEndDate: property.leaseEndDate,
-      rentAmount: property.rentAmount,
-      secuirtyDesposit: property.secuirtyDesposit,
-      paymentDay: property.secuirtyDesposit,
-      lastPaymentAmount: property.lastPaymentAmount,
-      leaseTerm: property.leaseStartDate,
-      image: null,
-      landlordId: parseInt(localStorage.landlord),
-    });
+    setIsLoading(true);
+    if (propertyId !== 0 && property) {
+      updateProperty({
+        id: property.id,
+        street: property.street,
+        city: property.city,
+        state: property.state,
+        zip: property.zip,
+        tenantId: parseInt(property.tenantId),
+        leaseStartDate: property.leaseStartDate,
+        leaseEndDate: property.leaseEndDate,
+        rentAmount: property.rentAmount,
+        secuirtyDesposit: property.secuirtyDesposit,
+        paymentDay: property.secuirtyDesposit,
+        lastPaymentAmount: property.lastPaymentAmount,
+        leaseTerm: property.leaseStartDate,
+        image: null,
+        landlordId: parseInt(localStorage.landlord),
+      });
+    } else {
+      addProperty({
+        id: property.id,
+        street: property.street,
+        city: property.city,
+        state: property.state,
+        zip: property.zip,
+        tenantId: parseInt(property.tenantId),
+        leaseStartDate: property.leaseStartDate,
+        leaseEndDate: property.leaseEndDate,
+        rentAmount: property.rentAmount,
+        secuirtyDesposit: property.secuirtyDesposit,
+        paymentDay: property.secuirtyDesposit,
+        lastPaymentAmount: property.lastPaymentAmount,
+        leaseTerm: property.leaseStartDate,
+        image: null,
+        landlordId: parseInt(localStorage.landlord),
+      });
+    }
   };
   // Use useEffect to add an event listener to the document
   useEffect(() => {
@@ -94,6 +133,7 @@ const Modal = ({ onRequestClose }) => {
                   name="street"
                   placeholder="1234 Main St"
                   onChange={handleControlledInputChange}
+                  defaultValue={property.street}
                 />
               </FormGroup>
               <Row form>
@@ -105,6 +145,7 @@ const Modal = ({ onRequestClose }) => {
                       type="text"
                       name="city"
                       onChange={handleControlledInputChange}
+                      defaultValue={property.city}
                     />
                   </FormGroup>
                 </Col>
@@ -117,6 +158,7 @@ const Modal = ({ onRequestClose }) => {
                       name="state"
                       id="exampleState"
                       onChange={handleControlledInputChange}
+                      defaultValue={property.state}
                     />
                   </FormGroup>
                 </Col>
@@ -128,6 +170,7 @@ const Modal = ({ onRequestClose }) => {
                       type="text"
                       name="zip"
                       onChange={handleControlledInputChange}
+                      defaultValue={property.zip}
                     />
                   </FormGroup>
                 </Col>
@@ -138,6 +181,7 @@ const Modal = ({ onRequestClose }) => {
                   type="select"
                   name="tenantId"
                   onChange={handleControlledInputChange}
+                  value={property.tenantId}
                 >
                   <option value="0">None</option>
                   {tenants.map((tenant) => (
@@ -154,6 +198,7 @@ const Modal = ({ onRequestClose }) => {
                         type="date"
                         name="leaseStartDate"
                         onChange={handleControlledInputChange}
+                        defaultValue={property.leaseStartDate}
                       />
                     </FormGroup>
                   </Col>
@@ -164,6 +209,7 @@ const Modal = ({ onRequestClose }) => {
                         type="date"
                         name="leaseEndDate"
                         onChange={handleControlledInputChange}
+                        defaultValue={property.leaseEndDate}
                       />
                     </FormGroup>
                   </Col>
@@ -177,6 +223,7 @@ const Modal = ({ onRequestClose }) => {
                         type="text"
                         name="rentAmount"
                         onChange={handleControlledInputChange}
+                        defaultValue={property.rentAmount}
                       />
                     </FormGroup>
                   </Col>
@@ -187,6 +234,7 @@ const Modal = ({ onRequestClose }) => {
                         type="text"
                         name="secuirtyDesposit"
                         onChange={handleControlledInputChange}
+                        defaultValue={property.secuirtyDesposit}
                       />
                     </FormGroup>
                   </Col>
@@ -197,6 +245,7 @@ const Modal = ({ onRequestClose }) => {
                         type="number"
                         name="paymentDay"
                         onChange={handleControlledInputChange}
+                        defaultValue={property.paymentDay}
                       />
                     </FormGroup>
                   </Col>
@@ -206,9 +255,10 @@ const Modal = ({ onRequestClose }) => {
                     <FormGroup>
                       <Label for="lastPaymentAmount">Last Payment Made</Label>
                       <Input
-                        type="date"
+                        type="text"
                         name="lastPaymentAmount"
                         onChange={handleControlledInputChange}
+                        defaultValue={property.lastPaymentAmount}
                       />
                     </FormGroup>
                   </Col>
@@ -218,6 +268,7 @@ const Modal = ({ onRequestClose }) => {
                       type="select"
                       name="leaseTerm"
                       onChange={handleControlledInputChange}
+                      value={property.leaseTerm}
                     >
                       <option value="Vacant">Vacant</option>
                       <option value="12 Month">12 Month</option>
@@ -258,6 +309,8 @@ export const PropertyForm = () => {
     setModalIsOpen(!isModalOpen);
   };
 
+  propertyId = 0;
+
   return (
     <main>
       {isModalOpen && <Modal onRequestClose={toggleModal} />}
@@ -274,6 +327,7 @@ export const PropertyFormEdit = () => {
   const toggleModal = () => {
     setModalIsOpen(!isModalOpen);
   };
+  propertyId = 1;
 
   return (
     <main>
