@@ -329,9 +329,9 @@ export const PropertyFormEdit = (id) => {
   return (
     <main>
       {isModalOpen && <Modal onRequestClose={toggleModal} />}
-      <Button onClick={toggleModal} type="button">
+      <CardLink color="warning" onClick={toggleModal} type="button" block>
         Edit
-      </Button>
+      </CardLink>
     </main>
   );
 };

@@ -9,7 +9,6 @@ import {
   Collapse,
   Row,
   Col,
-  Button,
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
@@ -22,7 +21,7 @@ export const PropertyCard = ({ property, deleteBtn, editBtn }, props) => {
 
   return (
     <div>
-      <Card>
+      <Card className="m-2 pl-2 pr-2">
         <CardBody>
           <CardTitle>{property.street} </CardTitle>
           <CardSubtitle>
@@ -39,15 +38,15 @@ export const PropertyCard = ({ property, deleteBtn, editBtn }, props) => {
           <CardText>Rent Price: ${property.rentAmount}</CardText>
         </CardBody>
         <Row>
-          <Col>{deleteBtn}</Col>
           <Col>{editBtn}</Col>
-          <Col>
-            <CardLink onClick={toggle}>
+          <Col>{deleteBtn}</Col>
+          <Col className="text-right">
+            <CardLink onClick={toggle} color="success">
               {" "}
               {isOpen ? (
-                <FontAwesomeIcon icon={faChevronUp} />
-              ) : (
                 <FontAwesomeIcon icon={faChevronDown} />
+              ) : (
+                <FontAwesomeIcon icon={faChevronUp} />
               )}
               {buttonLabel}
             </CardLink>

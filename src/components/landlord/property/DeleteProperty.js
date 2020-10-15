@@ -1,16 +1,15 @@
 import React from "react";
-import { Button } from "reactstrap";
+import { CardLink } from "reactstrap";
 
 export const Delete = (deleteFetch, deletedId, btnText) => {
   return (
-    <Button
-      color="danger"
+    <CardLink
       onClick={() => {
         deleteFetch(deletedId);
       }}
     >
       {" "}
       {btnText}
-    </Button>
+    </CardLink>
   );
 };

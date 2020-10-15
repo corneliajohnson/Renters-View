@@ -6,12 +6,6 @@ body {
   font-family: "Open Sans", Arial, sans-serif;
 }
 
-main {
-  background: #fff;
-  margin: 0 auto;
-  max-width: 680px;
-}
-
 .placeholder {
   background: #f4f6fc;
   border-radius: 5px;
