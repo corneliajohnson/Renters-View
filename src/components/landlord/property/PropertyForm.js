@@ -321,13 +321,13 @@ export const PropertyForm = () => {
   );
 };
 
-export const PropertyFormEdit = () => {
+export const PropertyFormEdit = (id) => {
   const [isModalOpen, setModalIsOpen] = useState(false);
 
   const toggleModal = () => {
     setModalIsOpen(!isModalOpen);
   };
-  propertyId = 1;
+  propertyId = id.id;
 
   return (
     <main>

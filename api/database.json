@@ -3,7 +3,7 @@
     {
       "id": 1,
       "street": "123 Main Street",
-      "city": "Tallahassee",
+      "city": "Quincy",
       "state": "FL",
       "zip": "32301",
       "tenantId": 1,
@@ -11,10 +11,9 @@
       "leaseEndDate": "2021-10-30",
       "rentAmount": 800,
       "secuirtyDesposit": 800,
-      "paymentDay": 1,
+      "paymentDay": 800,
       "lastPaymentAmount": 800,
-      "leaseTerm": "12 months",
-      "leaseType": "annual",
+      "leaseTerm": "2020-10-07",
       "image": null,
       "landlordId": 1
     },
@@ -102,23 +101,6 @@
       "image": null,
       "landlordId": 1,
       "id": 6
-    },
-    {
-      "street": "1234 test road",
-      "city": "test",
-      "state": "test",
-      "zip": "22222",
-      "tenantId": null,
-      "leaseStartDate": "1991-02-04",
-      "leaseEndDate": "2020-11-07",
-      "rentAmount": "500",
-      "secuirtyDesposit": "400",
-      "paymentDay": "400",
-      "lastPaymentAmount": "2020-10-15",
-      "leaseTerm": "1991-02-04",
-      "image": null,
-      "landlordId": 1,
-      "id": 7
     }
   ],
   "landlords": [

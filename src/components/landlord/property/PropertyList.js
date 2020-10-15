@@ -35,7 +35,7 @@ export const PropertyList = () => {
                 key={property.id}
                 property={property}
                 deleteBtn={Delete(deleteProperty, property.id, "Delete")}
-                editBtn={<PropertyFormEdit />}
+                editBtn={<PropertyFormEdit id={property.id} />}
               />
             );
           })}
