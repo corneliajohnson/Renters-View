@@ -14,13 +14,6 @@ export const LandlordHome = () => {
         <PropertyProvider>
           <Route exact path="/landlord">
             <PropertyForm />
-          </Route>
-        </PropertyProvider>
-      </TenantProvider>
-
-      <TenantProvider>
-        <PropertyProvider>
-          <Route exact path="/landlord">
             <PropertyList />
           </Route>
         </PropertyProvider>

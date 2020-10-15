@@ -52,7 +52,7 @@ const Modal = ({ onRequestClose }) => {
   };
 
   const constructPropertyObj = () => {
-    if (propertyId !== 0 && property) {
+    if (property.id) {
       updateProperty({
         id: property.id,
         street: property.street,
@@ -72,7 +72,6 @@ const Modal = ({ onRequestClose }) => {
       });
     } else {
       addProperty({
-        id: property.id,
         street: property.street,
         city: property.city,
         state: property.state,
@@ -113,6 +112,7 @@ const Modal = ({ onRequestClose }) => {
 
   return (
     <div className="modal__backdrop">
+      {console.log(property.id)}
       <div className="modal__container">
         <div>
           <CardLink

@@ -19,7 +19,7 @@
     },
     {
       "id": 2,
-      "street": "778 Bryd Street",
+      "street": "778 Bryd St",
       "city": "Tallahassee",
       "state": "FL",
       "zip": "32301",
@@ -28,9 +28,9 @@
       "leaseEndDate": "2021-10-30",
       "rentAmount": 800,
       "secuirtyDesposit": 800,
-      "paymentDay": 1,
+      "paymentDay": 800,
       "lastPaymentAmount": 800,
-      "leaseTerm": "12 months",
+      "leaseTerm": "2020-10-07",
       "image": null,
       "landlordId": 1
     },
@@ -69,7 +69,8 @@
       "landlordId": 3
     },
     {
-      "street": "1717 Harris Street",
+      "id": 5,
+      "street": "1717 Harris St",
       "city": "Ocala ",
       "state": "Fl",
       "zip": "34488",
@@ -82,25 +83,17 @@
       "lastPaymentAmount": "2020-10-14",
       "leaseTerm": "2020-10-14",
       "image": null,
-      "landlordId": 1,
-      "id": 5
+      "landlordId": 1
     },
     {
-      "street": "1234 test road",
-      "city": "test",
-      "state": "test",
-      "zip": "22222",
+      "id": 6,
+      "street": "777444",
+      "city": "lhug",
+      "state": "78",
+      "zip": "990",
       "tenantId": null,
-      "leaseStartDate": "1991-02-04",
-      "leaseEndDate": "2020-11-07",
-      "rentAmount": "500",
-      "secuirtyDesposit": "400",
-      "paymentDay": "400",
-      "lastPaymentAmount": "2020-10-15",
-      "leaseTerm": "1991-02-04",
       "image": null,
-      "landlordId": 1,
-      "id": 6
+      "landlordId": 1
     }
   ],
   "landlords": [

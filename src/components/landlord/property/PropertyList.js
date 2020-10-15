@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { PropertyContext } from "./PropertyProvider";
 import { Delete } from "./DeleteProperty";
 import { PropertyCard } from "./PropertyCard";
-import { useHistory } from "react-router-dom";
 import "./Property.css";
 import { PropertyFormEdit } from "./PropertyForm";
 
@@ -11,8 +10,6 @@ export const PropertyList = () => {
     PropertyContext
   );
   const [filteredProperies, setFilterdProperties] = useState([]);
-
-  const history = useHistory();
 
   useEffect(() => {
     getProperties();
