@@ -91,7 +91,7 @@
       "city": "lhug",
       "state": "78",
       "zip": "990",
-      "tenantId": null,
+      "tenantId": 2,
       "image": null,
       "landlordId": 1
     },
@@ -100,7 +100,7 @@
       "city": "cccc",
       "state": "ddd",
       "zip": "33333",
-      "tenantId": null,
+      "tenantId": 2,
       "image": null,
       "landlordId": 1,
       "id": 7
@@ -142,13 +142,22 @@
   ],
   "tenants": [
     {
+      "email": "None",
+      "firstName": "None",
+      "lastName": "",
+      "phone": 18005550000,
+      "propertyId": 1,
+      "landlordId": 1,
+      "id": 1
+    },
+    {
       "email": "moore@gmail.com",
       "firstName": "Kenny",
       "lastName": "Moore",
       "phone": 2223338888,
       "propertyId": 1,
       "landlordId": 1,
-      "id": 1
+      "id": 2
     },
     {
       "email": "tom@gmail.com",
@@ -157,7 +166,7 @@
       "phone": 6663339900,
       "propertyId": 2,
       "landlordId": 1,
-      "id": 2
+      "id": 3
     },
     {
       "email": "corey@gmail.com",
@@ -166,7 +175,7 @@
       "phone": 6669990000,
       "propertyId": 3,
       "landlordId": 1,
-      "id": 3
+      "id": 4
     }
   ],
   "messages": [

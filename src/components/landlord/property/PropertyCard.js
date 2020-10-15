@@ -12,6 +12,7 @@ import {
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import { TransferWithinAStationTwoTone } from "@material-ui/icons";
 
 export const PropertyCard = ({ property, deleteBtn, editBtn }, props) => {
   //For Modal Form
@@ -34,7 +35,9 @@ export const PropertyCard = ({ property, deleteBtn, editBtn }, props) => {
           alt="Card image cap"
         />
         <CardBody>
-          <CardText>Tenant: {property.tenantId}</CardText>
+          <CardText>
+            Tenant: {property.tenant.firstName} {property.tenant.lastName}
+          </CardText>
           <CardText>Rent Price: ${property.rentAmount}</CardText>
         </CardBody>
         <Row>

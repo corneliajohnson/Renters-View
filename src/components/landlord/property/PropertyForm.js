@@ -175,12 +175,12 @@ const Modal = ({ onRequestClose }) => {
               <FormGroup>
                 <Label for="exampleSelect">Tenant</Label>
                 <Input
+                  required
                   type="select"
                   name="tenantId"
                   onChange={handleControlledInputChange}
                   value={property.tenantId}
                 >
-                  <option value="0">None</option>
                   {tenants.map((tenant) => (
                     <option key={tenant.id} value={tenant.id}>
                       {tenant.firstName} {tenant.lastName}
