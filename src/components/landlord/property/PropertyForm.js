@@ -32,7 +32,7 @@ export const PropertyForm = (props) => {
 
   useEffect(() => {
     getTenants();
-  });
+  }, []);
 
   const handleControlledInputChange = (event) => {
     const newProperty = { ...property };
