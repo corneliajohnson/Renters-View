@@ -4,7 +4,6 @@ import { PropertyContext } from "./PropertyProvider";
 import { TenantContext } from "../tenants/TenantProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { useHistory } from "react-router-dom";
 import {
   Button,
   ModalHeader,
@@ -26,7 +25,6 @@ const Modal = ({ onRequestClose }) => {
     addProperty,
     updateProperty,
     getProperties,
-    properties,
   } = useContext(PropertyContext);
   const { tenants, getTenants } = useContext(TenantContext);
 
@@ -112,7 +110,6 @@ const Modal = ({ onRequestClose }) => {
 
   return (
     <div className="modal__backdrop">
-      {console.log(property.id)}
       <div className="modal__container">
         <div>
           <CardLink

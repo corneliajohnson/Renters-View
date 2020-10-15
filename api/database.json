@@ -70,7 +70,7 @@
     },
     {
       "id": 5,
-      "street": "1717 Harris St",
+      "street": "1717 Harris Street",
       "city": "Ocala ",
       "state": "Fl",
       "zip": "34488",
@@ -94,6 +94,16 @@
       "tenantId": null,
       "image": null,
       "landlordId": 1
+    },
+    {
+      "street": "444 charm St",
+      "city": "cccc",
+      "state": "ddd",
+      "zip": "33333",
+      "tenantId": null,
+      "image": null,
+      "landlordId": 1,
+      "id": 7
     }
   ],
   "landlords": [
