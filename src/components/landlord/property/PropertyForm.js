@@ -4,7 +4,7 @@ import { PropertyContext } from "./PropertyProvider";
 import { TenantContext } from "../tenants/TenantProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import {
   Button,
   ModalHeader,
@@ -21,29 +21,29 @@ import {
 let propertyId = 0;
 
 const Modal = ({ onRequestClose }) => {
-  const { getPropertyById, addProperty, updateProperty } = useContext(
-    PropertyContext
-  );
+  const {
+    getPropertyById,
+    addProperty,
+    updateProperty,
+    getProperties,
+    properties,
+  } = useContext(PropertyContext);
   const { tenants, getTenants } = useContext(TenantContext);
+
+  const [property, setProperty] = useState({});
 
   //for tenants drop down
   useEffect(() => {
-    getTenants();
+    getTenants().then(getProperties);
   }, []);
 
   useEffect(() => {
     if (propertyId) {
       getPropertyById(propertyId).then((property) => {
         setProperty(property);
-        setIsLoading(false);
       });
-    } else {
-      setIsLoading(false);
     }
   }, []);
-
-  const [property, setProperty] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
 
   const handleControlledInputChange = (event) => {
     const newProperty = { ...property };
@@ -52,7 +52,6 @@ const Modal = ({ onRequestClose }) => {
   };
 
   const constructPropertyObj = () => {
-    setIsLoading(true);
     if (propertyId !== 0 && property) {
       updateProperty({
         id: property.id,
@@ -90,6 +89,7 @@ const Modal = ({ onRequestClose }) => {
         landlordId: parseInt(localStorage.landlord),
       });
     }
+    propertyId = 0;
   };
   // Use useEffect to add an event listener to the document
   useEffect(() => {
@@ -288,6 +288,7 @@ const Modal = ({ onRequestClose }) => {
               onClick={(event) => {
                 event.preventDefault();
                 constructPropertyObj();
+                onRequestClose();
               }}
             >
               Add
@@ -304,7 +305,6 @@ const Modal = ({ onRequestClose }) => {
 
 export const PropertyForm = () => {
   const [isModalOpen, setModalIsOpen] = useState(false);
-
   const toggleModal = () => {
     setModalIsOpen(!isModalOpen);
   };
@@ -322,12 +322,12 @@ export const PropertyForm = () => {
 };
 
 export const PropertyFormEdit = (id) => {
+  propertyId = id.id;
   const [isModalOpen, setModalIsOpen] = useState(false);
 
   const toggleModal = () => {
     setModalIsOpen(!isModalOpen);
   };
-  propertyId = id.id;
 
   return (
     <main>
