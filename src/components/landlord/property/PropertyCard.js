@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import {
   Card,
-  CardImg,
   CardText,
   CardBody,
   CardLink,
   CardTitle,
   CardSubtitle,
-  Button,
   Collapse,
+  Row,
+  Col,
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
-export const PropertyCard = ({ property }, props) => {
+export const PropertyCard = ({ property, deleteBtn }, props) => {
   //For Modal Form
-  const { buttonLabel, className } = props;
+  const { buttonLabel } = props;
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
@@ -37,15 +37,21 @@ export const PropertyCard = ({ property }, props) => {
           <CardText>Tenant: {property.tenantId}</CardText>
           <CardText>Rent Price: ${property.rentAmount}</CardText>
         </CardBody>
-        <CardLink onClick={toggle}>
-          {" "}
-          {isOpen ? (
-            <FontAwesomeIcon icon={faChevronUp} />
-          ) : (
-            <FontAwesomeIcon icon={faChevronDown} />
-          )}
-          {buttonLabel}
-        </CardLink>
+        <Row>
+          <Col>{deleteBtn}</Col>
+          <Col>
+            <CardLink onClick={toggle}>
+              {" "}
+              {isOpen ? (
+                <FontAwesomeIcon icon={faChevronUp} />
+              ) : (
+                <FontAwesomeIcon icon={faChevronDown} />
+              )}
+              {buttonLabel}
+            </CardLink>
+          </Col>
+        </Row>
+
         <Collapse isOpen={isOpen}>
           <CardText>
             Lease Begin:

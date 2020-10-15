@@ -31,6 +31,12 @@ export const PropertyProvider = (props) => {
     ).then((res) => res.json());
   };
 
+  const deleteProperty = (propertyId) => {
+    return fetch(`http://localhost:8088/properties/${propertyId}`, {
+      method: "DELETE",
+    }).then(getProperties);
+  };
+
   return (
     <PropertyContext.Provider
       value={{
@@ -38,6 +44,7 @@ export const PropertyProvider = (props) => {
         getProperties,
         addProperty,
         getPropertyById,
+        deleteProperty,
       }}
     >
       {props.children}
