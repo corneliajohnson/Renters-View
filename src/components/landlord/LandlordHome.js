@@ -18,11 +18,13 @@ export const LandlordHome = () => {
         </PropertyProvider>
       </TenantProvider>
 
-      <PropertyProvider>
-        <Route exact path="/landlord">
-          <PropertyList />
-        </Route>
-      </PropertyProvider>
+      <TenantProvider>
+        <PropertyProvider>
+          <Route exact path="/landlord">
+            <PropertyList />
+          </Route>
+        </PropertyProvider>
+      </TenantProvider>
     </>
   );
 };

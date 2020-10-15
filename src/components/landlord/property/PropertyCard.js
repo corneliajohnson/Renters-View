@@ -14,7 +14,7 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 
-export const PropertyCard = ({ property, deleteBtn }, props) => {
+export const PropertyCard = ({ property, deleteBtn, editBtn }, props) => {
   //For Modal Form
   const { buttonLabel } = props;
   const [isOpen, setIsOpen] = useState(false);
@@ -40,9 +40,7 @@ export const PropertyCard = ({ property, deleteBtn }, props) => {
         </CardBody>
         <Row>
           <Col>{deleteBtn}</Col>
-          <Col>
-            <Button color="warning">Edit</Button>
-          </Col>
+          <Col>{editBtn}</Col>
           <Col>
             <CardLink onClick={toggle}>
               {" "}

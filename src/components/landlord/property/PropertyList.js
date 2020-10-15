@@ -4,6 +4,7 @@ import { Delete } from "./DeleteProperty";
 import { PropertyCard } from "./PropertyCard";
 import { useHistory } from "react-router-dom";
 import "./Property.css";
+import { PropertyFormEdit } from "./PropertyForm";
 
 export const PropertyList = () => {
   const { properties, getProperties, deleteProperty } = useContext(
@@ -34,6 +35,7 @@ export const PropertyList = () => {
                 key={property.id}
                 property={property}
                 deleteBtn={Delete(deleteProperty, property.id, "Delete")}
+                editBtn={<PropertyFormEdit />}
               />
             );
           })}

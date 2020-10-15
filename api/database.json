@@ -85,6 +85,40 @@
       "image": null,
       "landlordId": 1,
       "id": 5
+    },
+    {
+      "street": "1234 test road",
+      "city": "test",
+      "state": "test",
+      "zip": "22222",
+      "tenantId": null,
+      "leaseStartDate": "1991-02-04",
+      "leaseEndDate": "2020-11-07",
+      "rentAmount": "500",
+      "secuirtyDesposit": "400",
+      "paymentDay": "400",
+      "lastPaymentAmount": "2020-10-15",
+      "leaseTerm": "1991-02-04",
+      "image": null,
+      "landlordId": 1,
+      "id": 6
+    },
+    {
+      "street": "1234 test road",
+      "city": "test",
+      "state": "test",
+      "zip": "22222",
+      "tenantId": null,
+      "leaseStartDate": "1991-02-04",
+      "leaseEndDate": "2020-11-07",
+      "rentAmount": "500",
+      "secuirtyDesposit": "400",
+      "paymentDay": "400",
+      "lastPaymentAmount": "2020-10-15",
+      "leaseTerm": "1991-02-04",
+      "image": null,
+      "landlordId": 1,
+      "id": 7
     }
   ],
   "landlords": [
