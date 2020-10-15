@@ -28,7 +28,7 @@ export const PropertyForm = (props) => {
   //For Modal Form
   const { buttonLabel, className } = props;
   const [modal, setModal] = useState(false);
-  const toggle = () => setModal(!modal);
+  const toggleProperty = () => setModal(!modal);
 
   useEffect(() => {
     getTenants();
@@ -56,18 +56,18 @@ export const PropertyForm = (props) => {
       leaseTerm: property.leaseStartDate,
       image: null,
       landlordId: parseInt(localStorage.landlord),
-    }).then(toggle);
+    }).then(toggleProperty);
   };
 
   return (
     <div>
-      <Button color="success" onClick={toggle}>
+      <Button color="success" onClick={toggleProperty}>
         {" "}
         Add New Property
         {buttonLabel}
       </Button>
-      <Modal isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle}>Add A New Property</ModalHeader>
+      <Modal isOpen={modal} toggle={toggleProperty} className={className}>
+        <ModalHeader toggle={toggleProperty}>Add A New Property</ModalHeader>
         <ModalBody>
           <Form>
             <FormGroup>
@@ -225,7 +225,7 @@ export const PropertyForm = (props) => {
           >
             Add
           </Button>{" "}
-          <Button color="secondary" onClick={toggle}>
+          <Button color="secondary" onClick={toggleProperty}>
             Cancel
           </Button>
         </ModalFooter>

@@ -37,6 +37,16 @@ export const PropertyProvider = (props) => {
     }).then(getProperties);
   };
 
+  const updateProperty = (property) => {
+    return fetch(`http://localhost:8088/properties/${property.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(property),
+    }).then(getProperties);
+  };
+
   return (
     <PropertyContext.Provider
       value={{
@@ -45,6 +55,7 @@ export const PropertyProvider = (props) => {
         addProperty,
         getPropertyById,
         deleteProperty,
+        updateProperty,
       }}
     >
       {props.children}
