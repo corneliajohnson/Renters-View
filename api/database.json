@@ -154,6 +154,15 @@
       "propertyId": 3,
       "landlordId": 1,
       "id": 4
+    },
+    {
+      "email": "corey@gmail.com",
+      "firstName": "Shelby",
+      "lastName": "Monroe",
+      "phone": 8506730987,
+      "propertyId": 3,
+      "landlordId": 2,
+      "id": 4
     }
   ],
   "messages": [
