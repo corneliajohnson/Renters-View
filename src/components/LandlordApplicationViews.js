@@ -35,12 +35,14 @@ export const LandlordApplicationViews = () => {
         </PropertyProvider>
       </TenantProvider>
 
-      <MaintenanceProvider>
-        <Route exact path="/maintenance">
-          <MaintenanceForm />
-          <MaintenanceList />
-        </Route>
-      </MaintenanceProvider>
+      <PropertyProvider>
+        <MaintenanceProvider>
+          <Route exact path="/maintenance">
+            <MaintenanceForm />
+            <MaintenanceList />
+          </Route>
+        </MaintenanceProvider>
+      </PropertyProvider>
     </>
   );
 };

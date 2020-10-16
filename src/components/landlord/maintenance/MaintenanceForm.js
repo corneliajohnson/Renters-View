@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { PropertyContext } from "../property/PropertyProvider";
+import { MaintenanceContext } from "./MaintenanceProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -15,6 +16,39 @@ import {
 } from "reactstrap";
 
 const Modal = ({ onRequestClose }) => {
+  const { getProperties, properties } = useContext(PropertyContext);
+  const {
+    getMaintenanceRequest,
+    addMaintenanceRequest,
+    maintenanceRequest,
+  } = useContext(MaintenanceContext);
+
+  const [request, setRequest] = useState({});
+
+  //for property dropdown
+  useEffect(() => {
+    getProperties();
+  }, []);
+
+  const handleControlledInputChange = (event) => {
+    const newRequest = { ...request };
+    newRequest[event.target.name] = event.target.value;
+    setRequest(newRequest);
+  };
+
+  const constructRequestObj = () => {
+    console.log({
+      propertyId: request.propertyId,
+      synopsis: request.synopsis,
+      price: request.price,
+      contractor: request.contractor,
+      complete: false,
+      note: request.note,
+      dateComplete: 2020 - 10 - 9,
+      dateAdded: Date.now(),
+    });
+  };
+
   // Use useEffect to add an event listener to the document
   useEffect(() => {
     function onKeyDown(event) {
@@ -49,27 +83,53 @@ const Modal = ({ onRequestClose }) => {
           <ModalHeader className="mb-3">Add Maintenance Request</ModalHeader>
           <FormGroup>
             <Label for="examplePassword">Synopsis</Label>
-            <Input type="text" name="synopsis" />
+            <Input
+              type="text"
+              name="synopsis"
+              onChange={handleControlledInputChange}
+            />
           </FormGroup>
           <FormGroup>
             <Label for="ProopertyId">Address</Label>
             <Col>
-              <Input type="select" name="propertyId">
+              <Input
+                type="select"
+                name="propertyId"
+                onChange={handleControlledInputChange}
+              >
                 <option value="0"></option>
               </Input>
             </Col>
           </FormGroup>
           <Row form>
-            <Col md={6}>
+            <Col sm={4}>
               <FormGroup>
                 <Label for="firstName">Contractor</Label>
-                <Input type="text" name="contractor" />
+                <Input
+                  type="text"
+                  name="contractor"
+                  onChange={handleControlledInputChange}
+                />
               </FormGroup>
             </Col>
-            <Col md={6}>
+            <Col sm={2}>
               <FormGroup>
-                <Label for="examplePassword">Date Complete</Label>
-                <Input type="date" name="dateComplete" />
+                <Label>Price</Label>
+                <Input
+                  type="number"
+                  name="price"
+                  onChange={handleControlledInputChange}
+                />
+              </FormGroup>
+            </Col>
+            <Col sm={4}>
+              <FormGroup>
+                <Label for="dateComplete">Date Complete</Label>
+                <Input
+                  type="date"
+                  name="dateComplete"
+                  onChange={handleControlledInputChange}
+                />
               </FormGroup>
             </Col>
           </Row>
@@ -80,6 +140,7 @@ const Modal = ({ onRequestClose }) => {
               id="exampleFormControlTextarea1"
               name="note"
               rows="3"
+              onChange={handleControlledInputChange}
             ></textarea>
           </FormGroup>
         </Form>
@@ -87,6 +148,7 @@ const Modal = ({ onRequestClose }) => {
           color="primary"
           onClick={(event) => {
             event.preventDefault();
+            constructRequestObj();
             onRequestClose();
           }}
         >
