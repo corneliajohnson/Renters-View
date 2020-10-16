@@ -21,12 +21,19 @@ export const TenantProvider = (props) => {
     }).then(getTenants);
   };
 
+  const deleteTenant = (tenantId) => {
+    return fetch(`http://localhost:8088/tenants/${tenantId}`, {
+      method: "DELETE",
+    }).then(getTenants);
+  };
+
   return (
     <TenantContext.Provider
       value={{
         tenants,
         getTenants,
         addTenant,
+        deleteTenant,
       }}
     >
       {props.children}

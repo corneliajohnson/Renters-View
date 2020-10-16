@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { TenantContext } from "./TenantProvider";
 import { TenantCard } from "./TenantCard";
-import { parse } from "@fortawesome/fontawesome-svg-core";
+import { CardLink } from "reactstrap";
 
 export const TenantList = () => {
-  const { getTenants, tenants } = useContext(TenantContext);
+  const { getTenants, tenants, deleteTenant } = useContext(TenantContext);
   const [filteredTenants, setFilteredTenants] = useState([]);
 
   useEffect(() => {
@@ -24,7 +24,22 @@ export const TenantList = () => {
     <div className="container d-flex justify-content-around">
       <div className="row wrap m-5">
         {filteredTenants.map((tenant) => {
-          return <TenantCard key={tenant.id} tenant={tenant} />;
+          return (
+            <TenantCard
+              key={tenant.id}
+              tenant={tenant}
+              deleteBtn={
+                <CardLink
+                  onClick={() => {
+                    deleteTenant(tenant.id);
+                  }}
+                >
+                  {" "}
+                  Delete
+                </CardLink>
+              }
+            />
+          );
         })}
       </div>
     </div>

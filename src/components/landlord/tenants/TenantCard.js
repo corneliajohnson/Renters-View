@@ -3,7 +3,7 @@ import { Card, CardText, CardBody, CardTitle } from "reactstrap";
 
 import { Link } from "react-router-dom";
 
-export const TenantCard = ({ tenant }) => {
+export const TenantCard = ({ tenant, deleteBtn }) => {
   return (
     <div>
       <Card className="m-2">
@@ -21,6 +21,7 @@ export const TenantCard = ({ tenant }) => {
             {tenant.property.city}
             {tenant.property.state} {tenant.property.zip}
           </CardText>
+          {deleteBtn}
         </CardBody>
       </Card>
     </div>
