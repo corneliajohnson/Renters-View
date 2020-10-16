@@ -4,6 +4,7 @@ import { PropertyContext } from "./PropertyProvider";
 import { TenantContext } from "../tenants/TenantProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { AvForm, AvField } from "availity-reactstrap-validation";
 import {
   Button,
   ModalHeader,
@@ -60,11 +61,11 @@ const Modal = ({ onRequestClose }) => {
         tenantId: parseInt(property.tenantId),
         leaseStartDate: property.leaseStartDate,
         leaseEndDate: property.leaseEndDate,
-        rentAmount: property.rentAmount,
-        secuirtyDesposit: property.secuirtyDesposit,
+        rentAmount: parseInt(property.rentAmount),
+        secuirtyDesposit: parseInt(property.secuirtyDesposit),
         paymentDay: property.secuirtyDesposit,
-        lastPaymentAmount: property.lastPaymentAmount,
-        leaseTerm: property.leaseStartDate,
+        lastPaymentAmount: parseInt(property.lastPaymentAmount),
+        leaseTerm: property.leaseTerm,
         image: null,
         landlordId: parseInt(localStorage.landlord),
       });
@@ -77,11 +78,11 @@ const Modal = ({ onRequestClose }) => {
         tenantId: parseInt(property.tenantId),
         leaseStartDate: property.leaseStartDate,
         leaseEndDate: property.leaseEndDate,
-        rentAmount: property.rentAmount,
-        secuirtyDesposit: property.secuirtyDesposit,
+        rentAmount: parseInt(property.rentAmount),
+        secuirtyDesposit: parseInt(property.secuirtyDesposit),
         paymentDay: property.secuirtyDesposit,
-        lastPaymentAmount: property.lastPaymentAmount,
-        leaseTerm: property.leaseStartDate,
+        lastPaymentAmount: parseInt(property.lastPaymentAmount),
+        leaseTerm: property.leaseTerm,
         image: null,
         landlordId: parseInt(localStorage.landlord),
       });
@@ -120,60 +121,84 @@ const Modal = ({ onRequestClose }) => {
             <FontAwesomeIcon icon={faTimes} />
           </CardLink>
           <ModalHeader>Add A New Property</ModalHeader>
-          <ModalBody>
-            <Form>
+          <AvForm>
+            <ModalBody>
               <FormGroup>
-                <Label for="address">Address</Label>
-                <Input
-                  required
+                <Label for="address">Address *</Label>
+                <AvField
                   type="text"
                   name="street"
                   placeholder="1234 Main St"
                   onChange={handleControlledInputChange}
-                  defaultValue={property.street}
+                  value={property.street}
+                  validate={{
+                    required: {
+                      value: true,
+                      errorMessage: "Please enter street",
+                    },
+                    minLength: {
+                      value: 6,
+                      errorMessage: "Your name must at least 6 characters",
+                    },
+                  }}
                 />
               </FormGroup>
               <Row form>
                 <Col md={6}>
                   <FormGroup>
-                    <Label for="city">City</Label>
-                    <Input
-                      required
+                    <Label for="city">City *</Label>
+                    <AvField
                       type="text"
                       name="city"
                       onChange={handleControlledInputChange}
-                      defaultValue={property.city}
+                      value={property.city}
+                      validate={{
+                        required: {
+                          value: true,
+                          errorMessage: "Please enter city",
+                        },
+                      }}
                     />
                   </FormGroup>
                 </Col>
                 <Col md={4}>
                   <FormGroup>
-                    <Label for="state">State</Label>
-                    <Input
-                      required
+                    <Label for="state">State *</Label>
+                    <AvField
                       type="text"
                       name="state"
                       id="exampleState"
                       onChange={handleControlledInputChange}
-                      defaultValue={property.state}
+                      value={property.state}
+                      validate={{
+                        required: {
+                          value: true,
+                          errorMessage: "Please enter state",
+                        },
+                      }}
                     />
                   </FormGroup>
                 </Col>
                 <Col md={2}>
                   <FormGroup>
-                    <Label for="zip">Zip</Label>
-                    <Input
-                      required
-                      type="text"
+                    <Label for="zip">Zip *</Label>
+                    <AvField
+                      type="number"
                       name="zip"
                       onChange={handleControlledInputChange}
-                      defaultValue={property.zip}
+                      value={property.zip}
+                      validate={{
+                        required: {
+                          value: true,
+                          errorMessage: "Please enter zip code",
+                        },
+                      }}
                     />
                   </FormGroup>
                 </Col>
               </Row>
               <FormGroup>
-                <Label for="exampleSelect">Tenant</Label>
+                <Label for="exampleSelect">Tenant *</Label>
                 <Input
                   required
                   type="select"
@@ -181,6 +206,7 @@ const Modal = ({ onRequestClose }) => {
                   onChange={handleControlledInputChange}
                   value={property.tenantId}
                 >
+                  <option value="0"></option>
                   {tenants.map((tenant) => (
                     <option key={tenant.id} value={tenant.id}>
                       {tenant.firstName} {tenant.lastName}
@@ -202,7 +228,7 @@ const Modal = ({ onRequestClose }) => {
                   <Col>
                     <FormGroup>
                       <Label for="leaseEndDate">Lease Ends</Label>
-                      <Input
+                      <AvField
                         type="date"
                         name="leaseEndDate"
                         onChange={handleControlledInputChange}
@@ -221,6 +247,7 @@ const Modal = ({ onRequestClose }) => {
                         name="rentAmount"
                         onChange={handleControlledInputChange}
                         defaultValue={property.rentAmount}
+                        required
                       />
                     </FormGroup>
                   </Col>
@@ -237,9 +264,9 @@ const Modal = ({ onRequestClose }) => {
                   </Col>
                   <Col>
                     <FormGroup>
-                      <Label for="paymentDay">Monthly Due Date</Label>
+                      <Label for="paymentDay">Next Due Date</Label>
                       <Input
-                        type="number"
+                        type="date"
                         name="paymentDay"
                         onChange={handleControlledInputChange}
                         defaultValue={property.paymentDay}
@@ -252,7 +279,7 @@ const Modal = ({ onRequestClose }) => {
                     <FormGroup>
                       <Label for="lastPaymentAmount">Last Payment Made</Label>
                       <Input
-                        type="text"
+                        type="number"
                         name="lastPaymentAmount"
                         onChange={handleControlledInputChange}
                         defaultValue={property.lastPaymentAmount}
@@ -260,40 +287,55 @@ const Modal = ({ onRequestClose }) => {
                     </FormGroup>
                   </Col>
                   <Col>
-                    <Label for="leaseTerm">Lease Term</Label>
-                    <Input
+                    <Label for="leaseTerm">Lease Term *</Label>
+                    <AvField
                       type="select"
                       name="leaseTerm"
                       onChange={handleControlledInputChange}
                       value={property.leaseTerm}
+                      defaultValue={property.leaseTerm}
+                      required
                     >
+                      <option value="0"></option>
                       <option value="Vacant">Vacant</option>
                       <option value="12 Month">12 Month</option>
                       <option value="Month to Month">Month to Month</option>
                       <option value="Seasonal">Seasonal</option>
                       <option value="Air BnB">Air BnB</option>
                       <option value="Under Repair">Under Repair</option>
-                    </Input>
+                    </AvField>
                   </Col>
                 </Row>
               </FormGroup>
-            </Form>
-          </ModalBody>
-          <ModalFooter>
-            <Button
-              color="primary"
-              onClick={(event) => {
-                event.preventDefault();
-                constructPropertyObj();
-                onRequestClose();
-              }}
-            >
-              Add
-            </Button>{" "}
-            <Button type="button" onClick={onRequestClose}>
-              Close
-            </Button>
-          </ModalFooter>
+              <p className="text-danger">
+                All fields with * are required to subment form.
+              </p>
+            </ModalBody>
+            <ModalFooter>
+              <Button
+                color="primary"
+                onClick={(event) => {
+                  event.preventDefault();
+                  if (
+                    property.street &&
+                    property.city &&
+                    property.state &&
+                    property.zip &&
+                    property.tenantId &&
+                    property.leaseTerm
+                  ) {
+                    constructPropertyObj();
+                    onRequestClose();
+                  }
+                }}
+              >
+                Add
+              </Button>{" "}
+              <Button type="button" onClick={onRequestClose}>
+                Close
+              </Button>
+            </ModalFooter>
+          </AvForm>
         </div>
       </div>
     </div>
@@ -309,12 +351,13 @@ export const PropertyForm = () => {
   propertyId = 0;
 
   return (
-    <main>
+    <div className="container text-center">
+      <h1 className="display-2 m-5">My Properties</h1>
       {isModalOpen && <Modal onRequestClose={toggleModal} />}
       <Button onClick={toggleModal} type="button">
         Add New Property
       </Button>
-    </main>
+    </div>
   );
 };
 

@@ -5,7 +5,7 @@ import { LandlordHome } from "./landlord/LandlordHome";
 export const LandlordApplicationViews = () => {
   return (
     <>
-      <Route exact path="/landlord">
+      <Route path="/landlord">
         <LandlordHome />
       </Route>
     </>

@@ -22,7 +22,12 @@ export const PropertyCard = ({ property, deleteBtn, editBtn }, props) => {
           <CardText>
             Tenant: {property.tenant.firstName} {property.tenant.lastName}
           </CardText>
-          <CardText>Rent Price: ${property.rentAmount}</CardText>
+          <CardText>
+            Rent Price:{" "}
+            {property.rentAmount === null
+              ? " Not Set"
+              : `$ ${property.rentAmount}`}
+          </CardText>
         </CardBody>
         <Row>
           <Col>{editBtn}</Col>

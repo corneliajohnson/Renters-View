@@ -24,8 +24,8 @@ export const PropertyList = () => {
 
   return (
     <>
-      <div className="container">
-        <div className="properties row wrap">
+      <div className="container d-flex justify-content-around">
+        <div className="properties row wrap m-5">
           {filteredProperies.map((property) => {
             return (
               <PropertyCard
