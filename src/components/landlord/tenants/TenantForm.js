@@ -18,9 +18,10 @@ import {
 
 const Modal = ({ onRequestClose }) => {
   const { getProperties, properties } = useContext(PropertyContext);
-  const { getTenants, addTenants, tenants } = useContext(TenantContext);
+  const { getTenants, addTenant, tenants } = useContext(TenantContext);
 
   const [filteredProperties, setFilteredProperties] = useState([]);
+  const [tenant, setTenant] = useState({});
 
   //for property dropdown
   useEffect(() => {
@@ -34,7 +35,23 @@ const Modal = ({ onRequestClose }) => {
         property.landlordId === parseInt(localStorage.landlord)
     );
     setFilteredProperties(subsetProperties);
-  }, []);
+  }, [properties]);
+
+  const handleControlledInputChange = (event) => {
+    const newTenant = { ...tenant };
+    newTenant[event.target.name] = event.target.value;
+    setTenant(newTenant);
+  };
+
+  const constructTenantObj = () => {
+    addTenant({
+      firstName: tenant.firstName,
+      lastName: tenant.lastName,
+      email: tenant.email,
+      propertyId: parseInt(tenant.propertyId),
+      landlordId: parseInt(localStorage.landlord),
+    });
+  };
 
   // Use useEffect to add an event listener to the document
   useEffect(() => {
@@ -72,13 +89,21 @@ const Modal = ({ onRequestClose }) => {
             <Col md={6}>
               <FormGroup>
                 <Label for="firstName">First Name</Label>
-                <Input type="text" name="firstName" />
+                <Input
+                  type="text"
+                  name="firstName"
+                  onChange={handleControlledInputChange}
+                />
               </FormGroup>
             </Col>
             <Col md={6}>
               <FormGroup>
                 <Label for="examplePassword">Last Name</Label>
-                <Input type="text" name="lastName" />
+                <Input
+                  type="text"
+                  name="lastName"
+                  onChange={handleControlledInputChange}
+                />
               </FormGroup>
             </Col>
           </Row>
@@ -87,7 +112,11 @@ const Modal = ({ onRequestClose }) => {
               Email
             </Label>
             <Col sm={10}>
-              <Input type="email" name="email" />
+              <Input
+                type="email"
+                name="email"
+                onChange={handleControlledInputChange}
+              />
             </Col>
           </FormGroup>
           <FormGroup row>
@@ -95,10 +124,14 @@ const Modal = ({ onRequestClose }) => {
               Address
             </Label>
             <Col sm={10}>
-              <Input type="select" name="propertyId">
+              <Input
+                type="select"
+                name="propertyId"
+                onChange={handleControlledInputChange}
+              >
                 <option value="0"></option>
                 {filteredProperties.map((property) => (
-                  <option key={property.id} value="{property.id}">
+                  <option key={property.id} value={property.id}>
                     {property.street} {property.city} {property.state}
                   </option>
                 ))}
@@ -106,6 +139,16 @@ const Modal = ({ onRequestClose }) => {
             </Col>
           </FormGroup>
         </Form>
+        <Button
+          color="primary"
+          onClick={(event) => {
+            event.preventDefault();
+            constructTenantObj();
+            onRequestClose();
+          }}
+        >
+          Add
+        </Button>
         <Button type="button" onClick={onRequestClose}>
           Close
         </Button>
