@@ -7,7 +7,7 @@ export const NavBar = () => {
     <ul className="navbar">
       <li className="navbar__item active">
         <Link className="navbar__link" to="/landlord">
-          Logo
+          <img width="40%" src={require("../../../img/logo.png")} alt="logo" />
         </Link>
       </li>
       <li className="navbar__item">
