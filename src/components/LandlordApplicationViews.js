@@ -10,6 +10,7 @@ import { TenantForm } from "./landlord/tenants/TenantForm";
 import { TenantList } from "./landlord/tenants/TenantList";
 import { MaintenanceForm } from "./landlord/maintenance/MaintenanceForm";
 import { MaintenanceList } from "./landlord/maintenance/MaintenanceList";
+import { MaintenanceProvider } from "./landlord/maintenance/MaintenanceProvider";
 
 export const LandlordApplicationViews = () => {
   return (
@@ -33,10 +34,13 @@ export const LandlordApplicationViews = () => {
           </Route>
         </PropertyProvider>
       </TenantProvider>
-      <Route exact path="/maintenance">
-        <MaintenanceForm />
-        <MaintenanceList />
-      </Route>
+
+      <MaintenanceProvider>
+        <Route exact path="/maintenance">
+          <MaintenanceForm />
+          <MaintenanceList />
+        </Route>
+      </MaintenanceProvider>
     </>
   );
 };

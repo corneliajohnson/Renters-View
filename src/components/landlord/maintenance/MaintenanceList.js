@@ -1,5 +1,19 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { MaintenanceContext } from "./MaintenanceProvider";
 
 export const MaintenanceList = () => {
-  return <h1>Maintenance List</h1>;
+  const { getMaintenanceRequests, maintenanceRequests } = useContext(
+    MaintenanceContext
+  );
+
+  useEffect(() => {
+    getMaintenanceRequests();
+  }, []);
+  return (
+    <>
+      {maintenanceRequests.map((request) => {
+        return <p>{request.synopsis}</p>;
+      })}
+    </>
+  );
 };

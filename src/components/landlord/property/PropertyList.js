@@ -9,6 +9,7 @@ export const PropertyList = () => {
   const { properties, getProperties, deleteProperty } = useContext(
     PropertyContext
   );
+
   const [filteredProperies, setFilterdProperties] = useState([]);
 
   useEffect(() => {
