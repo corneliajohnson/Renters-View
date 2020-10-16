@@ -1,68 +1,23 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Renters View
 
-In the project directory, you can run:
+### What problem does your capstone address?
 
-### `npm start`
+Improve the landlord/tenant experience and relationship. The application will give both parties a direct line of communication and the platform to share needed information.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Overview:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+Landlords can manage tenants, properties and maintenance along with viewing payment information. The tenants will be able to track maintenance, landlord and payment information for the property they are occupying and message their landlord.
 
-### `npm test`
+### User Focused Goals
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+An app for landlords/property managers can manage properties and tenants and maintenance. Also for a tenant to see the most recent information about their payments and rental.
 
-### `npm run build`
+### Wireframe
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![wireframe](https://user-images.githubusercontent.com/38992646/96260040-72c0ad00-0f8c-11eb-945d-fe4e4ab00e81.PNG)
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### ERD
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+![capstone-erd](https://user-images.githubusercontent.com/38992646/96260006-64729100-0f8c-11eb-9042-9bf84f64574b.PNG)
