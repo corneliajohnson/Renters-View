@@ -15,7 +15,7 @@ export const TenantCard = ({ tenant }) => {
           </CardTitle>
 
           <CardText>Phone Number: {tenant.phone}</CardText>
-          <CardText>Eamil: {tenant.email}</CardText>
+          <CardText>Email: {tenant.email}</CardText>
           <CardText>Address: {tenant.property.street}</CardText>
           <CardText>
             {tenant.property.city}

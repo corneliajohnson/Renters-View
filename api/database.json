@@ -124,8 +124,8 @@
       "firstName": "None",
       "lastName": "",
       "phone": "NA",
-      "propertyId": 1,
-      "landlordId": 1,
+      "propertyId": false,
+      "landlordId": false,
       "id": 1
     },
     {
