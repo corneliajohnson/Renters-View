@@ -15,10 +15,17 @@ import {
   ModalHeader,
   CardLink,
 } from "reactstrap";
+let tenantId = 0;
 
 const Modal = ({ onRequestClose }) => {
   const { getProperties, properties } = useContext(PropertyContext);
-  const { getTenants, addTenant, tenants } = useContext(TenantContext);
+  const {
+    getTenants,
+    addTenant,
+    tenants,
+    getTenantById,
+    updateTenant,
+  } = useContext(TenantContext);
 
   const [filteredProperties, setFilteredProperties] = useState([]);
   const [tenant, setTenant] = useState({});
@@ -37,6 +44,14 @@ const Modal = ({ onRequestClose }) => {
     setFilteredProperties(subsetProperties);
   }, [properties]);
 
+  useEffect(() => {
+    if (tenantId) {
+      getTenantById(tenantId).then((tenant) => {
+        setTenant(tenant);
+      });
+    }
+  }, []);
+
   const handleControlledInputChange = (event) => {
     const newTenant = { ...tenant };
     newTenant[event.target.name] = event.target.value;
@@ -44,13 +59,24 @@ const Modal = ({ onRequestClose }) => {
   };
 
   const constructTenantObj = () => {
-    addTenant({
-      firstName: tenant.firstName,
-      lastName: tenant.lastName,
-      email: tenant.email,
-      propertyId: parseInt(tenant.propertyId),
-      landlordId: parseInt(localStorage.landlord),
-    });
+    if (tenant.id) {
+      updateTenant({
+        id: tenant.id,
+        firstName: tenant.firstName,
+        lastName: tenant.lastName,
+        email: tenant.email,
+        propertyId: parseInt(tenant.propertyId),
+        landlordId: parseInt(localStorage.landlord),
+      });
+    } else {
+      addTenant({
+        firstName: tenant.firstName,
+        lastName: tenant.lastName,
+        email: tenant.email,
+        propertyId: parseInt(tenant.propertyId),
+        landlordId: parseInt(localStorage.landlord),
+      });
+    }
   };
 
   // Use useEffect to add an event listener to the document
@@ -92,6 +118,7 @@ const Modal = ({ onRequestClose }) => {
                 <Input
                   type="text"
                   name="firstName"
+                  value={tenant.firstName}
                   onChange={handleControlledInputChange}
                 />
               </FormGroup>
@@ -102,6 +129,7 @@ const Modal = ({ onRequestClose }) => {
                 <Input
                   type="text"
                   name="lastName"
+                  value={tenant.lastName}
                   onChange={handleControlledInputChange}
                 />
               </FormGroup>
@@ -115,6 +143,7 @@ const Modal = ({ onRequestClose }) => {
               <Input
                 type="email"
                 name="email"
+                value={tenant.email}
                 onChange={handleControlledInputChange}
               />
             </Col>
@@ -127,6 +156,7 @@ const Modal = ({ onRequestClose }) => {
               <Input
                 type="select"
                 name="propertyId"
+                value={tenant.propertyId}
                 onChange={handleControlledInputChange}
               >
                 <option value="0"></option>
@@ -158,6 +188,7 @@ const Modal = ({ onRequestClose }) => {
 };
 
 export const TenantForm = () => {
+  tenantId = 0;
   const [isModalOpen, setModalIsOpen] = useState(false);
   const toggleModal = () => {
     setModalIsOpen(!isModalOpen);
@@ -171,5 +202,22 @@ export const TenantForm = () => {
         Add New Tenant
       </Button>
     </div>
+  );
+};
+
+export const EditTenantForm = (tenantObjId) => {
+  tenantId = tenantObjId.id;
+  const [isModalOpen, setModalIsOpen] = useState(false);
+  const toggleModal = () => {
+    setModalIsOpen(!isModalOpen);
+  };
+
+  return (
+    <main>
+      {isModalOpen && <Modal onRequestClose={toggleModal} />}
+      <CardLink color="warning" onClick={toggleModal} type="button">
+        Edit
+      </CardLink>
+    </main>
   );
 };

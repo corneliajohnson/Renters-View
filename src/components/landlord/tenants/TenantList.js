@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { TenantContext } from "./TenantProvider";
 import { TenantCard } from "./TenantCard";
 import { CardLink } from "reactstrap";
+import { EditTenantForm } from "./TenantForm";
 
 export const TenantList = () => {
   const { getTenants, tenants, deleteTenant } = useContext(TenantContext);
@@ -38,6 +39,7 @@ export const TenantList = () => {
                   Delete
                 </CardLink>
               }
+              editBtn={<EditTenantForm id={tenant.id} />}
             />
           );
         })}

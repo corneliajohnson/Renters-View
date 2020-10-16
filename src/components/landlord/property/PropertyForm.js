@@ -362,8 +362,8 @@ export const PropertyForm = () => {
   );
 };
 
-export const PropertyFormEdit = (id) => {
-  propertyId = id.id;
+export const PropertyFormEdit = (propertyObjId) => {
+  propertyId = propertyObjId.id;
   const [isModalOpen, setModalIsOpen] = useState(false);
 
   const toggleModal = () => {

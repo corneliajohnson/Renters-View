@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { Card, CardText, CardBody, CardTitle } from "reactstrap";
+import { Card, CardText, CardBody, CardTitle, Row, Col } from "reactstrap";
 
 import { Link } from "react-router-dom";
 
-export const TenantCard = ({ tenant, deleteBtn }) => {
+export const TenantCard = ({ tenant, deleteBtn, editBtn }) => {
   return (
     <div>
       <Card className="m-2">
@@ -21,7 +21,9 @@ export const TenantCard = ({ tenant, deleteBtn }) => {
             {tenant.property.city}
             {tenant.property.state} {tenant.property.zip}
           </CardText>
-          {deleteBtn}
+          <Row>
+            <Col>{deleteBtn}</Col> <Col>{editBtn}</Col>
+          </Row>
         </CardBody>
       </Card>
     </div>

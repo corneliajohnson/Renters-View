@@ -147,13 +147,12 @@
       "id": 3
     },
     {
-      "email": "corey@gmail.com",
-      "firstName": "Corey",
-      "lastName": "Brown",
-      "phone": 6669990000,
+      "id": 4,
+      "firstName": "Cornnel",
+      "lastName": "Browning",
+      "email": "coreyb@gmail.com",
       "propertyId": 3,
-      "landlordId": 1,
-      "id": 4
+      "landlordId": 1
     },
     {
       "email": "corey@gmail.com",

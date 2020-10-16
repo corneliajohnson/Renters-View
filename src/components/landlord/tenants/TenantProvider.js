@@ -27,6 +27,23 @@ export const TenantProvider = (props) => {
     }).then(getTenants);
   };
 
+  const updateTenant = (tenant) => {
+    return fetch(`http://localhost:8088/tenants/${tenant.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(tenant),
+    }).then(getTenants);
+  };
+
+  const getTenantById = (id) => {
+    return fetch(
+      `http://localhost:8088/tenants/${id}?_expand=property`,
+      {}
+    ).then((res) => res.json());
+  };
+
   return (
     <TenantContext.Provider
       value={{
@@ -34,6 +51,8 @@ export const TenantProvider = (props) => {
         getTenants,
         addTenant,
         deleteTenant,
+        updateTenant,
+        getTenantById,
       }}
     >
       {props.children}
