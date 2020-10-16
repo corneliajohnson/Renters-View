@@ -28,7 +28,7 @@ export const PropertyProvider = (props) => {
 
   const getPropertyById = (id) => {
     return fetch(
-      `http://localhost:8088/properties/${id}?_expand=landlord&_expand=tenant`,
+      `http://localhost:8088/properties/${id}?_embed=tenants`,
       {}
     ).then((res) => res.json());
   };
@@ -64,3 +64,5 @@ export const PropertyProvider = (props) => {
     </PropertyContext.Provider>
   );
 };
+
+//http://localhost:8088/properties?_embed=tenants

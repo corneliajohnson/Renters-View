@@ -6,14 +6,14 @@ import { Row, Col } from "reactstrap";
 export const PropertyDetail = () => {
   const { getPropertyById } = useContext(PropertyContext);
   const [property, setProperty] = useState({});
-  const [tenant, setTenant] = useState({});
+  const [tenants, setTenants] = useState([]);
 
   const { propertyId } = useParams();
 
   useEffect(() => {
     getPropertyById(propertyId).then((response) => {
       setProperty(response);
-      setTenant(response.tenant);
+      setTenants(response.tenants);
     });
   }, []);
   return (
@@ -28,15 +28,22 @@ export const PropertyDetail = () => {
         src={require("../../../img/house.jpg")}
         alt="Card image cap"
       />
-
       <Row>
         <Col>
-          <h3 className="display-5">Current Tenant</h3>
-          <p>
-            Tenant: {tenant.firstName} {tenant.lastName}
-          </p>
-          <p>Email: {tenant.email}</p>
-          <p>Phone: {tenant.phone}</p>
+          <h3 className="display-5">Current Tenant(s)</h3>
+          {tenants.map((tenant) => {
+            return (
+              <>
+                <div key={tenant.id}>
+                  <h5>
+                    Tenant: {tenant.firstName} {tenant.lastName}
+                  </h5>
+                  <p>Email: {tenant.email}</p>
+                  <p>Phone: {tenant.phone}</p>
+                </div>
+              </>
+            );
+          })}
         </Col>
         <Col>
           <h3 className="display-5">Payment Information</h3>

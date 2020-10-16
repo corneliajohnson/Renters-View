@@ -19,13 +19,7 @@ let tenantId = 0;
 
 const Modal = ({ onRequestClose }) => {
   const { getProperties, properties } = useContext(PropertyContext);
-  const {
-    getTenants,
-    addTenant,
-    tenants,
-    getTenantById,
-    updateTenant,
-  } = useContext(TenantContext);
+  const { addTenant, getTenantById, updateTenant } = useContext(TenantContext);
 
   const [filteredProperties, setFilteredProperties] = useState([]);
   const [tenant, setTenant] = useState({});
@@ -38,7 +32,7 @@ const Modal = ({ onRequestClose }) => {
   useEffect(() => {
     const subsetProperties = properties.filter(
       (property) =>
-        property.tenantId === 1 &&
+        property.tenantId === 1 ||
         property.landlordId === parseInt(localStorage.landlord)
     );
     setFilteredProperties(subsetProperties);
