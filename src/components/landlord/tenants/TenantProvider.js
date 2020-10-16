@@ -11,11 +11,22 @@ export const TenantProvider = (props) => {
       .then(setTenants);
   };
 
+  const addTenant = (tenantObj) => {
+    return fetch("http://localhost:8088/tenants", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(tenantObj),
+    }).then(getTenants);
+  };
+
   return (
     <TenantContext.Provider
       value={{
         tenants,
         getTenants,
+        addTenant,
       }}
     >
       {props.children}
