@@ -34,7 +34,8 @@ export const PropertyCard = ({ property, deleteBtn, editBtn }, props) => {
         />
         <CardBody>
           <CardText>
-            Tenant: {property.tenant.firstName} {property.tenant.lastName}
+            Head of Household: {property.tenant.firstName}{" "}
+            {property.tenant.lastName}
           </CardText>
           <CardText>
             Rent Price:{" "}

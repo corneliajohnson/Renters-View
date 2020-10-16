@@ -161,15 +161,15 @@
       "phone": 8506730987,
       "propertyId": 3,
       "landlordId": 2,
-      "id": 4
+      "id": 5
     },
     {
+      "id": 6,
       "firstName": "Tim",
-      "lastName": "Towns",
+      "lastName": "Townson",
       "email": "timtowns@gmail.com",
       "propertyId": 1,
-      "landlordId": 1,
-      "id": 5
+      "landlordId": 1
     }
   ],
   "messages": [

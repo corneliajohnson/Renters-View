@@ -199,7 +199,7 @@ const Modal = ({ onRequestClose }) => {
                 </Col>
               </Row>
               <FormGroup>
-                <Label for="exampleSelect">Tenant *</Label>
+                <Label for="exampleSelect">Head of Househole *</Label>
                 <Input
                   required
                   type="select"
