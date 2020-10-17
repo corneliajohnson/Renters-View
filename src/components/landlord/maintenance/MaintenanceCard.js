@@ -3,10 +3,16 @@ import { ListGroupItem, Input, Col, Row } from "reactstrap";
 
 import { Link } from "react-router-dom";
 
-export const MaintenanceCard = ({ request, deleteBtn, editBtn, checkbox }) => {
+export const MaintenanceCard = ({
+  request,
+  titleLink,
+  deleteBtn,
+  editBtn,
+  checkbox,
+}) => {
   return (
     <ListGroupItem>
-      <h4>{request.synopsis}</h4>
+      <h4>{titleLink}</h4>
       <Row>
         <Col sm={10}>
           {" "}

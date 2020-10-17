@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 
 export const MaintenanceCheckbox = (maintenanceObj) => {
   const [isChecked, setIsChecked] = useState(false);
-  const [request, setRequest] = useState({});
 
   const { getMaintenanceRequestById, updateMaintenaceRequest } = useContext(
     MaintenanceContext
@@ -14,8 +13,6 @@ export const MaintenanceCheckbox = (maintenanceObj) => {
 
   useEffect(() => {
     getMaintenanceRequestById(maintenanceObj.id).then((request) => {
-      setRequest(request);
-
       updateMaintenaceRequest({
         id: request.id,
         propertyId: request.propertyId,
