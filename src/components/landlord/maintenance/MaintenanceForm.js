@@ -184,7 +184,7 @@ const Modal = ({ onRequestClose }) => {
             ></textarea>
           </FormGroup>
           <p className="text-danger">
-            All fields with * are required to subment form.
+            All fields with * are required to submit form.
           </p>
         </Form>
         <Button

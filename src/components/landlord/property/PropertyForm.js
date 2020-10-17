@@ -121,7 +121,9 @@ const Modal = ({ onRequestClose }) => {
           >
             <FontAwesomeIcon icon={faTimes} />
           </CardLink>
-          <ModalHeader>Add A New Property</ModalHeader>
+          <ModalHeader>
+            {property.id ? "Edit Property" : "Add A New Property"}
+          </ModalHeader>
           <AvForm>
             <ModalBody>
               <FormGroup>
@@ -309,7 +311,7 @@ const Modal = ({ onRequestClose }) => {
                 </Row>
               </FormGroup>
               <p className="text-danger">
-                All fields with * are required to subment form.
+                All fields with * are required to submit form.
               </p>
             </ModalBody>
             <ModalFooter>
@@ -330,7 +332,7 @@ const Modal = ({ onRequestClose }) => {
                   }
                 }}
               >
-                Add
+                {property.id ? "Update" : "Add"}
               </Button>{" "}
               <Button type="button" onClick={onRequestClose}>
                 Close

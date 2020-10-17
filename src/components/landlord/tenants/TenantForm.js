@@ -104,11 +104,15 @@ const Modal = ({ onRequestClose }) => {
           >
             <FontAwesomeIcon icon={faTimes} />
           </CardLink>
-          <ModalHeader>Add New Tenant</ModalHeader>
+          <ModalHeader>
+            {tenant.id ? "Edit Tenant" : "Add New Tenant"}
+          </ModalHeader>
           <Row form>
             <Col md={6}>
               <FormGroup>
-                <Label for="firstName">First Name</Label>
+                <Label for="firstName">
+                  First Name<span className="text-danger">*</span>
+                </Label>
                 <Input
                   type="text"
                   name="firstName"
@@ -119,7 +123,9 @@ const Modal = ({ onRequestClose }) => {
             </Col>
             <Col md={6}>
               <FormGroup>
-                <Label for="examplePassword">Last Name</Label>
+                <Label for="examplePassword">
+                  Last Name<span className="text-danger">*</span>
+                </Label>
                 <Input
                   type="text"
                   name="lastName"
@@ -131,7 +137,7 @@ const Modal = ({ onRequestClose }) => {
           </Row>
           <FormGroup row>
             <Label for="email" sm={2}>
-              Email
+              Email<span className="text-danger">*</span>
             </Label>
             <Col sm={10}>
               <Input
@@ -144,7 +150,7 @@ const Modal = ({ onRequestClose }) => {
           </FormGroup>
           <FormGroup row>
             <Label for="ProopertyId" sm={2}>
-              Address
+              Address<span className="text-danger">*</span>
             </Label>
             <Col sm={10}>
               <Input
@@ -162,16 +168,26 @@ const Modal = ({ onRequestClose }) => {
               </Input>
             </Col>
           </FormGroup>
+          <p className="text-danger">
+            All fields with * are required to submit form.
+          </p>
         </Form>
         <Button
           color="primary"
           onClick={(event) => {
             event.preventDefault();
-            constructTenantObj();
-            onRequestClose();
+            if (
+              tenant.firstName &&
+              tenant.lastName &&
+              tenant.email &&
+              tenant.propertyId
+            ) {
+              constructTenantObj();
+              onRequestClose();
+            }
           }}
         >
-          Add
+          {tenant.id ? "Update" : "Add"}
         </Button>
         <Button type="button" onClick={onRequestClose}>
           Close
