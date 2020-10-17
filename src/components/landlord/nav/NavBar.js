@@ -6,7 +6,7 @@ export const NavBar = () => {
   return (
     <ul className="navbar">
       <li className="navbar__item active">
-        <Link className="navbar__link" to="/landlord">
+        <Link className="navbar__link" to="/">
           <img
             className="m-0 p-0"
             width="40%"

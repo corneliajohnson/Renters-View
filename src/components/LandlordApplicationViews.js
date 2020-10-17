@@ -19,7 +19,7 @@ export const LandlordApplicationViews = () => {
       <NavBar />
       <TenantProvider>
         <PropertyProvider>
-          <Route exact path="/landlord">
+          <Route exact path="/">
             <PropertyForm />
             <PropertyList />
             <TenantForm />

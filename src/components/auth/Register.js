@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Login.css";
 
 export const Register = (props) => {
@@ -7,67 +8,55 @@ export const Register = (props) => {
   const lastName = useRef();
   const email = useRef();
   const phone = useRef();
-  const image = useRef();
   const conflictDialog = useRef();
+  const conflictDialogTenant = useRef();
   const history = useHistory();
 
-  const [accountType, setAccountType] = useState("");
+  const existingLandlordCheck = () => {
+    return fetch(`http://localhost:8088/landlords?email=${email.current.value}`)
+      .then((res) => res.json())
+      .then((user) => !!user.length);
+  };
 
-  const existingUserCheck = () => {
-    return fetch(`http://localhost:8088/customers?email=${email.current.value}`)
+  const existingTenantCheck = () => {
+    return fetch(`http://localhost:8088/tenants?email=${email.current.value}`)
       .then((res) => res.json())
       .then((user) => !!user.length);
   };
 
   const handleRegister = (e) => {
     e.preventDefault();
-    existingUserCheck().then((userExists) => {
-      if (!userExists && accountType === "landlord") {
-        fetch("http://localhost:8088/landlords", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: email.current.value,
-            firstName: firstName.current.value,
-            lastName: lastName.current.value,
-            email: email.current.value,
-            phone: phone.current.value,
-            image: null,
-          }),
-        })
-          .then((_) => _.json())
-          .then((createdUser) => {
-            if (createdUser.hasOwnProperty("id")) {
-              localStorage.setItem("landlord", createdUser.id);
-              history.push("/landlord");
-            }
-          });
-      } else if (!userExists && accountType === "tenant") {
-        fetch("http://localhost:8088/tenants", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email: email.current.value,
-            firstName: firstName.current.value,
-            lastName: lastName.current.value,
-            email: email.current.value,
-            phone: phone.current.value,
-            image: null,
-          }),
-        })
-          .then((_) => _.json())
-          .then((createdUser) => {
-            if (createdUser.hasOwnProperty("id")) {
-              localStorage.setItem("tenant", createdUser.id);
-              history.push("/tenant");
-            }
-          });
+    existingTenantCheck().then((tenantUser) => {
+      if (tenantUser) {
+        conflictDialogTenant.current.showModal();
       } else {
-        conflictDialog.current.showModal();
+        existingLandlordCheck().then((userExists) => {
+          if (!userExists) {
+            fetch("http://localhost:8088/landlords", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                email: email.current.value,
+                firstName: firstName.current.value,
+                lastName: lastName.current.value,
+                email: email.current.value,
+                phone: phone.current.value,
+                image: null,
+              }),
+            })
+              .then((_) => _.json())
+              .then((createdUser) => {
+                if (createdUser.hasOwnProperty("id")) {
+                  localStorage.setItem("landlord", createdUser.id);
+                  history.push("/");
+                }
+              });
+          } else {
+            conflictDialog.current.showModal();
+          }
+        });
       }
     });
   };
@@ -75,7 +64,21 @@ export const Register = (props) => {
   return (
     <main style={{ textAlign: "center" }}>
       <dialog className="dialog dialog--password" ref={conflictDialog}>
-        <div>Account with that email address already exists</div>
+        <div>
+          Account with that email address already exists for a landlord account
+        </div>
+        <button
+          className="button--close"
+          onClick={(e) => conflictDialog.current.close()}
+        >
+          Close
+        </button>
+      </dialog>
+      <dialog className="dialog dialog--password" ref={conflictDialogTenant}>
+        <div>
+          The email belongs to a current tenant, to continue as a tenant go to{" "}
+          <Link to="login">login page</Link>
+        </div>
         <button
           className="button--close"
           onClick={(e) => conflictDialog.current.close()}
@@ -85,9 +88,10 @@ export const Register = (props) => {
       </dialog>
 
       <form className="form--login" onSubmit={handleRegister}>
-        <h1 className="h3 mb-3 font-weight-normal">
+        <h1 className="h3 mb-3 font-weight-normal">Landlord Registration</h1>
+        <h2 className="h3 mb-3 font-weight-normal">
           Please Register for Renters View
-        </h1>
+        </h2>
         <fieldset>
           <label htmlFor="firstName"> First Name </label>
           <input
@@ -133,23 +137,6 @@ export const Register = (props) => {
             required
           />
         </fieldset>
-        <div>
-          <input
-            type="radio"
-            value="landlord"
-            name="accountType"
-            checked={true}
-            onChange={(e) => setAccountType(e.target.value)}
-          />{" "}
-          Landlord
-          <input
-            type="radio"
-            value="tenant"
-            name="accountType"
-            onChange={(e) => setAccountType(e.target.value)}
-          />{" "}
-          Tenant
-        </div>
         <fieldset>
           <button type="submit"> Sign in </button>
         </fieldset>

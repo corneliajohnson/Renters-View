@@ -27,12 +27,12 @@ export const Login = (props) => {
       if (exists) {
         localStorage.removeItem("tenant");
         localStorage.setItem("landlord", exists.id);
-        history.push("/landlord");
+        history.push("/");
       } else {
-        existingTenantCheck().then((exists) => {
-          if (exists) {
+        existingTenantCheck().then((existsTenant) => {
+          if (existsTenant) {
             localStorage.removeItem("landlord");
-            localStorage.setItem("tenant", exists.id);
+            localStorage.setItem("tenant", existsTenant.id);
             history.push("/tenant");
           } else {
             existDialog.current.showModal();
