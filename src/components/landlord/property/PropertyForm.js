@@ -355,7 +355,7 @@ export const PropertyForm = () => {
     <div className="container text-center">
       <h1 className="display-2 m-5">My Properties</h1>
       {isModalOpen && <Modal onRequestClose={toggleModal} />}
-      <Button onClick={toggleModal} type="button">
+      <Button outline color="secondary" onClick={toggleModal} type="button">
         Add New Property
       </Button>
     </div>

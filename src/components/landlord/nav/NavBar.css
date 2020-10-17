@@ -1,10 +1,26 @@
+/* Icon Colors */
+/* fa2d2d */
+/* f2af58 */
+
 .navbar {
   display: flex;
   flex-wrap: nowrap;
   justify-content: left;
+  border-bottom: solid gray 1px;
 }
 
 .navbar__item {
   flex-basis: 20%;
   list-style-type: none;
+}
+
+.navbar__link {
+  color: #f2af58;
+  text-decoration: none;
+}
+
+.navbar__link:hover {
+  color: #fa2d2d;
+  font-weight: 300;
+  text-decoration: none;
 }

@@ -9,7 +9,7 @@ export const NavBar = () => {
         <Link className="navbar__link" to="/landlord">
           <img
             className="m-0 p-0"
-            width="50%"
+            width="40%"
             src={require("../../../img/logo.png")}
             alt="logo"
           />
