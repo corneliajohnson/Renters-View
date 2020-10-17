@@ -4,7 +4,12 @@
 
 .messageShowingArea {
   border: 1px solid gray;
-  min-height: 45em;
+  height: 40em;
+}
+
+.messageNameTitle {
+  border-bottom: 1px gray solid;
+  color: #f2af58;
 }
 
 .tenatMessageBox,

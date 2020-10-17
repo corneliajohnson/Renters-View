@@ -1,12 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { MessageContext } from "./MessageProvider";
+import { TenantContex, TenantContext } from "../tenants/TenantProvider";
 import { Col, Row } from "reactstrap";
 import "./Message.css";
 
 export const MessageShowing = (tenantConversation) => {
   const { messages, getMessages } = useContext(MessageContext);
+  const { getTenantById } = useContext(TenantContext);
 
   const [filteredMessages, setFilteredMessages] = useState([]);
+  const [tenant, setTenant] = useState({});
 
   useEffect(() => {
     getMessages();
@@ -18,9 +21,23 @@ export const MessageShowing = (tenantConversation) => {
     );
     setFilteredMessages(subsetMessages);
   }, [messages, tenantConversation]);
+
+  useEffect(() => {
+    if (tenantConversation.id) {
+      getTenantById(tenantConversation.id).then((response) => {
+        setTenant(response);
+      });
+    }
+  }, [tenantConversation]);
+
   return (
     <>
       <div className="messageShowingArea">
+        <h3 className="text-center messageNameTitle p-4">
+          {tenant.id
+            ? `${tenant.firstName} ${tenant.lastName}`
+            : "Select a Tenant"}
+        </h3>
         <Row>
           {filteredMessages.map((message) =>
             message.sender === "landlord" ? (
