@@ -213,7 +213,7 @@
       "synopsis": "Grass Cut",
       "price": 70,
       "contractor": "Tallahassee Lawn Service",
-      "complete": true,
+      "complete": false,
       "note": "",
       "dateComplete": "2020-10-01",
       "dateAdded": "2020-03-15"

@@ -3,6 +3,7 @@ import { MaintenanceContext } from "./MaintenanceProvider";
 import { ListGroup } from "reactstrap";
 import { MaintenanceCard } from "./MaintenanceCard";
 import { EditMaintenanceForm } from "./MaintenanceForm";
+import { MaintenanceCheckbox } from "./MaintenanceCheckbox";
 import { CardLink } from "reactstrap";
 
 export const MaintenanceList = () => {
@@ -34,6 +35,7 @@ export const MaintenanceList = () => {
                 </CardLink>
               }
               editBtn={<EditMaintenanceForm id={request.id} />}
+              checkbox={<MaintenanceCheckbox id={request.id} />}
             />
           );
         })}
