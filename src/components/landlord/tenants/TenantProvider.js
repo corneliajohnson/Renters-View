@@ -39,7 +39,7 @@ export const TenantProvider = (props) => {
 
   const getTenantById = (id) => {
     return fetch(
-      `http://localhost:8088/tenants/${id}?_expand=property`,
+      `http://localhost:8088/tenants/${id}?_expand=property&_expand=landlord`,
       {}
     ).then((res) => res.json());
   };

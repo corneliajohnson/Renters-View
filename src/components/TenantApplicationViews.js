@@ -1,13 +1,16 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { TenantHome } from "./tenant/TenantHome";
+import { TenantProperty } from "./tenant/property/TenantPropertyList";
+import { TenantProvider } from "./landlord/tenants/TenantProvider";
 
 export const TenantApplicationViews = () => {
   return (
     <>
-      <Route exact path="/tenant">
-        <TenantHome />
-      </Route>
+      <TenantProvider>
+        <Route exact path="/tenant">
+          <TenantProperty />
+        </Route>
+      </TenantProvider>
     </>
   );
 };
