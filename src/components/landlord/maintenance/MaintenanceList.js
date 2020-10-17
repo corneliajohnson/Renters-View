@@ -14,13 +14,25 @@ export const MaintenanceList = () => {
     deleteMaintenanceRequest,
   } = useContext(MaintenanceContext);
 
+  const [filteredRequest, setFilteredRequest] = useState([]);
+
   useEffect(() => {
     getMaintenanceRequests();
   }, []);
+
+  useEffect(() => {
+    const subsetRequest = maintenanceRequests.filter(
+      (request) =>
+        request.property.landlordId === parseInt(localStorage.landlord)
+    );
+    setFilteredRequest(subsetRequest);
+  }, [maintenanceRequests]);
+
   return (
     <div className="container">
+      {console.log(filteredRequest)}
       <ListGroup>
-        {maintenanceRequests.map((request) => {
+        {filteredRequest.map((request) => {
           return (
             <MaintenanceCard
               key={request.id}
