@@ -1,0 +1,26 @@
+/* Icon Colors */
+/* fa2d2d */
+/* f2af58 */
+
+.messageShowingArea {
+  border: 1px solid gray;
+  min-height: 45em;
+}
+
+.tenatMessageBox,
+.landLordMessageBox {
+  border: 1px solid white;
+  border-radius: 5px;
+}
+
+.landLordMessageBox {
+  float: right;
+  background-color: #fa2d2d;
+  color: white;
+}
+
+.tenatMessageBox {
+  float: left;
+  background-color: #f2af58;
+  color: white;
+}

@@ -204,6 +204,22 @@
       "text": "Hello",
       "date": 1601479252450,
       "sender": "landlord"
+    },
+    {
+      "id": 4,
+      "tenantId": 3,
+      "landlordId": 1,
+      "text": "How Are you",
+      "date": 1601479252450,
+      "sender": "landlord"
+    },
+    {
+      "id": 5,
+      "tenantId": 3,
+      "landlordId": 1,
+      "text": "Wyd today",
+      "date": 1601479252450,
+      "sender": "landlord"
     }
   ],
   "maintenanceRequests": [
