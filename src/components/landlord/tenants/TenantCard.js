@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { Card, CardText, CardBody, CardTitle, Row, Col } from "reactstrap";
 
-import { Link } from "react-router-dom";
-
 export const TenantCard = ({ tenant, deleteBtn, editBtn }) => {
   return (
     <div>

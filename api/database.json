@@ -183,24 +183,27 @@
   "messages": [
     {
       "id": 1,
-      "tenantId": 1,
+      "tenantId": 2,
       "landlordId": 1,
       "text": "Welcome",
-      "date": 1601479252450
+      "date": 1601479252450,
+      "sender": "landlord"
     },
     {
       "id": 2,
-      "tenantId": 1,
+      "tenantId": 2,
       "landlordId": 1,
       "text": "Hi how are you?",
-      "date": 1601479252450
+      "date": 1601479252450,
+      "sender": "tenant"
     },
     {
       "id": 3,
-      "tenantId": 1,
+      "tenantId": 3,
       "landlordId": 1,
-      "text": "Doing fine",
-      "date": 1601479252450
+      "text": "Hello",
+      "date": 1601479252450,
+      "sender": "landlord"
     }
   ],
   "maintenanceRequests": [
