@@ -3,11 +3,14 @@ import { MaintenanceContext } from "./MaintenanceProvider";
 import { ListGroup } from "reactstrap";
 import { MaintenanceCard } from "./MaintenanceCard";
 import { EditMaintenanceForm } from "./MaintenanceForm";
+import { CardLink } from "reactstrap";
 
 export const MaintenanceList = () => {
-  const { getMaintenanceRequests, maintenanceRequests } = useContext(
-    MaintenanceContext
-  );
+  const {
+    getMaintenanceRequests,
+    maintenanceRequests,
+    deleteMaintenanceRequest,
+  } = useContext(MaintenanceContext);
 
   useEffect(() => {
     getMaintenanceRequests();
@@ -20,6 +23,16 @@ export const MaintenanceList = () => {
             <MaintenanceCard
               key={request.id}
               request={request}
+              deleteBtn={
+                <CardLink
+                  onClick={() => {
+                    deleteMaintenanceRequest(request.id);
+                  }}
+                >
+                  {" "}
+                  Delete
+                </CardLink>
+              }
               editBtn={<EditMaintenanceForm id={request.id} />}
             />
           );

@@ -41,6 +41,12 @@ export const MaintenanceProvider = (props) => {
     ).then(getMaintenanceRequests);
   };
 
+  const deleteMaintenanceRequest = (id) => {
+    return fetch(`http://localhost:8088/maintenanceRequests/${id}`, {
+      method: "DELETE",
+    }).then(getMaintenanceRequests);
+  };
+
   return (
     <MaintenanceContext.Provider
       value={{
@@ -49,6 +55,7 @@ export const MaintenanceProvider = (props) => {
         addMaintenaceRequest,
         getMaintenanceRequestById,
         updateMaintenaceRequest,
+        deleteMaintenanceRequest,
       }}
     >
       {props.children}

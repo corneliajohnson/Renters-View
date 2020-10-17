@@ -3,7 +3,7 @@ import { ListGroupItem, Input, Col, Row } from "reactstrap";
 
 import { Link } from "react-router-dom";
 
-export const MaintenanceCard = ({ request, editBtn }) => {
+export const MaintenanceCard = ({ request, deleteBtn, editBtn }) => {
   return (
     <ListGroupItem>
       <h4>{request.synopsis}</h4>
@@ -15,7 +15,11 @@ export const MaintenanceCard = ({ request, editBtn }) => {
             {request.property.state} {request.property.zip}{" "}
           </p>
         </Col>
-        <Col sm={1}>{editBtn}</Col>
+        <Col sm={1}>
+          {" "}
+          {editBtn}
+          {deleteBtn}
+        </Col>
         <Col sm={1}>
           <Input type="checkbox" />
         </Col>
