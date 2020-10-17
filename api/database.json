@@ -205,7 +205,7 @@
       "complete": false,
       "note": "key was broken inside knob",
       "dateComplete": null,
-      "dateAdded": 1601479252450
+      "dateAdded": "2020-03-12"
     },
     {
       "id": 2,
@@ -216,7 +216,29 @@
       "complete": true,
       "note": "",
       "dateComplete": "2020-10-01",
-      "dateAdded": 1601479252450
+      "dateAdded": "2020-03-15"
+    },
+    {
+      "propertyId": "2",
+      "synopsis": "Test",
+      "price": "22",
+      "contractor": "Tom",
+      "complete": false,
+      "note": "test",
+      "dateComplete": "2020-10-06",
+      "dateAdded": 1602894609155,
+      "id": 3
+    },
+    {
+      "propertyId": "1",
+      "synopsis": "vvfavfv",
+      "price": "333",
+      "contractor": "sdvs",
+      "complete": false,
+      "note": "dsv",
+      "dateComplete": false,
+      "dateAdded": 1602894713739,
+      "id": 4
     }
   ]
 }

@@ -11,7 +11,7 @@ export const MaintenanceProvider = (props) => {
       .then(setMaintenanceRequests);
   };
 
-  const addMaintenaceRequests = (maintenaceObj) => {
+  const addMaintenaceRequest = (maintenaceObj) => {
     return fetch("http://localhost:8088/maintenanceRequests", {
       method: "POST",
       headers: {
@@ -25,7 +25,7 @@ export const MaintenanceProvider = (props) => {
       value={{
         maintenanceRequests,
         getMaintenanceRequests,
-        addMaintenaceRequests,
+        addMaintenaceRequest,
       }}
     >
       {props.children}

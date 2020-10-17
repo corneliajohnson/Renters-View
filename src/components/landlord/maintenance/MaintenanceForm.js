@@ -19,7 +19,7 @@ const Modal = ({ onRequestClose }) => {
   const { getProperties, properties } = useContext(PropertyContext);
   const {
     getMaintenanceRequest,
-    addMaintenanceRequest,
+    addMaintenaceRequest,
     maintenanceRequest,
   } = useContext(MaintenanceContext);
 
@@ -37,14 +37,14 @@ const Modal = ({ onRequestClose }) => {
   };
 
   const constructRequestObj = () => {
-    console.log({
+    addMaintenaceRequest({
       propertyId: request.propertyId,
       synopsis: request.synopsis,
       price: request.price,
       contractor: request.contractor,
       complete: false,
       note: request.note,
-      dateComplete: 2020 - 10 - 9,
+      dateComplete: request.dateComplete ? request.dateComplete : false,
       dateAdded: Date.now(),
     });
   };
@@ -89,15 +89,21 @@ const Modal = ({ onRequestClose }) => {
               onChange={handleControlledInputChange}
             />
           </FormGroup>
-          <FormGroup>
+          <FormGroup row>
             <Label for="ProopertyId">Address</Label>
             <Col>
               <Input
                 type="select"
                 name="propertyId"
+                value={request.propertyId}
                 onChange={handleControlledInputChange}
               >
                 <option value="0"></option>
+                {properties.map((property) => (
+                  <option key={property.id} value={property.id}>
+                    {property.street} {property.city} {property.state}
+                  </option>
+                ))}
               </Input>
             </Col>
           </FormGroup>
@@ -126,6 +132,7 @@ const Modal = ({ onRequestClose }) => {
               <FormGroup>
                 <Label for="dateComplete">Date Complete</Label>
                 <Input
+                  required
                   type="date"
                   name="dateComplete"
                   onChange={handleControlledInputChange}
@@ -136,7 +143,7 @@ const Modal = ({ onRequestClose }) => {
           <FormGroup>
             <Label for="examplePassword">Notes</Label>
             <textarea
-              class="form-control"
+              className="form-control"
               id="exampleFormControlTextarea1"
               name="note"
               rows="3"
