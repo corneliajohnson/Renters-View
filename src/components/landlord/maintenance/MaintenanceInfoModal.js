@@ -1,11 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
-import { CardLink, Form, Button, ModalHeader } from "reactstrap";
+import { CardLink, Form, Button, ModalHeader, ModalBody } from "reactstrap";
+import { MaintenanceContext } from "./MaintenanceProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 let requestId = 0;
 
 const Modal = ({ onRequestClose }) => {
+  const { getMaintenanceRequestById } = useContext(MaintenanceContext);
+  const [request, setRequest] = useState({});
+  const [property, setProperty] = useState({});
+
+  useEffect(() => {
+    if (requestId) {
+      getMaintenanceRequestById(requestId).then((request) => {
+        setRequest(request);
+        setProperty(request.property);
+      });
+    }
+  }, []);
+
   // Use useEffect to add an event listener to the document
   useEffect(() => {
     function onKeyDown(event) {
@@ -37,7 +51,21 @@ const Modal = ({ onRequestClose }) => {
           >
             <FontAwesomeIcon icon={faTimes} />
           </CardLink>
-          <ModalHeader>Add New Tenant</ModalHeader>
+          <ModalHeader>
+            <h3>{request.synopsis}</h3>
+          </ModalHeader>
+          <ModalBody>
+            <p>
+              Address: {property.street} {property.city} {property.state}{" "}
+              {property.zip}
+            </p>
+            <p>Contractor: {request.contractor}</p>
+            <p>Price: {request.price}</p>
+            <p>Complete: {request.complete}</p>
+            <p>Date Added: {request.dateAdded}</p>
+            <p>Date Completed: {request.dateComplete}</p>
+            <p>Note: {request.note}</p>
+          </ModalBody>
         </Form>
         <Button type="button" onClick={onRequestClose}>
           Close
