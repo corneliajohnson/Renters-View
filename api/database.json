@@ -219,26 +219,15 @@
       "dateAdded": "2020-03-15"
     },
     {
-      "propertyId": "2",
-      "synopsis": "Test",
-      "price": "22",
-      "contractor": "Tom",
+      "id": 3,
+      "propertyId": 4,
+      "synopsis": "dfddf",
+      "price": "33",
+      "contractor": "dssd",
       "complete": false,
-      "note": "test",
-      "dateComplete": "2020-10-06",
-      "dateAdded": 1602894609155,
-      "id": 3
-    },
-    {
-      "id": 4,
-      "propertyId": 1,
-      "synopsis": "vvfavfv",
-      "price": "333",
-      "contractor": "sdvs",
-      "complete": false,
-      "note": "dsv",
+      "note": "svvff",
       "dateComplete": false,
-      "dateAdded": 1602896180339
+      "dateAdded": 1602896975668
     }
   ]
 }

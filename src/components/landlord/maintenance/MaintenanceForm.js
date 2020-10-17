@@ -105,7 +105,9 @@ const Modal = ({ onRequestClose }) => {
           </CardLink>
           <ModalHeader className="mb-3">Add Maintenance Request</ModalHeader>
           <FormGroup>
-            <Label for="examplePassword">Synopsis</Label>
+            <Label for="examplePassword">
+              Synopsis <span className="text-danger">*</span>
+            </Label>
             <Input
               type="text"
               name="synopsis"
@@ -114,7 +116,9 @@ const Modal = ({ onRequestClose }) => {
             />
           </FormGroup>
           <FormGroup row>
-            <Label for="ProopertyId">Address</Label>
+            <Label for="ProopertyId">
+              Address <span className="text-danger">*</span>
+            </Label>
             <Col>
               <Input
                 type="select"
@@ -179,13 +183,18 @@ const Modal = ({ onRequestClose }) => {
               value={request.note}
             ></textarea>
           </FormGroup>
+          <p className="text-danger">
+            All fields with * are required to subment form.
+          </p>
         </Form>
         <Button
           color="primary"
           onClick={(event) => {
             event.preventDefault();
-            constructRequestObj();
-            onRequestClose();
+            if (request.synopsis && request.propertyId) {
+              constructRequestObj();
+              onRequestClose();
+            }
           }}
         >
           Add
