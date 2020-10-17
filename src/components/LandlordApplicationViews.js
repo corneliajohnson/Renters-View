@@ -5,7 +5,6 @@ import { PropertyList } from "./landlord/property/PropertyList";
 import { PropertyProvider } from "./landlord/property/PropertyProvider";
 import { PropertyForm } from "./landlord/property/PropertyForm";
 import { TenantProvider } from "./landlord/tenants/TenantProvider";
-import { PropertyDetail } from "./landlord/property/PropertyDetail";
 import { TenantForm } from "./landlord/tenants/TenantForm";
 import { TenantList } from "./landlord/tenants/TenantList";
 import { MaintenanceForm } from "./landlord/maintenance/MaintenanceForm";
@@ -23,14 +22,6 @@ export const LandlordApplicationViews = () => {
             <PropertyList />
             <TenantForm />
             <TenantList />
-          </Route>
-        </PropertyProvider>
-      </TenantProvider>
-
-      <TenantProvider>
-        <PropertyProvider>
-          <Route exact path="/landlord/property/:propertyId(\d+)">
-            <PropertyDetail />
           </Route>
         </PropertyProvider>
       </TenantProvider>

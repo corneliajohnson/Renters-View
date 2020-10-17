@@ -11,21 +11,15 @@ import {
 
 import { Link } from "react-router-dom";
 
-export const PropertyCard = ({ property, deleteBtn, editBtn }, props) => {
+export const PropertyCard = (
+  { property, deleteBtn, editBtn, titleLink },
+  props
+) => {
   return (
     <div>
       <Card className="m-2">
         <CardBody>
-          <Link to={`/landlord/property/${property.id}`}>
-            <CardTitle>
-              <h4>{property.street}</h4>
-            </CardTitle>
-            <CardSubtitle>
-              <h5>
-                {property.city} {property.state} {property.zip}
-              </h5>
-            </CardSubtitle>
-          </Link>
+          <CardTitle>{titleLink}</CardTitle>
         </CardBody>
         <img
           width="100%"

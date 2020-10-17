@@ -4,6 +4,7 @@ import { Delete } from "./DeleteProperty";
 import { PropertyCard } from "./PropertyCard";
 import "./Property.css";
 import { PropertyFormEdit } from "./PropertyForm";
+import { PropertyInfoModal } from "./PropertyInfoModal";
 
 export const PropertyList = () => {
   const { properties, getProperties, deleteProperty } = useContext(
@@ -32,6 +33,15 @@ export const PropertyList = () => {
               <PropertyCard
                 key={property.id}
                 property={property}
+                titleLink={
+                  <PropertyInfoModal
+                    id={property.id}
+                    street={property.street}
+                    city={property.city}
+                    state={property.state}
+                    zip={property.zip}
+                  />
+                }
                 deleteBtn={Delete(deleteProperty, property.id, "Delete")}
                 editBtn={<PropertyFormEdit id={property.id} />}
               />
