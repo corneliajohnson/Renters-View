@@ -20,12 +20,35 @@ export const MaintenanceProvider = (props) => {
       body: JSON.stringify(maintenaceObj),
     }).then(getMaintenanceRequests);
   };
+
+  const getMaintenanceRequestById = (id) => {
+    return fetch(
+      `http://localhost:8088/maintenanceRequests/${id}?_expand=property`,
+      {}
+    ).then((res) => res.json());
+  };
+
+  const updateMaintenaceRequest = (maintenanceObj) => {
+    return fetch(
+      `http://localhost:8088/maintenanceRequests/${maintenanceObj.id}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(maintenanceObj),
+      }
+    ).then(getMaintenanceRequests);
+  };
+
   return (
     <MaintenanceContext.Provider
       value={{
         maintenanceRequests,
         getMaintenanceRequests,
         addMaintenaceRequest,
+        getMaintenanceRequestById,
+        updateMaintenaceRequest,
       }}
     >
       {props.children}

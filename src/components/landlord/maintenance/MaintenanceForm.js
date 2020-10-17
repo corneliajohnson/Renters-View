@@ -14,13 +14,14 @@ import {
   ModalHeader,
   CardLink,
 } from "reactstrap";
+let requestId = 0;
 
 const Modal = ({ onRequestClose }) => {
   const { getProperties, properties } = useContext(PropertyContext);
   const {
-    getMaintenanceRequest,
+    getMaintenanceRequestById,
     addMaintenaceRequest,
-    maintenanceRequest,
+    updateMaintenaceRequest,
   } = useContext(MaintenanceContext);
 
   const [request, setRequest] = useState({});
@@ -30,6 +31,14 @@ const Modal = ({ onRequestClose }) => {
     getProperties();
   }, []);
 
+  useEffect(() => {
+    if (requestId) {
+      getMaintenanceRequestById(requestId).then((request) => {
+        setRequest(request);
+      });
+    }
+  }, []);
+
   const handleControlledInputChange = (event) => {
     const newRequest = { ...request };
     newRequest[event.target.name] = event.target.value;
@@ -37,16 +46,30 @@ const Modal = ({ onRequestClose }) => {
   };
 
   const constructRequestObj = () => {
-    addMaintenaceRequest({
-      propertyId: request.propertyId,
-      synopsis: request.synopsis,
-      price: request.price,
-      contractor: request.contractor,
-      complete: false,
-      note: request.note,
-      dateComplete: request.dateComplete ? request.dateComplete : false,
-      dateAdded: Date.now(),
-    });
+    if (request.id) {
+      updateMaintenaceRequest({
+        id: request.id,
+        propertyId: parseInt(request.propertyId),
+        synopsis: request.synopsis,
+        price: request.price,
+        contractor: request.contractor,
+        complete: request.dateComplete ? true : false,
+        note: request.note,
+        dateComplete: request.dateComplete ? request.dateComplete : false,
+        dateAdded: Date.now(),
+      });
+    } else {
+      addMaintenaceRequest({
+        propertyId: parseInt(request.propertyId),
+        synopsis: request.synopsis,
+        price: request.price,
+        contractor: request.contractor,
+        complete: request.dateComplete ? true : false,
+        note: request.note,
+        dateComplete: request.dateComplete ? request.dateComplete : false,
+        dateAdded: Date.now(),
+      });
+    }
   };
 
   // Use useEffect to add an event listener to the document
@@ -87,6 +110,7 @@ const Modal = ({ onRequestClose }) => {
               type="text"
               name="synopsis"
               onChange={handleControlledInputChange}
+              value={request.synopsis}
             />
           </FormGroup>
           <FormGroup row>
@@ -97,6 +121,7 @@ const Modal = ({ onRequestClose }) => {
                 name="propertyId"
                 value={request.propertyId}
                 onChange={handleControlledInputChange}
+                value={request.propertyId}
               >
                 <option value="0"></option>
                 {properties.map((property) => (
@@ -115,6 +140,7 @@ const Modal = ({ onRequestClose }) => {
                   type="text"
                   name="contractor"
                   onChange={handleControlledInputChange}
+                  value={request.contractor}
                 />
               </FormGroup>
             </Col>
@@ -125,6 +151,7 @@ const Modal = ({ onRequestClose }) => {
                   type="number"
                   name="price"
                   onChange={handleControlledInputChange}
+                  value={request.price}
                 />
               </FormGroup>
             </Col>
@@ -136,6 +163,7 @@ const Modal = ({ onRequestClose }) => {
                   type="date"
                   name="dateComplete"
                   onChange={handleControlledInputChange}
+                  value={request.dateComplete}
                 />
               </FormGroup>
             </Col>
@@ -148,6 +176,7 @@ const Modal = ({ onRequestClose }) => {
               name="note"
               rows="3"
               onChange={handleControlledInputChange}
+              value={request.note}
             ></textarea>
           </FormGroup>
         </Form>
@@ -170,6 +199,7 @@ const Modal = ({ onRequestClose }) => {
 };
 
 export const MaintenanceForm = () => {
+  requestId = 0;
   const [isModalOpen, setModalIsOpen] = useState(false);
   const toggleModal = () => {
     setModalIsOpen(!isModalOpen);
@@ -182,6 +212,23 @@ export const MaintenanceForm = () => {
       <Button onClick={toggleModal} type="button">
         Add Maintenance Request
       </Button>
+    </div>
+  );
+};
+
+export const EditMaintenanceForm = (requestObjId) => {
+  requestId = requestObjId.id;
+  const [isModalOpen, setModalIsOpen] = useState(false);
+  const toggleModal = () => {
+    setModalIsOpen(!isModalOpen);
+  };
+
+  return (
+    <div className="container text-center">
+      {isModalOpen && <Modal onRequestClose={toggleModal} />}
+      <CardLink onClick={toggleModal} type="button">
+        Edit
+      </CardLink>
     </div>
   );
 };

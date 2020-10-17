@@ -230,15 +230,15 @@
       "id": 3
     },
     {
-      "propertyId": "1",
+      "id": 4,
+      "propertyId": 1,
       "synopsis": "vvfavfv",
       "price": "333",
       "contractor": "sdvs",
       "complete": false,
       "note": "dsv",
       "dateComplete": false,
-      "dateAdded": 1602894713739,
-      "id": 4
+      "dateAdded": 1602896180339
     }
   ]
 }
