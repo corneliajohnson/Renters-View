@@ -25,6 +25,7 @@ const Modal = ({ onRequestClose }) => {
   } = useContext(MaintenanceContext);
 
   const [request, setRequest] = useState({});
+  const [filteredProperies, setFilterdProperties] = useState([]);
 
   //for property dropdown
   useEffect(() => {
@@ -38,6 +39,13 @@ const Modal = ({ onRequestClose }) => {
       });
     }
   }, []);
+
+  useEffect(() => {
+    const subsetProperties = properties.filter(
+      (property) => property.landlordId === parseInt(localStorage.landlord)
+    );
+    setFilterdProperties(subsetProperties);
+  }, [properties]);
 
   const handleControlledInputChange = (event) => {
     const newRequest = { ...request };
@@ -128,7 +136,7 @@ const Modal = ({ onRequestClose }) => {
                 value={request.propertyId}
               >
                 <option value="0"></option>
-                {properties.map((property) => (
+                {filteredProperies.map((property) => (
                   <option key={property.id} value={property.id}>
                     {property.street} {property.city} {property.state}
                   </option>
