@@ -208,7 +208,7 @@ export const TenantForm = () => {
     <div className="container text-center">
       <h1 className="display-2 m-5">My Tenants</h1>
       {isModalOpen && <Modal onRequestClose={toggleModal} />}
-      <Button onClick={toggleModal} type="button">
+      <Button onClick={toggleModal} outline color="secondary" type="button">
         Add New Tenant
       </Button>
     </div>

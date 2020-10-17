@@ -216,9 +216,15 @@ export const MaintenanceForm = () => {
 
   return (
     <div className="container text-center">
-      <h1 className="display-2 m-5">Maintenance Requests</h1>
+      <h1 className="display-2 mt-5">Maintenance Requests</h1>
       {isModalOpen && <Modal onRequestClose={toggleModal} />}
-      <Button onClick={toggleModal} type="button">
+      <Button
+        onClick={toggleModal}
+        outline
+        color="secondary"
+        className="m-5"
+        type="button"
+      >
         Add Maintenance Request
       </Button>
     </div>
