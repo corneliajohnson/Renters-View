@@ -86,6 +86,15 @@
       "phone": "2223335445",
       "propertyId": 2,
       "landlordId": 1
+    },
+    {
+      "id": 2,
+      "firstName": "Melvin",
+      "lastName": "Graham",
+      "email": "melvin@gmail.com",
+      "phone": "999025445",
+      "propertyId": false,
+      "landlordId": 1
     }
   ],
   "messages": [

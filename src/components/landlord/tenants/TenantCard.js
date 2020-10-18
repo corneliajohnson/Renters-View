@@ -14,10 +14,15 @@ export const TenantCard = ({ tenant, deleteBtn, editBtn }) => {
 
           <CardText>Phone Number: {tenant.phone}</CardText>
           <CardText>Email: {tenant.email}</CardText>
-          {tenant.propertyId ? (
-            <CardText>{tenant.propertyId}</CardText>
+          {tenant.propertyId === false || tenant.propertyId === null ? (
+            "not assigned"
           ) : (
-            `Address Not Assigned`
+            <>
+              <CardText>{tenant.property.street}</CardText>
+              <CardText>
+                {tenant.property.city} {tenant.property.city}
+              </CardText>
+            </>
           )}
           <Row>
             <Col>{deleteBtn}</Col> <Col>{editBtn}</Col>
