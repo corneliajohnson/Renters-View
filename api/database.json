@@ -33,6 +33,23 @@
       "leaseTerm": "Vacant",
       "image": false,
       "landlordId": 1
+    },
+    {
+      "street": "guigug",
+      "city": "jggg",
+      "state": "fhh",
+      "zip": "56789",
+      "tenantId": false,
+      "leaseStartDate": false,
+      "leaseEndDate": false,
+      "rentAmount": false,
+      "secuirtyDesposit": false,
+      "paymentDay": false,
+      "lastPaymentAmount": false,
+      "leaseTerm": "Vacant",
+      "image": false,
+      "landlordId": 1,
+      "id": 3
     }
   ],
   "landlords": [
@@ -92,7 +109,25 @@
       "firstName": "Melvin",
       "lastName": "Graham",
       "email": "melvin@gmail.com",
-      "phone": "999025445",
+      "phone": "999025490",
+      "propertyId": false,
+      "landlordId": 1
+    },
+    {
+      "id": 3,
+      "firstName": "Kim",
+      "lastName": "Brown",
+      "email": "kim@gmail.com",
+      "phone": "8899000",
+      "propertyId": false,
+      "landlordId": 1
+    },
+    {
+      "id": 4,
+      "firstName": "Larry",
+      "lastName": "Tate",
+      "email": "ltate@gmail.com",
+      "phone": false,
       "propertyId": false,
       "landlordId": 1
     }

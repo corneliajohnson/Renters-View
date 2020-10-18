@@ -59,10 +59,11 @@ const Modal = ({ onRequestClose }) => {
         firstName: tenant.firstName,
         lastName: tenant.lastName,
         email: tenant.email,
-        phone:
-          tenant.phone === null || tenant.phone === "" ? false : tenant.phone,
+        phone: tenant.phone ? tenant.phone : false,
         propertyId:
-          tenant.propertyId === null || tenant.propertyId === "0"
+          tenant.propertyId === "0"
+            ? false
+            : !tenant.propertyId
             ? false
             : parseInt(tenant.propertyId),
         landlordId: parseInt(localStorage.landlord),
@@ -72,10 +73,11 @@ const Modal = ({ onRequestClose }) => {
         firstName: tenant.firstName,
         lastName: tenant.lastName,
         email: tenant.email,
-        phone:
-          tenant.phone === null || tenant.phone === "" ? false : tenant.phone,
+        phone: tenant.phone ? tenant.phone : false,
         propertyId:
-          tenant.propertyId === null || tenant.propertyId === "0"
+          tenant.propertyId === "0"
+            ? false
+            : !tenant.propertyId
             ? false
             : parseInt(tenant.propertyId),
         landlordId: parseInt(localStorage.landlord),
@@ -166,7 +168,7 @@ const Modal = ({ onRequestClose }) => {
               <Input
                 type="number"
                 name="phone"
-                value={tenant.phone}
+                defaultValue={tenant.phone}
                 onChange={handleControlledInputChange}
                 placeholder="123-456-7890"
               />
