@@ -6,6 +6,9 @@
   border: 1px solid gray;
   height: 40em;
 }
+.inputAndMessage {
+  border: 1px solid gray;
+}
 
 .messageNameTitle {
   border-bottom: 1px gray solid;

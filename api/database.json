@@ -220,6 +220,94 @@
       "text": "Wyd today",
       "date": 1601479252450,
       "sender": "landlord"
+    },
+    {
+      "tenantId": 4,
+      "landlordId": 1,
+      "text": "Hello",
+      "date": 1602982532159,
+      "sender": "landlord",
+      "id": 6
+    },
+    {
+      "tenantId": 4,
+      "landlordId": 1,
+      "text": "Welcome to the property",
+      "date": 1602982620844,
+      "sender": "landlord",
+      "id": 7
+    },
+    {
+      "tenantId": 6,
+      "landlordId": 1,
+      "text": "welcome",
+      "date": 1602982725723,
+      "sender": "landlord",
+      "id": 8
+    },
+    {
+      "tenantId": 4,
+      "landlordId": 1,
+      "text": "Hi",
+      "date": 1602982830834,
+      "sender": "landlord",
+      "id": 9
+    },
+    {
+      "tenantId": 4,
+      "landlordId": 1,
+      "text": "so",
+      "date": 1602983087939,
+      "sender": "landlord",
+      "id": 10
+    },
+    {
+      "tenantId": 3,
+      "landlordId": 1,
+      "text": "hi",
+      "date": 1602983156660,
+      "sender": "landlord",
+      "id": 11
+    },
+    {
+      "tenantId": 6,
+      "landlordId": 1,
+      "text": "yes",
+      "date": 1602983444930,
+      "sender": "landlord",
+      "id": 12
+    },
+    {
+      "tenantId": 4,
+      "landlordId": 1,
+      "text": "t",
+      "date": 1602983506319,
+      "sender": "landlord",
+      "id": 13
+    },
+    {
+      "tenantId": 3,
+      "landlordId": 1,
+      "text": "dssd",
+      "date": 1602984040668,
+      "sender": "landlord",
+      "id": 14
+    },
+    {
+      "tenantId": 3,
+      "landlordId": 1,
+      "text": "hi",
+      "date": 1602984129776,
+      "sender": "landlord",
+      "id": 15
+    },
+    {
+      "tenantId": 4,
+      "landlordId": 1,
+      "text": "go",
+      "date": 1602984308058,
+      "sender": "landlord",
+      "id": 16
     }
   ],
   "maintenanceRequests": [
