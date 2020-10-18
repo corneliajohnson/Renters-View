@@ -1,74 +1,6 @@
 {
   "properties": [
     {
-      "id": 1,
-      "street": "123 Main Street",
-      "city": "Quincy",
-      "state": "FL",
-      "zip": "32301",
-      "tenantId": 1,
-      "leaseStartDate": "2020-10-07",
-      "leaseEndDate": "2021-10-30",
-      "rentAmount": 800,
-      "secuirtyDesposit": 800,
-      "paymentDay": "2020-01-22",
-      "lastPaymentAmount": 800,
-      "leaseTerm": "Seasonal",
-      "image": null,
-      "landlordId": 1
-    },
-    {
-      "id": 2,
-      "street": "778 Bryd St",
-      "city": "Tallahassee",
-      "state": "FL",
-      "zip": "32301",
-      "tenantId": 1,
-      "leaseStartDate": "2020-10-07",
-      "leaseEndDate": "2021-10-30",
-      "rentAmount": 800,
-      "secuirtyDesposit": 800,
-      "paymentDay": 800,
-      "lastPaymentAmount": 800,
-      "leaseTerm": null,
-      "image": null,
-      "landlordId": 1
-    },
-    {
-      "id": 3,
-      "street": "9990 Wilson Street",
-      "city": "Tallahassee",
-      "state": "FL",
-      "zip": "32301",
-      "tenantId": 1,
-      "leaseStartDate": "2020-10-07",
-      "leaseEndDate": "2021-10-30",
-      "rentAmount": 800,
-      "secuirtyDesposit": 800,
-      "paymentDay": "2020-01-22",
-      "lastPaymentAmount": 800,
-      "leaseTerm": "12 months",
-      "image": null,
-      "landlordId": 2
-    },
-    {
-      "id": 4,
-      "street": "8876 CalmStreet",
-      "city": "Tallahassee",
-      "state": "FL",
-      "zip": "32301",
-      "tenantId": 1,
-      "leaseStartDate": "2020-10-07",
-      "leaseEndDate": "2021-10-30",
-      "rentAmount": 800,
-      "secuirtyDesposit": 800,
-      "paymentDay": "2020-01-22",
-      "lastPaymentAmount": 800,
-      "leaseTerm": "12 months",
-      "image": null,
-      "landlordId": 3
-    },
-    {
       "id": 6,
       "street": "rrrrre",
       "city": "gggdfdd",
@@ -128,56 +60,29 @@
   ],
   "tenants": [
     {
-      "email": "None",
-      "firstName": "None",
-      "lastName": "",
-      "phone": "NA",
-      "propertyId": false,
-      "landlordId": false,
-      "id": 1
-    },
-    {
       "email": "moore@gmail.com",
       "firstName": "Kenny",
       "lastName": "Moore",
       "phone": 2223338888,
-      "propertyId": 1,
+      "propertyId": 6,
       "landlordId": 1,
       "id": 2
     },
     {
-      "email": "tom@gmail.com",
-      "firstName": "Tom",
-      "lastName": "Green",
-      "phone": 6663339900,
-      "propertyId": 2,
+      "firstName": "ffff",
+      "lastName": "hhhhh",
+      "email": "weffr@mail.com",
+      "propertyId": false,
       "landlordId": 1,
       "id": 3
     },
     {
-      "id": 4,
-      "firstName": "Cornnel",
-      "lastName": "Browning",
-      "email": "coreyb@gmail.com",
-      "propertyId": 3,
-      "landlordId": 1
-    },
-    {
-      "email": "corey@gmail.com",
-      "firstName": "Shelby",
-      "lastName": "Monroe",
-      "phone": 8506730987,
-      "propertyId": 3,
-      "landlordId": 2,
-      "id": 5
-    },
-    {
-      "id": 6,
-      "firstName": "Tim",
-      "lastName": "Townson",
-      "email": "timtowns@gmail.com",
-      "propertyId": 1,
-      "landlordId": 1
+      "firstName": "NewMan ",
+      "lastName": "Golf",
+      "email": "fklnlss",
+      "propertyId": false,
+      "landlordId": 1,
+      "id": 4
     }
   ],
   "messages": [

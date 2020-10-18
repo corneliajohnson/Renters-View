@@ -14,11 +14,11 @@ export const TenantCard = ({ tenant, deleteBtn, editBtn }) => {
 
           <CardText>Phone Number: {tenant.phone}</CardText>
           <CardText>Email: {tenant.email}</CardText>
-          <CardText>Address: {tenant.property.street}</CardText>
-          <CardText>
-            {tenant.property.city}
-            {tenant.property.state} {tenant.property.zip}
-          </CardText>
+          {tenant.property ? (
+            <CardText>{tenant.property.street}</CardText>
+          ) : (
+            `None`
+          )}
           <Row>
             <Col>{deleteBtn}</Col> <Col>{editBtn}</Col>
           </Row>

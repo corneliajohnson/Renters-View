@@ -9,8 +9,6 @@ import {
   CardSubtitle,
 } from "reactstrap";
 
-import { Link } from "react-router-dom";
-
 export const PropertyCard = (
   { property, deleteBtn, editBtn, titleLink },
   props
@@ -27,16 +25,7 @@ export const PropertyCard = (
           alt="Card image cap"
         />
         <CardBody>
-          <CardText>
-            Head of Household: {property.tenant.firstName}{" "}
-            {property.tenant.lastName}
-          </CardText>
-          <CardText>
-            Rent Price:{" "}
-            {property.rentAmount === null
-              ? " Not Set"
-              : `$ ${property.rentAmount}`}
-          </CardText>
+          <CardText>Head of Household: {property.tenantId}</CardText>
         </CardBody>
         <Row>
           <Col>{editBtn}</Col>

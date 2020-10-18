@@ -1,5 +1,5 @@
 //add and edit
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./PropertyForm.css";
 import { PropertyContext } from "./PropertyProvider";
 import { TenantContext } from "../tenants/TenantProvider";
