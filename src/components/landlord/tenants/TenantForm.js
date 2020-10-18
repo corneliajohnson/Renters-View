@@ -59,9 +59,12 @@ const Modal = ({ onRequestClose }) => {
         firstName: tenant.firstName,
         lastName: tenant.lastName,
         email: tenant.email,
-        phone: tenant.phone ? tenant.phone : false,
+        phone:
+          tenant.phone === null || tenant.phone === "" ? false : tenant.phone,
         propertyId:
-          tenant.propertyId !== "0" ? parseInt(tenant.propertyId) : false,
+          tenant.propertyId === null || tenant.propertyId === "0"
+            ? false
+            : parseInt(tenant.propertyId),
         landlordId: parseInt(localStorage.landlord),
       });
     } else {

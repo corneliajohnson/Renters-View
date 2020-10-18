@@ -84,7 +84,7 @@
       "lastName": "James",
       "email": "vvooort@gmail.com",
       "phone": "2223335445",
-      "propertyId": null,
+      "propertyId": false,
       "landlordId": 1
     }
   ],
