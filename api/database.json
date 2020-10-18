@@ -1,11 +1,12 @@
 {
   "properties": [
     {
+      "id": 1,
       "street": "444 Mason Ave",
       "city": "Tallahasse",
       "state": "FL",
       "zip": "32309",
-      "tenantId": false,
+      "tenantId": 3,
       "leaseStartDate": false,
       "leaseEndDate": false,
       "rentAmount": false,
@@ -14,8 +15,7 @@
       "lastPaymentAmount": false,
       "leaseTerm": "Vacant",
       "image": false,
-      "landlordId": 1,
-      "id": 1
+      "landlordId": 1
     },
     {
       "id": 2,
@@ -23,7 +23,7 @@
       "city": "Tallahassee",
       "state": "Fl",
       "zip": "32301",
-      "tenantId": 1,
+      "tenantId": false,
       "leaseStartDate": false,
       "leaseEndDate": false,
       "rentAmount": false,
@@ -40,7 +40,7 @@
       "city": "jggg",
       "state": "fhh",
       "zip": "56789",
-      "tenantId": 2,
+      "tenantId": 3,
       "leaseStartDate": "2020-10-22",
       "leaseEndDate": false,
       "rentAmount": false,
