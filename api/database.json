@@ -35,12 +35,13 @@
       "landlordId": 1
     },
     {
+      "id": 3,
       "street": "guigug",
       "city": "jggg",
       "state": "fhh",
       "zip": "56789",
-      "tenantId": false,
-      "leaseStartDate": false,
+      "tenantId": 2,
+      "leaseStartDate": "2020-10-22",
       "leaseEndDate": false,
       "rentAmount": false,
       "secuirtyDesposit": false,
@@ -48,8 +49,7 @@
       "lastPaymentAmount": false,
       "leaseTerm": "Vacant",
       "image": false,
-      "landlordId": 1,
-      "id": 3
+      "landlordId": 1
     }
   ],
   "landlords": [

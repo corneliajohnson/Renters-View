@@ -33,7 +33,7 @@ const Modal = ({ onRequestClose }) => {
     const subsetProperties = properties.filter(
       (property) =>
         property.landlordId === parseInt(localStorage.landlord) &&
-        property.tenantId !== false
+        property.tenantId === false
     );
     setFilteredProperties(subsetProperties);
   }, [properties]);

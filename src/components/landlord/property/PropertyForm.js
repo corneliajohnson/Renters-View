@@ -13,7 +13,6 @@ import {
   ModalFooter,
   Col,
   Row,
-  Form,
   FormGroup,
   Label,
   Input,
@@ -31,6 +30,7 @@ const Modal = ({ onRequestClose }) => {
   const { tenants, getTenants } = useContext(TenantContext);
 
   const [property, setProperty] = useState({});
+  const [filteredTenants, setFilteredTeanats] = useState([]);
 
   //for tenants drop down
   useEffect(() => {
@@ -43,7 +43,12 @@ const Modal = ({ onRequestClose }) => {
         setProperty(property);
       });
     }
-  }, []);
+
+    const subsetTenants = tenants.filter(
+      (tenant) => tenant.propertyId === false
+    );
+    setFilteredTeanats(subsetTenants);
+  }, [tenants]);
 
   const handleControlledInputChange = (event) => {
     const newProperty = { ...property };
@@ -59,7 +64,12 @@ const Modal = ({ onRequestClose }) => {
         city: property.city,
         state: property.state,
         zip: property.zip,
-        tenantId: property.tenantId ? parseInt(property.tenantId) : false,
+        tenantId:
+          property.tenantId === "0"
+            ? false
+            : !property.tenantId
+            ? false
+            : parseInt(property.tenantId),
         leaseStartDate: property.leaseStartDate
           ? property.leaseStartDate
           : false,
@@ -82,7 +92,12 @@ const Modal = ({ onRequestClose }) => {
         city: property.city,
         state: property.state,
         zip: property.zip,
-        tenantId: property.tenantId ? parseInt(property.tenantId) : false,
+        tenantId:
+          property.tenantId === "0"
+            ? false
+            : !property.tenantId
+            ? false
+            : parseInt(property.tenantId),
         leaseStartDate: property.leaseStartDate
           ? property.leaseStartDate
           : false,
@@ -215,14 +230,13 @@ const Modal = ({ onRequestClose }) => {
               <FormGroup>
                 <Label for="exampleSelect">Head of Househole </Label>
                 <Input
-                  required
                   type="select"
                   name="tenantId"
                   onChange={handleControlledInputChange}
                   value={property.tenantId}
                 >
                   <option value="0">None</option>
-                  {tenants.map((tenant) => (
+                  {filteredTenants.map((tenant) => (
                     <option key={tenant.id} value={tenant.id}>
                       {tenant.firstName} {tenant.lastName}
                     </option>
@@ -302,7 +316,7 @@ const Modal = ({ onRequestClose }) => {
                     </FormGroup>
                   </Col>
                   <Col>
-                    <Label for="leaseTerm">Lease Term *</Label>
+                    <Label for="leaseTerm">Lease Term</Label>
                     <AvField
                       type="select"
                       name="leaseTerm"
@@ -337,6 +351,9 @@ const Modal = ({ onRequestClose }) => {
                     property.state &&
                     property.zip
                   ) {
+                    {
+                      console.log(property.leaseStartDate);
+                    }
                     constructPropertyObj();
                     onRequestClose();
                   }
