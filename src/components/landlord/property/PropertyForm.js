@@ -38,12 +38,13 @@ const Modal = ({ onRequestClose }) => {
   }, []);
 
   useEffect(() => {
+    //get id for property update
     if (propertyId) {
       getPropertyById(propertyId).then((property) => {
         setProperty(property);
       });
     }
-
+    //dropdown for propertiesin form
     const subsetTenants = tenants.filter(
       (tenant) => tenant.propertyId === false
     );
@@ -57,6 +58,7 @@ const Modal = ({ onRequestClose }) => {
   };
 
   const constructPropertyObj = () => {
+    //update property
     if (property.id) {
       updateProperty({
         id: property.id,
@@ -87,6 +89,7 @@ const Modal = ({ onRequestClose }) => {
         landlordId: parseInt(localStorage.landlord),
       });
     } else {
+      //add property
       addProperty({
         street: property.street,
         city: property.city,
@@ -346,16 +349,14 @@ const Modal = ({ onRequestClose }) => {
                 onClick={(event) => {
                   event.preventDefault();
                   if (
+                    //only submit if the following is definded
                     property.street &&
                     property.city &&
                     property.state &&
                     property.zip
                   ) {
-                    {
-                      console.log(property.leaseStartDate);
-                    }
-                    constructPropertyObj();
-                    onRequestClose();
+                    constructPropertyObj(); //add or edit
+                    onRequestClose(); // close form after submit
                   }
                 }}
               >
