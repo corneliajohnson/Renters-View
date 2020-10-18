@@ -17,7 +17,7 @@ export const TenantCard = ({ tenant, deleteBtn, editBtn }) => {
           {tenant.property ? (
             <CardText>{tenant.property.street}</CardText>
           ) : (
-            `None`
+            `Address Not Assigned`
           )}
           <Row>
             <Col>{deleteBtn}</Col> <Col>{editBtn}</Col>

@@ -59,7 +59,9 @@ const Modal = ({ onRequestClose }) => {
         firstName: tenant.firstName,
         lastName: tenant.lastName,
         email: tenant.email,
-        propertyId: tenant.propertyId ? parseInt(tenant.propertyId) : false,
+        phone: tenant.phone ? tenant.phone : false,
+        propertyId:
+          tenant.propertyId !== "0" ? parseInt(tenant.propertyId) : false,
         landlordId: parseInt(localStorage.landlord),
       });
     } else {
@@ -67,7 +69,12 @@ const Modal = ({ onRequestClose }) => {
         firstName: tenant.firstName,
         lastName: tenant.lastName,
         email: tenant.email,
-        propertyId: tenant.propertyId ? parseInt(tenant.propertyId) : false,
+        phone:
+          tenant.phone === null || tenant.phone === "" ? false : tenant.phone,
+        propertyId:
+          tenant.propertyId === null || tenant.propertyId === "0"
+            ? false
+            : parseInt(tenant.propertyId),
         landlordId: parseInt(localStorage.landlord),
       });
     }
@@ -145,6 +152,20 @@ const Modal = ({ onRequestClose }) => {
                 name="email"
                 value={tenant.email}
                 onChange={handleControlledInputChange}
+              />
+            </Col>
+          </FormGroup>
+          <FormGroup row>
+            <Label for="email" sm={2}>
+              Phone Number
+            </Label>
+            <Col sm={10}>
+              <Input
+                type="number"
+                name="phone"
+                value={tenant.phone}
+                onChange={handleControlledInputChange}
+                placeholder="123-456-7890"
               />
             </Col>
           </FormGroup>

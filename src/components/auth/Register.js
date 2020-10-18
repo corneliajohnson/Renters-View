@@ -43,7 +43,7 @@ export const Register = (props) => {
                 lastName: lastName.current.value,
                 email: email.current.value,
                 phone: phone.current.value,
-                image: null,
+                image: false,
               }),
             })
               .then((_) => _.json())

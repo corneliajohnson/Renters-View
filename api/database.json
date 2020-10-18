@@ -1,18 +1,37 @@
 {
   "properties": [
     {
-      "id": 6,
-      "street": "rrrrre",
-      "city": "gggdfdd",
-      "state": "bn",
-      "zip": "34563",
-      "tenantId": 3,
-      "rentAmount": null,
-      "secuirtyDesposit": null,
-      "paymentDay": null,
-      "lastPaymentAmount": null,
-      "leaseTerm": "Under Repair",
-      "image": null,
+      "street": "444 Mason Ave",
+      "city": "Tallahasse",
+      "state": "FL",
+      "zip": "32309",
+      "tenantId": false,
+      "leaseStartDate": false,
+      "leaseEndDate": false,
+      "rentAmount": false,
+      "secuirtyDesposit": false,
+      "paymentDay": false,
+      "lastPaymentAmount": false,
+      "leaseTerm": "Vacant",
+      "image": false,
+      "landlordId": 1,
+      "id": 1
+    },
+    {
+      "id": 2,
+      "street": "3445 Berry Road",
+      "city": "Tallahassee",
+      "state": "Fl",
+      "zip": "32301",
+      "tenantId": false,
+      "leaseStartDate": false,
+      "leaseEndDate": false,
+      "rentAmount": false,
+      "secuirtyDesposit": false,
+      "paymentDay": false,
+      "lastPaymentAmount": false,
+      "leaseTerm": "Vacant",
+      "image": false,
       "landlordId": 1
     }
   ],
@@ -22,7 +41,7 @@
       "lastName": "Johnson",
       "email": "cj@gmail.com",
       "phone": 2223333444,
-      "image": null,
+      "image": false,
       "id": 1
     },
     {
@@ -30,7 +49,7 @@
       "lastName": "Walker",
       "email": "tim@gmail.com",
       "phone": 3339998888,
-      "image": null,
+      "image": false,
       "id": 2
     },
     {
@@ -38,7 +57,7 @@
       "firstName": "Jack",
       "lastName": "Jones",
       "phone": "2223334444",
-      "image": null,
+      "image": false,
       "id": 3
     },
     {
@@ -46,7 +65,7 @@
       "firstName": "ccccc",
       "lastName": "gggggg",
       "phone": "333399999",
-      "image": null,
+      "image": false,
       "id": 4
     },
     {
@@ -54,35 +73,19 @@
       "firstName": "New",
       "lastName": "johnnson",
       "phone": "3339994455",
-      "image": null,
+      "image": false,
       "id": 5
     }
   ],
   "tenants": [
     {
-      "email": "moore@gmail.com",
-      "firstName": "Kenny",
-      "lastName": "Moore",
-      "phone": 2223338888,
-      "propertyId": 6,
-      "landlordId": 1,
-      "id": 2
-    },
-    {
-      "firstName": "ffff",
-      "lastName": "hhhhh",
-      "email": "weffr@mail.com",
-      "propertyId": false,
-      "landlordId": 1,
-      "id": 3
-    },
-    {
-      "firstName": "NewMan ",
-      "lastName": "Golf",
-      "email": "fklnlss",
-      "propertyId": false,
-      "landlordId": 1,
-      "id": 4
+      "id": 1,
+      "firstName": "Charles",
+      "lastName": "James",
+      "email": "vvooort@gmail.com",
+      "phone": "2223335445",
+      "propertyId": null,
+      "landlordId": 1
     }
   ],
   "messages": [
@@ -103,118 +106,6 @@
       "sender": "tenant"
     },
     {
-      "id": 3,
-      "tenantId": 3,
-      "landlordId": 1,
-      "text": "Hello",
-      "date": 1601479252450,
-      "sender": "landlord"
-    },
-    {
-      "id": 4,
-      "tenantId": 3,
-      "landlordId": 1,
-      "text": "How Are you",
-      "date": 1601479252450,
-      "sender": "landlord"
-    },
-    {
-      "id": 5,
-      "tenantId": 3,
-      "landlordId": 1,
-      "text": "Wyd today",
-      "date": 1601479252450,
-      "sender": "landlord"
-    },
-    {
-      "tenantId": 4,
-      "landlordId": 1,
-      "text": "Hello",
-      "date": 1602982532159,
-      "sender": "landlord",
-      "id": 6
-    },
-    {
-      "tenantId": 4,
-      "landlordId": 1,
-      "text": "Welcome to the property",
-      "date": 1602982620844,
-      "sender": "landlord",
-      "id": 7
-    },
-    {
-      "tenantId": 6,
-      "landlordId": 1,
-      "text": "welcome",
-      "date": 1602982725723,
-      "sender": "landlord",
-      "id": 8
-    },
-    {
-      "tenantId": 4,
-      "landlordId": 1,
-      "text": "Hi",
-      "date": 1602982830834,
-      "sender": "landlord",
-      "id": 9
-    },
-    {
-      "tenantId": 4,
-      "landlordId": 1,
-      "text": "so",
-      "date": 1602983087939,
-      "sender": "landlord",
-      "id": 10
-    },
-    {
-      "tenantId": 3,
-      "landlordId": 1,
-      "text": "hi",
-      "date": 1602983156660,
-      "sender": "landlord",
-      "id": 11
-    },
-    {
-      "tenantId": 6,
-      "landlordId": 1,
-      "text": "yes",
-      "date": 1602983444930,
-      "sender": "landlord",
-      "id": 12
-    },
-    {
-      "tenantId": 4,
-      "landlordId": 1,
-      "text": "t",
-      "date": 1602983506319,
-      "sender": "landlord",
-      "id": 13
-    },
-    {
-      "tenantId": 3,
-      "landlordId": 1,
-      "text": "dssd",
-      "date": 1602984040668,
-      "sender": "landlord",
-      "id": 14
-    },
-    {
-      "tenantId": 3,
-      "landlordId": 1,
-      "text": "hi",
-      "date": 1602984129776,
-      "sender": "landlord",
-      "id": 15
-    },
-    {
-      "tenantId": 4,
-      "landlordId": 1,
-      "text": "go",
-      "date": 1602984308058,
-      "sender": "landlord",
-      "id": 16
-    },
-    {
       "tenantId": 2,
       "landlordId": 1,
       "text": "hi",
@@ -223,39 +114,5 @@
       "id": 17
     }
   ],
-  "maintenanceRequests": [
-    {
-      "id": 1,
-      "propertyId": 1,
-      "synopsis": "exchange door locks",
-      "price": 20,
-      "contractor": "Bob the Bulider",
-      "complete": false,
-      "note": "key was broken inside knob",
-      "dateComplete": "2020-4-11",
-      "dateAdded": "2020-03-12"
-    },
-    {
-      "id": 2,
-      "propertyId": 2,
-      "synopsis": "Grass Cut",
-      "price": 70,
-      "contractor": "Tallahassee Lawn Service",
-      "complete": false,
-      "note": "",
-      "dateComplete": "2020-10-01",
-      "dateAdded": "2020-03-15"
-    },
-    {
-      "id": 3,
-      "propertyId": 4,
-      "synopsis": "dfddf",
-      "price": "33",
-      "contractor": "dssd",
-      "complete": false,
-      "note": "svvff",
-      "dateComplete": false,
-      "dateAdded": 1602896975668
-    }
-  ]
+  "maintenanceRequests": []
 }

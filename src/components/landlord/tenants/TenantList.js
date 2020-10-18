@@ -14,8 +14,7 @@ export const TenantList = () => {
 
   useEffect(() => {
     const subsetTenants = tenants.filter(
-      (tenant) =>
-        tenant.landlordId === parseInt(localStorage.landlord) && tenant.id !== 1
+      (tenant) => tenant.landlordId === parseInt(localStorage.landlord)
     );
 
     setFilteredTenants(subsetTenants);
