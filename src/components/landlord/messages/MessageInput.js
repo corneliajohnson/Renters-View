@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { MessageContext } from "./MessageProvider";
 import { InputGroup, InputGroupAddon, Button, Input } from "reactstrap";
 import "./Message.css";
@@ -8,6 +8,7 @@ export const MessageInput = (reciever) => {
 
   const [message, setMessage] = useState({});
 
+  //Controlled component
   const handleControlledInputChange = (event) => {
     const newMessage = { ...message };
     newMessage[event.target.name] = event.target.value;
@@ -16,7 +17,7 @@ export const MessageInput = (reciever) => {
 
   const constructMessage = () => {
     const checkLandlord = Object.keys(localStorage);
-
+    //if the user is a landlord add to database
     if (checkLandlord[0] === "landlord" && reciever.id) {
       addMessage({
         tenantId: reciever.id,

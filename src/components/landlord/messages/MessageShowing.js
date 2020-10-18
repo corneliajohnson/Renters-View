@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { MessageContext } from "./MessageProvider";
-import { TenantContex, TenantContext } from "../tenants/TenantProvider";
+import { TenantContext } from "../tenants/TenantProvider";
 import { Col, Row } from "reactstrap";
 import "./Message.css";
 import { MessageInput } from "./MessageInput";
@@ -17,6 +17,7 @@ export const MessageShowing = (tenantConversation) => {
     getMessages();
   }, []);
 
+  //only get messages in the clicked on conversation
   useEffect(() => {
     const subsetMessages = messages.filter(
       (message) => message.tenantId === tenantConversation.id
@@ -24,6 +25,7 @@ export const MessageShowing = (tenantConversation) => {
     setFilteredMessages(subsetMessages);
   }, [messages, tenantConversation]);
 
+  //get the reciever/tenant in selected conversation
   useEffect(() => {
     if (tenantConversation.id) {
       getTenantById(tenantConversation.id).then((response) => {

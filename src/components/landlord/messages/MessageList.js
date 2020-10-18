@@ -6,18 +6,20 @@ import { Row, Col, ListGroup, ListGroupItem } from "reactstrap";
 export const MessageList = () => {
   const { getTenants, tenants } = useContext(TenantContext);
   const [filteredTenants, setFilteredTenants] = useState([]);
+
+  //get the user thats clicked on
   const [conversation, setConversation] = useState();
 
   useEffect(() => {
     getTenants();
   }, []);
 
+  //only get the current lanlord tenants
   useEffect(() => {
     const subsetTenants = tenants.filter(
       (tenant) =>
         tenant.landlordId === parseInt(localStorage.landlord) && tenant.id !== 1
     );
-
     setFilteredTenants(subsetTenants);
   }, [tenants]);
 
