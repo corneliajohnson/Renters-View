@@ -14,8 +14,8 @@ export const TenantCard = ({ tenant, deleteBtn, editBtn }) => {
 
           <CardText>Phone Number: {tenant.phone}</CardText>
           <CardText>Email: {tenant.email}</CardText>
-          {tenant.property ? (
-            <CardText>{tenant.property.street}</CardText>
+          {tenant.propertyId ? (
+            <CardText>{tenant.propertyId}</CardText>
           ) : (
             `Address Not Assigned`
           )}
