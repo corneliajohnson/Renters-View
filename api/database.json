@@ -23,7 +23,7 @@
       "city": "Tallahassee",
       "state": "Fl",
       "zip": "32301",
-      "tenantId": false,
+      "tenantId": 1,
       "leaseStartDate": false,
       "leaseEndDate": false,
       "rentAmount": false,

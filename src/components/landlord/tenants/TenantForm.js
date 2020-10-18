@@ -32,8 +32,8 @@ const Modal = ({ onRequestClose }) => {
   useEffect(() => {
     const subsetProperties = properties.filter(
       (property) =>
-        property.tenantId === 1 ||
-        property.landlordId === parseInt(localStorage.landlord)
+        property.landlordId === parseInt(localStorage.landlord) &&
+        property.tenantId !== false
     );
     setFilteredProperties(subsetProperties);
   }, [properties]);
