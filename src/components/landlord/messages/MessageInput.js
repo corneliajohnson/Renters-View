@@ -31,6 +31,7 @@ export const MessageInput = (reciever) => {
     <>
       <InputGroup>
         <Input
+          className="messageTextInput"
           type="text"
           name="text"
           defaultValue=""
