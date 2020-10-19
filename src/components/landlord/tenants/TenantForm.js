@@ -22,22 +22,12 @@ const Modal = ({ onRequestClose }) => {
   const { getProperties, properties } = useContext(PropertyContext);
   const { addTenant, getTenantById, updateTenant } = useContext(TenantContext);
 
-  const [filteredProperties, setFilteredProperties] = useState([]);
   const [tenant, setTenant] = useState({});
 
   //for property dropdown
   useEffect(() => {
     getProperties();
   }, []);
-
-  useEffect(() => {
-    const subsetProperties = properties.filter(
-      (property) =>
-        property.landlordId === parseInt(localStorage.landlord) &&
-        property.tenantId === false
-    );
-    setFilteredProperties(subsetProperties);
-  }, [properties]);
 
   useEffect(() => {
     if (tenantId) {
@@ -233,7 +223,9 @@ export const TenantForm = () => {
 
   return (
     <div className="container text-center">
-      <h1 className="display-2 m-5">My Tenants</h1>
+      <h1 id="tenants" className="display-2 m-5">
+        My Tenants
+      </h1>
       {isModalOpen && <Modal onRequestClose={toggleModal} />}
       <Button onClick={toggleModal} outline color="secondary" type="button">
         Add New Tenant

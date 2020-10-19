@@ -103,7 +103,7 @@
       "synopsis": "broken sink",
       "price": "780",
       "contractor": "/tom",
-      "complete": true,
+      "complete": false,
       "note": "ghjhjkkl",
       "dateComplete": "2020-10-14",
       "dateAdded": 1603130374646

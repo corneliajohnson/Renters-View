@@ -1,34 +1,57 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { NavHashLink } from "react-router-hash-link";
 import "./NavBar.css";
 
 export const NavBar = () => {
   return (
-    <ul className="navbar">
+    <ul className="navbar sticky-top bg-white">
       <li className="navbar__item active">
-        <Link className="navbar__link" to="/">
+        <NavLink className="navbar__link" smooth to="/">
           <img
             className="m-0 p-0"
             width="40%"
             src={require("../../../img/logo.png")}
             alt="logo"
           />
-        </Link>
+        </NavLink>
+      </li>
+      <li className="navbar__item" to="/#tenants">
+        <NavHashLink
+          className="navbar__link"
+          smooth
+          to="/#tenants"
+          activeStyle={{ color: "#fa2d2d" }}
+        >
+          Tenants
+        </NavHashLink>
       </li>
       <li className="navbar__item">
-        <Link className="navbar__link" to="/messages">
+        <NavLink
+          className="navbar__link"
+          to="/messages"
+          activeStyle={{ color: "#fa2d2d" }}
+        >
           Messages
-        </Link>
+        </NavLink>
       </li>
       <li className="navbar__item">
-        <Link className="navbar__link" to="/maintenance">
+        <NavLink
+          className="navbar__link"
+          to="/maintenance"
+          activeStyle={{ color: "#fa2d2d" }}
+        >
           Maintenance
-        </Link>
+        </NavLink>
       </li>
       <li className="navbar__item">
-        <Link className="navbar__link" to="/account">
+        <NavLink
+          className="navbar__link"
+          to="/account"
+          activeStyle={{ color: "#fa2d2d" }}
+        >
           Account
-        </Link>
+        </NavLink>
       </li>
     </ul>
   );
