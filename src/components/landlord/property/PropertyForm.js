@@ -44,11 +44,6 @@ const Modal = ({ onRequestClose }) => {
         setProperty(property);
       });
     }
-    //dropdown for propertiesin form
-    const subsetTenants = tenants.filter(
-      (tenant) => tenant.propertyId === false
-    );
-    setFilteredTeanats(subsetTenants);
   }, [tenants]);
 
   const handleControlledInputChange = (event) => {
@@ -66,26 +61,15 @@ const Modal = ({ onRequestClose }) => {
         city: property.city,
         state: property.state,
         zip: property.zip,
-        tenantId:
-          property.tenantId === "0"
-            ? false
-            : !property.tenantId
-            ? false
-            : parseInt(property.tenantId),
-        leaseStartDate: property.leaseStartDate
-          ? property.leaseStartDate
-          : false,
-        leaseEndDate: property.leaseEndDate ? property.leaseEndDate : false,
-        rentAmount: property.rentAmount ? parseInt(property.rentAmount) : false,
-        secuirtyDesposit: property.secuirtyDesposit
-          ? parseInt(property.secuirtyDesposit)
-          : false,
-        paymentDay: property.paymentDay ? property.secuirtyDesposit : false,
-        lastPaymentAmount: property.lastPaymentAmount
-          ? parseInt(property.lastPaymentAmount)
-          : false,
-        leaseTerm: property.tenantTerm ? property.leaseTerm : "Vacant",
-        image: false,
+        // tenantId: parseInt(property.tenantId),
+        leaseStartDate: property.leaseStartDate,
+        leaseEndDate: property.leaseEndDate,
+        rentAmount: parseInt(property.rentAmount),
+        secuirtyDesposit: parseInt(property.secuirtyDesposit),
+        paymentDay: property.secuirtyDesposit,
+        lastPaymentAmount: parseInt(property.lastPaymentAmount),
+        leaseTerm: property.leaseTerm,
+        image: null,
         landlordId: parseInt(localStorage.landlord),
       });
     } else {
@@ -95,26 +79,15 @@ const Modal = ({ onRequestClose }) => {
         city: property.city,
         state: property.state,
         zip: property.zip,
-        tenantId:
-          property.tenantId === "0"
-            ? false
-            : !property.tenantId
-            ? false
-            : parseInt(property.tenantId),
-        leaseStartDate: property.leaseStartDate
-          ? property.leaseStartDate
-          : false,
-        leaseEndDate: property.leaseEndDate ? property.leaseEndDate : false,
-        rentAmount: property.rentAmount ? parseInt(property.rentAmount) : false,
-        secuirtyDesposit: property.secuirtyDesposit
-          ? parseInt(property.secuirtyDesposit)
-          : false,
-        paymentDay: property.paymentDay ? property.secuirtyDesposit : false,
-        lastPaymentAmount: property.lastPaymentAmount
-          ? parseInt(property.lastPaymentAmount)
-          : false,
-        leaseTerm: property.tenantTerm ? property.leaseTerm : "Vacant",
-        image: false,
+        // tenantId: parseInt(property.tenantId),
+        leaseStartDate: property.leaseStartDate,
+        leaseEndDate: property.leaseEndDate,
+        rentAmount: parseInt(property.rentAmount),
+        secuirtyDesposit: parseInt(property.secuirtyDesposit),
+        paymentDay: property.secuirtyDesposit,
+        lastPaymentAmount: parseInt(property.lastPaymentAmount),
+        leaseTerm: property.leaseTerm,
+        image: null,
         landlordId: parseInt(localStorage.landlord),
       });
     }
@@ -231,7 +204,7 @@ const Modal = ({ onRequestClose }) => {
                 </Col>
               </Row>
               <FormGroup>
-                <Label for="exampleSelect">Head of Househole </Label>
+                {/* <Label for="exampleSelect">Head of Househole </Label>
                 <Input
                   type="select"
                   name="tenantId"
@@ -239,12 +212,12 @@ const Modal = ({ onRequestClose }) => {
                   value={property.tenantId}
                 >
                   <option value="0">None</option>
-                  {filteredTenants.map((tenant) => (
+                  {tenants.map((tenant) => (
                     <option key={tenant.id} value={tenant.id}>
                       {tenant.firstName} {tenant.lastName}
                     </option>
                   ))}
-                </Input>
+                </Input> */}
                 <Row>
                   <Col>
                     <FormGroup>

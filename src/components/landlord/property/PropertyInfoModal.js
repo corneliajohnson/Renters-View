@@ -14,7 +14,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 let propertyId = 0;
 
 const Modal = ({ onRequestClose }) => {
-  const { getPropertyById } = useContext(PropertyContext);
+  const { getPropertyById, deleteProperty } = useContext(PropertyContext);
   const [property, setProperty] = useState({});
   const [tenants, setTenants] = useState([]);
 
@@ -122,6 +122,14 @@ const Modal = ({ onRequestClose }) => {
             <h3 className="display-5">Maintenance History</h3>
           </ModalBody>
         </Form>
+        <Button
+          onClick={() => {
+            deleteProperty(property.id);
+          }}
+        >
+          {" "}
+          Delete
+        </Button>
         <Button type="button" onClick={onRequestClose}>
           Close
         </Button>

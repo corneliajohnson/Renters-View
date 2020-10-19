@@ -6,7 +6,7 @@ export const TenantProvider = (props) => {
   const [tenants, setTenants] = useState([]);
 
   const getTenants = () => {
-    return fetch("http://localhost:8088/tenants?_expand=property")
+    return fetch("http://localhost:8088/tenants")
       .then((res) => res.json())
       .then(setTenants);
   };

@@ -1,5 +1,32 @@
 {
-  "properties": [],
+  "properties": [
+    {
+      "street": "3334 hoise",
+      "city": "gggooo",
+      "state": "wwee",
+      "zip": "3333",
+      "rentAmount": null,
+      "secuirtyDesposit": null,
+      "lastPaymentAmount": null,
+      "image": null,
+      "landlordId": 1,
+      "id": 1
+    },
+    {
+      "street": "2e45547",
+      "city": "3353553",
+      "state": "335",
+      "zip": "5456567",
+      "leaseStartDate": "2020-10-15",
+      "leaseEndDate": "2020-10-30",
+      "rentAmount": null,
+      "secuirtyDesposit": null,
+      "lastPaymentAmount": null,
+      "image": null,
+      "landlordId": 1,
+      "id": 2
+    }
+  ],
   "landlords": [
     {
       "firstName": "Cornelia",
@@ -42,7 +69,17 @@
       "id": 5
     }
   ],
-  "tenants": [],
+  "tenants": [
+    {
+      "firstName": "asdfghj",
+      "lastName": "xcvbnm",
+      "email": "sdfghjk",
+      "phone": false,
+      "propertyId": 1,
+      "landlordId": 1,
+      "id": 1
+    }
+  ],
   "messages": [],
   "maintenanceRequests": []
 }

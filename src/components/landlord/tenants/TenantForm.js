@@ -60,12 +60,7 @@ const Modal = ({ onRequestClose }) => {
         lastName: tenant.lastName,
         email: tenant.email,
         phone: tenant.phone ? tenant.phone : false,
-        propertyId:
-          tenant.propertyId === "0"
-            ? false
-            : !tenant.propertyId
-            ? false
-            : parseInt(tenant.propertyId),
+        propertyId: parseInt(tenant.propertyId),
         landlordId: parseInt(localStorage.landlord),
       });
     } else {
@@ -74,12 +69,7 @@ const Modal = ({ onRequestClose }) => {
         lastName: tenant.lastName,
         email: tenant.email,
         phone: tenant.phone ? tenant.phone : false,
-        propertyId:
-          tenant.propertyId === "0"
-            ? false
-            : !tenant.propertyId
-            ? false
-            : parseInt(tenant.propertyId),
+        propertyId: parseInt(tenant.propertyId),
         landlordId: parseInt(localStorage.landlord),
       });
     }
@@ -185,8 +175,8 @@ const Modal = ({ onRequestClose }) => {
                 value={tenant.propertyId}
                 onChange={handleControlledInputChange}
               >
-                <option value="0">None</option>
-                {filteredProperties.map((property) => (
+                <option value="0"></option>
+                {properties.map((property) => (
                   <option key={property.id} value={property.id}>
                     {property.street} {property.city} {property.state}
                   </option>
@@ -202,7 +192,13 @@ const Modal = ({ onRequestClose }) => {
           color="primary"
           onClick={(event) => {
             event.preventDefault();
-            if (tenant.firstName && tenant.lastName && tenant.email) {
+            if (
+              tenant.firstName &&
+              tenant.lastName &&
+              tenant.email &&
+              tenant.propertyId &&
+              tenant.propertyId !== "0"
+            ) {
               constructTenantObj();
               onRequestClose();
             }

@@ -12,7 +12,6 @@ export const PropertyList = () => {
   );
 
   const [filteredProperies, setFilterdProperties] = useState([]);
-  const [selectedPropertyObj, setSelectedPropertyObj] = useState();
 
   useEffect(() => {
     getProperties();

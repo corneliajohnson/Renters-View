@@ -9,9 +9,7 @@ export const PropertyProvider = (props) => {
   const [properties, setProperties] = useState([]);
 
   const getProperties = () => {
-    return fetch(
-      "http://localhost:8088/properties?_expand=landlord&_expand=tenant"
-    )
+    return fetch("http://localhost:8088/properties")
       .then((res) => res.json())
       .then(setProperties);
   };
