@@ -87,14 +87,6 @@ const Modal = ({ onRequestClose }) => {
         leaseTerm: property.tenantTerm ? property.leaseTerm : "Vacant",
         image: false,
         landlordId: parseInt(localStorage.landlord),
-      }).then(() => {
-        if (property.tenantId) {
-          if (property.tenantId === "0") {
-            console.log(false);
-          } else {
-            getTenantById(property.tenantId).then((res) => console.log(res));
-          }
-        }
       });
     } else {
       //add property

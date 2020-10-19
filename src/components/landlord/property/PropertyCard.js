@@ -1,13 +1,5 @@
-import React, { useState } from "react";
-import {
-  Card,
-  CardText,
-  CardBody,
-  Row,
-  Col,
-  CardTitle,
-  CardSubtitle,
-} from "reactstrap";
+import React from "react";
+import { Card, CardText, CardBody, Row, Col, CardTitle } from "reactstrap";
 
 export const PropertyCard = (
   { property, deleteBtn, editBtn, titleLink },

@@ -1,23 +1,5 @@
 {
-  "properties": [
-    {
-      "id": 1,
-      "street": "444 Mason Ave",
-      "city": "Tallahasse",
-      "state": "FL",
-      "zip": "32309",
-      "tenantId": 3,
-      "leaseStartDate": false,
-      "leaseEndDate": false,
-      "rentAmount": false,
-      "secuirtyDesposit": false,
-      "paymentDay": false,
-      "lastPaymentAmount": false,
-      "leaseTerm": "Vacant",
-      "image": false,
-      "landlordId": 1
-    }
-  ],
+  "properties": [],
   "landlords": [
     {
       "firstName": "Cornelia",
@@ -60,42 +42,7 @@
       "id": 5
     }
   ],
-  "tenants": [
-    {
-      "id": 1,
-      "firstName": "Charles",
-      "lastName": "James",
-      "email": "vvooort@gmail.com",
-      "phone": "2223335445",
-      "propertyId": 2,
-      "landlordId": 1
-    }
-  ],
-  "messages": [
-    {
-      "id": 1,
-      "tenantId": 2,
-      "landlordId": 1,
-      "text": "Welcome",
-      "date": 1601479252450,
-      "sender": "landlord"
-    },
-    {
-      "id": 2,
-      "tenantId": 2,
-      "landlordId": 1,
-      "text": "Hi how are you?",
-      "date": 1601479252450,
-      "sender": "tenant"
-    },
-    {
-      "tenantId": 2,
-      "landlordId": 1,
-      "text": "hi",
-      "date": 1602985063605,
-      "sender": "landlord",
-      "id": 17
-    }
-  ],
+  "tenants": [],
+  "messages": [],
   "maintenanceRequests": []
 }
