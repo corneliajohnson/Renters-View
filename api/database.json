@@ -1,18 +1,6 @@
 {
   "properties": [
     {
-      "street": "3334 hoise",
-      "city": "gggooo",
-      "state": "wwee",
-      "zip": "3333",
-      "rentAmount": null,
-      "secuirtyDesposit": null,
-      "lastPaymentAmount": null,
-      "image": null,
-      "landlordId": 1,
-      "id": 1
-    },
-    {
       "street": "2e45547",
       "city": "3353553",
       "state": "335",
@@ -25,6 +13,18 @@
       "image": null,
       "landlordId": 1,
       "id": 2
+    },
+    {
+      "street": "wasdfghj",
+      "city": "sdfghj",
+      "state": "dfg",
+      "zip": "88900",
+      "rentAmount": null,
+      "secuirtyDesposit": null,
+      "lastPaymentAmount": null,
+      "image": null,
+      "landlordId": 1,
+      "id": 3
     }
   ],
   "landlords": [
@@ -71,11 +71,11 @@
   ],
   "tenants": [
     {
-      "firstName": "asdfghj",
-      "lastName": "xcvbnm",
-      "email": "sdfghjk",
+      "firstName": "werty",
+      "lastName": "ertyu",
+      "email": "dfghj",
       "phone": false,
-      "propertyId": 1,
+      "propertyId": 3,
       "landlordId": 1,
       "id": 1
     }

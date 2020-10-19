@@ -2,7 +2,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./PropertyForm.css";
 import { PropertyContext } from "./PropertyProvider";
-import { TenantContext } from "../tenants/TenantProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { AvForm, AvField } from "availity-reactstrap-validation";
@@ -21,21 +20,11 @@ import {
 let propertyId = 0;
 
 const Modal = ({ onRequestClose }) => {
-  const {
-    getPropertyById,
-    addProperty,
-    updateProperty,
-    getProperties,
-  } = useContext(PropertyContext);
-  const { tenants, getTenants, getTenantById } = useContext(TenantContext);
+  const { getPropertyById, addProperty, updateProperty } = useContext(
+    PropertyContext
+  );
 
   const [property, setProperty] = useState({});
-  const [filteredTenants, setFilteredTeanats] = useState([]);
-
-  //for tenants drop down
-  useEffect(() => {
-    getTenants().then(getProperties);
-  }, []);
 
   useEffect(() => {
     //get id for property update
@@ -44,7 +33,7 @@ const Modal = ({ onRequestClose }) => {
         setProperty(property);
       });
     }
-  }, [tenants]);
+  }, []);
 
   const handleControlledInputChange = (event) => {
     const newProperty = { ...property };
@@ -61,7 +50,6 @@ const Modal = ({ onRequestClose }) => {
         city: property.city,
         state: property.state,
         zip: property.zip,
-        // tenantId: parseInt(property.tenantId),
         leaseStartDate: property.leaseStartDate,
         leaseEndDate: property.leaseEndDate,
         rentAmount: parseInt(property.rentAmount),
@@ -79,7 +67,6 @@ const Modal = ({ onRequestClose }) => {
         city: property.city,
         state: property.state,
         zip: property.zip,
-        // tenantId: parseInt(property.tenantId),
         leaseStartDate: property.leaseStartDate,
         leaseEndDate: property.leaseEndDate,
         rentAmount: parseInt(property.rentAmount),
@@ -130,7 +117,9 @@ const Modal = ({ onRequestClose }) => {
           <AvForm>
             <ModalBody>
               <FormGroup>
-                <Label for="address">Address *</Label>
+                <Label for="address">
+                  Address <span className="text-danger">*</span>
+                </Label>
                 <AvField
                   type="text"
                   name="street"
@@ -152,7 +141,9 @@ const Modal = ({ onRequestClose }) => {
               <Row form>
                 <Col md={6}>
                   <FormGroup>
-                    <Label for="city">City *</Label>
+                    <Label for="city">
+                      City <span className="text-danger">*</span>
+                    </Label>
                     <AvField
                       type="text"
                       name="city"
@@ -167,9 +158,11 @@ const Modal = ({ onRequestClose }) => {
                     />
                   </FormGroup>
                 </Col>
-                <Col md={4}>
+                <Col md={2}>
                   <FormGroup>
-                    <Label for="state">State *</Label>
+                    <Label for="state">
+                      State <span className="text-danger">*</span>
+                    </Label>
                     <AvField
                       type="text"
                       name="state"
@@ -185,9 +178,11 @@ const Modal = ({ onRequestClose }) => {
                     />
                   </FormGroup>
                 </Col>
-                <Col md={2}>
+                <Col md={4}>
                   <FormGroup>
-                    <Label for="zip">Zip *</Label>
+                    <Label for="zip">
+                      Zip <span className="text-danger">*</span>
+                    </Label>
                     <AvField
                       type="number"
                       name="zip"
@@ -204,20 +199,6 @@ const Modal = ({ onRequestClose }) => {
                 </Col>
               </Row>
               <FormGroup>
-                {/* <Label for="exampleSelect">Head of Househole </Label>
-                <Input
-                  type="select"
-                  name="tenantId"
-                  onChange={handleControlledInputChange}
-                  value={property.tenantId}
-                >
-                  <option value="0">None</option>
-                  {tenants.map((tenant) => (
-                    <option key={tenant.id} value={tenant.id}>
-                      {tenant.firstName} {tenant.lastName}
-                    </option>
-                  ))}
-                </Input> */}
                 <Row>
                   <Col>
                     <FormGroup>
@@ -301,7 +282,6 @@ const Modal = ({ onRequestClose }) => {
                       defaultValue={property.leaseTerm}
                       required
                     >
-                      <option value="0"></option>
                       <option value="Vacant">Vacant</option>
                       <option value="12 Month">12 Month</option>
                       <option value="Month to Month">Month to Month</option>
