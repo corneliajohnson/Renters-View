@@ -16,7 +16,7 @@ export const TenantCard = ({ tenant, deleteBtn, editBtn }) => {
             Phone Number: {tenant.phone ? tenant.phone : "N/A"}
           </CardText>
           <CardText>Email: {tenant.email}</CardText>
-          {tenant.propertyId === false || tenant.propertyId === null ? (
+          {/* {tenant.propertyId === false || tenant.propertyId === null ? (
             "Address: N/A"
           ) : (
             <>
@@ -26,7 +26,7 @@ export const TenantCard = ({ tenant, deleteBtn, editBtn }) => {
                 {tenant.property.city} {tenant.property.city}
               </CardText>
             </>
-          )}
+          )} */}
           <Row>
             <Col>{deleteBtn}</Col> <Col>{editBtn}</Col>
           </Row>

@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { PropertyContext } from "./PropertyProvider";
-import { Delete } from "./DeleteProperty";
 import { PropertyCard } from "./PropertyCard";
 import "./Property.css";
 import { PropertyFormEdit } from "./PropertyForm";
 import { PropertyInfoModal } from "./PropertyInfoModal";
+import { CardLink } from "reactstrap";
 
 export const PropertyList = () => {
   const { properties, getProperties, deleteProperty } = useContext(
@@ -42,7 +42,16 @@ export const PropertyList = () => {
                     zip={property.zip}
                   />
                 }
-                deleteBtn={Delete(deleteProperty, property.id, "Delete")}
+                deleteBtn={
+                  <CardLink
+                    onClick={() => {
+                      deleteProperty(property.id);
+                    }}
+                  >
+                    {" "}
+                    Delete
+                  </CardLink>
+                }
                 editBtn={<PropertyFormEdit id={property.id} />}
               />
             );
