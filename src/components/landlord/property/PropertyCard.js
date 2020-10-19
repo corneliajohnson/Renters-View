@@ -1,7 +1,14 @@
 import React from "react";
-import { Card, CardText, CardBody, Row, Col, CardTitle } from "reactstrap";
+import { Card, CardBody, Row, Col, CardTitle } from "reactstrap";
 
-export const PropertyCard = ({ property, deleteBtn, editBtn, titleLink }) => {
+export const PropertyCard = ({
+  property,
+  deleteBtn,
+  editBtn,
+  tenants,
+  titleLink,
+  tenant,
+}) => {
   return (
     <div>
       <Card className="m-2">
@@ -13,6 +20,7 @@ export const PropertyCard = ({ property, deleteBtn, editBtn, titleLink }) => {
           src={require("../../../img/house.jpg")}
           alt="Card image cap"
         />
+        {tenant}
         <Row>
           <Col>{editBtn}</Col>
           <Col>{deleteBtn}</Col>

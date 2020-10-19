@@ -4,6 +4,7 @@ import { PropertyCard } from "./PropertyCard";
 import "./Property.css";
 import { PropertyFormEdit } from "./PropertyForm";
 import { PropertyInfoModal } from "./PropertyInfoModal";
+import { PropertyCardTenantInfo } from "./PropertyCardTenantInfo";
 import { CardLink } from "reactstrap";
 
 export const PropertyList = () => {
@@ -33,6 +34,7 @@ export const PropertyList = () => {
               <PropertyCard
                 key={property.id}
                 property={property}
+                tenant={<PropertyCardTenantInfo id={property.id} />}
                 titleLink={
                   <PropertyInfoModal
                     id={property.id}

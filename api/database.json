@@ -15,10 +15,10 @@
       "id": 2
     },
     {
-      "street": "wasdfghj",
-      "city": "sdfghj",
-      "state": "dfg",
-      "zip": "88900",
+      "street": "33233232",
+      "city": "eeee",
+      "state": "qq",
+      "zip": "3344",
       "rentAmount": null,
       "secuirtyDesposit": null,
       "lastPaymentAmount": null,
@@ -71,13 +71,22 @@
   ],
   "tenants": [
     {
-      "firstName": "werty",
-      "lastName": "ertyu",
-      "email": "dfghj",
+      "id": 2,
+      "firstName": "22",
+      "lastName": "353535",
+      "email": "44333",
       "phone": false,
       "propertyId": 3,
-      "landlordId": 1,
-      "id": 1
+      "landlordId": 1
+    },
+    {
+      "id": 3,
+      "firstName": "qEGFG",
+      "lastName": "EQWEWQFE",
+      "email": "WWEEFE",
+      "phone": false,
+      "propertyId": 3,
+      "landlordId": 1
     }
   ],
   "messages": [],

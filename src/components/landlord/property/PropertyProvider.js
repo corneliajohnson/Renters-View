@@ -15,7 +15,7 @@ export const PropertyProvider = (props) => {
   };
 
   const addProperty = (propertyObj) => {
-    return fetch("http://localhost:8088/properties", {
+    return fetch("http://localhost:8088/properties?_embed=tenants", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
