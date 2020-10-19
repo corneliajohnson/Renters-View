@@ -1,30 +1,36 @@
 {
   "properties": [
     {
-      "street": "2e45547",
-      "city": "3353553",
-      "state": "335",
-      "zip": "5456567",
+      "id": 2,
+      "street": "6903 Tarus Road",
+      "city": "Tampa",
+      "state": "FL",
+      "zip": "32456",
       "leaseStartDate": "2020-10-15",
-      "leaseEndDate": "2020-10-30",
-      "rentAmount": null,
-      "secuirtyDesposit": null,
-      "lastPaymentAmount": null,
+      "leaseEndDate": "2021-10-30",
+      "rentAmount": 900,
+      "secuirtyDesposit": 900,
+      "paymentDay": "2020-11-08",
+      "lastPaymentAmount": 900,
+      "leaseTerm": "Seasonal",
       "image": null,
-      "landlordId": 1,
-      "id": 2
+      "landlordId": 1
     },
     {
-      "street": "33233232",
-      "city": "eeee",
-      "state": "qq",
-      "zip": "3344",
-      "rentAmount": null,
-      "secuirtyDesposit": null,
-      "lastPaymentAmount": null,
+      "id": 3,
+      "street": "3456 Super Way",
+      "city": "Miami",
+      "state": "FL",
+      "zip": "89322",
+      "leaseStartDate": "2020-10-22",
+      "leaseEndDate": "2021-10-23",
+      "rentAmount": 1600,
+      "secuirtyDesposit": 1600,
+      "paymentDay": "2020-10-31",
+      "lastPaymentAmount": 1600,
+      "leaseTerm": "Air BnB",
       "image": null,
-      "landlordId": 1,
-      "id": 3
+      "landlordId": 1
     }
   ],
   "landlords": [
@@ -90,5 +96,17 @@
     }
   ],
   "messages": [],
-  "maintenanceRequests": []
+  "maintenanceRequests": [
+    {
+      "id": 1,
+      "propertyId": 2,
+      "synopsis": "broken sink",
+      "price": "780",
+      "contractor": "/tom",
+      "complete": true,
+      "note": "ghjhjkkl",
+      "dateComplete": "2020-10-14",
+      "dateAdded": 1603130374646
+    }
+  ]
 }

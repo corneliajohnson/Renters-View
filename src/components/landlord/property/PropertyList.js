@@ -5,7 +5,7 @@ import "./Property.css";
 import { PropertyFormEdit } from "./PropertyForm";
 import { PropertyInfoModal } from "./PropertyInfoModal";
 import { PropertyCardTenantInfo } from "./PropertyCardTenantInfo";
-import { CardLink } from "reactstrap";
+import { Button } from "reactstrap";
 
 export const PropertyList = () => {
   const { properties, getProperties, deleteProperty } = useContext(
@@ -32,6 +32,7 @@ export const PropertyList = () => {
           {filteredProperies.map((property) => {
             return (
               <PropertyCard
+                className="propertyCard"
                 key={property.id}
                 property={property}
                 tenant={<PropertyCardTenantInfo id={property.id} />}
@@ -45,14 +46,18 @@ export const PropertyList = () => {
                   />
                 }
                 deleteBtn={
-                  <CardLink
+                  <Button
+                    outline
+                    color="danger"
+                    className="propertyBtn"
                     onClick={() => {
                       deleteProperty(property.id);
+                      //window.confirm('When you delete the property all assined tenants are erased. \n Are you sure you want to delete?')
                     }}
                   >
                     {" "}
                     Delete
-                  </CardLink>
+                  </Button>
                 }
                 editBtn={<PropertyFormEdit id={property.id} />}
               />

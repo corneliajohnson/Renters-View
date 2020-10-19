@@ -1,11 +1,10 @@
 import React from "react";
-import { Card, CardBody, Row, Col, CardTitle } from "reactstrap";
+import { Card, CardBody, Row, Col, CardTitle, CardText } from "reactstrap";
 
 export const PropertyCard = ({
   property,
   deleteBtn,
   editBtn,
-  tenants,
   titleLink,
   tenant,
 }) => {
@@ -21,9 +20,12 @@ export const PropertyCard = ({
           alt="Card image cap"
         />
         {tenant}
+        <CardText>
+          Rent: {property.rentAmount ? property.rentAmount : "N/A"}
+        </CardText>
         <Row>
-          <Col>{editBtn}</Col>
-          <Col>{deleteBtn}</Col>
+          <Col className="text-left">{editBtn}</Col>
+          <Col className="text-right">{deleteBtn}</Col>
         </Row>
       </Card>
     </div>

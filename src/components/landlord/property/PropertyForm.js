@@ -4,7 +4,6 @@ import "./PropertyForm.css";
 import { PropertyContext } from "./PropertyProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { AvForm, AvField } from "availity-reactstrap-validation";
 import {
   Button,
   ModalHeader,
@@ -16,6 +15,7 @@ import {
   Label,
   Input,
   CardLink,
+  Form,
 } from "reactstrap";
 let propertyId = 0;
 
@@ -54,7 +54,7 @@ const Modal = ({ onRequestClose }) => {
         leaseEndDate: property.leaseEndDate,
         rentAmount: parseInt(property.rentAmount),
         secuirtyDesposit: parseInt(property.secuirtyDesposit),
-        paymentDay: property.secuirtyDesposit,
+        paymentDay: property.paymentDay,
         lastPaymentAmount: parseInt(property.lastPaymentAmount),
         leaseTerm: property.leaseTerm,
         image: null,
@@ -71,7 +71,7 @@ const Modal = ({ onRequestClose }) => {
         leaseEndDate: property.leaseEndDate,
         rentAmount: parseInt(property.rentAmount),
         secuirtyDesposit: parseInt(property.secuirtyDesposit),
-        paymentDay: property.secuirtyDesposit,
+        paymentDay: property.paymentDay,
         lastPaymentAmount: parseInt(property.lastPaymentAmount),
         leaseTerm: property.leaseTerm,
         image: null,
@@ -109,18 +109,18 @@ const Modal = ({ onRequestClose }) => {
             type="button"
             onClick={onRequestClose}
           >
-            <FontAwesomeIcon icon={faTimes} />
+            <FontAwesomeIcon className="text-danger" icon={faTimes} />
           </CardLink>
           <ModalHeader>
             {property.id ? "Edit Property" : "Add A New Property"}
           </ModalHeader>
-          <AvForm>
+          <Form>
             <ModalBody>
               <FormGroup>
                 <Label for="address">
                   Address <span className="text-danger">*</span>
                 </Label>
-                <AvField
+                <Input
                   type="text"
                   name="street"
                   placeholder="1234 Main St"
@@ -144,11 +144,11 @@ const Modal = ({ onRequestClose }) => {
                     <Label for="city">
                       City <span className="text-danger">*</span>
                     </Label>
-                    <AvField
+                    <Input
                       type="text"
                       name="city"
                       onChange={handleControlledInputChange}
-                      value={property.city}
+                      defaultValue={property.city}
                       validate={{
                         required: {
                           value: true,
@@ -163,12 +163,12 @@ const Modal = ({ onRequestClose }) => {
                     <Label for="state">
                       State <span className="text-danger">*</span>
                     </Label>
-                    <AvField
+                    <Input
                       type="text"
                       name="state"
                       id="exampleState"
                       onChange={handleControlledInputChange}
-                      value={property.state}
+                      defaultValue={property.state}
                       validate={{
                         required: {
                           value: true,
@@ -183,11 +183,11 @@ const Modal = ({ onRequestClose }) => {
                     <Label for="zip">
                       Zip <span className="text-danger">*</span>
                     </Label>
-                    <AvField
+                    <Input
                       type="number"
                       name="zip"
                       onChange={handleControlledInputChange}
-                      value={property.zip}
+                      defaultValue={property.zip}
                       validate={{
                         required: {
                           value: true,
@@ -214,7 +214,7 @@ const Modal = ({ onRequestClose }) => {
                   <Col>
                     <FormGroup>
                       <Label for="leaseEndDate">Lease Ends</Label>
-                      <AvField
+                      <Input
                         type="date"
                         name="leaseEndDate"
                         onChange={handleControlledInputChange}
@@ -263,7 +263,9 @@ const Modal = ({ onRequestClose }) => {
                 <Row>
                   <Col>
                     <FormGroup>
-                      <Label for="lastPaymentAmount">Last Payment Made</Label>
+                      <Label for="lastPaymentAmount">
+                        Amount of Last Payment Made
+                      </Label>
                       <Input
                         type="number"
                         name="lastPaymentAmount"
@@ -274,12 +276,11 @@ const Modal = ({ onRequestClose }) => {
                   </Col>
                   <Col>
                     <Label for="leaseTerm">Lease Term</Label>
-                    <AvField
+                    <Input
                       type="select"
                       name="leaseTerm"
                       onChange={handleControlledInputChange}
                       value={property.leaseTerm}
-                      defaultValue={property.leaseTerm}
                       required
                     >
                       <option value="Vacant">Vacant</option>
@@ -288,7 +289,7 @@ const Modal = ({ onRequestClose }) => {
                       <option value="Seasonal">Seasonal</option>
                       <option value="Air BnB">Air BnB</option>
                       <option value="Under Repair">Under Repair</option>
-                    </AvField>
+                    </Input>
                   </Col>
                 </Row>
               </FormGroup>
@@ -298,7 +299,8 @@ const Modal = ({ onRequestClose }) => {
             </ModalBody>
             <ModalFooter>
               <Button
-                color="primary"
+                outline
+                color="success"
                 onClick={(event) => {
                   event.preventDefault();
                   if (
@@ -315,11 +317,16 @@ const Modal = ({ onRequestClose }) => {
               >
                 {property.id ? "Update" : "Add"}
               </Button>{" "}
-              <Button type="button" onClick={onRequestClose}>
+              <Button
+                type="button"
+                outline
+                color="dark"
+                onClick={onRequestClose}
+              >
                 Close
               </Button>
             </ModalFooter>
-          </AvForm>
+          </Form>
         </div>
       </div>
     </div>
@@ -356,9 +363,15 @@ export const PropertyFormEdit = (propertyObjId) => {
   return (
     <main>
       {isModalOpen && <Modal onRequestClose={toggleModal} />}
-      <CardLink color="warning" onClick={toggleModal} type="button">
+      <Button
+        outline
+        color="secondary"
+        className="propertyBtn"
+        onClick={toggleModal}
+        type="button"
+      >
         Edit
-      </CardLink>
+      </Button>
     </main>
   );
 };

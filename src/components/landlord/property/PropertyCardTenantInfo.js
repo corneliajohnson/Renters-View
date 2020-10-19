@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { PropertyContext } from "./PropertyProvider";
 
 export const PropertyCardTenantInfo = (propertyId) => {
-  const { getPropertyById, deleteProperty } = useContext(PropertyContext);
+  const { getPropertyById } = useContext(PropertyContext);
   const [property, setProperty] = useState({});
   const [tenants, setTenants] = useState([]);
 
@@ -14,7 +14,7 @@ export const PropertyCardTenantInfo = (propertyId) => {
     });
   }, []);
   return tenants.length === 0 ? (
-    "Not Tenants"
+    <p>No Tenants</p>
   ) : tenants.length === 1 ? (
     <p>
       Tenant:

@@ -14,3 +14,15 @@
 .display-2 {
   color: #fa2d2d;
 }
+
+.propertyBtn {
+  width: 80px;
+}
+
+.propertyCardLink {
+  color: #f2af58;
+}
+
+.propertyCardLink:hover {
+  color: #fa2d2d;
+}

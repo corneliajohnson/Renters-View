@@ -8,6 +8,7 @@ import {
   Row,
   Col,
 } from "reactstrap";
+import { PropertyFormEdit } from "./PropertyForm";
 import { PropertyContext } from "./PropertyProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -123,14 +124,11 @@ const Modal = ({ onRequestClose }) => {
           </ModalBody>
         </Form>
         <Button
-          onClick={() => {
-            deleteProperty(property.id);
-          }}
+          outline
+          color="secondary"
+          type="button"
+          onClick={onRequestClose}
         >
-          {" "}
-          Delete
-        </Button>
-        <Button type="button" onClick={onRequestClose}>
           Close
         </Button>
       </div>
@@ -147,7 +145,11 @@ export const PropertyInfoModal = (propertyObj) => {
   return (
     <div>
       {isModalOpen && <Modal onRequestClose={toggleModal} />}
-      <CardLink onClick={toggleModal} type="button">
+      <CardLink
+        className="propertyCardLink"
+        onClick={toggleModal}
+        type="button"
+      >
         <h4>{propertyObj.street}</h4>
         <h5>
           {propertyObj.city} {propertyObj.state} {propertyObj.zip}
