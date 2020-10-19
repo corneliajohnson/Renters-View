@@ -31,6 +31,36 @@
       "leaseTerm": "Air BnB",
       "image": null,
       "landlordId": 1
+    },
+    {
+      "street": "7824 Cambel road",
+      "city": "Ocala",
+      "state": "FL",
+      "zip": "34576",
+      "leaseStartDate": "2020-10-15",
+      "leaseEndDate": "2021-10-06",
+      "rentAmount": 750,
+      "secuirtyDesposit": 750,
+      "paymentDay": "2020-11-19",
+      "lastPaymentAmount": 456,
+      "leaseTerm": "12 Month",
+      "image": null,
+      "landlordId": 1,
+      "id": 4
+    },
+    {
+      "street": "2345 Perry Court",
+      "city": "Quincy",
+      "state": "FL",
+      "zip": "32301",
+      "leaseStartDate": "2020-11-19",
+      "leaseEndDate": "2021-12-19",
+      "rentAmount": null,
+      "secuirtyDesposit": null,
+      "lastPaymentAmount": null,
+      "image": null,
+      "landlordId": 1,
+      "id": 5
     }
   ],
   "landlords": [
@@ -93,9 +123,36 @@
       "phone": "987-973-8907",
       "propertyId": 3,
       "landlordId": 1
+    },
+    {
+      "firstName": "Thomas",
+      "lastName": "Engles",
+      "email": "engles@gmail.com",
+      "phone": "850-456-9876",
+      "propertyId": 2,
+      "landlordId": 1,
+      "id": 4
+    },
+    {
+      "firstName": "Cindy",
+      "lastName": "Bubble",
+      "email": "cindy@gmail.com",
+      "phone": "456-987-3456",
+      "propertyId": 5,
+      "landlordId": 1,
+      "id": 5
     }
   ],
-  "messages": [],
+  "messages": [
+    {
+      "tenantId": 2,
+      "landlordId": 1,
+      "text": "Welcome Gabby! Feel free to contact through the messaging anytime",
+      "date": 1603140626196,
+      "sender": "landlord",
+      "id": 1
+    }
+  ],
   "maintenanceRequests": [
     {
       "id": 1,
@@ -103,7 +160,7 @@
       "synopsis": "broken sink",
       "price": "780",
       "contractor": "/tom",
-      "complete": false,
+      "complete": true,
       "note": "ghjhjkkl",
       "dateComplete": "2020-10-14",
       "dateAdded": 1603130374646

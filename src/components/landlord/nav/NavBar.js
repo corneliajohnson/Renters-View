@@ -7,14 +7,14 @@ export const NavBar = () => {
   return (
     <ul className="navbar sticky-top bg-white">
       <li className="navbar__item active">
-        <NavLink className="navbar__link" smooth to="/">
+        <NavHashLink className="navbar__link" smooth to="/#properties">
           <img
             className="m-0 p-0"
             width="40%"
             src={require("../../../img/logo.png")}
             alt="logo"
           />
-        </NavLink>
+        </NavHashLink>
       </li>
       <li className="navbar__item" to="/#tenants">
         <NavHashLink
