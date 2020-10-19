@@ -24,8 +24,8 @@ export const PropertyCard = ({
           Rent: {property.rentAmount ? property.rentAmount : "N/A"}
         </CardText>
         <Row>
-          <Col className="text-left">{editBtn}</Col>
-          <Col className="text-right">{deleteBtn}</Col>
+          <Col className="text-left">{deleteBtn}</Col>
+          <Col className="text-right">{editBtn}</Col>
         </Row>
       </Card>
     </div>

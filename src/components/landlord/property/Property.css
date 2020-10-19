@@ -20,9 +20,9 @@
 }
 
 .propertyCardLink {
-  color: #f2af58;
+  color: #000;
 }
 
 .propertyCardLink:hover {
-  color: #fa2d2d;
+  color: #f2af58;
 }

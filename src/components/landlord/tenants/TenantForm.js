@@ -3,6 +3,7 @@ import { TenantContext } from "./TenantProvider";
 import { PropertyContext } from "../property/PropertyProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import "./Tenant.css";
 
 import {
   Col,
@@ -59,7 +60,7 @@ const Modal = ({ onRequestClose }) => {
         firstName: tenant.firstName,
         lastName: tenant.lastName,
         email: tenant.email,
-        phone: tenant.phone ? tenant.phone : false,
+        phone: tenant.phone,
         propertyId: parseInt(tenant.propertyId),
         landlordId: parseInt(localStorage.landlord),
       });
@@ -68,7 +69,7 @@ const Modal = ({ onRequestClose }) => {
         firstName: tenant.firstName,
         lastName: tenant.lastName,
         email: tenant.email,
-        phone: tenant.phone ? tenant.phone : false,
+        phone: tenant.phone,
         propertyId: parseInt(tenant.propertyId),
         landlordId: parseInt(localStorage.landlord),
       });
@@ -98,15 +99,15 @@ const Modal = ({ onRequestClose }) => {
   return (
     <div className="modal__backdrop">
       <div className="modal__container">
-        <Form>
+        <Form className="text-left">
           <CardLink
-            className="d-flex justify-content-end"
+            className="d-flex justify-content-end text-danger"
             type="button"
             onClick={onRequestClose}
           >
             <FontAwesomeIcon icon={faTimes} />
           </CardLink>
-          <ModalHeader>
+          <ModalHeader className="display-3">
             {tenant.id ? "Edit Tenant" : "Add New Tenant"}
           </ModalHeader>
           <Row form>
@@ -118,7 +119,7 @@ const Modal = ({ onRequestClose }) => {
                 <Input
                   type="text"
                   name="firstName"
-                  value={tenant.firstName}
+                  defaultValue={tenant.firstName}
                   onChange={handleControlledInputChange}
                 />
               </FormGroup>
@@ -131,7 +132,7 @@ const Modal = ({ onRequestClose }) => {
                 <Input
                   type="text"
                   name="lastName"
-                  value={tenant.lastName}
+                  defaultValue={tenant.lastName}
                   onChange={handleControlledInputChange}
                 />
               </FormGroup>
@@ -145,7 +146,7 @@ const Modal = ({ onRequestClose }) => {
               <Input
                 type="email"
                 name="email"
-                value={tenant.email}
+                defaultValue={tenant.email}
                 onChange={handleControlledInputChange}
               />
             </Col>
@@ -156,7 +157,7 @@ const Modal = ({ onRequestClose }) => {
             </Label>
             <Col sm={10}>
               <Input
-                type="number"
+                type="text"
                 name="phone"
                 defaultValue={tenant.phone}
                 onChange={handleControlledInputChange}
@@ -166,7 +167,7 @@ const Modal = ({ onRequestClose }) => {
           </FormGroup>
           <FormGroup row>
             <Label for="ProopertyId" sm={2}>
-              Address
+              Address<span className="text-danger">*</span>
             </Label>
             <Col sm={10}>
               <Input
@@ -188,27 +189,36 @@ const Modal = ({ onRequestClose }) => {
             All fields with * are required to submit form.
           </p>
         </Form>
-        <Button
-          color="primary"
-          onClick={(event) => {
-            event.preventDefault();
-            if (
-              tenant.firstName &&
-              tenant.lastName &&
-              tenant.email &&
-              tenant.propertyId &&
-              tenant.propertyId !== "0"
-            ) {
-              constructTenantObj();
-              onRequestClose();
-            }
-          }}
-        >
-          {tenant.id ? "Update" : "Add"}
-        </Button>
-        <Button type="button" onClick={onRequestClose}>
-          Close
-        </Button>
+        <div className="text-right">
+          <Button
+            outline
+            color="success"
+            onClick={(event) => {
+              event.preventDefault();
+              if (
+                tenant.firstName &&
+                tenant.lastName &&
+                tenant.email &&
+                tenant.propertyId &&
+                tenant.propertyId !== "0"
+              ) {
+                constructTenantObj();
+                onRequestClose();
+              }
+            }}
+          >
+            {tenant.id ? "Update" : "Add"}
+          </Button>
+          <Button
+            className="m-2"
+            outline
+            color="secondary"
+            type="button"
+            onClick={onRequestClose}
+          >
+            Close
+          </Button>
+        </div>
       </div>
     </div>
   );
@@ -242,9 +252,15 @@ export const EditTenantForm = (tenantObjId) => {
   return (
     <main>
       {isModalOpen && <Modal onRequestClose={toggleModal} />}
-      <CardLink color="warning" onClick={toggleModal} type="button">
+      <Button
+        outline
+        color="secondary"
+        className="tenantCardBtn"
+        onClick={toggleModal}
+        type="button"
+      >
         Edit
-      </CardLink>
+      </Button>
     </main>
   );
 };

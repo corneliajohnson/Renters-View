@@ -8,7 +8,7 @@
       "zip": "32456",
       "leaseStartDate": "2020-10-15",
       "leaseEndDate": "2021-10-30",
-      "rentAmount": 900,
+      "rentAmount": 950,
       "secuirtyDesposit": 900,
       "paymentDay": "2020-11-08",
       "lastPaymentAmount": 900,
@@ -78,19 +78,19 @@
   "tenants": [
     {
       "id": 2,
-      "firstName": "22",
-      "lastName": "353535",
-      "email": "44333",
-      "phone": false,
+      "firstName": "Gabby",
+      "lastName": "Lee",
+      "email": "gabby@gmail.com",
+      "phone": "345-876-8990",
       "propertyId": 3,
       "landlordId": 1
     },
     {
       "id": 3,
-      "firstName": "qEGFG",
-      "lastName": "EQWEWQFE",
-      "email": "WWEEFE",
-      "phone": false,
+      "firstName": "Joe",
+      "lastName": "Wilson",
+      "email": "joewillie@gmail.com",
+      "phone": "987-973-8907",
       "propertyId": 3,
       "landlordId": 1
     }

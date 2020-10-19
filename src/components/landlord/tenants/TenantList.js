@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { TenantContext } from "./TenantProvider";
 import { TenantCard } from "./TenantCard";
-import { CardLink } from "reactstrap";
+import { Button } from "reactstrap";
 import { EditTenantForm } from "./TenantForm";
 
 export const TenantList = () => {
@@ -29,14 +29,17 @@ export const TenantList = () => {
               key={tenant.id}
               tenant={tenant}
               deleteBtn={
-                <CardLink
+                <Button
+                  outline
+                  color="danger"
+                  className="tenantCardBtn"
                   onClick={() => {
                     deleteTenant(tenant.id);
                   }}
                 >
                   {" "}
                   Delete
-                </CardLink>
+                </Button>
               }
               editBtn={<EditTenantForm id={tenant.id} />}
             />

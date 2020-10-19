@@ -111,10 +111,10 @@ const Modal = ({ onRequestClose }) => {
           >
             <FontAwesomeIcon className="text-danger" icon={faTimes} />
           </CardLink>
-          <ModalHeader>
-            {property.id ? "Edit Property" : "Add A New Property"}
-          </ModalHeader>
-          <Form>
+          <Form className="text-left">
+            <ModalHeader>
+              {property.id ? "Edit Property" : "Add A New Property"}
+            </ModalHeader>
             <ModalBody>
               <FormGroup>
                 <Label for="address">

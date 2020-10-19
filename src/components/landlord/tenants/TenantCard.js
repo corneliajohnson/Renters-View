@@ -11,22 +11,15 @@ export const TenantCard = ({ tenant, deleteBtn, editBtn }) => {
               {tenant.firstName} {tenant.lastName}
             </h4>
           </CardTitle>
-
           <CardText>
             Phone Number: {tenant.phone ? tenant.phone : "N/A"}
           </CardText>
           <CardText>Email: {tenant.email}</CardText>
-          {/* {tenant.propertyId === false || tenant.propertyId === null ? (
-            "Address: N/A"
-          ) : (
-            <>
-              Address:
-              <CardText>{tenant.property.street}</CardText>
-              <CardText>
-                {tenant.property.city} {tenant.property.city}
-              </CardText>
-            </>
-          )} */}
+          Address:
+          <CardText>
+            {tenant.property.street} {"\n"}
+            {tenant.property.city} {tenant.property.state}
+          </CardText>
           <Row>
             <Col>{deleteBtn}</Col> <Col>{editBtn}</Col>
           </Row>
