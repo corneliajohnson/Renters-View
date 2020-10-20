@@ -5,12 +5,14 @@ import "./Property.css";
 import { PropertyFormEdit } from "./PropertyForm";
 import { PropertyInfoModal } from "./PropertyInfoModal";
 import { PropertyCardTenantInfo } from "./PropertyCardTenantInfo";
+import { TenantContext } from "../tenants/TenantProvider";
 import { Button } from "reactstrap";
 
 export const PropertyList = () => {
   const { properties, getProperties, deleteProperty } = useContext(
     PropertyContext
   );
+  const { getTenants } = useContext(TenantContext);
 
   const [filteredProperies, setFilterdProperties] = useState([]);
 
@@ -52,7 +54,7 @@ export const PropertyList = () => {
                     color="danger"
                     className="propertyBtn"
                     onClick={() => {
-                      deleteProperty(property.id);
+                      deleteProperty(property.id).then(getTenants);
                       //window.confirm('When you delete the property all assined tenants are erased. \n Are you sure you want to delete?')
                     }}
                   >
