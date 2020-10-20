@@ -38,8 +38,8 @@ export const MessageShowing = (tenantConversation) => {
   return (
     <>
       <div className="inputAndMessage">
-        <div className="messageShowingArea">
-          <h3 className="text-center messageNameTitle p-4">
+        <div className="messageShowingArea overflow-auto">
+          <h3 className="text-center messageNameTitle p-4 sticky-top bg-white">
             {tenant.id
               ? `${tenant.firstName} ${tenant.lastName}`
               : "Select a Tenant"}

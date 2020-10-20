@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { MessageContext } from "./MessageProvider";
-import { InputGroup, InputGroupAddon, Button, Input } from "reactstrap";
+import { InputGroup, InputGroupAddon, Button, Input, Form } from "reactstrap";
 import "./Message.css";
 
 export const MessageInput = (reciever) => {
@@ -25,33 +25,39 @@ export const MessageInput = (reciever) => {
         text: message.text.trim(),
         date: Date.now(),
         sender: "landlord",
-      });
+      })
+        //clear the message after its been sent
+        .then((_) => {
+          message.text = "";
+        });
     }
   };
   return (
     <>
-      <InputGroup>
-        <Input
-          className="messageTextInput"
-          type="text"
-          name="text"
-          defaultValue=""
-          placeholder="Write a message"
-          onChange={handleControlledInputChange}
-        />
-        <InputGroupAddon addonType="append">
-          <Button
-            color="secondary"
-            onClick={() => {
-              if (message.text) {
-                constructMessage();
-              }
-            }}
-          >
-            Send
-          </Button>
-        </InputGroupAddon>
-      </InputGroup>
+      <Form>
+        <InputGroup>
+          <Input
+            className="messageTextInput"
+            type="text"
+            name="text"
+            value={message.text}
+            onChange={handleControlledInputChange}
+          />
+          <InputGroupAddon addonType="append">
+            <Button
+              color="secondary"
+              onClick={(e) => {
+                if (message.text) {
+                  e.preventDefault();
+                  constructMessage();
+                }
+              }}
+            >
+              Send
+            </Button>
+          </InputGroupAddon>
+        </InputGroup>
+      </Form>
     </>
   );
 };

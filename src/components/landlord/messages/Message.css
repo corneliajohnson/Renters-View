@@ -3,15 +3,16 @@
 /* f2af58 */
 
 .messageShowingArea {
-  border: 1px solid gray;
+  border: 0.3px solid gray;
   height: 40em;
 }
 .inputAndMessage {
-  border: 1px solid gray;
+  border: 0.3px solid gray;
+  border-radius: 5px;
 }
 
 .messageNameTitle {
-  border-bottom: 1px gray solid;
+  border-bottom: 0.3px gray solid;
   color: #f2af58;
 }
 
@@ -19,6 +20,7 @@
 .landLordMessageBox {
   border: 1px solid white;
   border-radius: 5px;
+  max-width: 45%;
 }
 
 .landLordMessageBox {
