@@ -4,7 +4,7 @@ import { EditLandlordForm } from "./LandlordEditForm";
 import { Row, Col } from "reactstrap";
 
 export const AccountView = () => {
-  const { getLandlordById } = useContext(LandlordContext);
+  const { getLandlordById, landlords } = useContext(LandlordContext);
 
   const [landlord, setLandlord] = useState([]);
   const [properties, setProperties] = useState([]);
@@ -17,23 +17,45 @@ export const AccountView = () => {
       setProperties(response.properties);
       setTenants(response.tenants);
     });
-  }, []);
+  }, [landlords]);
 
   return (
     <>
       <div className="container">
-        <h1 className="display-2 text-center">My Account</h1>
-        <Row>
-          <Col sm={4}>Image</Col>
-          <Col sm={8}>
+        <h1 className="display-2 text-center m-5">My Account</h1>
+        <Row className="m-5">
+          <Col className="p-5" sm={4}>
+            <img
+              width="100%"
+              src={require("../../../img/blank-user.png")}
+              alt="no image"
+            />
+          </Col>
+          <Col className="p-4" sm={8}>
             <h3 className="display-4">
               {landlord.firstName} {landlord.lastName}
             </h3>
-            <p>Phone: {landlord.phone}</p>
-            <p>Email: {landlord.email}</p>
-            <p>Properties: {properties.length}</p>
-            <p>Tenants: {tenants.length}</p>
+            <p>
+              {" "}
+              <span style={{ fontWeight: "bold" }}>Phone:</span>{" "}
+              {landlord.phone}
+            </p>
+            <p>
+              <span style={{ fontWeight: "bold" }}>Email:</span>{" "}
+              {landlord.email}
+            </p>
+            <p>
+              <span style={{ fontWeight: "bold" }}>Properties: </span>{" "}
+              {properties.length}
+            </p>
+            <p>
+              <span style={{ fontWeight: "bold" }}>Tenants: </span>
+              {tenants.length}
+            </p>
             <EditLandlordForm />
+            <p className="m-3">
+              Your name, phone Number, email are visible to your tenants.
+            </p>
           </Col>
         </Row>
       </div>
