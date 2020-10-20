@@ -175,13 +175,13 @@
     {
       "id": 1,
       "propertyId": 2,
-      "synopsis": "broken sink",
+      "synopsis": "Broken Sink",
       "price": "780",
       "contractor": "tom",
       "complete": true,
       "dateComplete": "2020-10-09",
-      "note": "ghjhjkkl",
-      "dateAdded": 1603221839750
+      "note": "Sharp edge exposed",
+      "dateAdded": 1603225113140
     },
     {
       "id": 2,

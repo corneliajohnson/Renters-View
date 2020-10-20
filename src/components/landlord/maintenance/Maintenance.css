@@ -1,0 +1,11 @@
+.maintenanceBtn {
+  width: 80px;
+}
+
+.mainentanceCardLink {
+  color: #000;
+}
+
+.maintenanceCardLink:hover {
+  color: #f2af58;
+}

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { ListGroupItem, Input, Col, Row } from "reactstrap";
+import { ListGroupItem, Col, Row } from "reactstrap";
+import "./Maintenance.css";
 
 export const MaintenanceCard = ({ request, titleLink, deleteBtn, editBtn }) => {
   return (
     <ListGroupItem>
-      <h4>{titleLink}</h4>
+      <h4 className="mainentanceCardLink">{titleLink}</h4>
       <Row>
         <Col sm={10}>
           {" "}
@@ -12,7 +13,13 @@ export const MaintenanceCard = ({ request, titleLink, deleteBtn, editBtn }) => {
             {request.property.street} {request.property.city}{" "}
             {request.property.state} {request.property.zip}{" "}
           </p>
-          <small>{request.complete ? "Complete" : "InComplete"}</small>
+          <small>
+            {request.complete ? (
+              `Complete ${request.dateComplete}`
+            ) : (
+              <p className="text-danger">Pending</p>
+            )}
+          </small>
         </Col>
         <Col sm={2}>
           <Row>

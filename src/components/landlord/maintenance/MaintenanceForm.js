@@ -264,7 +264,7 @@ export const EditMaintenanceForm = (requestObjId) => {
       <Button
         outline
         color="secondary"
-        className="m-1"
+        className="m-1 maintenanceBtn"
         onClick={toggleModal}
         type="button"
       >

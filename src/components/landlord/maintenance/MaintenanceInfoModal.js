@@ -1,5 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
-import { CardLink, Form, Button, ModalHeader, ModalBody } from "reactstrap";
+import {
+  CardLink,
+  Form,
+  Button,
+  ModalHeader,
+  ModalBody,
+  CardText,
+  FormGroup,
+} from "reactstrap";
 import { MaintenanceContext } from "./MaintenanceProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -43,30 +51,36 @@ const Modal = ({ onRequestClose }) => {
   return (
     <div className="modal__backdrop">
       <div className="modal__container">
-        <Form>
-          <CardLink
-            className="d-flex justify-content-end"
-            type="button"
-            onClick={onRequestClose}
-          >
-            <FontAwesomeIcon icon={faTimes} />
-          </CardLink>
-          <ModalHeader>
-            <h3>{request.synopsis}</h3>
-          </ModalHeader>
-          <ModalBody>
-            <p>
-              Address: {property.street} {property.city} {property.state}{" "}
-              {property.zip}
-            </p>
-            <p>Contractor: {request.contractor ? request.contractor : "N/A"}</p>
-            <p>Price: {request.price ? request.price : "N/A"}</p>
-            <p>Complete: {request.complete ? "Yes" : "No"}</p>
-            <p>Date Added: {request.dateAdded}</p>
-            <p>Note: {request.note ? request.note : "N/A"}</p>
-          </ModalBody>
-        </Form>
-        <Button type="button" onClick={onRequestClose}>
+        <CardLink
+          className="d-flex justify-content-end text-danger"
+          type="button"
+          onClick={onRequestClose}
+        >
+          <FontAwesomeIcon icon={faTimes} />
+        </CardLink>
+        <ModalHeader>
+          <h3>{request.synopsis}</h3>
+        </ModalHeader>
+        <ModalBody style={{ fontSize: "0.6em" }}>
+          <p>
+            Address: {property.street} {property.city} {property.state}{" "}
+            {property.zip}
+          </p>
+          <p>Contractor: {request.contractor ? request.contractor : "N/A"}</p>
+          <p>Price: {request.price ? request.price : "N/A"}</p>
+          <p>Complete: {request.complete ? "Yes" : "No"}</p>
+          <p>
+            Date Complet: {request.dateComplete ? request.dateComplete : "N/A"}
+          </p>
+          <p>Date Added: {request.dateAdded}</p>
+          <p>Note: {request.note ? request.note : "N/A"}</p>
+        </ModalBody>
+        <Button
+          type="button"
+          outline
+          color="secondary"
+          onClick={onRequestClose}
+        >
           Close
         </Button>
       </div>
@@ -83,7 +97,11 @@ export const MaintenanceInfoModal = (requestObj) => {
   return (
     <div>
       {isModalOpen && <Modal onRequestClose={toggleModal} />}
-      <CardLink onClick={toggleModal} type="button">
+      <CardLink
+        className="mainentanceCardLink"
+        onClick={toggleModal}
+        type="button"
+      >
         {requestObj.synopsis}
       </CardLink>
     </div>

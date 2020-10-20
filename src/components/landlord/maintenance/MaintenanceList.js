@@ -4,7 +4,8 @@ import { ListGroup } from "reactstrap";
 import { MaintenanceCard } from "./MaintenanceCard";
 import { EditMaintenanceForm } from "./MaintenanceForm";
 import { MaintenanceInfoModal } from "./MaintenanceInfoModal";
-import { Button } from "reactstrap";
+import { Button, ButtonGroup } from "reactstrap";
+import "./Maintenance.css";
 
 export const MaintenanceList = () => {
   const {
@@ -20,15 +21,53 @@ export const MaintenanceList = () => {
   }, []);
 
   useEffect(() => {
+    allRequest();
+  }, [maintenanceRequests]);
+
+  const allRequest = () => {
     const subsetRequest = maintenanceRequests.filter(
       (request) =>
         request.property.landlordId === parseInt(localStorage.landlord)
     );
     setFilteredRequest(subsetRequest);
-  }, [maintenanceRequests]);
+  };
+
+  const completeRequest = () => {
+    const subsetRequest = maintenanceRequests.filter(
+      (request) =>
+        request.property.landlordId === parseInt(localStorage.landlord) &&
+        request.complete === true
+    );
+    setFilteredRequest(subsetRequest);
+  };
+
+  const pendingRequest = () => {
+    const subsetRequest = maintenanceRequests.filter(
+      (request) =>
+        request.property.landlordId === parseInt(localStorage.landlord) &&
+        request.complete === false
+    );
+    setFilteredRequest(subsetRequest);
+  };
 
   return (
     <div className="container">
+      <div className="text-center">
+        <ButtonGroup>
+          <Button outline color="secondary" onClick={() => allRequest()}>
+            All Request
+          </Button>
+          <Button outline color="secondary" onClick={() => pendingRequest()}>
+            PendingRequest
+          </Button>
+          <Button outline color="secondary" onClick={() => completeRequest()}>
+            Complete Request
+          </Button>
+        </ButtonGroup>
+      </div>
+      <small className="text-secondary">
+        Add date to task to mark as complete
+      </small>
       <ListGroup>
         {filteredRequest.map((request) => {
           return (
@@ -37,7 +76,7 @@ export const MaintenanceList = () => {
               request={request}
               deleteBtn={
                 <Button
-                  className="m-1"
+                  className="m-1 maintenanceBtn"
                   outline
                   color="danger"
                   onClick={() => {
