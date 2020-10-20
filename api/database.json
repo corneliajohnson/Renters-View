@@ -65,12 +65,12 @@
   ],
   "landlords": [
     {
+      "id": 1,
       "firstName": "Cornelia",
       "lastName": "Johnson",
-      "email": "cj@gmail.com",
+      "email": "corneliaj@gmail.com",
       "phone": 2223333444,
-      "image": false,
-      "id": 1
+      "image": false
     },
     {
       "firstName": "Tim",

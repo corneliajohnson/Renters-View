@@ -2,12 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { TenantContext } from "./TenantProvider";
 import { TenantCard } from "./TenantCard";
 import { EditTenantForm } from "./TenantForm";
-import { PropertyContext } from "../property/PropertyProvider";
 import { TenantDelete } from "./TenantDelete";
 
 export const TenantList = () => {
-  const { getTenants, tenants, deleteTenant } = useContext(TenantContext);
-  const { getProperties } = useContext(PropertyContext);
+  const { getTenants, tenants } = useContext(TenantContext);
   const [filteredTenants, setFilteredTenants] = useState([]);
 
   useEffect(() => {

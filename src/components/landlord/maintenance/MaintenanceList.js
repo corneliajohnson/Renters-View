@@ -30,7 +30,6 @@ export const MaintenanceList = () => {
 
   return (
     <div className="container">
-      {console.log(filteredRequest)}
       <ListGroup>
         {filteredRequest.map((request) => {
           return (

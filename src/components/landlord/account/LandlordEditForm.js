@@ -1,10 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { TenantContext } from "./TenantProvider";
-import { PropertyContext } from "../property/PropertyProvider";
+import { LandlordContext, LandlordProvider } from "./LandlordProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { TenantsChanged } from "../property/PropertyCardTenantInfo";
-import "./Tenant.css";
 
 import {
   Col,
@@ -17,57 +14,46 @@ import {
   ModalHeader,
   CardLink,
 } from "reactstrap";
-let tenantId = 0; //tenant card selected
 
 const Modal = ({ onRequestClose }) => {
-  const { getProperties, properties } = useContext(PropertyContext);
-  const { addTenant, getTenantById, updateTenant } = useContext(TenantContext);
+  const {
+    getLandlordById,
+    updateLandlord,
+    landlords,
+    getLandlords,
+  } = useContext(LandlordContext);
 
-  const [tenant, setTenant] = useState({});
+  const [landlord, setLandlord] = useState({});
 
-  //for property dropdown
   useEffect(() => {
-    getProperties();
+    getLandlords();
   }, []);
 
-  //get tenants for edit
+  //get info for currenant landlord
   useEffect(() => {
-    if (tenantId) {
-      getTenantById(tenantId).then((tenant) => {
-        setTenant(tenant);
-      });
-    }
+    const currentLandlord = parseInt(localStorage.landlord);
+    getLandlordById(currentLandlord).then((res) => {
+      setLandlord(res);
+    });
   }, []);
 
   //get name of each input
   const handleControlledInputChange = (event) => {
-    const newTenant = { ...tenant };
-    newTenant[event.target.name] = event.target.value;
-    setTenant(newTenant);
+    const newLandlord = { ...landlord };
+    newLandlord[event.target.name] = event.target.value;
+    setLandlord(newLandlord);
   };
 
-  //add or edit tenant in database
-  const constructTenantObj = () => {
-    if (tenant.id) {
-      updateTenant({
-        id: tenant.id,
-        firstName: tenant.firstName,
-        lastName: tenant.lastName,
-        email: tenant.email,
-        phone: tenant.phone,
-        propertyId: parseInt(tenant.propertyId),
-        landlordId: parseInt(localStorage.landlord),
-      }).then(getProperties);
-    } else {
-      addTenant({
-        firstName: tenant.firstName,
-        lastName: tenant.lastName,
-        email: tenant.email,
-        phone: tenant.phone,
-        propertyId: parseInt(tenant.propertyId),
-        landlordId: parseInt(localStorage.landlord),
-      }).then(getProperties);
-    }
+  //edit current landlord obj
+  const constructLandlord = () => {
+    updateLandlord({
+      id: parseInt(localStorage.landlord),
+      firstName: landlord.firstName,
+      lastName: landlord.lastName,
+      email: landlord.email,
+      phone: landlord.phone,
+      image: false,
+    });
   };
 
   // Use useEffect to add an event listener to the document
@@ -101,9 +87,7 @@ const Modal = ({ onRequestClose }) => {
           >
             <FontAwesomeIcon icon={faTimes} />
           </CardLink>
-          <ModalHeader className="display-3">
-            {tenant.id ? "Edit Tenant" : "Add New Tenant"}
-          </ModalHeader>
+          <ModalHeader className="display-3">Edit Account</ModalHeader>
           <Row form>
             <Col md={6}>
               <FormGroup>
@@ -113,7 +97,7 @@ const Modal = ({ onRequestClose }) => {
                 <Input
                   type="text"
                   name="firstName"
-                  defaultValue={tenant.firstName}
+                  defaultValue={landlord.firstName}
                   onChange={handleControlledInputChange}
                 />
               </FormGroup>
@@ -126,7 +110,7 @@ const Modal = ({ onRequestClose }) => {
                 <Input
                   type="text"
                   name="lastName"
-                  defaultValue={tenant.lastName}
+                  defaultValue={landlord.lastName}
                   onChange={handleControlledInputChange}
                 />
               </FormGroup>
@@ -140,48 +124,24 @@ const Modal = ({ onRequestClose }) => {
               <Input
                 type="email"
                 name="email"
-                defaultValue={tenant.email}
+                defaultValue={landlord.email}
                 onChange={handleControlledInputChange}
               />
             </Col>
           </FormGroup>
           <FormGroup row>
-            <Label for="email" sm={2}>
-              Phone Number
+            <Label for="phone" sm={2}>
+              Phone<span className="text-danger">*</span>
             </Label>
             <Col sm={10}>
               <Input
                 type="text"
                 name="phone"
-                defaultValue={tenant.phone}
+                defaultValue={landlord.phone}
                 onChange={handleControlledInputChange}
-                placeholder="123-456-7890"
               />
             </Col>
           </FormGroup>
-          <FormGroup row>
-            <Label for="ProopertyId" sm={2}>
-              Address<span className="text-danger">*</span>
-            </Label>
-            <Col sm={10}>
-              <Input
-                type="select"
-                name="propertyId"
-                value={tenant.propertyId}
-                onChange={handleControlledInputChange}
-              >
-                <option value="0"></option>
-                {properties.map((property) => (
-                  <option key={property.id} value={property.id}>
-                    {property.street} {property.city} {property.state}
-                  </option>
-                ))}
-              </Input>
-            </Col>
-          </FormGroup>
-          <p className="text-danger">
-            All fields with * are required to submit form.
-          </p>
         </Form>
         <div className="text-right">
           <Button
@@ -189,20 +149,13 @@ const Modal = ({ onRequestClose }) => {
             color="success"
             onClick={(event) => {
               event.preventDefault();
-              if (
-                tenant.firstName &&
-                tenant.lastName &&
-                tenant.email &&
-                tenant.propertyId &&
-                tenant.propertyId !== "0"
-              ) {
-                constructTenantObj();
+              if (landlord.firstName && landlord.lastName && landlord.email) {
+                constructLandlord();
                 onRequestClose();
-                TenantsChanged(); //update property cards
               }
             }}
           >
-            {tenant.id ? "Update" : "Add"}
+            Update
           </Button>
           <Button
             className="m-2"
@@ -219,30 +172,8 @@ const Modal = ({ onRequestClose }) => {
   );
 };
 
-//add tenant button modal
-export const TenantForm = () => {
-  tenantId = 0;
-  const [isModalOpen, setModalIsOpen] = useState(false);
-  const toggleModal = () => {
-    setModalIsOpen(!isModalOpen);
-  };
-
-  return (
-    <div className="container text-center">
-      <h1 id="tenants" className="display-2 m-5">
-        My Tenants
-      </h1>
-      {isModalOpen && <Modal onRequestClose={toggleModal} />}
-      <Button onClick={toggleModal} outline color="secondary" type="button">
-        Add New Tenant
-      </Button>
-    </div>
-  );
-};
-
-//edit tenant button modal
-export const EditTenantForm = (tenantObjId) => {
-  tenantId = tenantObjId.id;
+//edit property button modal
+export const EditLandlordForm = () => {
   const [isModalOpen, setModalIsOpen] = useState(false);
   const toggleModal = () => {
     setModalIsOpen(!isModalOpen);

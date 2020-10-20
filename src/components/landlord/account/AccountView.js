@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { LandlordContext } from "./LandlordProvider";
+import { EditLandlordForm } from "./LandlordEditForm";
 import { Row, Col } from "reactstrap";
 
 export const AccountView = () => {
@@ -32,6 +33,7 @@ export const AccountView = () => {
             <p>Email: {landlord.email}</p>
             <p>Properties: {properties.length}</p>
             <p>Tenants: {tenants.length}</p>
+            <EditLandlordForm />
           </Col>
         </Row>
       </div>

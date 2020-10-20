@@ -16,7 +16,7 @@ export const TenantDelete = (tenantId) => {
     getTenantById(tenantId.id).then((response) => {
       setTenant(response);
     });
-  });
+  }, []);
 
   const alert = () => {
     confirmAlert({
