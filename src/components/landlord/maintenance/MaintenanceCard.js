@@ -15,7 +15,7 @@ export const MaintenanceCard = ({ request, titleLink, deleteBtn, editBtn }) => {
           </p>
           <small>
             {request.complete ? (
-              `Complete ${request.dateComplete}`
+              <p className="text-success">Complete {request.dateComplete}</p>
             ) : (
               <p className="text-danger">Pending</p>
             )}

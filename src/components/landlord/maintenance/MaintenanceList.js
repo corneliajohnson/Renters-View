@@ -5,6 +5,7 @@ import { MaintenanceCard } from "./MaintenanceCard";
 import { EditMaintenanceForm } from "./MaintenanceForm";
 import { MaintenanceInfoModal } from "./MaintenanceInfoModal";
 import { Button, ButtonGroup } from "reactstrap";
+import { MaintenanceDelete } from "./MaintenanceDelete";
 import "./Maintenance.css";
 
 export const MaintenanceList = () => {
@@ -74,19 +75,7 @@ export const MaintenanceList = () => {
             <MaintenanceCard
               key={request.id}
               request={request}
-              deleteBtn={
-                <Button
-                  className="m-1 maintenanceBtn"
-                  outline
-                  color="danger"
-                  onClick={() => {
-                    deleteMaintenanceRequest(request.id);
-                  }}
-                >
-                  {" "}
-                  Delete
-                </Button>
-              }
+              deleteBtn={<MaintenanceDelete id={request.id} />}
               editBtn={<EditMaintenanceForm id={request.id} />}
               titleLink={
                 <MaintenanceInfoModal
