@@ -5,18 +5,12 @@ import "./Property.css";
 import { PropertyFormEdit } from "./PropertyForm";
 import { PropertyInfoModal } from "./PropertyInfoModal";
 import { PropertyCardTenantInfo } from "./PropertyCardTenantInfo";
-import { TenantContext } from "../tenants/TenantProvider";
 import { PropertyDelete } from "./PropertyDelete";
-import { Button } from "reactstrap";
 
 export const PropertyList = () => {
-  const { properties, getProperties, deleteProperty } = useContext(
-    PropertyContext
-  );
-  const { getTenants } = useContext(TenantContext);
+  const { properties, getProperties } = useContext(PropertyContext);
 
   const [filteredProperies, setFilterdProperties] = useState([]);
-  const [deleteBtnId, setDeleteBtnId] = useState();
 
   useEffect(() => {
     getProperties();

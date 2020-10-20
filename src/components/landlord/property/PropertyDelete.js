@@ -7,8 +7,16 @@ import { PropertyContext } from "./PropertyProvider";
 import "./Property.css";
 
 export const PropertyDelete = (propertyId) => {
-  const { deleteProperty } = useContext(PropertyContext);
+  const { deleteProperty, getPropertyById } = useContext(PropertyContext);
   const { getTenants } = useContext(TenantContext);
+
+  const [property, setProperty] = useState({});
+
+  useEffect(() => {
+    getPropertyById(propertyId.id).then((response) => {
+      setProperty(response);
+    });
+  }, []);
 
   const alert = () => {
     confirmAlert({
@@ -16,7 +24,8 @@ export const PropertyDelete = (propertyId) => {
       message: (
         <>
           <p>
-            Are you sure to do this propertyTenants of property will be deleted
+            Are you sure you want to delete {property.street}, {property.city},{" "}
+            {property.state}
           </p>{" "}
           <p className="text-danger">Tenants of property will be deleted</p>
         </>
@@ -28,7 +37,6 @@ export const PropertyDelete = (propertyId) => {
         },
         {
           label: "No",
-          onClick: () => alert("Click No"),
         },
       ],
     });

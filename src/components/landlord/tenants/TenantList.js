@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { TenantContext } from "./TenantProvider";
 import { TenantCard } from "./TenantCard";
-import { Button } from "reactstrap";
 import { EditTenantForm } from "./TenantForm";
-import { TenantsChanged } from "../property/PropertyCardTenantInfo";
 import { PropertyContext } from "../property/PropertyProvider";
+import { TenantDelete } from "./TenantDelete";
 
 export const TenantList = () => {
   const { getTenants, tenants, deleteTenant } = useContext(TenantContext);
@@ -31,21 +30,7 @@ export const TenantList = () => {
             <TenantCard
               key={tenant.id}
               tenant={tenant}
-              deleteBtn={
-                <Button
-                  outline
-                  color="danger"
-                  className="tenantCardBtn"
-                  onClick={() => {
-                    deleteTenant(tenant.id)
-                      .then(getProperties)
-                      .then(TenantsChanged()); //update property cards
-                  }}
-                >
-                  {" "}
-                  Delete
-                </Button>
-              }
+              deleteBtn={<TenantDelete id={tenant.id} />}
               editBtn={<EditTenantForm id={tenant.id} />}
             />
           );
