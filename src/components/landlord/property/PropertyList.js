@@ -19,6 +19,7 @@ export const PropertyList = () => {
   }, []);
 
   useEffect(() => {
+    //only current landlord properties
     const subsetProperties = properties.filter(
       (property) => property.landlordId === parseInt(localStorage.landlord)
     );

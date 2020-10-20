@@ -8,17 +8,17 @@ import {
   Row,
   Col,
 } from "reactstrap";
-import { PropertyFormEdit } from "./PropertyForm";
 import { PropertyContext } from "./PropertyProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-let propertyId = 0;
+let propertyId = 0; //get the property selected
 
 const Modal = ({ onRequestClose }) => {
   const { getPropertyById } = useContext(PropertyContext);
   const [property, setProperty] = useState({});
   const [tenants, setTenants] = useState([]);
 
+  //get info of property
   useEffect(() => {
     getPropertyById(propertyId).then((response) => {
       setProperty(response);
@@ -136,6 +136,7 @@ const Modal = ({ onRequestClose }) => {
   );
 };
 
+//liink to open property info modal
 export const PropertyInfoModal = (propertyObj) => {
   propertyId = propertyObj.id;
   const [isModalOpen, setModalIsOpen] = useState(false);

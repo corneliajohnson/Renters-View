@@ -3,9 +3,12 @@ import { TenantContext } from "./TenantProvider";
 import { TenantCard } from "./TenantCard";
 import { Button } from "reactstrap";
 import { EditTenantForm } from "./TenantForm";
+import { TenantsChanged } from "../property/PropertyCardTenantInfo";
+import { PropertyContext } from "../property/PropertyProvider";
 
 export const TenantList = () => {
   const { getTenants, tenants, deleteTenant } = useContext(TenantContext);
+  const { getProperties } = useContext(PropertyContext);
   const [filteredTenants, setFilteredTenants] = useState([]);
 
   useEffect(() => {
@@ -34,7 +37,9 @@ export const TenantList = () => {
                   color="danger"
                   className="tenantCardBtn"
                   onClick={() => {
-                    deleteTenant(tenant.id);
+                    deleteTenant(tenant.id)
+                      .then(getProperties)
+                      .then(TenantsChanged()); //update property cards
                   }}
                 >
                   {" "}

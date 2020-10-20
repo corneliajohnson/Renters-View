@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { PropertyContext } from "./PropertyProvider";
-let tenantChange = false;
+let tenantChange = false; //alert when tenant has been added to changed
 
 export const PropertyCardTenantInfo = (propertyId) => {
   const { getPropertyById } = useContext(PropertyContext);
@@ -11,6 +11,8 @@ export const PropertyCardTenantInfo = (propertyId) => {
       setTenants(response.tenants);
     });
   }, [tenantChange]);
+
+  //how to display tenant information on card
   return tenants.length === 0 ? (
     <p>No Tenants</p>
   ) : tenants.length === 1 ? (

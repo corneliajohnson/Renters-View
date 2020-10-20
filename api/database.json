@@ -159,33 +159,6 @@
       "phone": "325-349-7823",
       "propertyId": 4,
       "landlordId": 1
-    },
-    {
-      "id": 8,
-      "firstName": "Morgan",
-      "lastName": "Burn",
-      "email": "morganburn@gmail.com",
-      "phone": "390-234-2698",
-      "propertyId": 3,
-      "landlordId": 1
-    },
-    {
-      "id": 9,
-      "firstName": "Jordan",
-      "lastName": "Moss",
-      "email": "jordanmoss@gmail.com",
-      "phone": "348-908-7834",
-      "propertyId": 2,
-      "landlordId": 1
-    },
-    {
-      "firstName": "Tracy ",
-      "lastName": "Green",
-      "email": "tracy@mail.com",
-      "phone": "768-276-8923",
-      "propertyId": 4,
-      "landlordId": 1,
-      "id": 10
     }
   ],
   "messages": [

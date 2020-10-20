@@ -1,4 +1,3 @@
-//add and edit
 import React, { useContext, useEffect, useState } from "react";
 import "./PropertyForm.css";
 import { PropertyContext } from "./PropertyProvider";
@@ -17,7 +16,7 @@ import {
   CardLink,
   Form,
 } from "reactstrap";
-let propertyId = 0;
+let propertyId = 0; //get the selected property
 
 const Modal = ({ onRequestClose }) => {
   const { getPropertyById, addProperty, updateProperty } = useContext(
@@ -35,6 +34,7 @@ const Modal = ({ onRequestClose }) => {
     }
   }, []);
 
+  //get info from inputs
   const handleControlledInputChange = (event) => {
     const newProperty = { ...property };
     newProperty[event.target.name] = event.target.value;
@@ -333,6 +333,7 @@ const Modal = ({ onRequestClose }) => {
   );
 };
 
+//add property modal button
 export const PropertyForm = () => {
   const [isModalOpen, setModalIsOpen] = useState(false);
   const toggleModal = () => {
@@ -354,6 +355,7 @@ export const PropertyForm = () => {
   );
 };
 
+//edit property modal button
 export const PropertyFormEdit = (propertyObjId) => {
   propertyId = propertyObjId.id;
   const [isModalOpen, setModalIsOpen] = useState(false);
