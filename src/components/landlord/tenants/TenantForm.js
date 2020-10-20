@@ -3,6 +3,7 @@ import { TenantContext } from "./TenantProvider";
 import { PropertyContext } from "../property/PropertyProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { TenantsChanged } from "../property/PropertyCardTenantInfo";
 import "./Tenant.css";
 
 import {
@@ -16,12 +17,10 @@ import {
   ModalHeader,
   CardLink,
 } from "reactstrap";
-let tenantId = 0;
+let tenantId = 0; //tenant card selected
 
 const Modal = ({ onRequestClose }) => {
-  const { getProperties, properties, getPropertyById } = useContext(
-    PropertyContext
-  );
+  const { getProperties, properties } = useContext(PropertyContext);
   const { addTenant, getTenantById, updateTenant } = useContext(TenantContext);
 
   const [tenant, setTenant] = useState({});
@@ -31,6 +30,7 @@ const Modal = ({ onRequestClose }) => {
     getProperties();
   }, []);
 
+  //get tenants for edit
   useEffect(() => {
     if (tenantId) {
       getTenantById(tenantId).then((tenant) => {
@@ -39,12 +39,14 @@ const Modal = ({ onRequestClose }) => {
     }
   }, []);
 
+  //get name of each input
   const handleControlledInputChange = (event) => {
     const newTenant = { ...tenant };
     newTenant[event.target.name] = event.target.value;
     setTenant(newTenant);
   };
 
+  //add or edit tenant in database
   const constructTenantObj = () => {
     if (tenant.id) {
       updateTenant({
@@ -55,7 +57,7 @@ const Modal = ({ onRequestClose }) => {
         phone: tenant.phone,
         propertyId: parseInt(tenant.propertyId),
         landlordId: parseInt(localStorage.landlord),
-      });
+      }).then(getProperties);
     } else {
       addTenant({
         firstName: tenant.firstName,
@@ -64,7 +66,7 @@ const Modal = ({ onRequestClose }) => {
         phone: tenant.phone,
         propertyId: parseInt(tenant.propertyId),
         landlordId: parseInt(localStorage.landlord),
-      });
+      }).then(getProperties);
     }
   };
 
@@ -196,6 +198,7 @@ const Modal = ({ onRequestClose }) => {
               ) {
                 constructTenantObj();
                 onRequestClose();
+                TenantsChanged(); //update property cards
               }
             }}
           >
@@ -216,6 +219,7 @@ const Modal = ({ onRequestClose }) => {
   );
 };
 
+//add property button modal
 export const TenantForm = () => {
   tenantId = 0;
   const [isModalOpen, setModalIsOpen] = useState(false);
@@ -236,6 +240,7 @@ export const TenantForm = () => {
   );
 };
 
+//edit property button modal
 export const EditTenantForm = (tenantObjId) => {
   tenantId = tenantObjId.id;
   const [isModalOpen, setModalIsOpen] = useState(false);

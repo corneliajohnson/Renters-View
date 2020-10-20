@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { PropertyContext } from "./PropertyProvider";
+let tenantChange = false;
 
 export const PropertyCardTenantInfo = (propertyId) => {
   const { getPropertyById } = useContext(PropertyContext);
@@ -9,7 +10,7 @@ export const PropertyCardTenantInfo = (propertyId) => {
     getPropertyById(propertyId.id).then((response) => {
       setTenants(response.tenants);
     });
-  }, []);
+  }, [tenantChange]);
   return tenants.length === 0 ? (
     <p>No Tenants</p>
   ) : tenants.length === 1 ? (
@@ -25,4 +26,13 @@ export const PropertyCardTenantInfo = (propertyId) => {
         .join(", ")}
     </p>
   );
+};
+
+//alert when tenant has been added to changed
+export const TenantsChanged = () => {
+  if (tenantChange) {
+    return (tenantChange = false);
+  } else {
+    return (tenantChange = true);
+  }
 };

@@ -152,13 +152,13 @@
       "id": 6
     },
     {
+      "id": 7,
       "firstName": "Chris",
       "lastName": "King",
       "email": "chris@gmail.com",
       "phone": "325-349-7823",
       "propertyId": 4,
-      "landlordId": 1,
-      "id": 7
+      "landlordId": 1
     },
     {
       "id": 8,
@@ -175,8 +175,17 @@
       "lastName": "Moss",
       "email": "jordanmoss@gmail.com",
       "phone": "348-908-7834",
-      "propertyId": 4,
+      "propertyId": 2,
       "landlordId": 1
+    },
+    {
+      "firstName": "Tracy ",
+      "lastName": "Green",
+      "email": "tracy@mail.com",
+      "phone": "768-276-8923",
+      "propertyId": 4,
+      "landlordId": 1,
+      "id": 10
     }
   ],
   "messages": [
