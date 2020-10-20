@@ -6,6 +6,7 @@ import { PropertyFormEdit } from "./PropertyForm";
 import { PropertyInfoModal } from "./PropertyInfoModal";
 import { PropertyCardTenantInfo } from "./PropertyCardTenantInfo";
 import { TenantContext } from "../tenants/TenantProvider";
+import { PropertyDelete } from "./PropertyDelete";
 import { Button } from "reactstrap";
 
 export const PropertyList = () => {
@@ -15,6 +16,7 @@ export const PropertyList = () => {
   const { getTenants } = useContext(TenantContext);
 
   const [filteredProperies, setFilterdProperties] = useState([]);
+  const [deleteBtnId, setDeleteBtnId] = useState();
 
   useEffect(() => {
     getProperties();
@@ -48,20 +50,7 @@ export const PropertyList = () => {
                     zip={property.zip}
                   />
                 }
-                deleteBtn={
-                  <Button
-                    outline
-                    color="danger"
-                    className="propertyBtn"
-                    onClick={() => {
-                      deleteProperty(property.id).then(getTenants);
-                      //window.confirm('When you delete the property all assined tenants are erased. \n Are you sure you want to delete?')
-                    }}
-                  >
-                    {" "}
-                    Delete
-                  </Button>
-                }
+                deleteBtn={<PropertyDelete id={property.id} />}
                 editBtn={<PropertyFormEdit id={property.id} />}
               />
             );
