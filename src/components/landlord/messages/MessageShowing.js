@@ -49,12 +49,20 @@ export const MessageShowing = (tenantConversation) => {
               message.sender === "landlord" ? (
                 <Col sm={12} className="float-right">
                   <div className="landLordMessageBox m-2 p-3">
-                    {message.text}
+                    <p>{message.text}</p>
+                    <small className="float-right">
+                      {new Date(message.date).toLocaleString()}
+                    </small>
                   </div>
                 </Col>
               ) : (
                 <Col sm={12}>
-                  <div className="tenatMessageBox m-2 p-3">{message.text}</div>
+                  <div className="tenatMessageBox m-2 p-3">
+                    <p>{message.text}</p>
+                    <small className="float-right">
+                      {new Date(message.date).toLocaleString()}
+                    </small>
+                  </div>
                 </Col>
               )
             )}
