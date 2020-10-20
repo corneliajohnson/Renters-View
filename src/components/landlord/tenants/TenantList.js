@@ -12,11 +12,11 @@ export const TenantList = () => {
     getTenants();
   }, []);
 
+  //only get tenants assigned to landlord
   useEffect(() => {
     const subsetTenants = tenants.filter(
       (tenant) => tenant.landlordId === parseInt(localStorage.landlord)
     );
-
     setFilteredTenants(subsetTenants);
   }, [tenants]);
 
