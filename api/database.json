@@ -153,7 +153,7 @@
     },
     {
       "id": 7,
-      "firstName": "Chris",
+      "firstName": "Christian",
       "lastName": "King",
       "email": "chris@gmail.com",
       "phone": "325-349-7823",
@@ -177,11 +177,22 @@
       "propertyId": 2,
       "synopsis": "broken sink",
       "price": "780",
-      "contractor": "/tom",
+      "contractor": "tom",
       "complete": false,
       "note": "ghjhjkkl",
-      "dateComplete": "2020-10-14",
-      "dateAdded": 1603130374646
+      "dateComplete": "",
+      "dateAdded": 1603213778838
+    },
+    {
+      "id": 2,
+      "propertyId": 3,
+      "synopsis": "Broken Cabinet",
+      "price": "100",
+      "contractor": "Bill",
+      "complete": true,
+      "note": "Go To Lowes",
+      "dateComplete": "2020-10-15",
+      "dateAdded": 1603214150564
     }
   ]
 }

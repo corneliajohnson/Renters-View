@@ -103,7 +103,7 @@ const Modal = ({ onRequestClose }) => {
   return (
     <div className="modal__backdrop">
       <div className="modal__container">
-        <Form>
+        <Form className="text-left">
           <CardLink
             className="d-flex justify-content-end"
             type="button"

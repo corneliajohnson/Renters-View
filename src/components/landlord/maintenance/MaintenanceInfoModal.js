@@ -59,12 +59,15 @@ const Modal = ({ onRequestClose }) => {
               Address: {property.street} {property.city} {property.state}{" "}
               {property.zip}
             </p>
-            <p>Contractor: {request.contractor}</p>
-            <p>Price: {request.price}</p>
-            <p>Complete: {request.complete}</p>
+            <p>Contractor: {request.contractor ? request.contractor : "N/A"}</p>
+            <p>Price: {request.price ? request.price : "N/A"}</p>
+            <p>Complete: {request.complete ? request.complete : "N/A"}</p>
             <p>Date Added: {request.dateAdded}</p>
-            <p>Date Completed: {request.dateComplete}</p>
-            <p>Note: {request.note}</p>
+            <p>
+              Date Completed:{" "}
+              {request.dateComplete ? request.dateComplete : "N/A"}
+            </p>
+            <p>Note: {request.note ? request.note : "N/A"}</p>
           </ModalBody>
         </Form>
         <Button type="button" onClick={onRequestClose}>

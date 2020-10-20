@@ -2,8 +2,6 @@ import React, { useState, useContext, useEffect } from "react";
 import { MaintenanceContext } from "./MaintenanceProvider";
 import { Input } from "reactstrap";
 
-import { Link } from "react-router-dom";
-
 export const MaintenanceCheckbox = (maintenanceObj) => {
   const [isChecked, setIsChecked] = useState(false);
 
@@ -21,7 +19,7 @@ export const MaintenanceCheckbox = (maintenanceObj) => {
         contractor: request.contractor,
         complete: isChecked,
         note: request.note,
-        dateComplete: request.dateComplete,
+        dateComplete: isChecked ? request.dateComplete : "",
         dateAdded: request.dateAdded,
       });
     });
