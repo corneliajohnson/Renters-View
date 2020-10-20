@@ -51,7 +51,7 @@ const Modal = ({ onRequestClose }) => {
       <div className="modal__container">
         <Form>
           <CardLink
-            className="d-flex justify-content-end"
+            className="d-flex justify-content-end text-danger"
             type="button"
             onClick={onRequestClose}
           >
