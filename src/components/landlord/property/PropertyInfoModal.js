@@ -17,12 +17,14 @@ const Modal = ({ onRequestClose }) => {
   const { getPropertyById } = useContext(PropertyContext);
   const [property, setProperty] = useState({});
   const [tenants, setTenants] = useState([]);
+  const [maintenanceRequests, setMaintenance] = useState([]);
 
   //get info of property
   useEffect(() => {
     getPropertyById(propertyId).then((response) => {
       setProperty(response);
       setTenants(response.tenants);
+      setMaintenance(response.maintenanceRequests);
     });
   }, []);
 
@@ -58,7 +60,7 @@ const Modal = ({ onRequestClose }) => {
             <FontAwesomeIcon icon={faTimes} />
           </CardLink>
           <ModalHeader>
-            <h1 className="display-3">{property.street}</h1>
+            <h1 className="display-4">{property.street}</h1>
             <h2 className="display-4">
               {property.city}
               {property.state} {property.zip}
@@ -66,13 +68,13 @@ const Modal = ({ onRequestClose }) => {
           </ModalHeader>
 
           <ModalBody>
-            <img
-              width="50%"
-              src={require("../../../img/house.jpg")}
-              alt="Card image cap"
-            />
             <Row>
               <Col>
+                <img
+                  width="100%"
+                  src={require("../../../img/house.jpg")}
+                  alt="Card image cap"
+                />
                 <h3 className="display-5">Current Tenant(s)</h3>
                 {tenants.map((tenant) => {
                   return (
@@ -121,6 +123,19 @@ const Modal = ({ onRequestClose }) => {
               </Col>
             </Row>
             <h3 className="display-5">Maintenance History</h3>
+            {maintenanceRequests.map((request) => {
+              return (
+                <div>
+                  <h5>{request.synopsis}</h5>
+                  <p>
+                    Status:{" "}
+                    {request.complete
+                      ? `Complete on ${request.dateComplete}`
+                      : "Pending"}
+                  </p>
+                </div>
+              );
+            })}
           </ModalBody>
         </Form>
         <Button

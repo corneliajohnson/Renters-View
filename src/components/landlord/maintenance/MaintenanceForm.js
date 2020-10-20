@@ -181,6 +181,9 @@ const Modal = ({ onRequestClose }) => {
                   onChange={handleControlledInputChange}
                   value={request.dateComplete}
                 />
+                <small className="text-secondary">
+                  Date marks request as complete
+                </small>
               </FormGroup>
             </Col>
           </Row>

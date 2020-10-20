@@ -26,7 +26,7 @@ export const PropertyProvider = (props) => {
 
   const getPropertyById = (id) => {
     return fetch(
-      `http://localhost:8088/properties/${id}?_embed=tenants`,
+      `http://localhost:8088/properties/${id}?_embed=tenants&_embed=maintenanceRequests`,
       {}
     ).then((res) => res.json());
   };
