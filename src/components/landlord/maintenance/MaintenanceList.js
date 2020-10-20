@@ -3,9 +3,8 @@ import { MaintenanceContext } from "./MaintenanceProvider";
 import { ListGroup } from "reactstrap";
 import { MaintenanceCard } from "./MaintenanceCard";
 import { EditMaintenanceForm } from "./MaintenanceForm";
-import { MaintenanceCheckbox } from "./MaintenanceCheckbox";
 import { MaintenanceInfoModal } from "./MaintenanceInfoModal";
-import { CardLink } from "reactstrap";
+import { Button } from "reactstrap";
 
 export const MaintenanceList = () => {
   const {
@@ -37,17 +36,19 @@ export const MaintenanceList = () => {
               key={request.id}
               request={request}
               deleteBtn={
-                <CardLink
+                <Button
+                  className="m-1"
+                  outline
+                  color="danger"
                   onClick={() => {
                     deleteMaintenanceRequest(request.id);
                   }}
                 >
                   {" "}
                   Delete
-                </CardLink>
+                </Button>
               }
               editBtn={<EditMaintenanceForm id={request.id} />}
-              checkbox={<MaintenanceCheckbox id={request.id} />}
               titleLink={
                 <MaintenanceInfoModal
                   id={request.id}

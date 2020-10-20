@@ -1,15 +1,7 @@
 import React, { useState } from "react";
 import { ListGroupItem, Input, Col, Row } from "reactstrap";
 
-import { Link } from "react-router-dom";
-
-export const MaintenanceCard = ({
-  request,
-  titleLink,
-  deleteBtn,
-  editBtn,
-  checkbox,
-}) => {
+export const MaintenanceCard = ({ request, titleLink, deleteBtn, editBtn }) => {
   return (
     <ListGroupItem>
       <h4>{titleLink}</h4>
@@ -20,13 +12,14 @@ export const MaintenanceCard = ({
             {request.property.street} {request.property.city}{" "}
             {request.property.state} {request.property.zip}{" "}
           </p>
+          <small>{request.complete ? "Complete" : "InComplete"}</small>
         </Col>
-        <Col sm={1}>
-          {" "}
-          {editBtn}
-          {deleteBtn}
+        <Col sm={2}>
+          <Row>
+            {deleteBtn}
+            {editBtn}
+          </Row>
         </Col>
-        <Col sm={1}>{checkbox}</Col>
       </Row>
     </ListGroupItem>
   );

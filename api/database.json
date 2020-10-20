@@ -179,8 +179,9 @@
       "price": "780",
       "contractor": "tom",
       "complete": true,
+      "dateComplete": "2020-10-09",
       "note": "ghjhjkkl",
-      "dateAdded": 1603215756402
+      "dateAdded": 1603221839750
     },
     {
       "id": 2,
@@ -188,9 +189,19 @@
       "synopsis": "Broken Cabinet",
       "price": "100",
       "contractor": "Bill",
-      "complete": false,
+      "complete": true,
+      "dateComplete": "2020-10-08",
       "note": "Go To Lowes",
-      "dateAdded": 1603216182432
+      "dateAdded": 1603222603406
+    },
+    {
+      "id": 3,
+      "propertyId": 3,
+      "synopsis": "Cut Grass",
+      "price": "0",
+      "contractor": "Self",
+      "complete": false,
+      "dateAdded": 1603221621171
     }
   ]
 }

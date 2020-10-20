@@ -3,7 +3,6 @@ import { PropertyContext } from "../property/PropertyProvider";
 import { MaintenanceContext } from "./MaintenanceProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { MaintenanceCheckbox } from "./MaintenanceCheckbox";
 
 import {
   Col,
@@ -63,7 +62,8 @@ const Modal = ({ onRequestClose }) => {
         synopsis: request.synopsis,
         price: request.price,
         contractor: request.contractor,
-        complete: request.complete,
+        complete: request.dateComplete ? true : false,
+        dateComplete: request.dateComplete,
         note: request.note,
         dateAdded: Date.now(),
       });
@@ -73,7 +73,8 @@ const Modal = ({ onRequestClose }) => {
         synopsis: request.synopsis,
         price: request.price,
         contractor: request.contractor,
-        complete: request.complete,
+        complete: request.dateComplete ? true : false,
+        dateComplete: request.dateComplete,
         note: request.note,
         dateAdded: Date.now(),
       });
@@ -105,13 +106,17 @@ const Modal = ({ onRequestClose }) => {
       <div className="modal__container">
         <Form className="text-left">
           <CardLink
-            className="d-flex justify-content-end"
+            className="d-flex justify-content-end text-danger"
             type="button"
             onClick={onRequestClose}
           >
             <FontAwesomeIcon icon={faTimes} />
           </CardLink>
-          <ModalHeader className="mb-3">Add Maintenance Request</ModalHeader>
+          <ModalHeader className="mb-3">
+            {request.id
+              ? "Update Maintenance Request"
+              : "Add Maintenance Request"}
+          </ModalHeader>
           <FormGroup>
             <Label for="examplePassword">
               Synopsis <span className="text-danger">*</span>
@@ -167,6 +172,17 @@ const Modal = ({ onRequestClose }) => {
                 />
               </FormGroup>
             </Col>
+            <Col sm={6}>
+              <FormGroup>
+                <Label>Date Complete</Label>
+                <Input
+                  type="date"
+                  name="dateComplete"
+                  onChange={handleControlledInputChange}
+                  value={request.dateComplete}
+                />
+              </FormGroup>
+            </Col>
           </Row>
           <FormGroup>
             <Label for="examplePassword">Notes</Label>
@@ -184,7 +200,9 @@ const Modal = ({ onRequestClose }) => {
           </p>
         </Form>
         <Button
-          color="primary"
+          outline
+          color="success"
+          className="m-1 text-right"
           onClick={(event) => {
             event.preventDefault();
             if (request.synopsis && request.propertyId) {
@@ -193,9 +211,15 @@ const Modal = ({ onRequestClose }) => {
             }
           }}
         >
-          Add
+          {request.id ? "Update" : "Add"}
         </Button>
-        <Button type="button" onClick={onRequestClose}>
+        <Button
+          type="button"
+          outline
+          color="danger"
+          className="m-1 text-right"
+          onClick={onRequestClose}
+        >
           Close
         </Button>
       </div>
@@ -235,11 +259,17 @@ export const EditMaintenanceForm = (requestObjId) => {
   };
 
   return (
-    <div className="container text-center">
+    <div>
       {isModalOpen && <Modal onRequestClose={toggleModal} />}
-      <CardLink onClick={toggleModal} type="button">
+      <Button
+        outline
+        color="secondary"
+        className="m-1"
+        onClick={toggleModal}
+        type="button"
+      >
         Edit
-      </CardLink>
+      </Button>
     </div>
   );
 };
