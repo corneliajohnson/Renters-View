@@ -19,7 +19,9 @@ import {
 let tenantId = 0;
 
 const Modal = ({ onRequestClose }) => {
-  const { getProperties, properties } = useContext(PropertyContext);
+  const { getProperties, properties, getPropertyById } = useContext(
+    PropertyContext
+  );
   const { addTenant, getTenantById, updateTenant } = useContext(TenantContext);
 
   const [tenant, setTenant] = useState({});

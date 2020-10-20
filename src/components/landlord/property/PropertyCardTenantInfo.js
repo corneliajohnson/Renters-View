@@ -1,15 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-
 import { PropertyContext } from "./PropertyProvider";
 
 export const PropertyCardTenantInfo = (propertyId) => {
   const { getPropertyById } = useContext(PropertyContext);
-  const [property, setProperty] = useState({});
   const [tenants, setTenants] = useState([]);
 
   useEffect(() => {
     getPropertyById(propertyId.id).then((response) => {
-      setProperty(response);
       setTenants(response.tenants);
     });
   }, []);

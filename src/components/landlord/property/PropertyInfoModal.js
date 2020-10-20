@@ -15,7 +15,7 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 let propertyId = 0;
 
 const Modal = ({ onRequestClose }) => {
-  const { getPropertyById, deleteProperty } = useContext(PropertyContext);
+  const { getPropertyById } = useContext(PropertyContext);
   const [property, setProperty] = useState({});
   const [tenants, setTenants] = useState([]);
 
