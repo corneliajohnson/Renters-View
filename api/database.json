@@ -297,6 +297,14 @@
       "date": 1603233700416,
       "sender": "landlord",
       "id": 17
+    },
+    {
+      "tenantId": 3,
+      "landlordId": 1,
+      "text": "test",
+      "date": 1603236109065,
+      "sender": "landlord",
+      "id": 18
     }
   ],
   "maintenanceRequests": [

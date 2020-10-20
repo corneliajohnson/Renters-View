@@ -25,12 +25,12 @@
 
 .landLordMessageBox {
   float: right;
-  background-color: #fa2d2d;
-  color: white;
+  background-color: lightcyan;
+  color: darkcyan;
 }
 
 .tenatMessageBox {
   float: left;
-  background-color: #f2af58;
-  color: white;
+  background-color: lightgray;
+  color: black;
 }

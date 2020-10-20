@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import { MessageContext } from "./MessageProvider";
 import { InputGroup, InputGroupAddon, Button, Input, Form } from "reactstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import "./Message.css";
 
 export const MessageInput = (reciever) => {
@@ -41,11 +43,12 @@ export const MessageInput = (reciever) => {
             type="text"
             name="text"
             value={message.text}
+            placeholder="Write message here ..."
             onChange={handleControlledInputChange}
           />
           <InputGroupAddon addonType="append">
             <Button
-              color="secondary"
+              color="link"
               onClick={(e) => {
                 if (message.text) {
                   e.preventDefault();
@@ -53,7 +56,7 @@ export const MessageInput = (reciever) => {
                 }
               }}
             >
-              Send
+              <FontAwesomeIcon icon={faPaperPlane} />
             </Button>
           </InputGroupAddon>
         </InputGroup>
