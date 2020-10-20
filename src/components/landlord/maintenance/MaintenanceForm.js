@@ -3,6 +3,8 @@ import { PropertyContext } from "../property/PropertyProvider";
 import { MaintenanceContext } from "./MaintenanceProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { MaintenanceCheckbox } from "./MaintenanceCheckbox";
+
 import {
   Col,
   Row,
@@ -61,9 +63,8 @@ const Modal = ({ onRequestClose }) => {
         synopsis: request.synopsis,
         price: request.price,
         contractor: request.contractor,
-        complete: request.dateComplete ? true : false,
+        complete: request.complete,
         note: request.note,
-        dateComplete: request.dateComplete ? request.dateComplete : false,
         dateAdded: Date.now(),
       });
     } else {
@@ -72,9 +73,8 @@ const Modal = ({ onRequestClose }) => {
         synopsis: request.synopsis,
         price: request.price,
         contractor: request.contractor,
-        complete: request.dateComplete ? true : false,
+        complete: request.complete,
         note: request.note,
-        dateComplete: request.dateComplete ? request.dateComplete : false,
         dateAdded: Date.now(),
       });
     }
@@ -164,18 +164,6 @@ const Modal = ({ onRequestClose }) => {
                   name="price"
                   onChange={handleControlledInputChange}
                   value={request.price}
-                />
-              </FormGroup>
-            </Col>
-            <Col sm={4}>
-              <FormGroup>
-                <Label for="dateComplete">Date Complete</Label>
-                <Input
-                  required
-                  type="date"
-                  name="dateComplete"
-                  onChange={handleControlledInputChange}
-                  value={request.dateComplete}
                 />
               </FormGroup>
             </Col>

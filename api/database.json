@@ -178,10 +178,9 @@
       "synopsis": "broken sink",
       "price": "780",
       "contractor": "tom",
-      "complete": false,
+      "complete": true,
       "note": "ghjhjkkl",
-      "dateComplete": "",
-      "dateAdded": 1603213778838
+      "dateAdded": 1603215756402
     },
     {
       "id": 2,
@@ -189,10 +188,9 @@
       "synopsis": "Broken Cabinet",
       "price": "100",
       "contractor": "Bill",
-      "complete": true,
+      "complete": false,
       "note": "Go To Lowes",
-      "dateComplete": "2020-10-15",
-      "dateAdded": 1603214150564
+      "dateAdded": 1603216182432
     }
   ]
 }

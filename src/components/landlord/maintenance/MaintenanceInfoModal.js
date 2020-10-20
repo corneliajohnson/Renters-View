@@ -61,12 +61,8 @@ const Modal = ({ onRequestClose }) => {
             </p>
             <p>Contractor: {request.contractor ? request.contractor : "N/A"}</p>
             <p>Price: {request.price ? request.price : "N/A"}</p>
-            <p>Complete: {request.complete ? request.complete : "N/A"}</p>
+            <p>Complete: {request.complete ? "Yes" : "No"}</p>
             <p>Date Added: {request.dateAdded}</p>
-            <p>
-              Date Completed:{" "}
-              {request.dateComplete ? request.dateComplete : "N/A"}
-            </p>
             <p>Note: {request.note ? request.note : "N/A"}</p>
           </ModalBody>
         </Form>

@@ -19,7 +19,6 @@ export const MaintenanceCheckbox = (maintenanceObj) => {
         contractor: request.contractor,
         complete: isChecked,
         note: request.note,
-        dateComplete: isChecked ? request.dateComplete : "",
         dateAdded: request.dateAdded,
       });
     });
@@ -31,7 +30,9 @@ export const MaintenanceCheckbox = (maintenanceObj) => {
         type="checkbox"
         name="complete"
         checked={isChecked}
-        onChange={(e) => setIsChecked(e.target.checked)}
+        onChange={(e) => {
+          setIsChecked(e.target.checked);
+        }}
       />
     </>
   );
