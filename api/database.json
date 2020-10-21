@@ -194,12 +194,12 @@
       "id": 5
     },
     {
-      "tenantId": 5,
+      "id": 6,
+      "tenantId": 3,
       "landlordId": 1,
-      "text": "Hello",
-      "date": 1603231701767,
-      "sender": "landlord",
-      "id": 6
+      "text": "hello",
+      "date": 1603310347568,
+      "sender": "landlord"
     },
     {
       "tenantId": 7,
@@ -253,9 +253,17 @@
       "id": 25,
       "tenantId": 3,
       "landlordId": 1,
-      "text": "four",
-      "date": 1603308941009,
+      "text": "for the road",
+      "date": 1603310914701,
       "sender": "landlord"
+    },
+    {
+      "tenantId": 5,
+      "landlordId": 1,
+      "text": "Hello I'm Cornelia your new landlord reachout if you have any questions",
+      "date": 1603311596348,
+      "sender": "landlord",
+      "id": 26
     }
   ],
   "maintenanceRequests": [

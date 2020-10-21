@@ -1,13 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import { TenantContext } from "../../landlord/tenants/TenantProvider";
+import { PropertyContext } from "../../landlord/property/PropertyProvider";
 import { Row, Col } from "reactstrap";
 
 export const TenantProperty = () => {
   const { getTenantById } = useContext(TenantContext);
+  const { getPropertyById } = useContext(PropertyContext);
 
   const [tenant, setTenant] = useState({});
   const [property, setProperty] = useState({});
   const [landlord, setLandlord] = useState({});
+  const [propertyMaintenance, setPropertMaintenance] = useState([]);
 
   useEffect(() => {
     const currentTenant = parseInt(localStorage.tenant);
@@ -17,6 +20,14 @@ export const TenantProperty = () => {
       setLandlord(response.landlord);
     });
   }, []);
+
+  useEffect(() => {
+    if (tenant.propertyId) {
+      getPropertyById(tenant.propertyId).then((response) => {
+        setPropertMaintenance(response.maintenanceRequests);
+      });
+    }
+  }, [tenant.propertyId]);
 
   return (
     <>
@@ -43,6 +54,16 @@ export const TenantProperty = () => {
             </div>
           </Col>
           <Col>
+            <h3>Landlord</h3>
+            <p>
+              {landlord.firstName} {landlord.lastName}
+            </p>
+            <p>Email: {landlord.email}</p>
+            <p>Phone Number: {landlord.phone}</p>
+          </Col>
+        </Row>
+        <Row className="m-5">
+          <Col>
             <div className="property__moreInfor">
               <h3>Property Info</h3>
               Rent Price: ${property.rentAmount}
@@ -53,12 +74,12 @@ export const TenantProperty = () => {
             </div>
           </Col>
           <Col>
-            <h3>Landlord</h3>
-            <p>
-              {landlord.firstName} {landlord.lastName}
-            </p>
-            <p>Email: {landlord.email}</p>
-            <p>Phone Number: {landlord.phone}</p>
+            <div className="property_maintenatce">
+              <h3>Maintenance</h3>
+              {propertyMaintenance.map((request) => {
+                return request.synopsis;
+              })}
+            </div>
           </Col>
         </Row>
       </div>

@@ -11,6 +11,10 @@ export const MessageInput = (reciever) => {
     MessageContext
   );
 
+  useEffect(() => {
+    messageId = 0;
+  }, [reciever]);
+
   const [message, setMessage] = useState({});
 
   //Controlled component
@@ -19,6 +23,8 @@ export const MessageInput = (reciever) => {
     newMessage[event.target.name] = event.target.value;
     setMessage(newMessage);
   };
+
+  message.text = messageText;
 
   const constructMessage = () => {
     const checkLandlord = Object.keys(localStorage);
@@ -51,18 +57,19 @@ export const MessageInput = (reciever) => {
         });
     }
   };
+
   return (
     <>
       <Form>
         <InputGroup>
           <Input
+            onKeyUp={(keyEvent) => setMessageText(keyEvent.target.value)}
             className="messageTextInput"
             type="text"
             name="text"
             defaultValue={messageText}
             placeholder="Write message here ..."
             onChange={handleControlledInputChange}
-            onKeyUp={(keyEvent) => setMessageText(keyEvent.target.value)}
           />
           <InputGroupAddon addonType="append">
             <Button

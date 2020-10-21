@@ -41,6 +41,7 @@ export const MessageOptions = (message) => {
       <DropdownMenu>
         <DropdownItem
           onClick={() => {
+            setMessageText("");
             //edit the id of the message to get text
             setMessageSelected(message.id);
             //get the id of the message to edit
