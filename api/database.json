@@ -143,15 +143,6 @@
       "landlordId": 1
     },
     {
-      "firstName": "Gordon",
-      "lastName": "Wilson",
-      "email": "gorwil@gmail.com",
-      "phone": "345-788-2345",
-      "propertyId": 5,
-      "landlordId": 1,
-      "id": 6
-    },
-    {
       "id": 7,
       "firstName": "Christian",
       "lastName": "King",
@@ -219,14 +210,6 @@
       "id": 7
     },
     {
-      "tenantId": 6,
-      "landlordId": 1,
-      "text": "Welcome",
-      "date": 1603232082185,
-      "sender": "landlord",
-      "id": 8
-    },
-    {
       "tenantId": 4,
       "landlordId": 1,
       "text": "Hello",
@@ -235,28 +218,12 @@
       "id": 9
     },
     {
-      "tenantId": 6,
-      "landlordId": 1,
-      "text": "hi",
-      "date": 1603232429047,
-      "sender": "landlord",
-      "id": 10
-    },
-    {
       "tenantId": 4,
       "landlordId": 1,
       "text": "Hows the move going",
       "date": 1603232695693,
       "sender": "landlord",
       "id": 11
-    },
-    {
-      "tenantId": 6,
-      "landlordId": 1,
-      "text": "test",
-      "date": 1603232743226,
-      "sender": "landlord",
-      "id": 12
     },
     {
       "tenantId": 3,
@@ -329,15 +296,6 @@
       "dateComplete": "2020-10-08",
       "note": "Go To Lowes",
       "dateAdded": 1603222603406
-    },
-    {
-      "id": 3,
-      "propertyId": 3,
-      "synopsis": "Cut Grass",
-      "price": "0",
-      "contractor": "Self",
-      "complete": false,
-      "dateAdded": 1603221621171
     }
   ]
 }

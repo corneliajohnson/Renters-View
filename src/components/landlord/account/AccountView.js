@@ -37,7 +37,7 @@ export const AccountView = () => {
             </h3>
             <p>
               {" "}
-              <span style={{ fontWeight: "bold" }}>Phone:</span>{" "}
+              <span style={{ fontWeight: "bold" }}>Phone Number:</span>{" "}
               {landlord.phone}
             </p>
             <p>
@@ -54,7 +54,7 @@ export const AccountView = () => {
             </p>
             <EditLandlordForm />
             <p className="m-3">
-              Your name, phone Number, email are visible to your tenants.
+              Your name, phone number, email are visible to your tenants.
             </p>
           </Col>
         </Row>

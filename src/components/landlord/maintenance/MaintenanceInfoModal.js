@@ -70,7 +70,7 @@ const Modal = ({ onRequestClose }) => {
           <p>Price: {request.price ? request.price : "N/A"}</p>
           <p>Complete: {request.complete ? "Yes" : "No"}</p>
           <p>
-            Date Complet: {request.dateComplete ? request.dateComplete : "N/A"}
+            Date Complete: {request.dateComplete ? request.dateComplete : "N/A"}
           </p>
           <p>Date Added: {request.dateAdded}</p>
           <p>Note: {request.note ? request.note : "N/A"}</p>
