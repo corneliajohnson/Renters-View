@@ -234,12 +234,12 @@
       "id": 19
     },
     {
+      "id": 21,
       "tenantId": 4,
       "landlordId": 1,
-      "text": "hello",
-      "date": 1603304725308,
-      "sender": "landlord",
-      "id": 21
+      "text": "hello there",
+      "date": 1603308877267,
+      "sender": "landlord"
     },
     {
       "tenantId": 3,
@@ -250,20 +250,12 @@
       "id": 22
     },
     {
+      "id": 25,
       "tenantId": 3,
       "landlordId": 1,
-      "text": "5555",
-      "date": 1603305379271,
-      "sender": "landlord",
-      "id": 23
-    },
-    {
-      "tenantId": 3,
-      "landlordId": 1,
-      "text": "gggg",
-      "date": 1603305517250,
-      "sender": "landlord",
-      "id": 24
+      "text": "four",
+      "date": 1603308941009,
+      "sender": "landlord"
     }
   ],
   "maintenanceRequests": [

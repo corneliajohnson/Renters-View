@@ -7,7 +7,7 @@ import { MessageInput } from "./MessageInput";
 import { MessageOptions } from "./MessageOptions";
 
 export const MessageShowing = (tenantConversation) => {
-  const { messages, getMessages } = useContext(MessageContext);
+  const { messages, getMessages, setMessageText } = useContext(MessageContext);
   const { getTenantById } = useContext(TenantContext);
   const [reciever, setReciever] = useState();
 

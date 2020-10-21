@@ -1,12 +1,13 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { MessageContext } from "./MessageProvider";
 import { InputGroup, InputGroupAddon, Button, Input, Form } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import "./Message.css";
+let messageId = 0;
 
 export const MessageInput = (reciever) => {
-  const { addMessage, messageText, setMessageText } = useContext(
+  const { addMessage, messageText, setMessageText, updateMessage } = useContext(
     MessageContext
   );
 
@@ -22,7 +23,20 @@ export const MessageInput = (reciever) => {
   const constructMessage = () => {
     const checkLandlord = Object.keys(localStorage);
     //if the user is a landlord add to database
-    if (checkLandlord[0] === "landlord" && reciever.id && !message.id) {
+    //to edit message
+    if (messageId !== 0 && checkLandlord[0] === "landlord" && reciever.id) {
+      updateMessage({
+        id: messageId,
+        tenantId: reciever.id,
+        landlordId: parseInt(localStorage.landlord),
+        text: message.text.trim(),
+        date: Date.now(),
+        sender: "landlord",
+      }).then((_) => {
+        messageId = 0;
+        setMessageText("");
+      });
+    } else if (checkLandlord[0] === "landlord" && reciever.id) {
       addMessage({
         tenantId: reciever.id,
         landlordId: parseInt(localStorage.landlord),
@@ -32,7 +46,8 @@ export const MessageInput = (reciever) => {
       })
         //clear the message after its been sent
         .then((_) => {
-          message.text = "";
+          messageId = 0;
+          setMessageText("");
         });
     }
   };
@@ -66,4 +81,8 @@ export const MessageInput = (reciever) => {
       </Form>
     </>
   );
+};
+
+export const EditMessage = (message) => {
+  messageId = message;
 };

@@ -8,6 +8,7 @@ import {
   DropdownItem,
   DropdownToggle,
 } from "reactstrap";
+import { EditMessage } from "./MessageInput";
 
 export const MessageOptions = (message) => {
   const { deleteMessage, getMessageById, setMessageText } = useContext(
@@ -25,6 +26,7 @@ export const MessageOptions = (message) => {
     }
   }, [messageSelected, editButtonClick]);
 
+  //put the message text in the input
   const constructMessage = (messageObj) => {
     if (messageObj.id) {
       setMessageText(messageObj.text);
@@ -39,7 +41,11 @@ export const MessageOptions = (message) => {
       <DropdownMenu>
         <DropdownItem
           onClick={() => {
+            //edit the id of the message to get text
             setMessageSelected(message.id);
+            //get the id of the message to edit
+            EditMessage(message.id);
+            //make input toglle with useeffect
             if (editButtonClick) {
               setEditButtonClick(true);
             } else {
