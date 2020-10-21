@@ -6,7 +6,9 @@ import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import "./Message.css";
 
 export const MessageInput = (reciever) => {
-  const { addMessage } = useContext(MessageContext);
+  const { addMessage, messageText, setMessageText } = useContext(
+    MessageContext
+  );
 
   const [message, setMessage] = useState({});
 
@@ -20,7 +22,7 @@ export const MessageInput = (reciever) => {
   const constructMessage = () => {
     const checkLandlord = Object.keys(localStorage);
     //if the user is a landlord add to database
-    if (checkLandlord[0] === "landlord" && reciever.id) {
+    if (checkLandlord[0] === "landlord" && reciever.id && !message.id) {
       addMessage({
         tenantId: reciever.id,
         landlordId: parseInt(localStorage.landlord),
@@ -42,9 +44,10 @@ export const MessageInput = (reciever) => {
             className="messageTextInput"
             type="text"
             name="text"
-            value={message.text}
+            defaultValue={messageText}
             placeholder="Write message here ..."
             onChange={handleControlledInputChange}
+            onKeyUp={(keyEvent) => setMessageText(keyEvent.target.value)}
           />
           <InputGroupAddon addonType="append">
             <Button

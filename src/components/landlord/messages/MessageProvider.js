@@ -4,6 +4,7 @@ export const MessageContext = createContext();
 
 export const MessageProvider = (props) => {
   const [messages, setMessages] = useState([]);
+  const [messageText, setMessageText] = useState("");
 
   const getMessages = () => {
     return fetch(
@@ -54,6 +55,8 @@ export const MessageProvider = (props) => {
         deleteMessage,
         updateMessage,
         getMessageById,
+        messageText,
+        setMessageText,
       }}
     >
       {props.children}
