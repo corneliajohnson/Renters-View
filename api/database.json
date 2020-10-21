@@ -234,44 +234,12 @@
       "id": 13
     },
     {
-      "tenantId": 4,
-      "landlordId": 1,
-      "text": "hi",
-      "date": 1603233597266,
-      "sender": "landlord",
-      "id": 14
-    },
-    {
       "tenantId": 3,
       "landlordId": 1,
       "text": "fffff",
       "date": 1603233649235,
       "sender": "landlord",
       "id": 15
-    },
-    {
-      "tenantId": 3,
-      "landlordId": 1,
-      "text": "",
-      "date": 1603233656665,
-      "sender": "landlord",
-      "id": 16
-    },
-    {
-      "tenantId": 3,
-      "landlordId": 1,
-      "text": "ggg",
-      "date": 1603233700416,
-      "sender": "landlord",
-      "id": 17
-    },
-    {
-      "tenantId": 3,
-      "landlordId": 1,
-      "text": "test",
-      "date": 1603236109065,
-      "sender": "landlord",
-      "id": 18
     }
   ],
   "maintenanceRequests": [

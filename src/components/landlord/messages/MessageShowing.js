@@ -47,12 +47,13 @@ export const MessageShowing = (tenantConversation) => {
           </h3>
           <Row>
             {filteredMessages.map((message) =>
+              //landlord messages
               message.sender === "landlord" ? (
                 <Col sm={12} className="float-right">
                   <div className="landLordMessageBox m-2 p-3">
                     {localStorage.landlord ? (
                       <div className="float-right">
-                        <MessageOptions />
+                        <MessageOptions id={message.id} />
                       </div>
                     ) : (
                       ""
@@ -64,15 +65,9 @@ export const MessageShowing = (tenantConversation) => {
                   </div>
                 </Col>
               ) : (
+                //tenant message
                 <Col sm={12}>
                   <div className="tenatMessageBox m-2 p-3">
-                    {localStorage.tenant ? (
-                      <div className="float-left">
-                        <MessageOptions />
-                      </div>
-                    ) : (
-                      ""
-                    )}
                     <p>{message.text}</p>
                     <small className="float-right">
                       {new Date(message.date).toLocaleString()}

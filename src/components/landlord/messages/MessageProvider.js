@@ -23,8 +23,39 @@ export const MessageProvider = (props) => {
     }).then(getMessages);
   };
 
+  const deleteMessage = (messageId) => {
+    return fetch(`http://localhost:8088/messages/${messageId}`, {
+      method: "DELETE",
+    }).then(getMessages);
+  };
+
+  const updateMessage = (message) => {
+    return fetch(`http://localhost:8088/messages/${message.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(message),
+    }).then(getMessages);
+  };
+
+  const getMessageById = (id) => {
+    return fetch(`http://localhost:8088/messages/${id}`, {}).then((res) =>
+      res.json()
+    );
+  };
+
   return (
-    <MessageContext.Provider value={{ getMessages, messages, addMessage }}>
+    <MessageContext.Provider
+      value={{
+        getMessages,
+        messages,
+        addMessage,
+        deleteMessage,
+        updateMessage,
+        getMessageById,
+      }}
+    >
       {props.children}
     </MessageContext.Provider>
   );
