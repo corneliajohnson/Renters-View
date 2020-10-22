@@ -226,14 +226,6 @@
       "id": 16
     },
     {
-      "id": 21,
-      "tenantId": 4,
-      "landlordId": 1,
-      "text": "hello there",
-      "date": 1603308877267,
-      "sender": "landlord"
-    },
-    {
       "id": 25,
       "tenantId": 3,
       "landlordId": 1,

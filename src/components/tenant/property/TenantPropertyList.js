@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { TenantContext } from "../../landlord/tenants/TenantProvider";
 import { PropertyContext } from "../../landlord/property/PropertyProvider";
 import { Row, Col } from "reactstrap";
+import { MessageForm } from "./MessageForm";
 
 export const TenantProperty = () => {
   const { getTenantById } = useContext(TenantContext);
@@ -60,6 +61,7 @@ export const TenantProperty = () => {
             </p>
             <p>Email: {landlord.email}</p>
             <p>Phone Number: {landlord.phone}</p>
+            <MessageForm />
           </Col>
         </Row>
         <Row className="m-5">
