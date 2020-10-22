@@ -13,6 +13,7 @@ export const MessageShowing = (tenantConversation) => {
 
   const [filteredMessages, setFilteredMessages] = useState([]);
   const [tenant, setTenant] = useState({});
+  const [property, setProperty] = useState({});
 
   useEffect(() => {
     getMessages();
@@ -31,6 +32,7 @@ export const MessageShowing = (tenantConversation) => {
     if (tenantConversation.id) {
       getTenantById(tenantConversation.id).then((response) => {
         setTenant(response);
+        setProperty(response.property);
       });
     }
     setReciever(tenantConversation.id);
@@ -42,11 +44,22 @@ export const MessageShowing = (tenantConversation) => {
         <div className="messageShowingArea">
           {/* show tennant name if landlord is logged in */}
           {localStorage.landlord ? (
-            <h3 className="text-center messageNameTitle p-4 sticky-top bg-white">
-              {tenant.id
-                ? `${tenant.firstName} ${tenant.lastName}`
-                : "Select a Tenant"}
-            </h3>
+            <div className="text-center messageNameTitle p-4 sticky-top bg-white">
+              {tenant.id ? (
+                <>
+                  <h3>
+                    {tenant.firstName} {tenant.lastName}
+                  </h3>{" "}
+                  <p className="text-secondary">
+                    {" "}
+                    {property.street} {property.city} {property.state}
+                  </p>
+                </>
+              ) : (
+                <h3 className="text-secondary">Select A Tenant</h3>
+              )}
+              <p></p>
+            </div>
           ) : (
             ""
           )}

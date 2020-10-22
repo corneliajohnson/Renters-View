@@ -49,6 +49,7 @@ export const TenantMessageInput = (reciever) => {
           {message.text ? (
             <InputGroupAddon addonType="append">
               <Button
+                style={{ color: "darkcyan" }}
                 color="link"
                 onClick={(e) => {
                   e.preventDefault();
@@ -60,7 +61,7 @@ export const TenantMessageInput = (reciever) => {
             </InputGroupAddon>
           ) : (
             <InputGroupAddon addonType="append">
-              <Button color="link" disabled>
+              <Button style={{ color: "darkcyan" }} color="link" disabled>
                 <FontAwesomeIcon icon={faPaperPlane} />
               </Button>
             </InputGroupAddon>
