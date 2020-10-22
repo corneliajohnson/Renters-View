@@ -296,11 +296,20 @@
       "id": 4,
       "propertyId": 4,
       "synopsis": "Toliet Overflow",
-      "price": "200",
+      "price": "225",
       "contractor": "Bill",
       "complete": false,
       "note": "second time",
-      "dateAdded": 1603222603406
+      "dateAdded": 1603395283428
+    },
+    {
+      "propertyId": 5,
+      "synopsis": "Roof Inpection",
+      "price": "75",
+      "contractor": "Tallahassee Roofing",
+      "complete": false,
+      "dateAdded": 1603395335628,
+      "id": 5
     }
   ]
 }

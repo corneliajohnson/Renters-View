@@ -3,6 +3,8 @@ import { PropertyContext } from "../property/PropertyProvider";
 import { MaintenanceContext } from "./MaintenanceProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import {
   Col,
@@ -27,6 +29,22 @@ const Modal = ({ onRequestClose }) => {
 
   const [request, setRequest] = useState({});
   const [filteredProperies, setFilterdProperties] = useState([]);
+
+  //taost when a maintenance request added
+  const notifyAdd = () => {
+    toast.success("Request Added", {
+      hideProgressBar: true,
+      position: toast.POSITION.BOTTOM_LEFT,
+    });
+  };
+
+  //taost when a maintenance request updates
+  const notifyUupdate = () => {
+    toast.success("Request Updated", {
+      hideProgressBar: true,
+      position: toast.POSITION.BOTTOM_LEFT,
+    });
+  };
 
   //for property dropdown
   useEffect(() => {
@@ -66,7 +84,7 @@ const Modal = ({ onRequestClose }) => {
         dateComplete: request.dateComplete,
         note: request.note,
         dateAdded: Date.now(),
-      });
+      }).then(() => notifyUupdate());
     } else {
       addMaintenaceRequest({
         propertyId: parseInt(request.propertyId),
@@ -77,7 +95,7 @@ const Modal = ({ onRequestClose }) => {
         dateComplete: request.dateComplete,
         note: request.note,
         dateAdded: Date.now(),
-      });
+      }).then(() => notifyAdd());
     }
   };
 
