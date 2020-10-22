@@ -11,7 +11,10 @@ toast.configure();
 export const MessageDelete = (message) => {
   const { deleteMessage } = useContext(MessageContext);
   const notify = () => {
-    toast("Basic Notication");
+    toast.error("Message Deleted", {
+      hideProgressBar: true,
+      position: toast.POSITION.BOTTOM_LEFT,
+    });
   };
   return (
     <Button
