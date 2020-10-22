@@ -226,28 +226,12 @@
       "id": 16
     },
     {
-      "tenantId": 2,
-      "landlordId": 1,
-      "text": "fff",
-      "date": 1603302025139,
-      "sender": "landlord",
-      "id": 19
-    },
-    {
       "id": 21,
       "tenantId": 4,
       "landlordId": 1,
       "text": "hello there",
       "date": 1603308877267,
       "sender": "landlord"
-    },
-    {
-      "tenantId": 3,
-      "landlordId": 1,
-      "text": "ffff",
-      "date": 1603305373679,
-      "sender": "landlord",
-      "id": 22
     },
     {
       "id": 25,

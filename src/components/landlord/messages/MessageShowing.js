@@ -4,7 +4,7 @@ import { TenantContext } from "../tenants/TenantProvider";
 import { Col, Row } from "reactstrap";
 import "./Message.css";
 import { MessageInput } from "./MessageInput";
-import { MessageOptions } from "./MessageOptions";
+import { MessageDelete } from "./MessageDelete";
 
 export const MessageShowing = (tenantConversation) => {
   const { messages, getMessages, setMessageText } = useContext(MessageContext);
@@ -53,7 +53,7 @@ export const MessageShowing = (tenantConversation) => {
                   <div className="landLordMessageBox m-2 p-3">
                     {localStorage.landlord ? (
                       <div className="float-right">
-                        <MessageOptions id={message.id} />
+                        <MessageDelete id={message.id} />
                       </div>
                     ) : (
                       ""

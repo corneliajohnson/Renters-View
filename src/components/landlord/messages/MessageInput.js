@@ -1,19 +1,12 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { MessageContext } from "./MessageProvider";
 import { InputGroup, InputGroupAddon, Button, Input, Form } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import "./Message.css";
-let messageId = 0;
 
 export const MessageInput = (reciever) => {
-  const { addMessage, messageText, setMessageText, updateMessage } = useContext(
-    MessageContext
-  );
-
-  useEffect(() => {
-    messageId = 0;
-  }, [reciever]);
+  const { addMessage } = useContext(MessageContext);
 
   const [message, setMessage] = useState({});
 
@@ -24,25 +17,10 @@ export const MessageInput = (reciever) => {
     setMessage(newMessage);
   };
 
-  message.text = messageText;
-
   const constructMessage = () => {
     const checkLandlord = Object.keys(localStorage);
     //if the user is a landlord add to database
-    //to edit message
-    if (messageId !== 0 && checkLandlord[0] === "landlord" && reciever.id) {
-      updateMessage({
-        id: messageId,
-        tenantId: reciever.id,
-        landlordId: parseInt(localStorage.landlord),
-        text: message.text.trim(),
-        date: Date.now(),
-        sender: "landlord",
-      }).then((_) => {
-        messageId = 0;
-        setMessageText("");
-      });
-    } else if (checkLandlord[0] === "landlord" && reciever.id) {
+    if (checkLandlord[0] === "landlord" && reciever.id) {
       addMessage({
         tenantId: reciever.id,
         landlordId: parseInt(localStorage.landlord),
@@ -52,8 +30,7 @@ export const MessageInput = (reciever) => {
       })
         //clear the message after its been sent
         .then((_) => {
-          messageId = 0;
-          setMessageText("");
+          message.text = "";
         });
     }
   };
@@ -63,33 +40,34 @@ export const MessageInput = (reciever) => {
       <Form>
         <InputGroup>
           <Input
-            onKeyUp={(keyEvent) => setMessageText(keyEvent.target.value)}
             className="messageTextInput"
             type="text"
             name="text"
-            defaultValue={messageText}
+            value={message.text}
             placeholder="Write message here ..."
             onChange={handleControlledInputChange}
           />
-          <InputGroupAddon addonType="append">
-            <Button
-              color="link"
-              onClick={(e) => {
-                if (message.text) {
+          {message.text ? (
+            <InputGroupAddon addonType="append">
+              <Button
+                color="link"
+                onClick={(e) => {
                   e.preventDefault();
                   constructMessage();
-                }
-              }}
-            >
-              <FontAwesomeIcon icon={faPaperPlane} />
-            </Button>
-          </InputGroupAddon>
+                }}
+              >
+                <FontAwesomeIcon icon={faPaperPlane} />
+              </Button>
+            </InputGroupAddon>
+          ) : (
+            <InputGroupAddon addonType="append">
+              <Button color="link" disabled>
+                <FontAwesomeIcon icon={faPaperPlane} />
+              </Button>
+            </InputGroupAddon>
+          )}
         </InputGroup>
       </Form>
     </>
   );
-};
-
-export const EditMessage = (message) => {
-  messageId = message;
 };
