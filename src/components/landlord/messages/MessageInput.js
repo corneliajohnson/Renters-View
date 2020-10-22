@@ -47,7 +47,7 @@ export const MessageInput = (reciever) => {
             placeholder="Write message here ..."
             onChange={handleControlledInputChange}
           />
-          {message.text ? (
+          {message.text && reciever.id ? (
             <InputGroupAddon addonType="append">
               <Button
                 color="link"

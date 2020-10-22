@@ -3,23 +3,24 @@
 /* f2af58 */
 
 .messageShowingArea {
-  border: 0.3px solid gray;
-  height: 40em;
+  border: 0.1px solid #f9f9f9;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 35em;
 }
 .inputAndMessage {
-  border: 0.3px solid gray;
+  border: 0.1px solid #f9f9f9;
   border-radius: 5px;
 }
 
 .messageNameTitle {
-  border-bottom: 0.3px gray solid;
-  color: #f2af58;
+  border-bottom: 0.1px #f9f9f9 solid;
 }
 
 .tenatMessageBox,
 .landLordMessageBox {
   border: 1px solid white;
-  border-radius: 5px;
+  border-radius: 7px;
   max-width: 45%;
 }
 
@@ -31,6 +32,6 @@
 
 .tenatMessageBox {
   float: left;
-  background-color: lightgray;
+  background-color: #f0f0f0;
   color: black;
 }

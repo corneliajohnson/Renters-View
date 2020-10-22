@@ -39,7 +39,7 @@ export const MessageShowing = (tenantConversation) => {
   return (
     <>
       <div className="inputAndMessage">
-        <div className="messageShowingArea overflow-auto">
+        <div className="messageShowingArea">
           <h3 className="text-center messageNameTitle p-4 sticky-top bg-white">
             {tenant.id
               ? `${tenant.firstName} ${tenant.lastName}`
@@ -50,7 +50,7 @@ export const MessageShowing = (tenantConversation) => {
               //landlord messages
               message.sender === "landlord" ? (
                 <Col sm={12} className="float-right">
-                  <div className="landLordMessageBox m-2 p-3">
+                  <div className="landLordMessageBox m-2 p-2">
                     {localStorage.landlord ? (
                       <div className="float-right">
                         <MessageDelete id={message.id} />
@@ -67,7 +67,7 @@ export const MessageShowing = (tenantConversation) => {
               ) : (
                 //tenant message
                 <Col sm={12}>
-                  <div className="tenatMessageBox m-2 p-3">
+                  <div className="tenatMessageBox m-2 p-2">
                     <p>{message.text}</p>
                     <small className="float-right">
                       {new Date(message.date).toLocaleString()}

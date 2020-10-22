@@ -25,6 +25,9 @@ export const MessageList = () => {
 
   return (
     <>
+      <div className="text-center">
+        <h2 className="display-2 m-5">Messages</h2>
+      </div>
       <div className="container">
         <Row>
           <Col sm={3}>
@@ -45,7 +48,6 @@ export const MessageList = () => {
             </ListGroup>
           </Col>
           <Col sm={9}>
-            <h3>Messages</h3>
             <div>
               <MessageShowing id={conversation} />
             </div>
