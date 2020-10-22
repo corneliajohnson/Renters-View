@@ -3,6 +3,8 @@ import "./PropertyForm.css";
 import { PropertyContext } from "./PropertyProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   Button,
   ModalHeader,
@@ -40,6 +42,21 @@ const Modal = ({ onRequestClose }) => {
     newProperty[event.target.name] = event.target.value;
     setProperty(newProperty);
   };
+  //taost when a property added
+  const notifyAdd = () => {
+    toast.success("Property Added", {
+      hideProgressBar: true,
+      position: toast.POSITION.BOTTOM_LEFT,
+    });
+  };
+
+  //taost when a property updates
+  const notifyUpdate = () => {
+    toast.success("Property Updated", {
+      hideProgressBar: true,
+      position: toast.POSITION.BOTTOM_LEFT,
+    });
+  };
 
   const constructPropertyObj = () => {
     //update property
@@ -59,7 +76,7 @@ const Modal = ({ onRequestClose }) => {
         leaseTerm: property.leaseTerm,
         image: null,
         landlordId: parseInt(localStorage.landlord),
-      });
+      }).then(() => notifyUpdate());
     } else {
       //add property
       addProperty({
@@ -76,7 +93,7 @@ const Modal = ({ onRequestClose }) => {
         leaseTerm: property.leaseTerm,
         image: null,
         landlordId: parseInt(localStorage.landlord),
-      });
+      }).then(() => notifyAdd());
     }
     propertyId = 0;
   };

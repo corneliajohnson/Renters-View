@@ -39,7 +39,7 @@ const Modal = ({ onRequestClose }) => {
   };
 
   //taost when a maintenance request updates
-  const notifyUupdate = () => {
+  const notifyUpdate = () => {
     toast.success("Request Updated", {
       hideProgressBar: true,
       position: toast.POSITION.BOTTOM_LEFT,
@@ -84,7 +84,7 @@ const Modal = ({ onRequestClose }) => {
         dateComplete: request.dateComplete,
         note: request.note,
         dateAdded: Date.now(),
-      }).then(() => notifyUupdate());
+      }).then(() => notifyUpdate());
     } else {
       addMaintenaceRequest({
         propertyId: parseInt(request.propertyId),
