@@ -3,6 +3,7 @@ import { TenantContext } from "../../landlord/tenants/TenantProvider";
 import { PropertyContext } from "../../landlord/property/PropertyProvider";
 import { Row, Col } from "reactstrap";
 import { MessageForm } from "./TenantMessageForm";
+import { DateRangeRounded } from "@material-ui/icons";
 
 export const TenantProperty = () => {
   const { getTenantById } = useContext(TenantContext);
@@ -79,7 +80,30 @@ export const TenantProperty = () => {
             <div className="property_maintenatce">
               <h3>Maintenance</h3>
               {propertyMaintenance.map((request) => {
-                return request.synopsis;
+                return request.length === 0 ? (
+                  "None"
+                ) : (
+                  <div>
+                    {new Date(request.dateAdded).toLocaleString("en-US", {
+                      year: "numeric",
+                      month: "long",
+                      day: "numeric",
+                    })}
+                    {"   "}
+                    {request.synopsis}
+                    {"   "}
+                    {request.complete ? (
+                      <>
+                        complete on {"   "}
+                        <span className="text-success">
+                          {request.dateComplete}
+                        </span>
+                      </>
+                    ) : (
+                      <span className="text-danger">Pending</span>
+                    )}
+                  </div>
+                );
               })}
             </div>
           </Col>
