@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { MessageContext } from "../../landlord/messages/MessageProvider";
 import { TenantContext } from "../../landlord/tenants/TenantProvider";
+import { MessageDelete } from "../../landlord/messages/MessageDelete";
 import { TenantMessageInput } from "./TenantMessageInput";
 import { Col, Row } from "reactstrap";
 
@@ -39,12 +40,11 @@ export const TenantMessageShowing = () => {
               message.sender === "tenant" ? (
                 <Col sm={12} className="float-right">
                   <div className="senderMessageBox m-2 p-3">
-                    {localStorage.landlord ? (
-                      <div className="float-right"></div>
-                    ) : (
-                      ""
-                    )}
+                    <div className="float-right">
+                      <MessageDelete id={message.id} />
+                    </div>
                     <p>{message.text}</p>
+
                     <small className="float-right">
                       {new Date(message.date).toLocaleString()}
                     </small>

@@ -180,14 +180,6 @@
     {
       "tenantId": 2,
       "landlordId": 1,
-      "text": "Great Update",
-      "date": 1603231023136,
-      "sender": "tenant",
-      "id": 4
-    },
-    {
-      "tenantId": 2,
-      "landlordId": 1,
       "text": "No Problem",
       "date": 1603231068935,
       "sender": "landlord",
