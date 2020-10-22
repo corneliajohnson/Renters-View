@@ -9,6 +9,7 @@ import {
   Col,
 } from "reactstrap";
 import { PropertyContext } from "./PropertyProvider";
+import { DateString } from "../date/DateString";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 let propertyId = 0; //get the property selected
@@ -99,7 +100,9 @@ const Modal = ({ onRequestClose }) => {
                 <p>
                   Rent amount:{" "}
                   {property.rentAmount
-                    ? ` ${property.rentAmount} due on ${property.paymentDay} in the Amount of $${property.lastPaymentAmount}`
+                    ? ` ${property.rentAmount} due on ${DateString(
+                        property.paymentDay
+                      )} in the Amount of $${property.lastPaymentAmount}`
                     : " None"}
                 </p>
                 <p>
@@ -111,13 +114,13 @@ const Modal = ({ onRequestClose }) => {
                 <p>
                   Lease State Date:{" "}
                   {property.leaseStartDate
-                    ? ` ${property.leaseStartDate}`
+                    ? ` ${DateString(property.leaseStartDate)}`
                     : " None"}
                 </p>
                 <p>
                   Lease End Date:{" "}
                   {property.leaseEndDate
-                    ? ` ${property.leaseEndDate}`
+                    ? ` ${DateString(property.leaseEndDate)}`
                     : " None"}
                 </p>
               </Col>
@@ -130,7 +133,7 @@ const Modal = ({ onRequestClose }) => {
                   <p>
                     Status:{" "}
                     {request.complete
-                      ? `Complete on ${request.dateComplete}`
+                      ? `Complete on ${DateString(request.dateComplete)}`
                       : "Pending"}
                   </p>
                 </div>

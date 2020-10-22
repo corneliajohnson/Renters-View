@@ -1,14 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import {
-  CardLink,
-  Form,
-  Button,
-  ModalHeader,
-  ModalBody,
-  CardText,
-  FormGroup,
-} from "reactstrap";
+import { CardLink, Button, ModalHeader, ModalBody } from "reactstrap";
 import { MaintenanceContext } from "./MaintenanceProvider";
+import { DateString } from "../date/DateString";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
@@ -70,9 +63,18 @@ const Modal = ({ onRequestClose }) => {
           <p>Price: {request.price ? request.price : "N/A"}</p>
           <p>Complete: {request.complete ? "Yes" : "No"}</p>
           <p>
-            Date Complete: {request.dateComplete ? request.dateComplete : "N/A"}
+            Date Complete:{" "}
+            {request.dateComplete ? DateString(request.dateComplete) : "N/A"}
           </p>
-          <p>Date Added: {request.dateAdded}</p>
+          <p>
+            Date Added:{" "}
+            {new Date(request.dateAdded).toLocaleString("en-US", {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </p>
           <p>Note: {request.note ? request.note : "N/A"}</p>
         </ModalBody>
         <Button

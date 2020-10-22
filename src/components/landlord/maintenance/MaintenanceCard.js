@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import { ListGroupItem, Col, Row } from "reactstrap";
+import { DateString } from "../date/DateString";
 import "./Maintenance.css";
 
 export const MaintenanceCard = ({ request, titleLink, deleteBtn, editBtn }) => {
@@ -15,7 +16,9 @@ export const MaintenanceCard = ({ request, titleLink, deleteBtn, editBtn }) => {
           </p>
           <small>
             {request.complete ? (
-              <p className="text-success">Complete {request.dateComplete}</p>
+              <p className="text-success">
+                Complete {DateString(request.dateComplete)}
+              </p>
             ) : (
               <p className="text-danger">Pending</p>
             )}
