@@ -1,15 +1,25 @@
 import React, { useContext, useEffect, useState } from "react";
 import { MessageContext } from "../../landlord/messages/MessageProvider";
+import { TenantContext } from "../../landlord/tenants/TenantProvider";
+import { TenantMessageInput } from "./TenantMessageInput";
 import { Col, Row } from "reactstrap";
 
 export const TenantMessageShowing = () => {
   const { messages, getMessages } = useContext(MessageContext);
-  const [reciever, setReciever] = useState();
+  const { getTenantById } = useContext(TenantContext);
+  const [landlord, setLandlord] = useState();
 
   const [filteredMessages, setFilteredMessages] = useState([]);
 
   useEffect(() => {
     getMessages();
+  }, []);
+
+  useEffect(() => {
+    const currentTenant = parseInt(localStorage.tenant);
+    getTenantById(currentTenant).then((response) => {
+      setLandlord(response.landlord);
+    });
   }, []);
 
   //only get messages in the clicked on conversation
@@ -58,7 +68,10 @@ export const TenantMessageShowing = () => {
             )}
           </Row>
         </div>
-        <div> {/* <MessageInput id={reciever} />{" "} */}</div>
+        <div>
+          {" "}
+          <TenantMessageInput id={landlord} />
+        </div>
       </div>
     </>
   );

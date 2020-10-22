@@ -256,6 +256,14 @@
       "date": 1603378680281,
       "sender": "tenant",
       "id": 28
+    },
+    {
+      "tenantId": 2,
+      "landlordId": 1,
+      "text": "Hello, i have a leak in the kitchen",
+      "date": 1603383478445,
+      "sender": "tenant",
+      "id": 29
     }
   ],
   "maintenanceRequests": [
