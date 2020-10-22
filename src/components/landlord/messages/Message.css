@@ -17,20 +17,20 @@
   border-bottom: 0.1px #f9f9f9 solid;
 }
 
-.tenatMessageBox,
-.landLordMessageBox {
+.senderMessageBox,
+.recieverMessageBox {
   border: 1px solid white;
   border-radius: 7px;
   max-width: 45%;
 }
 
-.landLordMessageBox {
+.senderMessageBox {
   float: right;
   background-color: lightcyan;
   color: darkcyan;
 }
 
-.tenatMessageBox {
+.recieverMessageBox {
   float: left;
   background-color: #f0f0f0;
   color: black;

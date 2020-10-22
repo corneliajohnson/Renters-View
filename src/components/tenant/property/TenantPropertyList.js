@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { TenantContext } from "../../landlord/tenants/TenantProvider";
 import { PropertyContext } from "../../landlord/property/PropertyProvider";
 import { Row, Col } from "reactstrap";
-import { MessageForm } from "./MessageForm";
+import { MessageForm } from "./TenantMessageForm";
 
 export const TenantProperty = () => {
   const { getTenantById } = useContext(TenantContext);

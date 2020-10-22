@@ -240,6 +240,22 @@
       "date": 1603311596348,
       "sender": "landlord",
       "id": 26
+    },
+    {
+      "tenantId": 3,
+      "landlordId": 1,
+      "text": "hello",
+      "date": 1603378641048,
+      "sender": "tenant",
+      "id": 27
+    },
+    {
+      "tenantId": 3,
+      "landlordId": 1,
+      "text": "there",
+      "date": 1603378680281,
+      "sender": "tenant",
+      "id": 28
     }
   ],
   "maintenanceRequests": [

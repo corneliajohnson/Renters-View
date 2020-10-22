@@ -1,21 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { MessageInput } from "../../landlord/messages/MessageInput";
+import { TenantContext } from "../../landlord/tenants/TenantProvider";
+import { TenantMessageShowing } from "./TenantMessageShowing";
 
-import {
-  Col,
-  Row,
-  Button,
-  Form,
-  FormGroup,
-  Label,
-  Input,
-  ModalHeader,
-  CardLink,
-} from "reactstrap";
+import { Button, Form, ModalHeader, CardLink } from "reactstrap";
 
 const Modal = ({ onRequestClose }) => {
+  const { getTenantById } = useContext(TenantContext);
+  const [landlord, setLandlord] = useState();
+
+  useEffect(() => {
+    getTenantById(parseInt(localStorage.tenant)).then((response) => {
+      setLandlord(response.landlordId);
+    });
+  }, []);
+
   // Use useEffect to add an event listener to the document
   useEffect(() => {
     function onKeyDown(event) {
@@ -48,10 +48,7 @@ const Modal = ({ onRequestClose }) => {
             <FontAwesomeIcon icon={faTimes} />
           </CardLink>
           <ModalHeader className="display-3">Message</ModalHeader>
-          <div className="inputAndMessage">
-            <div className="messageShowingArea"></div>
-          </div>
-          <MessageInput />
+          <TenantMessageShowing />
         </Form>
         <div className="text-right">
           <Button
