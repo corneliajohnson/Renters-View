@@ -2,16 +2,18 @@ import React, { useContext, useEffect, useState } from "react";
 import { TenantContext } from "../tenants/TenantProvider";
 import { MessageShowing } from "./MessageShowing";
 import { Row, Col, ListGroup, ListGroupItem } from "reactstrap";
+import { MessageContext } from "./MessageProvider";
 
 export const MessageList = () => {
   const { getTenants, tenants } = useContext(TenantContext);
+  const { getMessages, messages } = useContext(MessageContext);
   const [filteredTenants, setFilteredTenants] = useState([]);
 
   //get the user thats clicked on
   const [conversation, setConversation] = useState();
 
   useEffect(() => {
-    getTenants();
+    getTenants(getMessages);
   }, []);
 
   //only get the current lanlord tenants
@@ -21,7 +23,7 @@ export const MessageList = () => {
         tenant.landlordId === parseInt(localStorage.landlord) && tenant.id !== 1
     );
     setFilteredTenants(subsetTenants);
-  }, [tenants]);
+  }, [tenants, messages]);
 
   return (
     <>

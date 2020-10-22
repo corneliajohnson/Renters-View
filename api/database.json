@@ -218,14 +218,6 @@
       "id": 16
     },
     {
-      "id": 25,
-      "tenantId": 3,
-      "landlordId": 1,
-      "text": "for the road",
-      "date": 1603310914701,
-      "sender": "landlord"
-    },
-    {
       "tenantId": 5,
       "landlordId": 1,
       "text": "Hello I'm Cornelia your new landlord reachout if you have any questions",
@@ -256,6 +248,38 @@
       "date": 1603383478445,
       "sender": "tenant",
       "id": 29
+    },
+    {
+      "tenantId": 3,
+      "landlordId": 1,
+      "text": "Hows it going?",
+      "date": 1603399903438,
+      "sender": "tenant",
+      "id": 30
+    },
+    {
+      "tenantId": 3,
+      "landlordId": 1,
+      "text": "pretty good",
+      "date": 1603400126153,
+      "sender": "landlord",
+      "id": 31
+    },
+    {
+      "tenantId": 3,
+      "landlordId": 1,
+      "text": "Is Everything Ok",
+      "date": 1603400244851,
+      "sender": "landlord",
+      "id": 32
+    },
+    {
+      "tenantId": 3,
+      "landlordId": 1,
+      "text": "No a tree just feel in the driveway",
+      "date": 1603400280255,
+      "sender": "tenant",
+      "id": 33
     }
   ],
   "maintenanceRequests": [

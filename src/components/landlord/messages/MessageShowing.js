@@ -80,13 +80,6 @@ export const MessageShowing = (tenantConversation) => {
               ) : (
                 <Col sm={12}>
                   <div className="recieverMessageBox m-2 p-3">
-                    {localStorage.tenant ? (
-                      <div className="float-left">
-                        <MessageDelete />
-                      </div>
-                    ) : (
-                      ""
-                    )}
                     <p>{message.text}</p>
                     <small className="float-right">
                       {new Date(message.date).toLocaleString()}
