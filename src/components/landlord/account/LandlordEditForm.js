@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import { LandlordContext, LandlordProvider } from "./LandlordProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import {
   Col,
@@ -16,18 +18,23 @@ import {
 } from "reactstrap";
 
 const Modal = ({ onRequestClose }) => {
-  const {
-    getLandlordById,
-    updateLandlord,
-    landlords,
-    getLandlords,
-  } = useContext(LandlordContext);
+  const { getLandlordById, updateLandlord, getLandlords } = useContext(
+    LandlordContext
+  );
 
   const [landlord, setLandlord] = useState({});
 
   useEffect(() => {
     getLandlords();
   }, []);
+
+  //taost when a account is updated
+  const notify = () => {
+    toast.success("Account Updated", {
+      hideProgressBar: true,
+      position: toast.POSITION.BOTTOM_LEFT,
+    });
+  };
 
   //get info for currenant landlord
   useEffect(() => {
@@ -53,7 +60,7 @@ const Modal = ({ onRequestClose }) => {
       email: landlord.email,
       phone: landlord.phone,
       image: false,
-    });
+    }).then(() => notify());
   };
 
   // Use useEffect to add an event listener to the document
