@@ -3,7 +3,7 @@ import { TenantContext } from "../../landlord/tenants/TenantProvider";
 import { PropertyContext } from "../../landlord/property/PropertyProvider";
 import { Row, Col } from "reactstrap";
 import { MessageForm } from "./TenantMessageForm";
-import { DateRangeRounded } from "@material-ui/icons";
+import { DateString } from "../../landlord/date/DateString";
 
 export const TenantProperty = () => {
   const { getTenantById } = useContext(TenantContext);
@@ -45,7 +45,7 @@ export const TenantProperty = () => {
         </div>
 
         <Row className="m-5">
-          <Col>
+          <Col sm={12} md={6}>
             <h3>Tenant</h3>
             <div className="property__tenant">
               <p>
@@ -55,7 +55,7 @@ export const TenantProperty = () => {
               <p>Email: {tenant.email}</p>
             </div>
           </Col>
-          <Col>
+          <Col sm={12} md={6}>
             <h3>Landlord</h3>
             <p>
               {landlord.firstName} {landlord.lastName}
@@ -66,17 +66,35 @@ export const TenantProperty = () => {
           </Col>
         </Row>
         <Row className="m-5">
-          <Col>
+          <Col sm={12} md={6}>
             <div className="property__moreInfor">
               <h3>Property Info</h3>
-              Rent Price: ${property.rentAmount}
-              <p>Lease Begin: {property.leaseStartDate}</p>
-              <p>Lease Ends: {property.leaseEndDate}</p>
-              <p>Last Payment Amount: {property.lastPaymentAmount}</p>
-              <p>Lease Term: {property.leaseTerm}</p>
+              Rent Price:{" "}
+              {property.rentAmount ? `$ ${property.rentAmount}` : "N/A"}
+              <p>
+                Lease Begin:{" "}
+                {property.leaseStartDate
+                  ? DateString(property.leaseStartDate)
+                  : "N/A"}
+              </p>
+              <p>
+                Lease Ends:{" "}
+                {property.leaseEndDate
+                  ? DateString(property.leaseStartDate)
+                  : "N/A"}
+              </p>
+              <p>
+                Last Payment Amount:{" "}
+                {property.lastPaymentAmount
+                  ? property.lastPaymentAmount
+                  : "N/A"}
+              </p>
+              <p>
+                Lease Term: {property.leaseTerm ? property.leaseTerm : "N/A"}
+              </p>
             </div>
           </Col>
-          <Col>
+          <Col sm={12} md={6}>
             <div className="property_maintenatce">
               <h3>Maintenance</h3>
               {propertyMaintenance.map((request) => {
