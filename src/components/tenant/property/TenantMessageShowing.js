@@ -53,11 +53,7 @@ export const TenantMessageShowing = () => {
               ) : (
                 <Col sm={12}>
                   <div className="recieverMessageBox m-2 p-3">
-                    {localStorage.landlord ? (
-                      <div className="float-left"></div>
-                    ) : (
-                      ""
-                    )}
+                    <div className="float-left"></div>
                     <p>{message.text}</p>
                     <small className="float-right">
                       {new Date(message.date).toLocaleString()}

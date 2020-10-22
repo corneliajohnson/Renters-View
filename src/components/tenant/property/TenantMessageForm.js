@@ -1,21 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { TenantContext } from "../../landlord/tenants/TenantProvider";
 import { TenantMessageShowing } from "./TenantMessageShowing";
 
 import { Button, Form, ModalHeader, CardLink } from "reactstrap";
 
 const Modal = ({ onRequestClose }) => {
-  const { getTenantById } = useContext(TenantContext);
-  const [landlord, setLandlord] = useState();
-
-  useEffect(() => {
-    getTenantById(parseInt(localStorage.tenant)).then((response) => {
-      setLandlord(response.landlordId);
-    });
-  }, []);
-
   // Use useEffect to add an event listener to the document
   useEffect(() => {
     function onKeyDown(event) {
