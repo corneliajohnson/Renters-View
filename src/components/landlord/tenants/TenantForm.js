@@ -4,6 +4,8 @@ import { PropertyContext } from "../property/PropertyProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { TenantsChanged } from "../property/PropertyCardTenantInfo";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./Tenant.css";
 
 import {
@@ -46,6 +48,22 @@ const Modal = ({ onRequestClose }) => {
     setTenant(newTenant);
   };
 
+  //taost when a maintenance request added
+  const notifyAdd = () => {
+    toast.success("Tenant Added", {
+      hideProgressBar: true,
+      position: toast.POSITION.BOTTOM_LEFT,
+    });
+  };
+
+  //taost when a maintenance request updates
+  const notifyUpdate = () => {
+    toast.success("Tenant Updated", {
+      hideProgressBar: true,
+      position: toast.POSITION.BOTTOM_LEFT,
+    });
+  };
+
   //add or edit tenant in database
   const constructTenantObj = () => {
     if (tenant.id) {
@@ -57,7 +75,9 @@ const Modal = ({ onRequestClose }) => {
         phone: tenant.phone,
         propertyId: parseInt(tenant.propertyId),
         landlordId: parseInt(localStorage.landlord),
-      }).then(getProperties);
+      })
+        .then(getProperties)
+        .then(() => notifyUpdate());
     } else {
       addTenant({
         firstName: tenant.firstName,
@@ -66,7 +86,9 @@ const Modal = ({ onRequestClose }) => {
         phone: tenant.phone,
         propertyId: parseInt(tenant.propertyId),
         landlordId: parseInt(localStorage.landlord),
-      }).then(getProperties);
+      })
+        .then(getProperties)
+        .then(() => notifyAdd());
     }
   };
 

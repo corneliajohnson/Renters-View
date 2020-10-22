@@ -5,6 +5,8 @@ import { Button } from "reactstrap";
 import { TenantContext } from "./TenantProvider";
 import { PropertyContext } from "../property/PropertyProvider";
 import { TenantsChanged } from "../property/PropertyCardTenantInfo";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const TenantDelete = (tenantId) => {
   const { getProperties } = useContext(PropertyContext);
@@ -18,6 +20,14 @@ export const TenantDelete = (tenantId) => {
     });
   }, []);
 
+  //taost when a message is deleted
+  const notify = () => {
+    toast.error("Tenant Deleted", {
+      hideProgressBar: true,
+      position: toast.POSITION.BOTTOM_LEFT,
+    });
+  };
+
   const alert = () => {
     confirmAlert({
       title: "Delete Tenant",
@@ -28,7 +38,8 @@ export const TenantDelete = (tenantId) => {
           onClick: () =>
             deleteTenant(tenantId.id)
               .then(getProperties)
-              .then(TenantsChanged()), //update property cards,
+              .then(TenantsChanged()) //update property cards,
+              .then(() => notify()),
         },
         {
           label: "No",
