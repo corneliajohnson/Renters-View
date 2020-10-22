@@ -1,11 +1,21 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { confirmAlert } from "react-confirm-alert"; // Import
 import "react-confirm-alert/src/react-confirm-alert.css"; // Import css
 import { MaintenanceContext } from "./MaintenanceProvider";
 import { Button } from "reactstrap";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const MaintenanceDelete = (requestId) => {
   const { deleteMaintenanceRequest } = useContext(MaintenanceContext);
+
+  //taost when a message is deleted
+  const notify = () => {
+    toast.error("Maintenance Request Deleted", {
+      hideProgressBar: true,
+      position: toast.POSITION.BOTTOM_LEFT,
+    });
+  };
 
   const alert = () => {
     confirmAlert({
@@ -18,7 +28,8 @@ export const MaintenanceDelete = (requestId) => {
       buttons: [
         {
           label: "Yes",
-          onClick: () => deleteMaintenanceRequest(requestId.id),
+          onClick: () =>
+            deleteMaintenanceRequest(requestId.id).then(() => notify()),
         },
         {
           label: "No",
