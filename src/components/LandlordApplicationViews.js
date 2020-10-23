@@ -4,10 +4,7 @@ import { NavBar } from "./landlord/nav/NavBar";
 import { PropertyList } from "./landlord/property/PropertyList";
 import { PropertyProvider } from "./landlord/property/PropertyProvider";
 import { PropertyForm } from "./landlord/property/PropertyForm";
-import {
-  TenantContext,
-  TenantProvider,
-} from "./landlord/tenants/TenantProvider";
+import { TenantProvider } from "./landlord/tenants/TenantProvider";
 import { TenantForm } from "./landlord/tenants/TenantForm";
 import { TenantList } from "./landlord/tenants/TenantList";
 import { MaintenanceForm } from "./landlord/maintenance/MaintenanceForm";
@@ -17,6 +14,7 @@ import { AccountView } from "./landlord/account/AccountView";
 import { LandlordProvider } from "./landlord/account/LandlordProvider";
 import { MessageList } from "./landlord/messages/MessageList";
 import { MessageProvider } from "./landlord/messages/MessageProvider";
+import { Footer } from "./landlord/footer/Footer";
 
 export const LandlordApplicationViews = () => {
   return (
@@ -55,6 +53,7 @@ export const LandlordApplicationViews = () => {
           </Route>
         </MessageProvider>
       </TenantProvider>
+      <Footer />
     </>
   );
 };

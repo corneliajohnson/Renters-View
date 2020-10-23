@@ -5,6 +5,7 @@ import { TenantProvider } from "./landlord/tenants/TenantProvider";
 import { PropertyProvider } from "./landlord/property/PropertyProvider";
 import { MessageProvider } from "./landlord/messages/MessageProvider";
 import { NavBar } from "./tenant/property/nav/NavBar";
+import { Footer } from "./landlord/footer/Footer";
 
 export const TenantApplicationViews = () => {
   return (
@@ -19,6 +20,7 @@ export const TenantApplicationViews = () => {
           </TenantProvider>
         </PropertyProvider>
       </MessageProvider>
+      <Footer />
     </>
   );
 };
