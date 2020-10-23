@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Login.css";
+import homeImage from "../../img/homeBackground.jpg";
+import { Button, Row, Col } from "reactstrap";
 
 export const Register = (props) => {
   const firstName = useRef();
@@ -86,61 +88,98 @@ export const Register = (props) => {
           Close
         </button>
       </dialog>
-
-      <form className="form--login" onSubmit={handleRegister}>
-        <h1 className="h3 mb-3 font-weight-normal">Landlord Registration</h1>
-        <h2 className="h3 mb-3 font-weight-normal">
-          Please Register for Renters View
-        </h2>
-        <fieldset>
-          <label htmlFor="firstName"> First Name </label>
-          <input
-            ref={firstName}
-            type="text"
-            name="firstName"
-            className="form-control"
-            placeholder="First name"
-            required
-            autoFocus
-          />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="lastName"> Last Name </label>
-          <input
-            ref={lastName}
-            type="text"
-            name="lastName"
-            className="form-control"
-            placeholder="Last name"
-            required
-          />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="inputEmail"> Email address </label>
-          <input
-            ref={email}
-            type="email"
-            name="email"
-            className="form-control"
-            placeholder="Email address"
-            required
-          />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="inputphone"> Phone Number</label>
-          <input
-            ref={phone}
-            type="number"
-            name="phone"
-            className="form-control"
-            placeholder="Phone number"
-            required
-          />
-        </fieldset>
-        <fieldset>
-          <button type="submit"> Sign in </button>
-        </fieldset>
-      </form>
+      <div
+        style={{
+          backgroundImage: "url(" + homeImage + ")",
+          backgroundSize: "cover",
+          height: "100vh",
+          color: "#fa2d2d",
+        }}
+      >
+        <section
+          style={{ position: "fixed", top: "15%", left: "30%", right: "30%" }}
+        >
+          <form className="form--login p-4" onSubmit={handleRegister}>
+            <div className="text-center">
+              {" "}
+              <img
+                className="m-0 p-0"
+                width="20%"
+                src={require("../../img/logo.png")}
+                alt="logo"
+              />
+            </div>
+            <h2 className="display-3">Please Register for Renter's View</h2>
+            <h2 className="display-4 text-white">Landlord Registration</h2>
+            <Row className="mt-2 mb-2">
+              <Col>
+                <fieldset>
+                  <input
+                    ref={firstName}
+                    type="text"
+                    name="firstName"
+                    className="form-control"
+                    placeholder="First name"
+                    required
+                    autoFocus
+                  />
+                </fieldset>
+              </Col>
+              <Col>
+                <fieldset>
+                  <input
+                    ref={lastName}
+                    type="text"
+                    name="lastName"
+                    className="form-control"
+                    placeholder="Last name"
+                    required
+                  />
+                </fieldset>
+              </Col>
+            </Row>
+            <Row className="mt-2 mb-2">
+              <Col>
+                <fieldset>
+                  <input
+                    ref={email}
+                    type="email"
+                    name="email"
+                    className="form-control"
+                    placeholder="Email address"
+                    required
+                  />
+                </fieldset>
+              </Col>
+              <Col>
+                <fieldset>
+                  <input
+                    ref={phone}
+                    type="number"
+                    name="phone"
+                    className="form-control"
+                    placeholder="Phone number"
+                    required
+                  />
+                </fieldset>
+              </Col>
+            </Row>
+            <fieldset>
+              <Button type="submit" className="mt-2">
+                {" "}
+                Sign in{" "}
+              </Button>
+            </fieldset>
+            <div className="link--login">
+              <Link to="/login">
+                <Button color="light" className="float-right">
+                  Already a member?
+                </Button>
+              </Link>
+            </div>
+          </form>
+        </section>
+      </div>
     </main>
   );
 };

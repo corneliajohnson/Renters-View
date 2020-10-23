@@ -2,6 +2,8 @@ import React, { useRef } from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import "./Login.css";
+import homeImage from "../../img/homeBackground.jpg";
+import { Button } from "reactstrap";
 
 export const Login = (props) => {
   const email = useRef();
@@ -53,31 +55,57 @@ export const Login = (props) => {
           Close
         </button>
       </dialog>
-
-      <section>
-        <form className="form--login" onSubmit={handleLogin}>
-          <h1>Renters View</h1>
-          <h2>Please sign in</h2>
-          <fieldset>
-            <label htmlFor="inputEmail"> Email address </label>
-            <input
-              ref={email}
-              type="email"
-              id="email"
-              className="form-control"
-              placeholder="Email address"
-              required
-              autoFocus
-            />
-          </fieldset>
-          <fieldset>
-            <button type="submit">Sign in</button>
-          </fieldset>
-        </form>
-      </section>
-      <section className="link--register">
-        <Link to="/register">Not a member yet?</Link>
-      </section>
+      <div
+        style={{
+          backgroundImage: "url(" + homeImage + ")",
+          backgroundSize: "cover",
+          height: "100vh",
+          color: "#fa2d2d",
+        }}
+      >
+        <section
+          style={{ position: "fixed", top: "15%", left: "30%", right: "30%" }}
+        >
+          <form
+            className="form--login p-3"
+            style={{ borderRadius: "7px" }}
+            onSubmit={handleLogin}
+          >
+            <div className="text-center">
+              {" "}
+              <img
+                className="m-0 p-0"
+                width="20%"
+                src={require("../../img/logo.png")}
+                alt="logo"
+              />
+            </div>
+            <h1 className="display-1">Renter's View</h1>
+            <h2 className="mt-5 display-4">Please sign in</h2>
+            <fieldset className="mt-2 mb-2">
+              <input
+                ref={email}
+                type="email"
+                id="email"
+                className="form-control"
+                placeholder="Email address"
+                required
+                autoFocus
+              />
+            </fieldset>
+            <fieldset>
+              <Button type="submit">Sign in</Button>
+            </fieldset>
+            <div className="link--register">
+              <Link to="/register">
+                <Button color="light" className="float-right">
+                  Not a member yet?
+                </Button>
+              </Link>
+            </div>
+          </form>
+        </section>
+      </div>
     </main>
   );
 };
