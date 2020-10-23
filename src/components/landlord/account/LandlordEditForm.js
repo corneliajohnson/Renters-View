@@ -16,6 +16,7 @@ import {
   Input,
   ModalHeader,
   CardLink,
+  Spinner,
 } from "reactstrap";
 
 const Modal = ({ onRequestClose }) => {
@@ -26,6 +27,9 @@ const Modal = ({ onRequestClose }) => {
   const { uploadImage, image, loading } = useContext(CloudinaryContext);
 
   const [landlord, setLandlord] = useState({});
+
+  //show spinner for image load
+  const [spinner, setSpinner] = useState("");
 
   useEffect(() => {
     getLandlords();
@@ -160,6 +164,7 @@ const Modal = ({ onRequestClose }) => {
               onChange={uploadImage}
             />
           </FormGroup>
+          <div>{spinner}</div>
         </Form>
         <div className="text-right">
           <Button
@@ -168,8 +173,11 @@ const Modal = ({ onRequestClose }) => {
             onClick={(event) => {
               event.preventDefault();
               if (landlord.firstName && landlord.lastName && landlord.email) {
+                setSpinner(<Spinner color="dark" />);
+                //wait gotimage to load
                 if (!loading) {
                   constructLandlord();
+                  setSpinner("");
                   onRequestClose();
                 }
               }
