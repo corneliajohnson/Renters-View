@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Login.css";
@@ -45,7 +45,8 @@ export const Register = (props) => {
                 lastName: lastName.current.value,
                 email: email.current.value,
                 phone: phone.current.value,
-                image: false,
+                image:
+                  "https://res.cloudinary.com/cornelia/image/upload/v1603479745/rentersview/etcken8mmrmin4sig5eo.png",
               }),
             })
               .then((_) => _.json())

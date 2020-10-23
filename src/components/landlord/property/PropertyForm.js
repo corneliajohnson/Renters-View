@@ -2,7 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import "./PropertyForm.css";
 import { PropertyContext } from "./PropertyProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faTimes, faCloudUploadAlt } from "@fortawesome/free-solid-svg-icons";
+import { CloudinaryContext } from "../cloudinary/CloudinaryProvider";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {
@@ -17,15 +18,24 @@ import {
   Input,
   CardLink,
   Form,
+  UncontrolledTooltip,
+  Spinner,
 } from "reactstrap";
 let propertyId = 0; //get the selected property
 
 const Modal = ({ onRequestClose }) => {
+  const defaultImage =
+    "https://res.cloudinary.com/cornelia/image/upload/v1603486934/rentersview/Multimedia__14_lrdsgs.jpg";
   const { getPropertyById, addProperty, updateProperty } = useContext(
     PropertyContext
   );
 
+  const { uploadImage, image, loading } = useContext(CloudinaryContext);
+
   const [property, setProperty] = useState({});
+
+  //show spinner for image load
+  const [spinner, setSpinner] = useState("");
 
   useEffect(() => {
     //get id for property update
@@ -74,7 +84,7 @@ const Modal = ({ onRequestClose }) => {
         paymentDay: property.paymentDay,
         lastPaymentAmount: parseInt(property.lastPaymentAmount),
         leaseTerm: property.leaseTerm,
-        image: null,
+        image: image ? image : property.image,
         landlordId: parseInt(localStorage.landlord),
       }).then(() => notifyUpdate());
     } else {
@@ -91,7 +101,7 @@ const Modal = ({ onRequestClose }) => {
         paymentDay: property.paymentDay,
         lastPaymentAmount: parseInt(property.lastPaymentAmount),
         leaseTerm: property.leaseTerm,
-        image: null,
+        image: image ? image : defaultImage,
         landlordId: parseInt(localStorage.landlord),
       }).then(() => notifyAdd());
     }
@@ -310,6 +320,29 @@ const Modal = ({ onRequestClose }) => {
                   </Col>
                 </Row>
               </FormGroup>
+              <FormGroup>
+                <label
+                  htmlFor="file"
+                  className="btn uploadImageLabel"
+                  id="UncontrolledTooltip"
+                >
+                  <input
+                    className="p-0"
+                    id="file"
+                    name="file"
+                    type="file"
+                    onChange={uploadImage}
+                  />
+                  Image <FontAwesomeIcon icon={faCloudUploadAlt} />
+                </label>
+                <UncontrolledTooltip
+                  placement="right"
+                  target="UncontrolledTooltip"
+                >
+                  Add An Image
+                </UncontrolledTooltip>
+              </FormGroup>
+              <div>{spinner}</div>
               <p className="text-danger">
                 All fields with * are required to submit form.
               </p>
@@ -327,8 +360,12 @@ const Modal = ({ onRequestClose }) => {
                     property.state &&
                     property.zip
                   ) {
-                    constructPropertyObj(); //add or edit
-                    onRequestClose(); // close form after submit
+                    setSpinner(<Spinner color="dark" />);
+                    if (!loading) {
+                      constructPropertyObj(); //add or edit
+                      setSpinner("");
+                      onRequestClose(); // close form after submit
+                    }
                   }
                 }}
               >

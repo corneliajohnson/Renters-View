@@ -13,7 +13,7 @@
       "paymentDay": "2020-11-08",
       "lastPaymentAmount": 900,
       "leaseTerm": "Seasonal",
-      "image": null,
+      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603486934/rentersview/Multimedia__14_lrdsgs.jpg",
       "landlordId": 1
     },
     {
@@ -29,7 +29,7 @@
       "paymentDay": "2020-10-31",
       "lastPaymentAmount": 1600,
       "leaseTerm": "Air BnB",
-      "image": null,
+      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603486934/rentersview/Multimedia__14_lrdsgs.jpg",
       "landlordId": 1
     },
     {
@@ -45,7 +45,7 @@
       "paymentDay": "2020-11-19",
       "lastPaymentAmount": 456,
       "leaseTerm": "12 Month",
-      "image": null,
+      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603486934/rentersview/Multimedia__14_lrdsgs.jpg",
       "landlordId": 1
     },
     {
@@ -58,21 +58,33 @@
       "rentAmount": null,
       "secuirtyDesposit": null,
       "lastPaymentAmount": null,
-      "image": null,
+      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603486934/rentersview/Multimedia__14_lrdsgs.jpg",
       "landlordId": 1,
       "id": 5
     },
     {
-      "street": "1020 Orang Road",
-      "city": "Gainesville",
-      "state": "FL",
-      "zip": "32305",
+      "id": 7,
+      "street": "780 Spooner Street",
+      "city": "Cohog",
+      "state": "RI",
+      "zip": "4556",
       "rentAmount": null,
       "secuirtyDesposit": null,
       "lastPaymentAmount": null,
-      "image": null,
+      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603488083/rentersview/brczmlxn0fs6bi1qc2ji.jpg",
+      "landlordId": 1
+    },
+    {
+      "street": "4568 Beening Road",
+      "city": "Tallahasee",
+      "state": "FL",
+      "zip": "32309",
+      "rentAmount": null,
+      "secuirtyDesposit": null,
+      "lastPaymentAmount": null,
+      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603488162/rentersview/rsncxknjym4ggyaclzcl.jpg",
       "landlordId": 1,
-      "id": 6
+      "id": 8
     }
   ],
   "landlords": [

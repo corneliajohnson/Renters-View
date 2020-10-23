@@ -2,9 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import { LandlordContext } from "./LandlordProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CloudinaryContext } from "../cloudinary/CloudinaryProvider";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faTimes, faCloudUploadAlt } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./Account.css";
 
 import {
   Col,
@@ -17,6 +18,7 @@ import {
   ModalHeader,
   CardLink,
   Spinner,
+  UncontrolledTooltip,
 } from "reactstrap";
 
 const Modal = ({ onRequestClose }) => {
@@ -157,12 +159,23 @@ const Modal = ({ onRequestClose }) => {
             </Col>
           </FormGroup>
           <FormGroup>
-            <input
-              type="file"
-              name="file"
-              placeholder="Upload an image"
-              onChange={uploadImage}
-            />
+            <label
+              htmlFor="file"
+              className="btn uploadImageLabel"
+              id="UncontrolledTooltip"
+            >
+              <input
+                className="p-0"
+                id="file"
+                name="file"
+                type="file"
+                onChange={uploadImage}
+              />
+              Image <FontAwesomeIcon icon={faCloudUploadAlt} />
+            </label>
+            <UncontrolledTooltip placement="right" target="UncontrolledTooltip">
+              Add An Image
+            </UncontrolledTooltip>
           </FormGroup>
           <div>{spinner}</div>
         </Form>
