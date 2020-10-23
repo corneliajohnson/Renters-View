@@ -61,6 +61,18 @@
       "image": null,
       "landlordId": 1,
       "id": 5
+    },
+    {
+      "street": "1020 Orang Road",
+      "city": "Gainesville",
+      "state": "FL",
+      "zip": "32305",
+      "rentAmount": null,
+      "secuirtyDesposit": null,
+      "lastPaymentAmount": null,
+      "image": null,
+      "landlordId": 1,
+      "id": 6
     }
   ],
   "landlords": [

@@ -14,15 +14,15 @@ export const PropertyCardTenantInfo = (propertyId) => {
 
   //how to display tenant information on card
   return tenants.length === 0 ? (
-    <p>No Tenants</p>
+    <p style={{ fontWeight: "bold" }}>No Tenants</p>
   ) : tenants.length === 1 ? (
     <p>
-      Tenant:
+      <span style={{ fontWeight: "bold" }}>Tenant:</span>
       {tenants.map((tenant) => ` ${tenant.firstName} ${tenant.lastName}`)}
     </p>
   ) : (
     <p>
-      Tenants:
+      <span style={{ fontWeight: "bold" }}>Tenants:</span>
       {tenants
         .map((tenant) => ` ${tenant.firstName} ${tenant.lastName}`)
         .join(", ")}

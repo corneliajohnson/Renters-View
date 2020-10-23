@@ -21,7 +21,8 @@ export const PropertyCard = ({
         />
         {tenant}
         <CardText>
-          Rent: {property.rentAmount ? property.rentAmount : "N/A"}
+          <span style={{ fontWeight: "bold" }}>Rent:</span>{" "}
+          {property.rentAmount ? property.rentAmount : "N/A"}
         </CardText>
         <Row>
           <Col className="text-left">{deleteBtn}</Col>

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { Button } from "reactstrap";
+import { Button, UncontrolledTooltip } from "reactstrap";
 import { MessageContext } from "./MessageProvider";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,16 +20,22 @@ export const MessageDelete = (message) => {
   };
 
   return (
-    <Button
-      style={{ color: "darkcyan" }}
-      color="link"
-      onClick={() =>
-        deleteMessage(message.id).then(() => {
-          notify();
-        })
-      }
-    >
-      <FontAwesomeIcon icon={faTrash} />
-    </Button>
+    <>
+      <Button
+        id="UncontrolledTooltip"
+        style={{ color: "darkcyan" }}
+        color="link"
+        onClick={() =>
+          deleteMessage(message.id).then(() => {
+            notify();
+          })
+        }
+      >
+        <FontAwesomeIcon icon={faTrash} />
+      </Button>
+      <UncontrolledTooltip placement="top" target="UncontrolledTooltip">
+        Delete
+      </UncontrolledTooltip>
+    </>
   );
 };

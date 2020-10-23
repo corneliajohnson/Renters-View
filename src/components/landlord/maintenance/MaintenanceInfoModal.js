@@ -1,5 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
-import { CardLink, Button, ModalHeader, ModalBody } from "reactstrap";
+import {
+  CardLink,
+  Button,
+  ModalHeader,
+  ModalBody,
+  UncontrolledTooltip,
+} from "reactstrap";
 import { MaintenanceContext } from "./MaintenanceProvider";
 import { DateString } from "../date/DateString";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -100,12 +106,16 @@ export const MaintenanceInfoModal = (requestObj) => {
     <div>
       {isModalOpen && <Modal onRequestClose={toggleModal} />}
       <CardLink
+        id="UncontrolledTooltip"
         className="mainentanceCardLink"
         onClick={toggleModal}
         type="button"
       >
         {requestObj.synopsis}
       </CardLink>
+      <UncontrolledTooltip placement="right" target="UncontrolledTooltip">
+        More Info
+      </UncontrolledTooltip>
     </div>
   );
 };

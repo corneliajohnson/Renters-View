@@ -12,10 +12,13 @@ export const TenantCard = ({ tenant, deleteBtn, editBtn }) => {
             </h4>
           </CardTitle>
           <CardText>
-            Phone Number: {tenant.phone ? tenant.phone : "N/A"}
+            <span style={{ fontWeight: "bold" }}>Phone Number:</span>{" "}
+            {tenant.phone ? tenant.phone : "N/A"}
           </CardText>
-          <CardText>Email: {tenant.email}</CardText>
-          Address:
+          <CardText>
+            <span style={{ fontWeight: "bold" }}>Email:</span> {tenant.email}
+          </CardText>
+          <span style={{ fontWeight: "bold" }}>Address:</span>
           <CardText>
             {tenant.property.street} {"\n"}
             {tenant.property.city} {tenant.property.state}

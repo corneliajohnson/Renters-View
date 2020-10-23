@@ -7,6 +7,7 @@ import {
   ModalBody,
   Row,
   Col,
+  UncontrolledTooltip,
 } from "reactstrap";
 import { PropertyContext } from "./PropertyProvider";
 import { DateString } from "../date/DateString";
@@ -169,10 +170,16 @@ export const PropertyInfoModal = (propertyObj) => {
         onClick={toggleModal}
         type="button"
       >
-        <h4>{propertyObj.street}</h4>
+        <h4 id="UncontrolledTooltipExample">{propertyObj.street}</h4>
         <h5>
           {propertyObj.city} {propertyObj.state} {propertyObj.zip}
         </h5>
+        <UncontrolledTooltip
+          placement="right"
+          target="UncontrolledTooltipExample"
+        >
+          More Info
+        </UncontrolledTooltip>
       </CardLink>
     </div>
   );
