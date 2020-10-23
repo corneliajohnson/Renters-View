@@ -81,15 +81,15 @@
       "firstName": "Cornelia",
       "lastName": "Johnson",
       "email": "corneliaj@gmail.com",
-      "phone": "850-345-9870",
-      "image": false
+      "phone": "850-345-222",
+      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603484270/rentersview/gef1v3w1cedmm2kjlpfw.jpg"
     },
     {
       "firstName": "Tim",
       "lastName": "Walker",
       "email": "tim@gmail.com",
       "phone": 3339998888,
-      "image": false,
+      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603479745/rentersview/etcken8mmrmin4sig5eo.png",
       "id": 2
     },
     {
@@ -97,7 +97,7 @@
       "firstName": "Jack",
       "lastName": "Jones",
       "phone": "2223334444",
-      "image": false,
+      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603479745/rentersview/etcken8mmrmin4sig5eo.png",
       "id": 3
     },
     {
@@ -105,7 +105,7 @@
       "firstName": "ccccc",
       "lastName": "gggggg",
       "phone": "333399999",
-      "image": false,
+      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603479745/rentersview/etcken8mmrmin4sig5eo.png",
       "id": 4
     },
     {
@@ -113,7 +113,7 @@
       "firstName": "New",
       "lastName": "johnnson",
       "phone": "3339994455",
-      "image": false,
+      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603479745/rentersview/etcken8mmrmin4sig5eo.png",
       "id": 5
     }
   ],
@@ -220,14 +220,6 @@
       "date": 1603232244896,
       "sender": "landlord",
       "id": 9
-    },
-    {
-      "tenantId": 5,
-      "landlordId": 1,
-      "text": "hello",
-      "date": 1603296809043,
-      "sender": "landlord",
-      "id": 16
     },
     {
       "tenantId": 5,

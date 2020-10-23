@@ -15,21 +15,24 @@ import { LandlordProvider } from "./landlord/account/LandlordProvider";
 import { MessageList } from "./landlord/messages/MessageList";
 import { MessageProvider } from "./landlord/messages/MessageProvider";
 import { Footer } from "./landlord/footer/Footer";
+import { CloudinaryProvider } from "./landlord/cloudinary/CloudinaryProvider";
 
 export const LandlordApplicationViews = () => {
   return (
     <>
       <NavBar />
-      <TenantProvider>
-        <PropertyProvider>
-          <Route exact path="/">
-            <PropertyForm />
-            <PropertyList />
-            <TenantForm />
-            <TenantList />
-          </Route>
-        </PropertyProvider>
-      </TenantProvider>
+      <CloudinaryProvider>
+        <TenantProvider>
+          <PropertyProvider>
+            <Route exact path="/">
+              <PropertyForm />
+              <PropertyList />
+              <TenantForm />
+              <TenantList />
+            </Route>
+          </PropertyProvider>
+        </TenantProvider>
+      </CloudinaryProvider>
 
       <PropertyProvider>
         <MaintenanceProvider>
@@ -40,11 +43,13 @@ export const LandlordApplicationViews = () => {
         </MaintenanceProvider>
       </PropertyProvider>
 
-      <LandlordProvider>
-        <Route exact path="/account">
-          <AccountView />
-        </Route>
-      </LandlordProvider>
+      <CloudinaryProvider>
+        <LandlordProvider>
+          <Route exact path="/account">
+            <AccountView />
+          </Route>
+        </LandlordProvider>
+      </CloudinaryProvider>
 
       <TenantProvider>
         <MessageProvider>

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { LandlordContext, LandlordProvider } from "./LandlordProvider";
+import { LandlordContext } from "./LandlordProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { CloudinaryContext } from "../cloudinary/CloudinaryProvider";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -21,6 +22,8 @@ const Modal = ({ onRequestClose }) => {
   const { getLandlordById, updateLandlord, getLandlords } = useContext(
     LandlordContext
   );
+
+  const { uploadImage, image, loading } = useContext(CloudinaryContext);
 
   const [landlord, setLandlord] = useState({});
 
@@ -59,7 +62,7 @@ const Modal = ({ onRequestClose }) => {
       lastName: landlord.lastName,
       email: landlord.email,
       phone: landlord.phone,
-      image: false,
+      image: image ? image : landlord.image,
     }).then(() => notify());
   };
 
@@ -149,6 +152,14 @@ const Modal = ({ onRequestClose }) => {
               />
             </Col>
           </FormGroup>
+          <FormGroup>
+            <input
+              type="file"
+              name="file"
+              placeholder="Upload an image"
+              onChange={uploadImage}
+            />
+          </FormGroup>
         </Form>
         <div className="text-right">
           <Button
@@ -157,8 +168,10 @@ const Modal = ({ onRequestClose }) => {
             onClick={(event) => {
               event.preventDefault();
               if (landlord.firstName && landlord.lastName && landlord.email) {
-                constructLandlord();
-                onRequestClose();
+                if (!loading) {
+                  constructLandlord();
+                  onRequestClose();
+                }
               }
             }}
           >

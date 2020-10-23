@@ -1,10 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { LandlordContext } from "./LandlordProvider";
 import { EditLandlordForm } from "./LandlordEditForm";
-import { Row, Col } from "reactstrap";
+//import { CloudinaryContext } from "../cloudinary/CloudinaryProvider";
+import { Row, Col, Input } from "reactstrap";
 
 export const AccountView = () => {
   const { getLandlordById, landlords } = useContext(LandlordContext);
+  // const { uploadImage, image, loading } = useContext(CloudinaryContext);
 
   const [landlord, setLandlord] = useState([]);
   const [properties, setProperties] = useState([]);
@@ -25,11 +27,7 @@ export const AccountView = () => {
         <h1 className="display-2 text-center m-5">My Account</h1>
         <Row className="m-5">
           <Col className="p-5" sm={4}>
-            <img
-              width="100%"
-              src={require("../../../img/blank-user.png")}
-              alt="no image"
-            />
+            <img width="100%" src={landlord.image} alt="no image" />
           </Col>
           <Col className="p-4" sm={8}>
             <h3 className="display-4">
