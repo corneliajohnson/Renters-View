@@ -10,7 +10,7 @@ export const NavBar = () => {
         <NavHashLink className="navbar__link" smooth to="/#properties">
           <img
             className="m-0 p-0"
-            width="40%"
+            width="35%"
             src={require("../../../img/logo.png")}
             alt="logo"
           />
