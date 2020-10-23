@@ -6,21 +6,25 @@ import { PropertyProvider } from "./landlord/property/PropertyProvider";
 import { MessageProvider } from "./landlord/messages/MessageProvider";
 import { NavBar } from "./tenant/property/nav/NavBar";
 import { Footer } from "./landlord/footer/Footer";
+import { Home } from "./Home";
 
 export const TenantApplicationViews = () => {
   return (
     <>
-      <NavBar />
       <MessageProvider>
         <PropertyProvider>
           <TenantProvider>
+            <Route exact path="/">
+              <Home />
+            </Route>
             <Route exact path="/tenant">
+              <NavBar />
               <TenantProperty />
+              <Footer />
             </Route>
           </TenantProvider>
         </PropertyProvider>
       </MessageProvider>
-      <Footer />
     </>
   );
 };
