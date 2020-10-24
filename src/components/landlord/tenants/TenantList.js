@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { TenantContext } from "./TenantProvider";
 import { TenantCard } from "./TenantCard";
 import { EditTenantForm } from "./TenantForm";
-import { PaymentForm } from "../payment/PaymentForm";
+import { PaymentAddForm } from "../payment/PaymentAddForm";
 import { TenantDelete } from "./TenantDelete";
 import { Row, Col } from "reactstrap";
 
@@ -34,7 +34,7 @@ export const TenantList = () => {
                   tenant={tenant}
                   deleteBtn={<TenantDelete id={tenant.id} />}
                   editBtn={<EditTenantForm id={tenant.id} />}
-                  paymentBtn={<PaymentForm tenant={tenant} />}
+                  paymentBtn={<PaymentAddForm tenant={tenant} />}
                 />
               </Col>
             );

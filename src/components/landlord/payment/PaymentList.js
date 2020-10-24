@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { PaymentContext } from "./PaymentProvider";
 import { PaymentCard } from "./PaymentCard";
 import { Table } from "reactstrap";
+import { PaymentForm } from "./PaymentForm";
 
 export const PaymentList = () => {
   const { getPayments, payments } = useContext(PaymentContext);
@@ -13,6 +14,7 @@ export const PaymentList = () => {
   return (
     <div className="container">
       <h1 className="display-2 text-center m-5">Payments</h1>
+      <PaymentForm />
       <Table hover>
         <thead>
           <tr>

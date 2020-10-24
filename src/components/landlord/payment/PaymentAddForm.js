@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { PaymentContext } from "./PaymentProvider";
 import { TenantContext } from "../tenants/TenantProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faTimes, faMoneyBill } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -21,13 +21,8 @@ let tenantInfo = {};
 
 const Modal = ({ onRequestClose }) => {
   const { addPayment } = useContext(PaymentContext);
-  const { tenants, getTenants, getTenantById } = useContext(TenantContext);
 
   const [payment, setPayment] = useState({});
-
-  useEffect(() => {
-    getTenants();
-  }, []);
 
   //get name of each input
   const handleControlledInputChange = (event) => {
@@ -37,14 +32,12 @@ const Modal = ({ onRequestClose }) => {
   };
 
   const constructPaymentObj = () => {
-    getTenantById(payment.tenantId).then((response) => {
-      console.log({
-        date: payment.date,
-        amount: payment.amount,
-        propertyId: response.propertyId,
-        firstName: response.firstName,
-        lastName: response.lastName,
-      });
+    addPayment({
+      firstName: tenantInfo.firstName,
+      lastName: tenantInfo.lastName,
+      propertyId: tenantInfo.propertyId,
+      date: payment.date,
+      amount: payment.amount,
     });
   };
 
@@ -80,60 +73,40 @@ const Modal = ({ onRequestClose }) => {
             <FontAwesomeIcon icon={faTimes} />
           </CardLink>
           <ModalHeader className="display-3">Add Payment</ModalHeader>
-
-          <FormGroup className="p-2 m-2" row>
-            <Label for="tenant" sm={2}>
-              Tenants<span className="text-danger">*</span>
-            </Label>
-            <Col sm={10}>
-              <Input
-                type="select"
-                name="tenantId"
-                onChange={handleControlledInputChange}
-              >
-                <option value="0"></option>
-                {tenants.map((tenant) => (
-                  <option key={tenant.id} value={tenant.id}>
-                    {tenant.firstName} {tenant.lastName}
-                  </option>
-                ))}
-              </Input>
-            </Col>
-          </FormGroup>
-          <Row className="p-2 m-2">
-            <Col className="m-1">
-              <FormGroup row>
-                <Label for="payment">
-                  Payment Amount<span className="text-danger">*</span>
-                </Label>
-                <Input
-                  type="number"
-                  name="amount"
-                  onChange={handleControlledInputChange}
-                />
-              </FormGroup>
-            </Col>
-            <Col className="m-1">
-              <FormGroup row>
-                <Label for="date">
-                  Date<span className="text-danger">*</span>
-                </Label>
-                <Input
-                  type="date"
-                  name="date"
-                  onChange={handleControlledInputChange}
-                />
-              </FormGroup>
-            </Col>
-          </Row>
         </Form>
+        <Row className="p-2 m-2">
+          <Col className="m-1">
+            <FormGroup row>
+              <Label for="payment">
+                Payment Amount<span className="text-danger">*</span>
+              </Label>
+              <Input
+                type="number"
+                name="amount"
+                onChange={handleControlledInputChange}
+              />
+            </FormGroup>
+          </Col>
+          <Col className="m-1">
+            <FormGroup row>
+              <Label for="date">
+                Date<span className="text-danger">*</span>
+              </Label>
+              <Input
+                type="date"
+                name="date"
+                onChange={handleControlledInputChange}
+              />
+            </FormGroup>
+          </Col>
+        </Row>
         <div className="text-right">
           <Button
             outline
             color="success"
             onClick={(event) => {
               event.preventDefault();
-              if (payment.amount && payment.date && payment.tenantId) {
+              if (payment.amount && payment.date) {
                 constructPaymentObj();
                 onRequestClose();
               }
@@ -157,7 +130,8 @@ const Modal = ({ onRequestClose }) => {
 };
 
 //add payment button modal
-export const PaymentForm = () => {
+export const PaymentAddForm = (tenantObj) => {
+  tenantInfo = tenantObj.tenant;
   const [isModalOpen, setModalIsOpen] = useState(false);
   const toggleModal = () => {
     setModalIsOpen(!isModalOpen);
@@ -167,13 +141,12 @@ export const PaymentForm = () => {
     <div className="container text-center">
       {isModalOpen && <Modal onRequestClose={toggleModal} />}
       <Button
+        style={{ color: "green", fontSize: "1.5em" }}
         onClick={toggleModal}
-        outline
-        color="secondary"
-        className="m-5"
+        color="link"
         type="button"
       >
-        Add A Payment
+        <FontAwesomeIcon icon={faMoneyBill} />
       </Button>
     </div>
   );
