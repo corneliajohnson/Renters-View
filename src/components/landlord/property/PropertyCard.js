@@ -14,7 +14,12 @@ export const PropertyCard = ({
         <CardBody>
           <CardTitle>{titleLink}</CardTitle>
         </CardBody>
-        <img width="100%" src={property.image} alt="Card image cap" />
+        <img
+          height="230em"
+          width="100%"
+          src={property.image}
+          alt="Card image cap"
+        />
         {tenant}
         <CardText>
           <span style={{ fontWeight: "bold" }}>Rent:</span>{" "}
