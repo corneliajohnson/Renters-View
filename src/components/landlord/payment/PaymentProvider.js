@@ -4,6 +4,7 @@ export const PaymentContext = createContext();
 
 export const PaymentProvider = (props) => {
   const [payments, setPayments] = useState([]);
+  const [searchTerms, setSearchTerms] = useState("");
 
   const getPayments = () => {
     return fetch("http://localhost:8088/payments?_expand=property")
@@ -51,6 +52,8 @@ export const PaymentProvider = (props) => {
         deletePayment,
         getPaymentById,
         updatePayment,
+        setSearchTerms,
+        searchTerms,
       }}
     >
       {props.children}
