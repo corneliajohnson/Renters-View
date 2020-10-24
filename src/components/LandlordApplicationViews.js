@@ -17,6 +17,7 @@ import { MessageProvider } from "./landlord/messages/MessageProvider";
 import { Footer } from "./landlord/footer/Footer";
 import { CloudinaryProvider } from "./landlord/cloudinary/CloudinaryProvider";
 import { PaymentProvider } from "./landlord/payment/PaymentProvider";
+import { PaymentList } from "./landlord/payment/PaymentList";
 
 export const LandlordApplicationViews = () => {
   return (
@@ -61,6 +62,16 @@ export const LandlordApplicationViews = () => {
           </Route>
         </MessageProvider>
       </TenantProvider>
+
+      <PaymentProvider>
+        <TenantProvider>
+          <PropertyProvider>
+            <Route exact path="/payments">
+              <PaymentList />
+            </Route>
+          </PropertyProvider>
+        </TenantProvider>
+      </PaymentProvider>
       <Footer />
     </>
   );

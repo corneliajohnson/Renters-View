@@ -9,11 +9,9 @@ import { MaintenanceDelete } from "./MaintenanceDelete";
 import "./Maintenance.css";
 
 export const MaintenanceList = () => {
-  const {
-    getMaintenanceRequests,
-    maintenanceRequests,
-    deleteMaintenanceRequest,
-  } = useContext(MaintenanceContext);
+  const { getMaintenanceRequests, maintenanceRequests } = useContext(
+    MaintenanceContext
+  );
 
   const [filteredRequest, setFilteredRequest] = useState([]);
 

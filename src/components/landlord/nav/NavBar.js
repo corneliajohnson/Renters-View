@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { NavHashLink } from "react-router-hash-link";
+import {
+  Nav,
+  NavItem,
+  Dropdown,
+  DropdownItem,
+  DropdownToggle,
+  DropdownMenu,
+} from "reactstrap";
+
 import "./NavBar.css";
 
 export const NavBar = () => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggle = () => setDropdownOpen(!dropdownOpen);
   return (
     <ul className="navbar sticky-top bg-white">
       <li className="navbar__item active">
@@ -45,13 +57,36 @@ export const NavBar = () => {
         </NavLink>
       </li>
       <li className="navbar__item">
-        <NavLink
-          className="navbar__link"
-          to="/account"
-          activeStyle={{ color: "#fa2d2d" }}
-        >
-          Account
-        </NavLink>
+        <Dropdown nav isOpen={dropdownOpen} toggle={toggle}>
+          <DropdownToggle
+            style={{ color: "#f2af58" }}
+            activeStyle={{ color: "#fa2d2d" }}
+            nav
+            caret
+          >
+            More
+          </DropdownToggle>
+          <DropdownMenu>
+            <DropdownItem>
+              <NavLink
+                className="navbar__link"
+                to="/payments"
+                activeStyle={{ color: "#fa2d2d" }}
+              >
+                Payments
+              </NavLink>
+            </DropdownItem>
+            <DropdownItem>
+              <NavLink
+                className="navbar__link"
+                to="/account"
+                activeStyle={{ color: "#fa2d2d" }}
+              >
+                Account
+              </NavLink>
+            </DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
       </li>
     </ul>
   );
