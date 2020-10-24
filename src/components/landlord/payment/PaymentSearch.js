@@ -1,14 +1,15 @@
 import React, { useContext } from "react";
 import { PaymentContext } from "./PaymentProvider";
+import { Input } from "reactstrap";
 
 export const PaymentSearch = () => {
   const { setSearchTerms } = useContext(PaymentContext);
 
   return (
     <>
-      <input
+      <Input
         type="text"
-        className="input--wide"
+        className="input--wide mb-3 w-75 mx-auto"
         onKeyUp={(keyEvent) => setSearchTerms(keyEvent.target.value)}
         placeholder="Search for property or tenant... "
       />

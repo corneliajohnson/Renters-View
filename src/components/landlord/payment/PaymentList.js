@@ -17,13 +17,6 @@ export const PaymentList = () => {
   }, []);
 
   useEffect(() => {
-    //get the total
-    const amountTotal = payments.reduce(
-      (acc, payment) => acc + parseFloat(payment.amount),
-      0
-    );
-    setTotal(amountTotal.toFixed(2));
-
     //sort dates
     const sortedPayDate = payments.sort(
       (a, b) => new Date(a.date) - new Date(b.date)
@@ -36,7 +29,7 @@ export const PaymentList = () => {
   useEffect(() => {
     if (searchTerms !== "") {
       // If the search field is not blank, display matching payments
-      const subset = payments.filter(
+      const subset = sortedPaymentDates.filter(
         (payment) =>
           payment.firstName.toLowerCase().includes(searchTerms.toLowerCase()) ||
           payment.lastName.toLowerCase().includes(searchTerms.toLowerCase()) ||
@@ -55,11 +48,29 @@ export const PaymentList = () => {
       // If the search field is blank, display all payments
       setFiltered(payments);
     }
-  }, [searchTerms, payments]);
+  }, [searchTerms, payments, sortedPaymentDates]);
+
+  useEffect(() => {
+    //get the total
+    if (searchTerms === "") {
+      const amountTotalAll = payments.reduce(
+        (acc, payment) => acc + parseFloat(payment.amount),
+        0
+      );
+      setTotal(amountTotalAll.toFixed(2));
+    } else {
+      //get total of showing search
+      const amountTotalAll = filteredPayments.reduce(
+        (acc, payment) => acc + parseFloat(payment.amount),
+        0
+      );
+      setTotal(amountTotalAll.toFixed(2));
+    }
+  }, [searchTerms, payments, filteredPayments]);
 
   return (
     <div className="container">
-      <h1 className="display-2 text-center m-5">Payments</h1>
+      <h1 className="display-2 text-center mt-5">Payments</h1>
       <PaymentForm />
       <PaymentSearch />
       <Table hover>
