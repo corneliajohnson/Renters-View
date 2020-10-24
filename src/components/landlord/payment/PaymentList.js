@@ -8,6 +8,7 @@ import { PaymentDelete } from "./PaymentDelete";
 export const PaymentList = () => {
   const { getPayments, payments } = useContext(PaymentContext);
   const [total, setTotal] = useState();
+  const [sortedPaymentDates, setSortedPaymentDates] = useState([]);
 
   useEffect(() => {
     getPayments();
@@ -20,6 +21,12 @@ export const PaymentList = () => {
       0
     );
     setTotal(amountTotal.toFixed(2));
+
+    //sort dates
+    const sortedPayDate = payments.sort(
+      (a, b) => new Date(a.date) - new Date(b.date)
+    );
+    setSortedPaymentDates(sortedPayDate);
   }, [payments]);
 
   return (
@@ -37,7 +44,7 @@ export const PaymentList = () => {
           </tr>
         </thead>
         <tbody>
-          {payments.map((payment) => {
+          {sortedPaymentDates.map((payment) => {
             return (
               <PaymentCard
                 key={payment.id}
