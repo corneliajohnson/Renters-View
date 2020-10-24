@@ -26,10 +26,32 @@ export const PaymentProvider = (props) => {
       method: "DELETE",
     }).then(getPayments);
   };
+  const updatePayment = (payment) => {
+    return fetch(`http://localhost:8088/payments/${payment.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payment),
+    }).then(getPayments);
+  };
+
+  const getPaymentById = (id) => {
+    return fetch(`http://localhost:8088/payments/${id}`, {}).then((res) =>
+      res.json()
+    );
+  };
 
   return (
     <PaymentContext.Provider
-      value={{ payments, getPayments, addPayment, deletePayment }}
+      value={{
+        payments,
+        getPayments,
+        addPayment,
+        deletePayment,
+        getPaymentById,
+        updatePayment,
+      }}
     >
       {props.children}
     </PaymentContext.Provider>

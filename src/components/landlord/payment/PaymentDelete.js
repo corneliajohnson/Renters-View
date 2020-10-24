@@ -37,14 +37,14 @@ export const PaymentDelete = (paymentId) => {
   return (
     <>
       <Button
-        id="UncontrolledTooltip"
+        id="UncontrolledTool"
         color="link"
-        style={{ color: "red" }}
+        style={{ color: "#fa2d2d" }}
         onClick={alert}
       >
         <FontAwesomeIcon icon={faTrash} />
       </Button>
-      <UncontrolledTooltip placement="top" target="UncontrolledTooltip">
+      <UncontrolledTooltip placement="top" target="UncontrolledTool">
         Delete
       </UncontrolledTooltip>
     </>

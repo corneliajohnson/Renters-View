@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { PaymentContext } from "./PaymentProvider";
 import { PaymentCard } from "./PaymentCard";
 import { Table } from "reactstrap";
-import { PaymentForm } from "./PaymentForm";
+import { PaymentEditForm, PaymentForm } from "./PaymentForm";
 import { PaymentDelete } from "./PaymentDelete";
 
 export const PaymentList = () => {
@@ -33,6 +33,7 @@ export const PaymentList = () => {
                 key={payment.id}
                 payment={payment}
                 deleteBtn={<PaymentDelete id={payment.id} />}
+                editBtn={<PaymentEditForm id={payment.id} />}
               />
             );
           })}

@@ -384,6 +384,14 @@
       "firstName": "Joe",
       "lastName": "Wilson",
       "id": 3
+    },
+    {
+      "id": 4,
+      "date": "2020-10-23",
+      "amount": "450",
+      "propertyId": 3,
+      "firstName": "Thomas",
+      "lastName": "Engles"
     }
   ]
 }

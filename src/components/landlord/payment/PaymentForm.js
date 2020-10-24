@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { PaymentContext } from "./PaymentProvider";
 import { TenantContext } from "../tenants/TenantProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { faTimes, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -16,17 +16,42 @@ import {
   Input,
   ModalHeader,
   CardLink,
+  UncontrolledTooltip,
 } from "reactstrap";
+let paymentId = 0;
 
 const Modal = ({ onRequestClose }) => {
-  const { addPayment } = useContext(PaymentContext);
+  const { addPayment, getPaymentById, updatePayment } = useContext(
+    PaymentContext
+  );
   const { tenants, getTenants, getTenantById } = useContext(TenantContext);
 
   const [payment, setPayment] = useState({});
+  const [tenantId, setTenantId] = useState();
 
+  //get tenants for dropdown
   useEffect(() => {
     getTenants();
   }, []);
+
+  useEffect(() => {
+    if (paymentId !== 0) {
+      //get the information to edit
+      getPaymentById(paymentId).then((response) => {
+        setPayment(response);
+      });
+    }
+  }, []);
+
+  //find the tenant for edit
+  useEffect(() => {
+    const tenantByName = tenants.find(
+      (tenant) =>
+        tenant.firstName === payment.firstName &&
+        tenant.lastName === tenant.lastName
+    );
+    setTenantId(tenantByName);
+  }, [payment]);
 
   //get name of each input
   const handleControlledInputChange = (event) => {
@@ -37,13 +62,24 @@ const Modal = ({ onRequestClose }) => {
 
   const constructPaymentObj = () => {
     getTenantById(payment.tenantId).then((response) => {
-      addPayment({
-        date: payment.date,
-        amount: payment.amount,
-        propertyId: response.propertyId,
-        firstName: response.firstName,
-        lastName: response.lastName,
-      });
+      if (payment.id) {
+        updatePayment({
+          id: payment.id,
+          date: payment.date,
+          amount: payment.amount,
+          propertyId: response.propertyId,
+          firstName: response.firstName,
+          lastName: response.lastName,
+        });
+      } else {
+        addPayment({
+          date: payment.date,
+          amount: payment.amount,
+          propertyId: response.propertyId,
+          firstName: response.firstName,
+          lastName: response.lastName,
+        });
+      }
     });
   };
 
@@ -88,6 +124,7 @@ const Modal = ({ onRequestClose }) => {
               <Input
                 type="select"
                 name="tenantId"
+                value={tenantId ? tenantId.id : 0}
                 onChange={handleControlledInputChange}
               >
                 <option value="0"></option>
@@ -108,6 +145,7 @@ const Modal = ({ onRequestClose }) => {
                 <Input
                   type="number"
                   name="amount"
+                  defaultValue={payment.amount}
                   onChange={handleControlledInputChange}
                 />
               </FormGroup>
@@ -120,6 +158,7 @@ const Modal = ({ onRequestClose }) => {
                 <Input
                   type="date"
                   name="date"
+                  defaultValue={payment.date}
                   onChange={handleControlledInputChange}
                 />
               </FormGroup>
@@ -132,7 +171,12 @@ const Modal = ({ onRequestClose }) => {
             color="success"
             onClick={(event) => {
               event.preventDefault();
-              if (payment.amount && payment.date && payment.tenantId) {
+              if (
+                payment.amount &&
+                payment.date &&
+                payment.tenantId &&
+                payment.tenantId !== 0
+              ) {
                 constructPaymentObj();
                 onRequestClose();
               }
@@ -157,6 +201,7 @@ const Modal = ({ onRequestClose }) => {
 
 //add payment button modal
 export const PaymentForm = () => {
+  paymentId = 0;
   const [isModalOpen, setModalIsOpen] = useState(false);
   const toggleModal = () => {
     setModalIsOpen(!isModalOpen);
@@ -174,6 +219,27 @@ export const PaymentForm = () => {
       >
         Add A Payment
       </Button>
+    </div>
+  );
+};
+
+//add payment button modal
+export const PaymentEditForm = (paymentObj) => {
+  paymentId = paymentObj.id;
+  const [isModalOpen, setModalIsOpen] = useState(false);
+  const toggleModal = () => {
+    setModalIsOpen(!isModalOpen);
+  };
+
+  return (
+    <div>
+      {isModalOpen && <Modal onRequestClose={toggleModal} />}
+      <Button id="UncontrolledTooltip" color="link" onClick={toggleModal}>
+        <FontAwesomeIcon icon={faPencilAlt} />
+      </Button>
+      <UncontrolledTooltip placement="top" target="UncontrolledTooltip">
+        Edit
+      </UncontrolledTooltip>
     </div>
   );
 };
