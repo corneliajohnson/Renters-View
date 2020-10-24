@@ -359,5 +359,23 @@
       "dateAdded": 1603395335628,
       "id": 5
     }
+  ],
+  "payments": [
+    {
+      "id": 1,
+      "firstName": "Gabby",
+      "lastName": "Lee",
+      "propertyId": 4,
+      "date": "2020-10-24",
+      "amount": 500
+    },
+    {
+      "firstName": "Joe",
+      "lastName": "Wilson",
+      "propertyId": 5,
+      "date": "2020-10-25",
+      "amount": "700",
+      "id": 2
+    }
   ]
 }

@@ -34,7 +34,7 @@ export const TenantList = () => {
                   tenant={tenant}
                   deleteBtn={<TenantDelete id={tenant.id} />}
                   editBtn={<EditTenantForm id={tenant.id} />}
-                  paymentBtn={<PaymentForm />}
+                  paymentBtn={<PaymentForm tenant={tenant} />}
                 />
               </Col>
             );

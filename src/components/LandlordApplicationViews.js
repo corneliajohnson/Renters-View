@@ -16,23 +16,26 @@ import { MessageList } from "./landlord/messages/MessageList";
 import { MessageProvider } from "./landlord/messages/MessageProvider";
 import { Footer } from "./landlord/footer/Footer";
 import { CloudinaryProvider } from "./landlord/cloudinary/CloudinaryProvider";
+import { PaymentProvider } from "./landlord/payment/PaymentProvider";
 
 export const LandlordApplicationViews = () => {
   return (
     <>
       <NavBar />
-      <CloudinaryProvider>
-        <TenantProvider>
-          <PropertyProvider>
-            <Route exact path="/">
-              <PropertyForm />
-              <PropertyList />
-              <TenantForm />
-              <TenantList />
-            </Route>
-          </PropertyProvider>
-        </TenantProvider>
-      </CloudinaryProvider>
+      <PaymentProvider>
+        <CloudinaryProvider>
+          <TenantProvider>
+            <PropertyProvider>
+              <Route exact path="/">
+                <PropertyForm />
+                <PropertyList />
+                <TenantForm />
+                <TenantList />
+              </Route>
+            </PropertyProvider>
+          </TenantProvider>
+        </CloudinaryProvider>
+      </PaymentProvider>
 
       <PropertyProvider>
         <MaintenanceProvider>
