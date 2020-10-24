@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { PaymentContext } from "./PaymentProvider";
 import { PaymentCard } from "./PaymentCard";
 import { Table } from "reactstrap";
@@ -7,10 +7,20 @@ import { PaymentDelete } from "./PaymentDelete";
 
 export const PaymentList = () => {
   const { getPayments, payments } = useContext(PaymentContext);
+  const [total, setTotal] = useState();
 
   useEffect(() => {
     getPayments();
   }, []);
+
+  useEffect(() => {
+    //get the total
+    const amountTotal = payments.reduce(
+      (acc, payment) => acc + parseFloat(payment.amount),
+      0
+    );
+    setTotal(amountTotal.toFixed(2));
+  }, [payments]);
 
   return (
     <div className="container">
@@ -38,6 +48,15 @@ export const PaymentList = () => {
             );
           })}
         </tbody>
+        <tfoot>
+          <tr>
+            <th></th>
+            <th></th>
+            <th>Total</th>
+            <th>{total}</th>
+            <th></th>
+          </tr>
+        </tfoot>
       </Table>
     </div>
   );

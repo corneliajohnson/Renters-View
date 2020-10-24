@@ -62,11 +62,12 @@ const Modal = ({ onRequestClose }) => {
 
   const constructPaymentObj = () => {
     getTenantById(payment.tenantId).then((response) => {
+      const amountInt = parseFloat(payment.amount);
       if (payment.id) {
         updatePayment({
           id: payment.id,
           date: payment.date,
-          amount: payment.amount,
+          amount: parseFloat(amountInt).toFixed(2),
           propertyId: response.propertyId,
           firstName: response.firstName,
           lastName: response.lastName,
@@ -74,7 +75,7 @@ const Modal = ({ onRequestClose }) => {
       } else {
         addPayment({
           date: payment.date,
-          amount: payment.amount,
+          amount: parseFloat(amountInt).toFixed(2),
           propertyId: response.propertyId,
           firstName: response.firstName,
           lastName: response.lastName,
@@ -124,7 +125,7 @@ const Modal = ({ onRequestClose }) => {
               <Input
                 type="select"
                 name="tenantId"
-                value={tenantId ? tenantId.id : 0}
+                //value={tenantId ? tenantId.id : 0}
                 onChange={handleControlledInputChange}
               >
                 <option value="0"></option>
