@@ -1,8 +1,7 @@
 import React from "react";
-import { ListGroupItem, Col, Row } from "reactstrap";
 import { DateString } from "../date/DateString";
 
-export const PaymentCard = ({ payment }) => {
+export const PaymentCard = ({ payment, deleteBtn }) => {
   return (
     <tr>
       <th scope="row">{DateString(payment.date)}</th>
@@ -11,6 +10,7 @@ export const PaymentCard = ({ payment }) => {
       </td>
       <td>{payment.propertyId}</td>
       <td>{payment.amount}</td>
+      <td>{deleteBtn}</td>
     </tr>
   );
 };

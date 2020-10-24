@@ -3,6 +3,7 @@ import { PaymentContext } from "./PaymentProvider";
 import { PaymentCard } from "./PaymentCard";
 import { Table } from "reactstrap";
 import { PaymentForm } from "./PaymentForm";
+import { PaymentDelete } from "./PaymentDelete";
 
 export const PaymentList = () => {
   const { getPayments, payments } = useContext(PaymentContext);
@@ -22,11 +23,18 @@ export const PaymentList = () => {
             <th>Tenant</th>
             <th>Address</th>
             <th>Amount</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           {payments.map((payment) => {
-            return <PaymentCard key={payment.id} payment={payment} />;
+            return (
+              <PaymentCard
+                key={payment.id}
+                payment={payment}
+                deleteBtn={<PaymentDelete id={payment.id} />}
+              />
+            );
           })}
         </tbody>
       </Table>

@@ -17,7 +17,6 @@ import {
   ModalHeader,
   CardLink,
 } from "reactstrap";
-let tenantInfo = {};
 
 const Modal = ({ onRequestClose }) => {
   const { addPayment } = useContext(PaymentContext);
@@ -38,7 +37,7 @@ const Modal = ({ onRequestClose }) => {
 
   const constructPaymentObj = () => {
     getTenantById(payment.tenantId).then((response) => {
-      console.log({
+      addPayment({
         date: payment.date,
         amount: payment.amount,
         propertyId: response.propertyId,

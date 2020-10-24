@@ -376,6 +376,14 @@
       "date": "2020-10-25",
       "amount": "700",
       "id": 2
+    },
+    {
+      "date": "2020-10-23",
+      "amount": "443",
+      "propertyId": 5,
+      "firstName": "Joe",
+      "lastName": "Wilson",
+      "id": 3
     }
   ]
 }
