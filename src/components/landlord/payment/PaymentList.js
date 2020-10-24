@@ -5,6 +5,7 @@ import { Table } from "reactstrap";
 import { PaymentEditForm, PaymentForm } from "./PaymentForm";
 import { PaymentDelete } from "./PaymentDelete";
 import { PaymentSearch } from "./PaymentSearch";
+import { DatePicker } from "../date/DatePicker";
 
 export const PaymentList = () => {
   const { getPayments, payments, searchTerms } = useContext(PaymentContext);
@@ -66,13 +67,14 @@ export const PaymentList = () => {
       );
       setTotal(amountTotalAll.toFixed(2));
     }
-  }, [searchTerms, payments, filteredPayments]);
+  }, [filteredPayments]);
 
   return (
     <div className="container">
       <h1 className="display-2 text-center mt-5">Payments</h1>
       <PaymentForm />
       <PaymentSearch />
+      <DatePicker />
       <Table hover>
         <thead>
           <tr>
