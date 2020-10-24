@@ -6,7 +6,7 @@ export const PaymentProvider = (props) => {
   const [payments, setPayments] = useState([]);
 
   const getPayments = () => {
-    return fetch("http://localhost:8088/payments")
+    return fetch("http://localhost:8088/payments?_expand=property")
       .then((res) => res.json())
       .then(setPayments);
   };

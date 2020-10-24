@@ -9,7 +9,10 @@ export const PaymentCard = ({ payment, deleteBtn, editBtn }) => {
       <td>
         {payment.firstName} {payment.lastName}
       </td>
-      <td>{payment.propertyId}</td>
+      <td>
+        {payment.property.street} {payment.property.city}{" "}
+        {payment.property.state}
+      </td>
       <td>{payment.amount}</td>
       <td>
         <Row>
