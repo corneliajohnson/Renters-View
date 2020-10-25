@@ -1,22 +1,20 @@
 import React, { useContext, useEffect, useState } from "react";
 import { LandlordContext } from "./LandlordProvider";
 import { EditLandlordForm } from "./LandlordEditForm";
-//import { CloudinaryContext } from "../cloudinary/CloudinaryProvider";
-import { Row, Col, Input } from "reactstrap";
+import { Row, Col } from "reactstrap";
 
 export const AccountView = () => {
   const { getLandlordById, landlords } = useContext(LandlordContext);
-  // const { uploadImage, image, loading } = useContext(CloudinaryContext);
 
   const [landlord, setLandlord] = useState([]);
-  const [properties, setProperties] = useState([]);
+  const [propertiesNum, setPropertiesNum] = useState([]);
   const [tenants, setTenants] = useState([]);
 
   useEffect(() => {
     const landlordId = parseInt(localStorage.landlord);
     getLandlordById(landlordId).then((response) => {
       setLandlord(response);
-      setProperties(response.properties);
+      setPropertiesNum(response.properties);
       setTenants(response.tenants);
     });
   }, [landlords]);
@@ -24,6 +22,7 @@ export const AccountView = () => {
   return (
     <>
       <div className="container">
+        {console.log(landlord)}
         <h1 className="display-2 text-center m-5">My Account</h1>
         <Row className="m-5">
           <Col className="p-5" sm={4}>
@@ -44,7 +43,7 @@ export const AccountView = () => {
             </p>
             <p>
               <span style={{ fontWeight: "bold" }}>Properties: </span>{" "}
-              {properties.length}
+              {propertiesNum.length}
             </p>
             <p>
               <span style={{ fontWeight: "bold" }}>Tenants: </span>

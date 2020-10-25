@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { MaintenanceContext } from "./MaintenanceProvider";
-import { ListGroup } from "reactstrap";
+import { ListGroup, Badge } from "reactstrap";
 import { MaintenanceCard } from "./MaintenanceCard";
 import { EditMaintenanceForm } from "./MaintenanceForm";
 import { MaintenanceInfoModal } from "./MaintenanceInfoModal";
@@ -14,6 +14,7 @@ export const MaintenanceList = () => {
   );
 
   const [filteredRequest, setFilteredRequest] = useState([]);
+  const [total, setTotal] = useState();
 
   useEffect(() => {
     getMaintenanceRequests();
@@ -30,6 +31,14 @@ export const MaintenanceList = () => {
     );
     setFilteredRequest(subsetRequest);
   };
+
+  useEffect(() => {
+    const amountTotalAll = filteredRequest.reduce(
+      (acc, request) => acc + parseFloat(request.price),
+      0
+    );
+    setTotal(amountTotalAll.toFixed(2));
+  }, [filteredRequest]);
 
   const completeRequest = () => {
     const subsetRequest = maintenanceRequests.filter(
@@ -67,6 +76,9 @@ export const MaintenanceList = () => {
       <small className="text-secondary">
         Add date to task to mark as complete
       </small>
+      <Badge className="float-right" color="dark">
+        Total Pain in Maintenance ${total}
+      </Badge>
       <ListGroup>
         {filteredRequest.map((request) => {
           return (

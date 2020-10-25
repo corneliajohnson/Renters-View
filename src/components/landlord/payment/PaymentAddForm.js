@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { PaymentContext } from "./PaymentProvider";
-import { TenantContext } from "../tenants/TenantProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes, faMoneyBill } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-toastify";

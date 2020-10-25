@@ -21,6 +21,8 @@ const Modal = ({ onRequestClose }) => {
   const [tenants, setTenants] = useState([]);
   const [maintenanceRequests, setMaintenance] = useState([]);
   const [payments, setPayments] = useState([]);
+  const [gain, setGain] = useState();
+  const [loss, setLoss] = useState();
 
   //get info of property
   useEffect(() => {
@@ -31,6 +33,21 @@ const Modal = ({ onRequestClose }) => {
       setPayments(response.payments);
     });
   }, []);
+
+  //get gains and losses
+  useEffect(() => {
+    const amountTotalGain = payments.reduce(
+      (acc, payment) => acc + parseFloat(payment.amount),
+      0
+    );
+
+    const amountTotalLoss = maintenanceRequests.reduce(
+      (acc, request) => acc + parseFloat(request.price),
+      0
+    );
+    setGain(amountTotalGain.toFixed(2));
+    setLoss(amountTotalLoss.toFixed(2));
+  }, [payments, maintenanceRequests]);
 
   // Use useEffect to add an event listener to the document
   useEffect(() => {
@@ -128,7 +145,42 @@ const Modal = ({ onRequestClose }) => {
                 </p>
               </Col>
             </Row>
+            <h3 className="display-5">Gain/Loss</h3>
+            <Row>
+              <Col>
+                <p>
+                  <span style={{ fontWeight: "bold" }}>Gains</span>{" "}
+                  <span className="text-success"> + {gain}</span>
+                </p>
+                <p>
+                  <span style={{ fontWeight: "bold" }}>Loss</span>{" "}
+                  <span className="text-danger"> - {loss}</span>
+                </p>
+              </Col>
+              <Col>
+                {gain - loss === 0 ? (
+                  ""
+                ) : gain - loss > 0 ? (
+                  <h4 className="text-success">Profit of +{gain - loss}</h4>
+                ) : (
+                  <h4 className="text-danger">Loss of -{gain - loss}</h4>
+                )}
+              </Col>
+            </Row>
+            <h3 className="display-5">Payments</h3>
+            {payments.length === 0 ? <h5>None</h5> : ""}
+            {payments.map((payment) => {
+              return (
+                <p>
+                  <span style={{ fontWeight: "bold" }}>
+                    {DateString(payment.date)}
+                  </span>{" "}
+                  {payment.firstName} {payment.lastName} ${payment.amount}
+                </p>
+              );
+            })}
             <h3 className="display-5">Maintenance History</h3>
+            {maintenanceRequests.length === 0 ? <h5>None</h5> : ""}
             {maintenanceRequests.map((request) => {
               return (
                 <div>
@@ -141,17 +193,6 @@ const Modal = ({ onRequestClose }) => {
                     {request.price ? `cost $${request.price}` : "cost $0.00"}
                   </p>
                 </div>
-              );
-            })}
-            <h3 className="display-5">Payments</h3>
-            {payments.map((payment) => {
-              return (
-                <p>
-                  <span style={{ fontWeight: "bold" }}>
-                    {DateString(payment.date)}
-                  </span>{" "}
-                  {payment.firstName} {payment.lastName} ${payment.amount}
-                </p>
               );
             })}
           </ModalBody>
