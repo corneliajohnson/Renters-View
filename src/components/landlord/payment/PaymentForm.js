@@ -115,7 +115,7 @@ const Modal = ({ onRequestClose }) => {
           >
             <FontAwesomeIcon icon={faTimes} />
           </CardLink>
-          <ModalHeader className="display-3">Add Payment</ModalHeader>
+          <ModalHeader className="display-3">Payment</ModalHeader>
 
           <FormGroup className="p-2 m-2" row>
             <Label for="tenant" sm={2}>
@@ -125,7 +125,7 @@ const Modal = ({ onRequestClose }) => {
               <Input
                 type="select"
                 name="tenantId"
-                value={tenantId ? tenantId.id : null}
+                //value={tenantId ? tenantId.id : null}
                 onChange={handleControlledInputChange}
               >
                 <option value="0"></option>

@@ -56,38 +56,36 @@ export const NavBar = () => {
           Maintenance
         </NavLink>
       </li>
-      <li className="navbar__item">
-        <Dropdown nav isOpen={dropdownOpen} toggle={toggle}>
-          <DropdownToggle
-            style={{ color: "#f2af58" }}
-            activeStyle={{ color: "#fa2d2d" }}
-            nav
-            caret
-          >
-            More
-          </DropdownToggle>
-          <DropdownMenu>
-            <DropdownItem>
-              <NavLink
-                className="navbar__link"
-                to="/payments"
-                activeStyle={{ color: "#fa2d2d" }}
-              >
-                Payments
-              </NavLink>
-            </DropdownItem>
-            <DropdownItem>
-              <NavLink
-                className="navbar__link"
-                to="/account"
-                activeStyle={{ color: "#fa2d2d" }}
-              >
-                Account
-              </NavLink>
-            </DropdownItem>
-          </DropdownMenu>
-        </Dropdown>
-      </li>
+      <Dropdown
+        nav
+        className="navbar__item"
+        isOpen={dropdownOpen}
+        toggle={toggle}
+      >
+        <DropdownToggle style={{ color: "#f2af58" }} nav caret>
+          More
+        </DropdownToggle>
+        <DropdownMenu>
+          <DropdownItem>
+            <NavLink
+              className="navbar__link"
+              to="/payments"
+              activeStyle={{ color: "#fa2d2d" }}
+            >
+              Payments
+            </NavLink>
+          </DropdownItem>
+          <DropdownItem>
+            <NavLink
+              className="navbar__link"
+              to="/account"
+              activeStyle={{ color: "#fa2d2d" }}
+            >
+              Account
+            </NavLink>
+          </DropdownItem>
+        </DropdownMenu>
+      </Dropdown>
     </ul>
   );
 };

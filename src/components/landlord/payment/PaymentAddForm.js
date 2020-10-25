@@ -31,12 +31,13 @@ const Modal = ({ onRequestClose }) => {
   };
 
   const constructPaymentObj = () => {
+    const amountInt = parseFloat(payment.amount);
     addPayment({
       firstName: tenantInfo.firstName,
       lastName: tenantInfo.lastName,
       propertyId: tenantInfo.propertyId,
       date: payment.date,
-      amount: payment.amount,
+      amount: parseFloat(amountInt).toFixed(2),
     });
   };
 
@@ -71,7 +72,9 @@ const Modal = ({ onRequestClose }) => {
           >
             <FontAwesomeIcon icon={faTimes} />
           </CardLink>
-          <ModalHeader className="display-3">Add Payment</ModalHeader>
+          <ModalHeader className="display-3">
+            Add Payment by {tenantInfo.firstName} {tenantInfo.lastName}
+          </ModalHeader>
         </Form>
         <Row className="p-2 m-2">
           <Col className="m-1">
