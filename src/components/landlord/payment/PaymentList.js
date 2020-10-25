@@ -80,7 +80,12 @@ export const PaymentList = () => {
     let result = filteredPayments;
     const startDate = moment(start)._d;
     const endDate = moment(end)._d;
-    if (!startDate || !endDate) {
+    if (
+      !startDate ||
+      !endDate ||
+      moment(start)._isValid === false ||
+      moment(end)._isValid === false
+    ) {
       result = filteredPayments;
     } else {
       result = filteredPayments.filter((obj) => {
@@ -100,7 +105,7 @@ export const PaymentList = () => {
       <h1 className="display-2 text-center mt-5">Payments</h1>
       <PaymentForm />
       <PaymentSearch />
-      <DatePicker />;
+      <DatePicker />
       <Table hover>
         <thead>
           <tr>

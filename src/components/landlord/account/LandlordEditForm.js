@@ -3,8 +3,8 @@ import { LandlordContext } from "./LandlordProvider";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CloudinaryContext } from "../cloudinary/CloudinaryProvider";
 import { faTimes, faCloudUploadAlt } from "@fortawesome/free-solid-svg-icons";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+//import { toast } from "react-toastify";
+//import "react-toastify/dist/ReactToastify.css";
 import "./Account.css";
 
 import {
@@ -38,12 +38,12 @@ const Modal = ({ onRequestClose }) => {
   }, []);
 
   //taost when a account is updated
-  const notify = () => {
-    toast.success("Account Updated", {
-      hideProgressBar: true,
-      position: toast.POSITION.BOTTOM_LEFT,
-    });
-  };
+  // const notify = () => {
+  //   toast.success("Account Updated", {
+  //     hideProgressBar: true,
+  //     position: toast.POSITION.BOTTOM_LEFT,
+  //   });
+  // };
 
   //get info for currenant landlord
   useEffect(() => {
@@ -69,7 +69,8 @@ const Modal = ({ onRequestClose }) => {
       email: landlord.email,
       phone: landlord.phone,
       image: image ? image : landlord.image,
-    }).then(() => notify());
+    });
+    //.then(() => notify());
   };
 
   // Use useEffect to add an event listener to the document
