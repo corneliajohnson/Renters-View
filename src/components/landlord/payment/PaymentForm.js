@@ -125,7 +125,7 @@ const Modal = ({ onRequestClose }) => {
               <Input
                 type="select"
                 name="tenantId"
-                //value={tenantId ? tenantId.id : 0}
+                value={tenantId ? tenantId.id : null}
                 onChange={handleControlledInputChange}
               >
                 <option value="0"></option>
