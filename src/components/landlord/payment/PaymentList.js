@@ -6,6 +6,7 @@ import { PaymentEditForm, PaymentForm } from "./PaymentForm";
 import { PaymentDelete } from "./PaymentDelete";
 import { PaymentSearch } from "./PaymentSearch";
 import { DatePicker } from "../date/DatePicker";
+import { Row, Col } from "reactstrap";
 import moment from "moment";
 
 export const PaymentList = () => {
@@ -13,6 +14,7 @@ export const PaymentList = () => {
     getPayments,
     payments,
     searchTerms,
+    setSearchTerms,
     startPaymentDate,
     endPaymentDate,
   } = useContext(PaymentContext);
@@ -104,8 +106,15 @@ export const PaymentList = () => {
     <div className="container">
       <h1 className="display-2 text-center mt-5">Payments</h1>
       <PaymentForm />
-      <PaymentSearch />
-      <DatePicker />
+      <Row className="mb-3">
+        <Col>
+          {" "}
+          <PaymentSearch />
+        </Col>
+        <Col className="text-right">
+          <DatePicker />
+        </Col>
+      </Row>
       <Table hover>
         <thead>
           <tr>

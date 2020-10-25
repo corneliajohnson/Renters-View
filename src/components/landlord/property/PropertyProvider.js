@@ -9,13 +9,15 @@ export const PropertyProvider = (props) => {
   const [properties, setProperties] = useState([]);
 
   const getProperties = () => {
-    return fetch("http://localhost:8088/properties")
+    return fetch(
+      "http://localhost:8088/properties?_embed=tenants&_embed=payments&_embed=maintenanceRequests"
+    )
       .then((res) => res.json())
       .then(setProperties);
   };
 
   const addProperty = (propertyObj) => {
-    return fetch("http://localhost:8088/properties?_embed=tenants", {
+    return fetch("http://localhost:8088/properties", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,7 +28,7 @@ export const PropertyProvider = (props) => {
 
   const getPropertyById = (id) => {
     return fetch(
-      `http://localhost:8088/properties/${id}?_embed=tenants&_embed=maintenanceRequests`,
+      `http://localhost:8088/properties/${id}?_embed=tenants&_embed=maintenanceRequests&_embed=payments`,
       {}
     ).then((res) => res.json());
   };

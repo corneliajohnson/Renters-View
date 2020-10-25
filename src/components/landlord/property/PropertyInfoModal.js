@@ -20,6 +20,7 @@ const Modal = ({ onRequestClose }) => {
   const [property, setProperty] = useState({});
   const [tenants, setTenants] = useState([]);
   const [maintenanceRequests, setMaintenance] = useState([]);
+  const [payments, setPayments] = useState([]);
 
   //get info of property
   useEffect(() => {
@@ -27,6 +28,7 @@ const Modal = ({ onRequestClose }) => {
       setProperty(response);
       setTenants(response.tenants);
       setMaintenance(response.maintenanceRequests);
+      setPayments(response.payments);
     });
   }, []);
 
@@ -135,9 +137,21 @@ const Modal = ({ onRequestClose }) => {
                     Status:{" "}
                     {request.complete
                       ? `Complete on ${DateString(request.dateComplete)}`
-                      : "Pending"}
+                      : "Pending"}{" "}
+                    {request.price ? `cost $${request.price}` : "cost $0.00"}
                   </p>
                 </div>
+              );
+            })}
+            <h3 className="display-5">Payments</h3>
+            {payments.map((payment) => {
+              return (
+                <p>
+                  <span style={{ fontWeight: "bold" }}>
+                    {DateString(payment.date)}
+                  </span>{" "}
+                  {payment.firstName} {payment.lastName} ${payment.amount}
+                </p>
               );
             })}
           </ModalBody>
