@@ -1,46 +1,47 @@
-import React, { useState } from "react";
-import { Button, Form, FormGroup, Input, Row, Col } from "reactstrap";
+import React, { useState, useContext } from "react";
+import moment from "moment";
+import "react-dates/initialize";
+import { DateRangePicker } from "react-dates";
+import "react-dates/lib/css/_datepicker.css";
+import { Button } from "reactstrap";
+import { PaymentContext } from "../payment/PaymentProvider";
 
 export const DatePicker = () => {
-  const [date, setDate] = useState({});
-  //get name of each input
-  const handleControlledInputChange = (event) => {
-    const newDate = { ...date };
-    newDate[event.target.name] = event.target.value;
-    setDate(newDate);
+  const { setStartPaymentDate, setEndPaymentDate } = useContext(PaymentContext);
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [focusedInput, setFocusedInput] = useState("startDate");
+
+  const onDatesChange = ({ startDate, endDate }) => {
+    setStartDate(startDate);
+    setEndDate(endDate);
   };
 
   return (
-    <Form className="w-50">
-      <Row>
-        <Col>
-          <FormGroup>
-            <Input
-              type="date"
-              name="startDate"
-              onChange={handleControlledInputChange}
-            />
-          </FormGroup>
-        </Col>
-        <Col>
-          <FormGroup>
-            <Input
-              type="date"
-              name="endDate"
-              onChange={handleControlledInputChange}
-            />
-          </FormGroup>
-        </Col>
-      </Row>
+    <div>
+      <DateRangePicker
+        endDate={endDate}
+        endDateId="endDate"
+        focusedInput={focusedInput.focusedInput}
+        isOutsideRange={() => null}
+        onDatesChange={onDatesChange}
+        onFocusChange={(focusedInput) => setFocusedInput({ focusedInput })}
+        startDate={startDate}
+        startDateId="startDate"
+      />
       <Button
-        onClick={(e) => {
-          e.preventDefault();
-
-          return date.startDate, date.endDate;
+        className="m-2"
+        outline
+        color="secondary"
+        type="button"
+        onClick={(event) => {
+          event.preventDefault();
+          setStartPaymentDate(startDate);
+          setEndPaymentDate(endDate);
         }}
       >
         Search
       </Button>
-    </Form>
+    </div>
   );
 };

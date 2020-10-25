@@ -6,9 +6,16 @@ import { PaymentEditForm, PaymentForm } from "./PaymentForm";
 import { PaymentDelete } from "./PaymentDelete";
 import { PaymentSearch } from "./PaymentSearch";
 import { DatePicker } from "../date/DatePicker";
+import moment from "moment";
 
 export const PaymentList = () => {
-  const { getPayments, payments, searchTerms } = useContext(PaymentContext);
+  const {
+    getPayments,
+    payments,
+    searchTerms,
+    startPaymentDate,
+    endPaymentDate,
+  } = useContext(PaymentContext);
   const [total, setTotal] = useState();
   const [sortedPaymentDates, setSortedPaymentDates] = useState([]);
   const [filteredPayments, setFiltered] = useState([]);
@@ -69,12 +76,31 @@ export const PaymentList = () => {
     }
   }, [filteredPayments]);
 
+  const dateRange = (start, end) => {
+    let result = filteredPayments;
+    const startDate = moment(start)._d;
+    const endDate = moment(end)._d;
+    if (!startDate || !endDate) {
+      result = filteredPayments;
+    } else {
+      result = filteredPayments.filter((obj) => {
+        return new Date(obj.date) >= startDate && new Date(obj.date) <= endDate;
+      });
+    }
+
+    setFiltered(result);
+  };
+
+  useEffect(() => {
+    dateRange(startPaymentDate, endPaymentDate);
+  }, [startPaymentDate, endPaymentDate]);
+
   return (
     <div className="container">
       <h1 className="display-2 text-center mt-5">Payments</h1>
       <PaymentForm />
       <PaymentSearch />
-      <DatePicker />
+      <DatePicker />;
       <Table hover>
         <thead>
           <tr>
