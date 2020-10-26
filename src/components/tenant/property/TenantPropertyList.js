@@ -131,32 +131,43 @@ export const TenantProperty = () => {
           <Col sm={12} md={8} className="mb-5">
             <div className="property_maintenatce">
               <h3>Maintenance</h3>
-              {propertyMaintenance.map((request) => {
-                return request.length === 0 ? (
-                  "None"
-                ) : (
-                  <div>
-                    {new Date(request.dateAdded).toLocaleString("en-US", {
-                      year: "numeric",
-                      month: "long",
-                      day: "numeric",
-                    })}
-                    {"   "}
-                    {request.synopsis}
-                    {"   "}
-                    {request.complete ? (
-                      <>
-                        complete on {"   "}
-                        <span className="text-success">
-                          {DateString(request.dateComplete)}
-                        </span>
-                      </>
+              <Table size="sm">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Synopsis</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {propertyMaintenance.map((request) => {
+                    return request.length === 0 ? (
+                      "None"
                     ) : (
-                      <span className="text-danger">Pending</span>
-                    )}
-                  </div>
-                );
-              })}
+                      <tr>
+                        <td>
+                          {" "}
+                          {new Date(request.dateAdded).toLocaleString("en-US", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                          })}{" "}
+                        </td>
+                        {"   "}
+                        <td>{request.synopsis}</td>
+                        {"   "}
+                        {request.complete ? (
+                          <td className="text-success">
+                            Complete {DateString(request.dateComplete)}
+                          </td>
+                        ) : (
+                          <td className="text-danger">Pending</td>
+                        )}
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </Table>
             </div>
           </Col>
         </Row>
