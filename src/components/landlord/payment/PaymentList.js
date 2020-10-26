@@ -29,7 +29,7 @@ export const PaymentList = () => {
   useEffect(() => {
     //sort dates
     const sortedPayDate = payments.sort(
-      (a, b) => new Date(a.date) - new Date(b.date)
+      (a, b) => new Date(b.date) - new Date(a.date)
     );
     setSortedPaymentDates(sortedPayDate);
   }, [payments]);

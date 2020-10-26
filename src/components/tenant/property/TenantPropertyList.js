@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { TenantContext } from "../../landlord/tenants/TenantProvider";
 import { PropertyContext } from "../../landlord/property/PropertyProvider";
-import { Row, Col } from "reactstrap";
+import { Row, Col, Table } from "reactstrap";
 import { MessageForm } from "./TenantMessageForm";
 import { DateString } from "../../landlord/date/DateString";
 
@@ -13,6 +13,8 @@ export const TenantProperty = () => {
   const [property, setProperty] = useState({});
   const [landlord, setLandlord] = useState({});
   const [propertyMaintenance, setPropertMaintenance] = useState([]);
+  const [payments, setPayments] = useState([]);
+  const [filteredPayments, setFilteredPayments] = useState([]);
 
   useEffect(() => {
     const currentTenant = parseInt(localStorage.tenant);
@@ -27,9 +29,24 @@ export const TenantProperty = () => {
     if (tenant.propertyId) {
       getPropertyById(tenant.propertyId).then((response) => {
         setPropertMaintenance(response.maintenanceRequests);
+        setPayments(response.payments);
       });
     }
   }, [tenant.propertyId]);
+
+  //only show payments the tenant made
+  useEffect(() => {
+    const subset = payments.filter(
+      (payment) =>
+        payment.firstName === tenant.firstName &&
+        payment.lastName === tenant.lastName
+    );
+
+    const sortedPayDate = subset.sort(
+      (a, b) => new Date(b.date) - new Date(a.date)
+    );
+    setFilteredPayments(sortedPayDate);
+  }, [tenant, payments]);
 
   return (
     <>
@@ -45,7 +62,7 @@ export const TenantProperty = () => {
         </div>
 
         <Row className="m-5">
-          <Col sm={12} md={6}>
+          <Col sm={12} md={4}>
             <h3>Tenant</h3>
             <div className="property__tenant">
               <p>
@@ -55,7 +72,7 @@ export const TenantProperty = () => {
               <p>Email: {tenant.email}</p>
             </div>
           </Col>
-          <Col sm={12} md={6}>
+          <Col sm={12} md={4}>
             <h3>Landlord</h3>
             <p>
               {landlord.firstName} {landlord.lastName}
@@ -64,9 +81,7 @@ export const TenantProperty = () => {
             <p>Phone Number: {landlord.phone}</p>
             <MessageForm />
           </Col>
-        </Row>
-        <Row className="m-5">
-          <Col sm={12} md={6}>
+          <Col sm={12} md={4}>
             <div className="property__moreInfor">
               <h3>Property Info</h3>
               Rent Price:{" "}
@@ -88,7 +103,32 @@ export const TenantProperty = () => {
               </p>
             </div>
           </Col>
-          <Col sm={12} md={6}>
+        </Row>
+        <Row className="m-5">
+          <Col sm={12} md={4}>
+            <div>
+              <h3>Payments</h3>
+              <Table size="sm">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredPayments.map((payment) => {
+                    return (
+                      <tr>
+                        <td>{DateString(payment.date)}</td>
+                        <td>{payment.amount}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </Table>
+            </div>
+          </Col>
+          <Col sm={12} md={8}>
             <div className="property_maintenatce">
               <h3>Maintenance</h3>
               {propertyMaintenance.map((request) => {
@@ -108,7 +148,7 @@ export const TenantProperty = () => {
                       <>
                         complete on {"   "}
                         <span className="text-success">
-                          {request.dateComplete}
+                          {DateString(request.dateComplete)}
                         </span>
                       </>
                     ) : (
@@ -120,6 +160,7 @@ export const TenantProperty = () => {
             </div>
           </Col>
         </Row>
+        {/* payment area */}
       </div>
     </>
   );
