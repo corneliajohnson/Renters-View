@@ -62,7 +62,7 @@ export const TenantProperty = () => {
         </div>
 
         <Row className="m-5">
-          <Col sm={12} md={4}>
+          <Col sm={12} md={4} className="mb-5">
             <h3>Tenant</h3>
             <div className="property__tenant">
               <p>
@@ -72,7 +72,7 @@ export const TenantProperty = () => {
               <p>Email: {tenant.email}</p>
             </div>
           </Col>
-          <Col sm={12} md={4}>
+          <Col sm={12} md={4} className="mb-5">
             <h3>Landlord</h3>
             <p>
               {landlord.firstName} {landlord.lastName}
@@ -81,7 +81,7 @@ export const TenantProperty = () => {
             <p>Phone Number: {landlord.phone}</p>
             <MessageForm />
           </Col>
-          <Col sm={12} md={4}>
+          <Col sm={12} md={4} className="mb-2">
             <div className="property__moreInfor">
               <h3>Property Info</h3>
               Rent Price:{" "}
@@ -105,7 +105,7 @@ export const TenantProperty = () => {
           </Col>
         </Row>
         <Row className="m-5">
-          <Col sm={12} md={4}>
+          <Col sm={12} md={4} className="mb-5">
             <div>
               <h3>Payments</h3>
               <Table size="sm">
@@ -128,7 +128,7 @@ export const TenantProperty = () => {
               </Table>
             </div>
           </Col>
-          <Col sm={12} md={8}>
+          <Col sm={12} md={8} className="mb-5">
             <div className="property_maintenatce">
               <h3>Maintenance</h3>
               {propertyMaintenance.map((request) => {
