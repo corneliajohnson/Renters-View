@@ -163,7 +163,7 @@ const Modal = ({ onRequestClose }) => {
                 ) : gain - loss > 0 ? (
                   <h4 className="text-success">Profit of +{gain - loss}</h4>
                 ) : (
-                  <h4 className="text-danger">Loss of -{gain - loss}</h4>
+                  <h4 className="text-danger">Loss of {gain - loss}</h4>
                 )}
               </Col>
             </Row>
@@ -218,7 +218,7 @@ export const PropertyInfoModal = (propertyObj) => {
     setModalIsOpen(!isModalOpen);
   };
   return (
-    <div>
+    <div key={propertyId}>
       {isModalOpen && <Modal onRequestClose={toggleModal} />}
       <CardLink
         className="propertyCardLink"

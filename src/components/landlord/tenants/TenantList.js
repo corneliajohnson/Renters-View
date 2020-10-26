@@ -28,9 +28,8 @@ export const TenantList = () => {
         <div className="row wrap m-5">
           {filteredTenants.map((tenant) => {
             return (
-              <Col sm={12} lg={6} xl={4}>
+              <Col key={tenant.id} sm={12} lg={6} xl={4}>
                 <TenantCard
-                  key={tenant.id}
                   tenant={tenant}
                   deleteBtn={<TenantDelete id={tenant.id} />}
                   editBtn={<EditTenantForm id={tenant.id} />}

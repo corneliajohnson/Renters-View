@@ -32,7 +32,7 @@ export const PropertyList = () => {
           <div className="properties row wrap m-5">
             {filteredProperies.map((property) => {
               return (
-                <Col sm={12} lg={6} xl={4}>
+                <Col key={property.id} sm={12} lg={6} xl={4}>
                   <PropertyCard
                     className="propertyCard"
                     key={property.id}
