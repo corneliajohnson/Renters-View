@@ -11,7 +11,6 @@
       "rentAmount": 950,
       "secuirtyDesposit": 900,
       "paymentDay": "2020-11-08",
-      "lastPaymentAmount": 900,
       "leaseTerm": "Seasonal",
       "image": "https://res.cloudinary.com/cornelia/image/upload/v1603486934/rentersview/Multimedia__14_lrdsgs.jpg",
       "landlordId": 1
@@ -27,7 +26,6 @@
       "rentAmount": 1600,
       "secuirtyDesposit": 1600,
       "paymentDay": "2020-10-31",
-      "lastPaymentAmount": 1600,
       "leaseTerm": "Air BnB",
       "image": "https://res.cloudinary.com/cornelia/image/upload/v1603486934/rentersview/Multimedia__14_lrdsgs.jpg",
       "landlordId": 1
@@ -43,7 +41,6 @@
       "rentAmount": 750,
       "secuirtyDesposit": 750,
       "paymentDay": "2020-11-19",
-      "lastPaymentAmount": 456,
       "leaseTerm": "12 Month",
       "image": "https://res.cloudinary.com/cornelia/image/upload/v1603486934/rentersview/Multimedia__14_lrdsgs.jpg",
       "landlordId": 1
@@ -57,7 +54,6 @@
       "leaseEndDate": "2021-12-19",
       "rentAmount": null,
       "secuirtyDesposit": null,
-      "lastPaymentAmount": null,
       "image": "https://res.cloudinary.com/cornelia/image/upload/v1603486934/rentersview/Multimedia__14_lrdsgs.jpg",
       "landlordId": 1,
       "id": 5
@@ -70,7 +66,6 @@
       "zip": "4556",
       "rentAmount": null,
       "secuirtyDesposit": null,
-      "lastPaymentAmount": null,
       "image": "https://res.cloudinary.com/cornelia/image/upload/v1603488083/rentersview/brczmlxn0fs6bi1qc2ji.jpg",
       "landlordId": 1
     },
@@ -81,7 +76,6 @@
       "zip": "32309",
       "rentAmount": null,
       "secuirtyDesposit": null,
-      "lastPaymentAmount": null,
       "image": "https://res.cloudinary.com/cornelia/image/upload/v1603488162/rentersview/rsncxknjym4ggyaclzcl.jpg",
       "landlordId": 1,
       "id": 8

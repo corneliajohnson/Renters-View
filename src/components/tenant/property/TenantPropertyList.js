@@ -84,12 +84,6 @@ export const TenantProperty = () => {
                   : "N/A"}
               </p>
               <p>
-                Last Payment Amount:{" "}
-                {property.lastPaymentAmount
-                  ? property.lastPaymentAmount
-                  : "N/A"}
-              </p>
-              <p>
                 Lease Term: {property.leaseTerm ? property.leaseTerm : "N/A"}
               </p>
             </div>

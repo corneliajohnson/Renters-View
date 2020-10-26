@@ -82,7 +82,6 @@ const Modal = ({ onRequestClose }) => {
         rentAmount: parseInt(property.rentAmount),
         secuirtyDesposit: parseInt(property.secuirtyDesposit),
         paymentDay: property.paymentDay,
-        lastPaymentAmount: parseInt(property.lastPaymentAmount),
         leaseTerm: property.leaseTerm,
         image: image ? image : property.image,
         landlordId: parseInt(localStorage.landlord),
@@ -99,7 +98,6 @@ const Modal = ({ onRequestClose }) => {
         rentAmount: parseInt(property.rentAmount),
         secuirtyDesposit: parseInt(property.secuirtyDesposit),
         paymentDay: property.paymentDay,
-        lastPaymentAmount: parseInt(property.lastPaymentAmount),
         leaseTerm: property.leaseTerm,
         image: image ? image : defaultImage,
         landlordId: parseInt(localStorage.landlord),
@@ -288,19 +286,6 @@ const Modal = ({ onRequestClose }) => {
                   </Col>
                 </Row>
                 <Row>
-                  <Col>
-                    <FormGroup>
-                      <Label for="lastPaymentAmount">
-                        Amount of Last Payment Made
-                      </Label>
-                      <Input
-                        type="number"
-                        name="lastPaymentAmount"
-                        onChange={handleControlledInputChange}
-                        defaultValue={property.lastPaymentAmount}
-                      />
-                    </FormGroup>
-                  </Col>
                   <Col>
                     <Label for="leaseTerm">Lease Term</Label>
                     <Input

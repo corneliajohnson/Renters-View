@@ -122,7 +122,7 @@ const Modal = ({ onRequestClose }) => {
                   {property.rentAmount
                     ? ` ${property.rentAmount} due on ${DateString(
                         property.paymentDay
-                      )} in the Amount of $${property.lastPaymentAmount}`
+                      )}`
                     : " None"}
                 </p>
                 <p>
