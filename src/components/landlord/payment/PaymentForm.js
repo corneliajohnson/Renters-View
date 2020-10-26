@@ -132,7 +132,11 @@ const Modal = ({ onRequestClose }) => {
           >
             <FontAwesomeIcon icon={faTimes} />
           </CardLink>
-          <ModalHeader className="display-3">Payment</ModalHeader>
+          <ModalHeader className="display-3">
+            {tenantId
+              ? `Edit ${payment.firstName} ${payment.lastName}'s Payment`
+              : "Add Payment"}
+          </ModalHeader>
 
           <FormGroup className="p-2 m-2" row>
             <Label for="tenant" sm={2}>
@@ -140,19 +144,37 @@ const Modal = ({ onRequestClose }) => {
             </Label>
 
             <Col sm={10}>
-              <Input
-                type="select"
-                name="tenantId"
-                value={tenantId ? tenantId.id : payment.firstName}
-                onChange={handleControlledInputChange}
-              >
-                <option value="0"></option>
-                {tenants.map((tenant) => (
-                  <option key={tenant.id} value={tenant.id}>
-                    {tenant.firstName} {tenant.lastName}
-                  </option>
-                ))}
-              </Input>
+              {/* if there is an edit disable input */}
+              {tenantId ? (
+                <Input
+                  type="select"
+                  name="tenantId"
+                  value={tenantId ? tenantId.id : payment.firstName}
+                  onChange={handleControlledInputChange}
+                  disabled
+                >
+                  <option value="0"></option>
+                  {tenants.map((tenant) => (
+                    <option key={tenant.id} value={tenant.id}>
+                      {tenant.firstName} {tenant.lastName}
+                    </option>
+                  ))}
+                </Input>
+              ) : (
+                <Input
+                  type="select"
+                  name="tenantId"
+                  value={tenantId ? tenantId.id : payment.firstName}
+                  onChange={handleControlledInputChange}
+                >
+                  <option value="0"></option>
+                  {tenants.map((tenant) => (
+                    <option key={tenant.id} value={tenant.id}>
+                      {tenant.firstName} {tenant.lastName}
+                    </option>
+                  ))}
+                </Input>
+              )}
             </Col>
           </FormGroup>
           <Row className="p-2 m-2">
