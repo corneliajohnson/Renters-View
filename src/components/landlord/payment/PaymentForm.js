@@ -18,6 +18,7 @@ import {
   CardLink,
   UncontrolledTooltip,
 } from "reactstrap";
+import { Edit } from "@material-ui/icons";
 let paymentId = 0;
 
 const Modal = ({ onRequestClose }) => {
@@ -137,11 +138,12 @@ const Modal = ({ onRequestClose }) => {
             <Label for="tenant" sm={2}>
               Tenants<span className="text-danger">*</span>
             </Label>
+
             <Col sm={10}>
               <Input
                 type="select"
                 name="tenantId"
-                //value={tenantId ? tenantId.id : null}
+                value={tenantId ? tenantId.id : payment.firstName}
                 onChange={handleControlledInputChange}
               >
                 <option value="0"></option>
@@ -199,7 +201,7 @@ const Modal = ({ onRequestClose }) => {
               }
             }}
           >
-            Add
+            {tenantId ? "Edit" : "Add"}
           </Button>
           <Button
             className="m-2"
