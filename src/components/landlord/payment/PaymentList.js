@@ -104,7 +104,7 @@ export const PaymentList = () => {
 
   return (
     <div className="container">
-      <h1 className="display-2 text-center mt-5">Payments</h1>
+      <h1 className="display-2 text-center mt-5 mb-5">Payments</h1>
       <PaymentForm />
       <Row className="mb-3">
         <Col>
