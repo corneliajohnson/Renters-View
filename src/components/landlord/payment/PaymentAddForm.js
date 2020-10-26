@@ -15,6 +15,7 @@ import {
   Input,
   ModalHeader,
   CardLink,
+  UncontrolledTooltip,
 } from "reactstrap";
 let tenantInfo = {};
 
@@ -38,6 +39,14 @@ const Modal = ({ onRequestClose }) => {
       propertyId: tenantInfo.propertyId,
       date: payment.date,
       amount: parseFloat(amountInt).toFixed(2),
+    }).then(() => notify());
+  };
+
+  //taost when a payment is added
+  const notify = () => {
+    toast.success("Payment Added", {
+      hideProgressBar: true,
+      position: toast.POSITION.BOTTOM_LEFT,
     });
   };
 
@@ -143,13 +152,17 @@ export const PaymentAddForm = (tenantObj) => {
     <div className="container text-center">
       {isModalOpen && <Modal onRequestClose={toggleModal} />}
       <Button
-        style={{ color: "green", fontSize: "1.5em" }}
+        id="UncontrolledTooltip"
+        style={{ color: "#85bb65", fontSize: "1.5em" }}
         onClick={toggleModal}
         color="link"
         type="button"
       >
         <FontAwesomeIcon icon={faMoneyBill} />
       </Button>
+      <UncontrolledTooltip placement="top" target="UncontrolledTooltip">
+        Add A Payment
+      </UncontrolledTooltip>
     </div>
   );
 };

@@ -358,7 +358,7 @@
     {
       "id": 1,
       "date": "2020-10-24",
-      "amount": "500.00",
+      "amount": "500.25",
       "propertyId": 4,
       "firstName": "Gabby",
       "lastName": "Lee"
@@ -404,12 +404,20 @@
       "lastName": "Lee"
     },
     {
-      "id": 7,
-      "date": "2020-10-30",
-      "amount": "500.75",
-      "propertyId": 3,
-      "firstName": "Thomas",
-      "lastName": "Engles"
+      "firstName": "Christian",
+      "lastName": "King",
+      "propertyId": 4,
+      "date": "2020-10-26",
+      "amount": "800.00",
+      "id": 8
+    },
+    {
+      "date": "2020-10-20",
+      "amount": "700.00",
+      "propertyId": 2,
+      "firstName": "Cindy",
+      "lastName": "Bubble",
+      "id": 9
     }
   ]
 }

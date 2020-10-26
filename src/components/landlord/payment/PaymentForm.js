@@ -29,6 +29,22 @@ const Modal = ({ onRequestClose }) => {
   const [payment, setPayment] = useState({});
   const [tenantId, setTenantId] = useState();
 
+  //taost when a payment is added
+  const notifyAdd = () => {
+    toast.success("Payment Added", {
+      hideProgressBar: true,
+      position: toast.POSITION.BOTTOM_LEFT,
+    });
+  };
+
+  //taost when a payment is updated
+  const notifyUpdate = () => {
+    toast.success("Payment Updated", {
+      hideProgressBar: true,
+      position: toast.POSITION.BOTTOM_LEFT,
+    });
+  };
+
   //get tenants for dropdown
   useEffect(() => {
     getTenants();
@@ -71,7 +87,7 @@ const Modal = ({ onRequestClose }) => {
           propertyId: response.propertyId,
           firstName: response.firstName,
           lastName: response.lastName,
-        });
+        }).then(() => notifyUpdate());
       } else {
         addPayment({
           date: payment.date,
@@ -79,7 +95,7 @@ const Modal = ({ onRequestClose }) => {
           propertyId: response.propertyId,
           firstName: response.firstName,
           lastName: response.lastName,
-        });
+        }).then(() => notifyAdd());
       }
     });
   };
