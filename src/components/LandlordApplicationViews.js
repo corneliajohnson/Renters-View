@@ -22,12 +22,12 @@ import { PaymentList } from "./landlord/payment/PaymentList";
 export const LandlordApplicationViews = () => {
   return (
     <>
-      <NavBar />
       <PaymentProvider>
         <CloudinaryProvider>
           <TenantProvider>
             <PropertyProvider>
               <Route exact path="/">
+                <NavBar />
                 <PropertyForm />
                 <PropertyList />
                 <TenantForm />
@@ -41,6 +41,7 @@ export const LandlordApplicationViews = () => {
       <PropertyProvider>
         <MaintenanceProvider>
           <Route exact path="/maintenance">
+            <NavBar />
             <MaintenanceForm />
             <MaintenanceList />
           </Route>
@@ -50,6 +51,7 @@ export const LandlordApplicationViews = () => {
       <CloudinaryProvider>
         <LandlordProvider>
           <Route exact path="/account">
+            <NavBar />
             <AccountView />
           </Route>
         </LandlordProvider>
@@ -58,6 +60,7 @@ export const LandlordApplicationViews = () => {
       <TenantProvider>
         <MessageProvider>
           <Route exact path="/messages">
+            <NavBar />
             <MessageList />
           </Route>
         </MessageProvider>
@@ -67,6 +70,7 @@ export const LandlordApplicationViews = () => {
         <TenantProvider>
           <PropertyProvider>
             <Route exact path="/payments">
+              <NavBar />
               <PaymentList />
             </Route>
           </PropertyProvider>

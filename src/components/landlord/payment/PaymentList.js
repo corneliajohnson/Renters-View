@@ -103,7 +103,7 @@ export const PaymentList = () => {
   }, [startPaymentDate, endPaymentDate]);
 
   return (
-    <div className="container">
+    <div className="container mb-5">
       <h1 className="display-2 text-center mt-5 mb-5">Payments</h1>
       <PaymentForm />
       <Row className="mb-3">

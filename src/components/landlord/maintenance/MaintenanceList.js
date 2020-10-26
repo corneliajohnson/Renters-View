@@ -59,7 +59,7 @@ export const MaintenanceList = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container mb-5">
       <div className="text-center">
         <ButtonGroup>
           <Button outline color="secondary" onClick={() => allRequest()}>
