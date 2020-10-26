@@ -275,7 +275,12 @@ export const PaymentEditForm = (paymentObj) => {
   return (
     <div>
       {isModalOpen && <Modal onRequestClose={toggleModal} />}
-      <Button id="UncontrolledTooltip" color="link" onClick={toggleModal}>
+      <Button
+        id="UncontrolledTooltip"
+        color="link"
+        style={{ color: "#f2af58" }}
+        onClick={toggleModal}
+      >
         <FontAwesomeIcon icon={faPencilAlt} />
       </Button>
       <UncontrolledTooltip placement="top" target="UncontrolledTooltip">
