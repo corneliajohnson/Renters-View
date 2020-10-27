@@ -8,10 +8,11 @@ import { Col, Row } from "reactstrap";
 export const TenantMessageShowing = () => {
   const { messages, getMessages } = useContext(MessageContext);
   const { getTenantById } = useContext(TenantContext);
-  const [landlord, setLandlord] = useState();
 
+  const [landlord, setLandlord] = useState();
   const [filteredMessages, setFilteredMessages] = useState([]);
 
+  //get all messages
   useEffect(() => {
     getMessages();
   }, []);
@@ -66,6 +67,7 @@ export const TenantMessageShowing = () => {
         </div>
         <div>
           {" "}
+          {/* pass landloed info */}
           <TenantMessageInput id={landlord} />
         </div>
       </div>

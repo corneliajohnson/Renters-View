@@ -10,6 +10,7 @@ export const TenantList = () => {
   const { getTenants, tenants } = useContext(TenantContext);
   const [filteredTenants, setFilteredTenants] = useState([]);
 
+  //get all tenants
   useEffect(() => {
     getTenants();
   }, []);

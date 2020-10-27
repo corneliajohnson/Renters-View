@@ -17,7 +17,7 @@ import {
   ModalHeader,
   CardLink,
 } from "reactstrap";
-let requestId = 0;
+let requestId = 0; //gobal maintnenace request id
 
 const Modal = ({ onRequestClose }) => {
   const { getProperties, properties } = useContext(PropertyContext);
@@ -51,6 +51,7 @@ const Modal = ({ onRequestClose }) => {
     getProperties();
   }, []);
 
+  //get single request
   useEffect(() => {
     if (requestId) {
       getMaintenanceRequestById(requestId).then((request) => {
@@ -59,6 +60,7 @@ const Modal = ({ onRequestClose }) => {
     }
   }, []);
 
+  //only show request that for logined landlord
   useEffect(() => {
     const subsetProperties = properties.filter(
       (property) => property.landlordId === parseInt(localStorage.landlord)
@@ -66,12 +68,15 @@ const Modal = ({ onRequestClose }) => {
     setFilterdProperties(subsetProperties);
   }, [properties]);
 
+  //when field changes, update state. This causes a re-render and updates the view.
+  //Controlled component
   const handleControlledInputChange = (event) => {
     const newRequest = { ...request };
     newRequest[event.target.name] = event.target.value;
     setRequest(newRequest);
   };
 
+  //Update or Add
   const constructRequestObj = () => {
     if (request.id) {
       updateMaintenaceRequest({
@@ -80,6 +85,7 @@ const Modal = ({ onRequestClose }) => {
         synopsis: request.synopsis,
         price: request.price,
         contractor: request.contractor,
+        //if there is dateComplete true else false
         complete: request.dateComplete ? true : false,
         dateComplete: request.dateComplete,
         note: request.note,
@@ -91,6 +97,7 @@ const Modal = ({ onRequestClose }) => {
         synopsis: request.synopsis,
         price: request.price,
         contractor: request.contractor,
+        //if there is dateComplete true else false
         complete: request.dateComplete ? true : false,
         dateComplete: request.dateComplete,
         note: request.note,

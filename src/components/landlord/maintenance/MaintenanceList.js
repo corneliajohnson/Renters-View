@@ -16,6 +16,7 @@ export const MaintenanceList = () => {
   const [filteredRequest, setFilteredRequest] = useState([]);
   const [total, setTotal] = useState();
 
+  //get all maintenance request
   useEffect(() => {
     getMaintenanceRequests();
   }, []);
@@ -24,6 +25,7 @@ export const MaintenanceList = () => {
     allRequest();
   }, [maintenanceRequests]);
 
+  // show maintnenace request  for loged in landlord
   const allRequest = () => {
     const subsetRequest = maintenanceRequests.filter(
       (request) =>
@@ -32,6 +34,7 @@ export const MaintenanceList = () => {
     setFilteredRequest(subsetRequest);
   };
 
+  //get total of filtered maintenance request
   useEffect(() => {
     const amountTotalAll = filteredRequest.reduce(
       (acc, request) => acc + parseFloat(request.price),
@@ -40,6 +43,7 @@ export const MaintenanceList = () => {
     setTotal(amountTotalAll.toFixed(2));
   }, [filteredRequest]);
 
+  //show complete request
   const completeRequest = () => {
     const subsetRequest = maintenanceRequests.filter(
       (request) =>
@@ -49,6 +53,7 @@ export const MaintenanceList = () => {
     setFilteredRequest(subsetRequest);
   };
 
+  //show pending request
   const pendingRequest = () => {
     const subsetRequest = maintenanceRequests.filter(
       (request) =>

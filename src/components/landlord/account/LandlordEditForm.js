@@ -25,7 +25,6 @@ const Modal = ({ onRequestClose }) => {
   const { getLandlordById, updateLandlord, getLandlords } = useContext(
     LandlordContext
   );
-
   const { uploadImage, image, loading } = useContext(CloudinaryContext);
 
   const [landlord, setLandlord] = useState({});
@@ -220,6 +219,7 @@ export const EditLandlordForm = () => {
     setModalIsOpen(!isModalOpen);
   };
 
+  //button shown on page
   return (
     <main>
       {isModalOpen && <Modal onRequestClose={toggleModal} />}

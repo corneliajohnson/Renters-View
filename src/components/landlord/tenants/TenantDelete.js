@@ -14,6 +14,7 @@ export const TenantDelete = (tenantId) => {
 
   const [tenant, setTenant] = useState({});
 
+  //get individual tenant
   useEffect(() => {
     getTenantById(tenantId.id).then((response) => {
       setTenant(response);
@@ -28,6 +29,7 @@ export const TenantDelete = (tenantId) => {
     });
   };
 
+  //show confirm modal
   const alert = () => {
     confirmAlert({
       title: "Delete Tenant",
@@ -37,12 +39,12 @@ export const TenantDelete = (tenantId) => {
           label: "Yes",
           onClick: () =>
             deleteTenant(tenantId.id)
-              .then(getProperties)
+              .then(getProperties) //change embeded property information
               .then(TenantsChanged()) //update property cards,
-              .then(() => notify()),
+              .then(() => notify()), // show toast
         },
         {
-          label: "No",
+          label: "No", //close modal
         },
       ],
     });

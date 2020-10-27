@@ -9,12 +9,13 @@ import { MessageDelete } from "./MessageDelete";
 export const MessageShowing = (tenantConversation) => {
   const { messages, getMessages } = useContext(MessageContext);
   const { getTenantById } = useContext(TenantContext);
-  const [reciever, setReciever] = useState();
 
+  const [reciever, setReciever] = useState();
   const [filteredMessages, setFilteredMessages] = useState([]);
   const [tenant, setTenant] = useState({});
   const [property, setProperty] = useState({});
 
+  //get all messages
   useEffect(() => {
     getMessages();
   }, []);
@@ -92,6 +93,7 @@ export const MessageShowing = (tenantConversation) => {
         </div>
         <div>
           {" "}
+          {/* pass the id of the reciver/tenant */}
           <MessageInput id={reciever} />{" "}
         </div>
       </div>

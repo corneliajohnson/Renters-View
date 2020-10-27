@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { PaymentContext } from "./PaymentProvider";
 import { Input } from "reactstrap";
 
+//set search terms based on key stroke
 export const PaymentSearch = () => {
   const { setSearchTerms } = useContext(PaymentContext);
 

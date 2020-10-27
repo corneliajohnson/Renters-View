@@ -12,6 +12,7 @@ export const CloudinaryProvider = (props) => {
     data.append("file", files[0]);
     data.append("upload_preset", "rentersview");
     setLoading(true);
+    //wait fir image to load
     const res = await fetch(
       "	https://api.cloudinary.com/v1_1/cornelia/image/upload",
       {

@@ -14,12 +14,14 @@ export const Register = (props) => {
   const conflictDialogTenant = useRef();
   const history = useHistory();
 
+  //check for existing landlord
   const existingLandlordCheck = () => {
     return fetch(`http://localhost:8088/landlords?email=${email.current.value}`)
       .then((res) => res.json())
       .then((user) => !!user.length);
   };
 
+  //check for existing tenant
   const existingTenantCheck = () => {
     return fetch(`http://localhost:8088/tenants?email=${email.current.value}`)
       .then((res) => res.json())

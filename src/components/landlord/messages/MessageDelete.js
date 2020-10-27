@@ -20,6 +20,7 @@ export const MessageDelete = (message) => {
   };
 
   return (
+    // button shown for message delete onclick show toast
     <>
       <Button
         id="UncontrolledTooltip"

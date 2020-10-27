@@ -13,12 +13,13 @@ export const PropertyList = () => {
 
   const [filteredProperies, setFilterdProperties] = useState([]);
 
+  //get all properties
   useEffect(() => {
     getProperties();
   }, []);
 
+  //only current landlord properties
   useEffect(() => {
-    //only current landlord properties
     const subsetProperties = properties.filter(
       (property) => property.landlordId === parseInt(localStorage.landlord)
     );

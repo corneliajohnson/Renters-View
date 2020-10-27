@@ -17,7 +17,7 @@ import {
   CardLink,
   UncontrolledTooltip,
 } from "reactstrap";
-let tenantInfo = {};
+let tenantInfo = {}; //gobal: will hold the tenant object
 
 const Modal = ({ onRequestClose }) => {
   const { addPayment } = useContext(PaymentContext);
@@ -31,6 +31,7 @@ const Modal = ({ onRequestClose }) => {
     setPayment(newPayment);
   };
 
+  //add a payment to database
   const constructPaymentObj = () => {
     const amountInt = parseFloat(payment.amount);
     addPayment({
@@ -142,7 +143,7 @@ const Modal = ({ onRequestClose }) => {
 
 //add payment button modal
 export const PaymentAddForm = (tenantObj) => {
-  tenantInfo = tenantObj.tenant;
+  tenantInfo = tenantObj.tenant; //change the tenant object
   const [isModalOpen, setModalIsOpen] = useState(false);
   const toggleModal = () => {
     setModalIsOpen(!isModalOpen);

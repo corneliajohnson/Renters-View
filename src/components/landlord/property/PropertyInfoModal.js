@@ -1,4 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
+import { PropertyContext } from "./PropertyProvider";
+import { DateString } from "../date/DateString";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import {
   CardLink,
   Form,
@@ -9,10 +13,6 @@ import {
   Col,
   UncontrolledTooltip,
 } from "reactstrap";
-import { PropertyContext } from "./PropertyProvider";
-import { DateString } from "../date/DateString";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 let propertyId = 0; //get the property selected
 
 const Modal = ({ onRequestClose }) => {
@@ -91,11 +91,7 @@ const Modal = ({ onRequestClose }) => {
           <ModalBody>
             <Row>
               <Col>
-                <img
-                  width="100%"
-                  src={require("../../../img/house.jpg")}
-                  alt="Card image cap"
-                />
+                <img width="100%" src={property.image} alt="Card image cap" />
                 <h3 className="display-5">Current Tenant(s)</h3>
                 {tenants.map((tenant) => {
                   return (

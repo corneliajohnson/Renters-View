@@ -16,7 +16,7 @@ export const MessageList = () => {
     getTenants(getMessages);
   }, []);
 
-  //only get the current lanlord tenants
+  //only get the current logged in lanlord tenants
   useEffect(() => {
     const subsetTenants = tenants.filter(
       (tenant) =>
@@ -40,7 +40,7 @@ export const MessageList = () => {
                   key={tenant.id}
                   tag="button"
                   onClick={() => {
-                    setConversation(tenant.id);
+                    setConversation(tenant.id); //set the conversation for tenant selected
                   }}
                   action
                 >
@@ -51,6 +51,7 @@ export const MessageList = () => {
           </Col>
           <Col sm={9}>
             <div>
+              {/* pass in the informartion for the tenant selected */}
               <MessageShowing id={conversation} />
             </div>
           </Col>

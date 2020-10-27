@@ -14,7 +14,6 @@ export const PaymentList = () => {
     getPayments,
     payments,
     searchTerms,
-    setSearchTerms,
     startPaymentDate,
     endPaymentDate,
   } = useContext(PaymentContext);
@@ -60,6 +59,7 @@ export const PaymentList = () => {
     }
   }, [searchTerms, payments, sortedPaymentDates]);
 
+  //for payment total based on search terms
   useEffect(() => {
     //get the total
     if (searchTerms === "") {
@@ -78,6 +78,7 @@ export const PaymentList = () => {
     }
   }, [filteredPayments]);
 
+  //get vaild dates for date range
   const dateRange = (start, end) => {
     let result = filteredPayments;
     const startDate = moment(start)._d;
@@ -94,10 +95,10 @@ export const PaymentList = () => {
         return new Date(obj.date) >= startDate && new Date(obj.date) <= endDate;
       });
     }
-
     setFiltered(result);
   };
 
+  //get date range when star and end date change
   useEffect(() => {
     dateRange(startPaymentDate, endPaymentDate);
   }, [startPaymentDate, endPaymentDate]);

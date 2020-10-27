@@ -17,6 +17,7 @@ export const MaintenanceDelete = (requestId) => {
     });
   };
 
+  //show confirm modal
   const alert = () => {
     confirmAlert({
       title: <h4>Delete Maintenance Request</h4>,
@@ -27,12 +28,12 @@ export const MaintenanceDelete = (requestId) => {
       ),
       buttons: [
         {
-          label: "Yes",
+          label: "Yes", //delete on click and show toast
           onClick: () =>
             deleteMaintenanceRequest(requestId.id).then(() => notify()),
         },
         {
-          label: "No",
+          label: "No", //close on click
         },
       ],
     });

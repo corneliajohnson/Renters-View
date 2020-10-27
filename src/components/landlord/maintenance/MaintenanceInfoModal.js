@@ -11,13 +11,14 @@ import { DateString } from "../date/DateString";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
-let requestId = 0;
+let requestId = 0; //goal id for maintenance request
 
 const Modal = ({ onRequestClose }) => {
   const { getMaintenanceRequestById } = useContext(MaintenanceContext);
   const [request, setRequest] = useState({});
   const [property, setProperty] = useState({});
 
+  //get individual maintenance request
   useEffect(() => {
     if (requestId) {
       getMaintenanceRequestById(requestId).then((request) => {
@@ -105,6 +106,7 @@ export const MaintenanceInfoModal = (requestObj) => {
   return (
     <div>
       {isModalOpen && <Modal onRequestClose={toggleModal} />}
+      {/* link shown on page */}
       <CardLink
         id="UncontrolledTooltip"
         className="mainentanceCardLink"

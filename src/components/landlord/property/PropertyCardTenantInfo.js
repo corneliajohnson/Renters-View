@@ -6,6 +6,7 @@ export const PropertyCardTenantInfo = (propertyId) => {
   const { getPropertyById } = useContext(PropertyContext);
   const [tenants, setTenants] = useState([]);
 
+  //get tenant information based on property
   useEffect(() => {
     getPropertyById(propertyId.id).then((response) => {
       setTenants(response.tenants);

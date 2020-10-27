@@ -29,7 +29,6 @@ const Modal = ({ onRequestClose }) => {
   const { getPropertyById, addProperty, updateProperty } = useContext(
     PropertyContext
   );
-
   const { uploadImage, image, loading } = useContext(CloudinaryContext);
 
   const [property, setProperty] = useState({});
@@ -396,7 +395,7 @@ export const PropertyForm = () => {
 
 //edit property modal button
 export const PropertyFormEdit = (propertyObjId) => {
-  propertyId = propertyObjId.id;
+  propertyId = propertyObjId.id; //change property id
   const [isModalOpen, setModalIsOpen] = useState(false);
 
   const toggleModal = () => {

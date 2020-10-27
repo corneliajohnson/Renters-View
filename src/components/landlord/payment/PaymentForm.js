@@ -18,8 +18,7 @@ import {
   CardLink,
   UncontrolledTooltip,
 } from "reactstrap";
-import { Edit } from "@material-ui/icons";
-let paymentId = 0;
+let paymentId = 0; //gobal set payment for edit
 
 const Modal = ({ onRequestClose }) => {
   const { addPayment, getPaymentById, updatePayment } = useContext(
@@ -77,6 +76,7 @@ const Modal = ({ onRequestClose }) => {
     setPayment(newPayment);
   };
 
+  //add or edit payment
   const constructPaymentObj = () => {
     getTenantById(payment.tenantId).then((response) => {
       const amountInt = parseFloat(payment.amount);
@@ -266,7 +266,7 @@ export const PaymentForm = () => {
 
 //add payment button modal
 export const PaymentEditForm = (paymentObj) => {
-  paymentId = paymentObj.id;
+  paymentId = paymentObj.id; //change payment for edit
   const [isModalOpen, setModalIsOpen] = useState(false);
   const toggleModal = () => {
     setModalIsOpen(!isModalOpen);

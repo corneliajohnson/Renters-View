@@ -14,6 +14,7 @@ export const PropertyDelete = (propertyId) => {
 
   const [property, setProperty] = useState({});
 
+  //get individal property
   useEffect(() => {
     getPropertyById(propertyId.id).then((response) => {
       setProperty(response);
@@ -28,6 +29,7 @@ export const PropertyDelete = (propertyId) => {
     });
   };
 
+  //show confirm modal
   const alert = () => {
     confirmAlert({
       title: "Delete Property",
@@ -42,14 +44,14 @@ export const PropertyDelete = (propertyId) => {
       ),
       buttons: [
         {
-          label: "Yes",
+          label: "Yes", //delete property, tenants assigned to property and show toast
           onClick: () =>
             deleteProperty(propertyId.id)
               .then(getTenants)
               .then(() => notify()),
         },
         {
-          label: "No",
+          label: "No", //close modal
         },
       ],
     });

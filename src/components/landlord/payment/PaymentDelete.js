@@ -18,17 +18,18 @@ export const PaymentDelete = (paymentId) => {
     });
   };
 
+  //show confirm modal for delete
   const alert = () => {
     confirmAlert({
       title: "Delete Payment",
       message: `Are you sure you want to delete this payment?`,
       buttons: [
         {
-          label: "Yes",
+          label: "Yes", //delete and show toast
           onClick: () => deletePayment(paymentId.id).then(() => notify()),
         },
         {
-          label: "No",
+          label: "No", //close modal
         },
       ],
     });

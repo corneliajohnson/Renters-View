@@ -10,6 +10,7 @@ export const AccountView = () => {
   const [propertiesNum, setPropertiesNum] = useState([]);
   const [tenants, setTenants] = useState([]);
 
+  //get data to be displayed on page
   useEffect(() => {
     const landlordId = parseInt(localStorage.landlord);
     getLandlordById(landlordId).then((response) => {
@@ -22,7 +23,6 @@ export const AccountView = () => {
   return (
     <>
       <div className="container">
-        {console.log(landlord)}
         <h1 className="display-2 text-center m-5">My Account</h1>
         <Row className="m-5">
           <Col className="p-5" sm={4}>

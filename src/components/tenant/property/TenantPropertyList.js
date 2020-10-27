@@ -16,6 +16,7 @@ export const TenantProperty = () => {
   const [payments, setPayments] = useState([]);
   const [filteredPayments, setFilteredPayments] = useState([]);
 
+  //get single tenant information  by id
   useEffect(() => {
     const currentTenant = parseInt(localStorage.tenant);
     getTenantById(currentTenant).then((response) => {
@@ -25,6 +26,7 @@ export const TenantProperty = () => {
     });
   }, []);
 
+  //get single property information by id
   useEffect(() => {
     if (tenant.propertyId) {
       getPropertyById(tenant.propertyId).then((response) => {
@@ -42,6 +44,7 @@ export const TenantProperty = () => {
         payment.lastName === tenant.lastName
     );
 
+    //sort dates in decending order
     const sortedPayDate = subset.sort(
       (a, b) => new Date(b.date) - new Date(a.date)
     );

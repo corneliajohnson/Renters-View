@@ -10,12 +10,14 @@ export const Login = (props) => {
   const existDialog = useRef();
   const history = useHistory();
 
+  //find lanlord email
   const existingLandlordCheck = () => {
     return fetch(`http://localhost:8088/landlords?email=${email.current.value}`)
       .then((res) => res.json())
       .then((user) => (user.length ? user[0] : false));
   };
 
+  //find tenant email
   const existingTenantCheck = () => {
     return fetch(`http://localhost:8088/tenants?email=${email.current.value}`)
       .then((res) => res.json())
@@ -27,14 +29,14 @@ export const Login = (props) => {
 
     existingLandlordCheck().then((exists) => {
       if (exists) {
-        localStorage.removeItem("tenant");
-        localStorage.setItem("landlord", exists.id);
+        localStorage.removeItem("tenant"); //remove tenant from local stroage
+        localStorage.setItem("landlord", exists.id); //add landlord to local storage
         history.push("/");
       } else {
         existingTenantCheck().then((existsTenant) => {
           if (existsTenant) {
-            localStorage.removeItem("landlord");
-            localStorage.setItem("tenant", existsTenant.id);
+            localStorage.removeItem("landlord"); //remove landlord from local stroage
+            localStorage.setItem("tenant", existsTenant.id); //add tenant to local storage
             history.push("/tenant");
           } else {
             existDialog.current.showModal();

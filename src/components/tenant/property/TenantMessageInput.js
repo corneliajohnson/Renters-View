@@ -16,6 +16,7 @@ export const TenantMessageInput = (reciever) => {
     setMessage(newMessage);
   };
 
+  //add message
   const constructMessage = () => {
     const checkTenant = Object.keys(localStorage);
     //if the user is a tenant

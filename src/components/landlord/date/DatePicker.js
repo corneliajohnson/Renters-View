@@ -29,6 +29,7 @@ export const DatePicker = () => {
         startDate={startDate}
         startDateId="startDate"
       />
+      {/* set dates on button click */}
       <Button
         className="m-2"
         outline

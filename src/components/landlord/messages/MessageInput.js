@@ -17,10 +17,11 @@ export const MessageInput = (reciever) => {
     setMessage(newMessage);
   };
 
+  //add message
   const constructMessage = () => {
     const checkLandlord = Object.keys(localStorage);
     const checkTenant = Object.keys(localStorage);
-    //if the user is a landlord add to database
+    //if the user is a landlord add to database and a reciver is clicked
     if (checkLandlord[0] === "landlord" && reciever.id) {
       addMessage({
         tenantId: reciever.id,
