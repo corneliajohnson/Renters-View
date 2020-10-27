@@ -7,7 +7,7 @@ import { PaymentDelete } from "./PaymentDelete";
 import { PaymentSearch } from "./PaymentSearch";
 import { DatePicker } from "../date/DatePicker";
 import { Row, Col } from "reactstrap";
-import { Pagination } from "../paginantion/Pagination";
+import { PaginationPages } from "../paginantion/PaginationPages";
 import moment from "moment";
 
 export const PaymentList = () => {
@@ -163,10 +163,12 @@ export const PaymentList = () => {
           </tr>
         </tfoot>
       </Table>
-      <Pagination
+      <PaginationPages
         postsPerPage={paymentsPerPage}
         totalPosts={filteredPayments.length}
         paginate={paginate}
+        firstPage={indexOfFirstPayment}
+        lastPage={indexOfLastPayment}
       />
     </div>
   );
