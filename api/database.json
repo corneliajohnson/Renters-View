@@ -306,6 +306,14 @@
       "date": 1603743412980,
       "sender": "landlord",
       "id": 35
+    },
+    {
+      "tenantId": 4,
+      "landlordId": 1,
+      "text": "I can have someone come by at 12 tomorrow come by and fix the toilet.",
+      "date": 1603812098112,
+      "sender": "landlord",
+      "id": 36
     }
   ],
   "maintenanceRequests": [

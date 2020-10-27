@@ -20,7 +20,6 @@ export const MessageInput = (reciever) => {
   //add message
   const constructMessage = () => {
     const checkLandlord = Object.keys(localStorage);
-    const checkTenant = Object.keys(localStorage);
     //if the user is a landlord add to database and a reciver is clicked
     if (checkLandlord[0] === "landlord" && reciever.id) {
       addMessage({
@@ -29,19 +28,6 @@ export const MessageInput = (reciever) => {
         text: message.text.trim(),
         date: Date.now(),
         sender: "landlord",
-      })
-        //clear the message after its been sent
-        .then((_) => {
-          message.text = "";
-        });
-    } //if the user is a tenant
-    if (checkTenant[0] === "tenant" && reciever) {
-      addMessage({
-        tenantId: parseInt(localStorage.tenant),
-        landlordId: reciever.id,
-        text: message.text.trim(),
-        date: Date.now(),
-        sender: "tenant",
       })
         //clear the message after its been sent
         .then((_) => {
