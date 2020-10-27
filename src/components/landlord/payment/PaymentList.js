@@ -23,7 +23,7 @@ export const PaymentList = () => {
   const [filteredPayments, setFiltered] = useState([]);
   //for pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const [paymentsPerPage] = useState(10);
+  const [paymentsPerPage] = useState(8);
 
   useEffect(() => {
     getPayments();
