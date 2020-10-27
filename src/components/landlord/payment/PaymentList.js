@@ -167,8 +167,7 @@ export const PaymentList = () => {
         postsPerPage={paymentsPerPage}
         totalPosts={filteredPayments.length}
         paginate={paginate}
-        firstPage={indexOfFirstPayment}
-        lastPage={indexOfLastPayment}
+        currentPage={currentPage}
       />
     </div>
   );
