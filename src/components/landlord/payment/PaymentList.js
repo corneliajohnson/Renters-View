@@ -7,6 +7,7 @@ import { PaymentDelete } from "./PaymentDelete";
 import { PaymentSearch } from "./PaymentSearch";
 import { DatePicker } from "../date/DatePicker";
 import { Row, Col } from "reactstrap";
+import { Pagination } from "../paginantion/Pagination";
 import moment from "moment";
 
 export const PaymentList = () => {
@@ -20,6 +21,9 @@ export const PaymentList = () => {
   const [total, setTotal] = useState();
   const [sortedPaymentDates, setSortedPaymentDates] = useState([]);
   const [filteredPayments, setFiltered] = useState([]);
+  //for pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [paymentsPerPage] = useState(10);
 
   useEffect(() => {
     getPayments();
@@ -103,6 +107,17 @@ export const PaymentList = () => {
     dateRange(startPaymentDate, endPaymentDate);
   }, [startPaymentDate, endPaymentDate]);
 
+  //Get current payments for paginantion
+  const indexOfLastPayment = currentPage * paymentsPerPage;
+  const indexOfFirstPayment = indexOfLastPayment - paymentsPerPage;
+  const currentPayments = filteredPayments.slice(
+    indexOfFirstPayment,
+    indexOfLastPayment
+  );
+
+  //change page number
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div className="container mb-5">
       <h1 className="display-2 text-center mt-5 mb-5">Payments</h1>
@@ -127,7 +142,7 @@ export const PaymentList = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredPayments.map((payment) => {
+          {currentPayments.map((payment) => {
             return (
               <PaymentCard
                 key={payment.id}
@@ -148,6 +163,11 @@ export const PaymentList = () => {
           </tr>
         </tfoot>
       </Table>
+      <Pagination
+        postsPerPage={paymentsPerPage}
+        totalPosts={filteredPayments.length}
+        paginate={paginate}
+      />
     </div>
   );
 };

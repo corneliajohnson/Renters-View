@@ -450,6 +450,14 @@
       "firstName": "Thomas",
       "lastName": "Engles",
       "id": 11
+    },
+    {
+      "date": "2020-10-26",
+      "amount": "800.00",
+      "propertyId": 5,
+      "firstName": "Joe",
+      "lastName": "Wilson",
+      "id": 12
     }
   ]
 }
