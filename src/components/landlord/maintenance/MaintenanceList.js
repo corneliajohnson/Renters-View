@@ -7,6 +7,7 @@ import { MaintenanceInfoModal } from "./MaintenanceInfoModal";
 import { Button, ButtonGroup } from "reactstrap";
 import { MaintenanceDelete } from "./MaintenanceDelete";
 import "./Maintenance.css";
+import { PaginationPages } from "../paginantion/PaginationPages";
 
 export const MaintenanceList = () => {
   const { getMaintenanceRequests, maintenanceRequests } = useContext(
@@ -15,6 +16,9 @@ export const MaintenanceList = () => {
 
   const [filteredRequest, setFilteredRequest] = useState([]);
   const [total, setTotal] = useState();
+  //for pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [requestsPerPage] = useState(5);
 
   //get all maintenance request
   useEffect(() => {
@@ -63,6 +67,17 @@ export const MaintenanceList = () => {
     setFilteredRequest(subsetRequest);
   };
 
+  //Get current payments for paginantion
+  const indexOfLastRequest = currentPage * requestsPerPage;
+  const indexOfFirstRequest = indexOfLastRequest - requestsPerPage;
+  const currentRequests = filteredRequest.slice(
+    indexOfFirstRequest,
+    indexOfLastRequest
+  );
+
+  //change page number
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div className="container mb-5">
       <div className="text-center">
@@ -85,7 +100,7 @@ export const MaintenanceList = () => {
         Total Pain in Maintenance ${total}
       </Badge>
       <ListGroup>
-        {filteredRequest.map((request) => {
+        {currentRequests.map((request) => {
           return (
             <MaintenanceCard
               key={request.id}
@@ -102,6 +117,12 @@ export const MaintenanceList = () => {
           );
         })}
       </ListGroup>
+      <PaginationPages
+        postsPerPage={requestsPerPage}
+        totalPosts={filteredRequest.length}
+        paginate={paginate}
+        currentPage={currentPage}
+      />
     </div>
   );
 };

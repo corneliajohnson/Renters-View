@@ -368,6 +368,16 @@
       "complete": false,
       "dateAdded": 1603395335628,
       "id": 5
+    },
+    {
+      "propertyId": 7,
+      "synopsis": "Grass Cut",
+      "price": "0",
+      "contractor": "Self",
+      "complete": false,
+      "note": "fill gas can",
+      "dateAdded": 1603843091254,
+      "id": 6
     }
   ],
   "payments": [
