@@ -12,6 +12,7 @@ import {
   Row,
   Col,
   UncontrolledTooltip,
+  CardTitle,
 } from "reactstrap";
 let propertyId = 0; //get the property selected
 
@@ -23,6 +24,8 @@ const Modal = ({ onRequestClose }) => {
   const [payments, setPayments] = useState([]);
   const [gain, setGain] = useState();
   const [loss, setLoss] = useState();
+  const [sortedPaymentDates, setSortedPaymentDates] = useState([]);
+  const [sortedRequestDates, setSortedRequestDates] = useState([]);
 
   //get info of property
   useEffect(() => {
@@ -34,8 +37,8 @@ const Modal = ({ onRequestClose }) => {
     });
   }, []);
 
-  //get gains and losses
   useEffect(() => {
+    //get gains and losses
     const amountTotalGain = payments.reduce(
       (acc, payment) => acc + parseFloat(payment.amount),
       0
@@ -47,6 +50,18 @@ const Modal = ({ onRequestClose }) => {
     );
     setGain(amountTotalGain.toFixed(2));
     setLoss(amountTotalLoss.toFixed(2));
+
+    //sort payments by date
+    const sortedPayDate = payments.sort(
+      (a, b) => new Date(b.date) - new Date(a.date)
+    );
+    setSortedPaymentDates(sortedPayDate);
+
+    //sort request by date
+    const sortedRequestDate = maintenanceRequests.sort(
+      (a, b) => new Date(b.dateAdded) - new Date(a.dateAdded)
+    );
+    setSortedRequestDates(sortedRequestDate);
   }, [payments, maintenanceRequests]);
 
   // Use useEffect to add an event listener to the document
@@ -81,11 +96,10 @@ const Modal = ({ onRequestClose }) => {
             <FontAwesomeIcon icon={faTimes} />
           </CardLink>
           <ModalHeader>
-            <h1 className="display-4">{property.street}</h1>
-            <h2 className="display-4">
-              {property.city}
-              {property.state} {property.zip}
-            </h2>
+            <CardTitle className="display-4">{property.street}</CardTitle>
+            <CardTitle className="display-4">
+              {property.city} {property.state} {property.zip}
+            </CardTitle>
           </ModalHeader>
 
           <ModalBody>
@@ -165,7 +179,11 @@ const Modal = ({ onRequestClose }) => {
             </Row>
             <h3 className="display-5">Payments</h3>
             {payments.length === 0 ? <h5>None</h5> : ""}
-            {payments.map((payment) => {
+            <small className="text-secondary">
+              Limited to Last Five Payments
+            </small>
+            {/* limit payments to last five */}
+            {sortedPaymentDates.slice(0, 5).map((payment) => {
               return (
                 <p>
                   <span style={{ fontWeight: "bold" }}>
@@ -176,11 +194,14 @@ const Modal = ({ onRequestClose }) => {
               );
             })}
             <h3 className="display-5">Maintenance History</h3>
+            <small className="text-secondary">
+              Limited to Last Three Maintenance Request
+            </small>
             {maintenanceRequests.length === 0 ? <h5>None</h5> : ""}
-            {maintenanceRequests.map((request) => {
+            {sortedRequestDates.slice(0, 3).map((request) => {
               return (
                 <div>
-                  <h5>{request.synopsis}</h5>
+                  <h6>{request.synopsis}</h6>
                   <p>
                     Status:{" "}
                     {request.complete
@@ -214,7 +235,7 @@ export const PropertyInfoModal = (propertyObj) => {
     setModalIsOpen(!isModalOpen);
   };
   return (
-    <div key={propertyId}>
+    <div>
       {isModalOpen && <Modal onRequestClose={toggleModal} />}
       <CardLink
         className="propertyCardLink"

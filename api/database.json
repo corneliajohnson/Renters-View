@@ -468,6 +468,38 @@
       "firstName": "Joe",
       "lastName": "Wilson",
       "id": 12
+    },
+    {
+      "firstName": "Thomas",
+      "lastName": "Engles",
+      "propertyId": 3,
+      "date": "2020-09-01",
+      "amount": "1600.00",
+      "id": 13
+    },
+    {
+      "firstName": "Thomas",
+      "lastName": "Engles",
+      "propertyId": 3,
+      "date": "2020-08-01",
+      "amount": "1600.00",
+      "id": 14
+    },
+    {
+      "firstName": "Thomas",
+      "lastName": "Engles",
+      "propertyId": 3,
+      "date": "2020-07-01",
+      "amount": "1600.00",
+      "id": 15
+    },
+    {
+      "firstName": "Thomas",
+      "lastName": "Engles",
+      "propertyId": 3,
+      "date": "2020-06-01",
+      "amount": "1600.00",
+      "id": 16
     }
   ]
 }
