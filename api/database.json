@@ -12,7 +12,7 @@
       "secuirtyDesposit": 900,
       "paymentDay": "2020-11-08",
       "leaseTerm": "Seasonal",
-      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603486934/rentersview/Multimedia__14_lrdsgs.jpg",
+      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603900460/rentersview/lmy8oxzrk5plabibfrro.jpg",
       "landlordId": 1
     },
     {
@@ -85,7 +85,7 @@
     {
       "id": 1,
       "firstName": "Cornelia",
-      "lastName": "Johnsons",
+      "lastName": "Johnson",
       "email": "corneliaj@gmail.com",
       "phone": "850-345-2228",
       "image": "https://res.cloudinary.com/cornelia/image/upload/v1603896970/rentersview/wmlbuhsafwb31wvxqvdg.jpg"

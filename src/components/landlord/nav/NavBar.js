@@ -82,6 +82,16 @@ export const NavBar = () => {
               Account
             </NavLink>
           </DropdownItem>
+          <DropdownItem>
+            <NavLink
+              className="navbar__link"
+              to="/login"
+              activeStyle={{ color: "#fa2d2d" }}
+              onClick={() => localStorage.clear()}
+            >
+              Logout
+            </NavLink>
+          </DropdownItem>
         </DropdownMenu>
       </Dropdown>
     </ul>
