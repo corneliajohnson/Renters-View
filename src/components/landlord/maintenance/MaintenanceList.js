@@ -79,7 +79,7 @@ export const MaintenanceList = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className="container mb-5">
+    <div className="container mb-5" style={{ width: "100vh" }}>
       <div className="text-center">
         <ButtonGroup>
           <Button outline color="secondary" onClick={() => allRequest()}>

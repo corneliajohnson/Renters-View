@@ -67,7 +67,7 @@ export const MessageShowing = (tenantConversation) => {
           <Row>
             {filteredMessages.map((message) =>
               message.sender === "landlord" ? (
-                <Col sm={12} className="float-right">
+                <Col key={message.id} sm={12} className="float-right">
                   <div className="senderMessageBox m-2 p-3">
                     <div className="float-right">
                       <MessageDelete id={message.id} />
@@ -79,7 +79,7 @@ export const MessageShowing = (tenantConversation) => {
                   </div>
                 </Col>
               ) : (
-                <Col sm={12}>
+                <Col key={message.id} sm={12}>
                   <div className="recieverMessageBox m-2 p-3">
                     <p>{message.text}</p>
                     <small className="float-right">

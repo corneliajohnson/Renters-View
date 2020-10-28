@@ -119,7 +119,7 @@ export const PaymentList = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div className="container mb-5">
+    <div className="container mb-5" style={{ width: "100vh" }}>
       <h1 className="display-2 text-center mt-5 mb-5">Payments</h1>
       <PaymentForm />
       <Row className="mb-3">

@@ -185,9 +185,10 @@ const Modal = ({ onRequestClose }) => {
             onClick={(event) => {
               event.preventDefault();
               if (landlord.firstName && landlord.lastName && landlord.email) {
-                setSpinner(<Spinner color="dark" />);
-                //wait gotimage to load
-                if (!loading) {
+                //wait got image to load
+                if (loading) {
+                  setSpinner(<Spinner color="dark" />);
+                } else {
                   constructLandlord();
                   setSpinner("");
                   onRequestClose();

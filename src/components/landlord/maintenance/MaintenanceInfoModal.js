@@ -5,6 +5,7 @@ import {
   ModalHeader,
   ModalBody,
   UncontrolledTooltip,
+  CardTitle,
 } from "reactstrap";
 import { MaintenanceContext } from "./MaintenanceProvider";
 import { DateString } from "../date/DateString";
@@ -59,9 +60,9 @@ const Modal = ({ onRequestClose }) => {
           <FontAwesomeIcon icon={faTimes} />
         </CardLink>
         <ModalHeader>
-          <h3>{request.synopsis}</h3>
+          <CardTitle className="display-4">{request.synopsis}</CardTitle>
         </ModalHeader>
-        <ModalBody style={{ fontSize: "0.6em" }}>
+        <ModalBody style={{ fontSize: "0.7em" }}>
           <p>
             Address: {property.street} {property.city} {property.state}{" "}
             {property.zip}
@@ -109,7 +110,7 @@ export const MaintenanceInfoModal = (requestObj) => {
       {/* link shown on page */}
       <CardLink
         id="UncontrolledTooltip"
-        className="mainentanceCardLink"
+        className="mainentanceCardLink propertyCardLink"
         onClick={toggleModal}
         type="button"
       >
