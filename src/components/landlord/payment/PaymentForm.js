@@ -204,7 +204,7 @@ const Modal = ({ onRequestClose }) => {
               }
             }}
           >
-            {tenantId ? "Edit" : "Add"}
+            {tenantId ? "Update" : "Add"}
           </Button>
           <Button
             className="m-2"

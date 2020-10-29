@@ -45,6 +45,12 @@ export const PaymentProvider = (props) => {
     );
   };
 
+  const getTenantByName = (firstName, lastName) => {
+    return fetch(
+      `http://localhost:8088/payments?firstName=${firstName}&lastName=${lastName}`
+    ).then((res) => res.json());
+  };
+
   return (
     <PaymentContext.Provider
       value={{
@@ -60,6 +66,7 @@ export const PaymentProvider = (props) => {
         endPaymentDate,
         setStartPaymentDate,
         setEndPaymentDate,
+        getTenantByName,
       }}
     >
       {props.children}
