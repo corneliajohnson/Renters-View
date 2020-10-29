@@ -7,6 +7,7 @@ import { PaymentDelete } from "./PaymentDelete";
 import { PaymentSearch } from "./PaymentSearch";
 import { Row, Col } from "reactstrap";
 import { PaginationPages } from "../paginantion/PaginationPages";
+import { DateString } from "../date/DateString";
 
 export const PaymentList = () => {
   const { getPayments, payments, searchTerms } = useContext(PaymentContext);
@@ -46,7 +47,11 @@ export const PaymentList = () => {
             .includes(searchTerms.toLowerCase()) ||
           payment.property.state
             .toLowerCase()
-            .includes(searchTerms.toLowerCase())
+            .includes(searchTerms.toLowerCase()) ||
+          DateString(payment.date)
+            .toLowerCase()
+            .includes(searchTerms.toLowerCase()) ||
+          payment.amount.toLowerCase().includes(searchTerms.toLowerCase())
       );
       setFiltered(subset);
     } else {

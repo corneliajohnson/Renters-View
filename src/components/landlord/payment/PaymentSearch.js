@@ -10,9 +10,9 @@ export const PaymentSearch = () => {
     <>
       <Input
         type="text"
-        className="input--wide mb-3 w-100 mx-auto"
+        className="input--wide mb-3 w-75 mx-auto"
         onKeyUp={(keyEvent) => setSearchTerms(keyEvent.target.value)}
-        placeholder="Search for property or tenant... "
+        placeholder="Search for property, tenant, date or amount... "
       />
     </>
   );
