@@ -22,6 +22,14 @@ export const NavBar = () => {
           <h1 className="display-3" style={{ color: "#fa2d2d" }}>
             Renter's View
           </h1>
+          <a
+            to="/login"
+            className="navbar_link"
+            style={{ color: "#fa2d2d", cursor: "pointer" }}
+            onClick={() => localStorage.clear()}
+          >
+            Logout
+          </a>
         </div>
       </Navbar>
     </div>
