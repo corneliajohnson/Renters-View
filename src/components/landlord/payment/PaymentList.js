@@ -5,19 +5,11 @@ import { Table } from "reactstrap";
 import { PaymentEditForm, PaymentForm } from "./PaymentForm";
 import { PaymentDelete } from "./PaymentDelete";
 import { PaymentSearch } from "./PaymentSearch";
-import { DatePicker } from "../date/DatePicker";
 import { Row, Col } from "reactstrap";
 import { PaginationPages } from "../paginantion/PaginationPages";
-import moment from "moment";
 
 export const PaymentList = () => {
-  const {
-    getPayments,
-    payments,
-    searchTerms,
-    // startPaymentDate,
-    // endPaymentDate,
-  } = useContext(PaymentContext);
+  const { getPayments, payments, searchTerms } = useContext(PaymentContext);
   const [total, setTotal] = useState();
   const [sortedPaymentDates, setSortedPaymentDates] = useState([]);
   const [filteredPayments, setFiltered] = useState([]);
@@ -82,32 +74,6 @@ export const PaymentList = () => {
     }
   }, [filteredPayments]);
 
-  //get vaild dates for date range
-  // const dateRange = (start, end) => {
-  //   let result = filteredPayments;
-  //   const startDate = moment(start)._d;
-  //   const endDate = moment(end)._d;
-  //   if (
-  //     !startDate ||
-  //     !endDate
-  //||
-  //moment(start)._isValid === false ||
-  //moment(end)._isValid === false
-  //   ) {
-  //     result = filteredPayments;
-  //   } else {
-  //     result = filteredPayments.filter((obj) => {
-  //       return moment(obj.date) >= startDate && moment(obj.date) <= endDate;
-  //     });
-  //   }
-  //   setFiltered(result);
-  // };
-
-  //get date range when star and end date change
-  // useEffect(() => {
-  //   dateRange(startPaymentDate, endPaymentDate);
-  // }, [startPaymentDate, endPaymentDate]);
-
   //Get current payments for paginantion
   const indexOfLastPayment = currentPage * paymentsPerPage;
   const indexOfFirstPayment = indexOfLastPayment - paymentsPerPage;
@@ -128,9 +94,6 @@ export const PaymentList = () => {
           {" "}
           <PaymentSearch />
         </Col>
-        {/* <Col className="text-right">
-          <DatePicker />
-        </Col> */}
       </Row>
       <Table hover>
         <thead>
