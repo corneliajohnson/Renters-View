@@ -121,7 +121,7 @@ export const TenantProperty = () => {
                 <tbody>
                   {filteredPayments.map((payment) => {
                     return (
-                      <tr>
+                      <tr key={payment.id}>
                         <td>{DateString(payment.date)}</td>
                         <td>{payment.amount}</td>
                       </tr>
@@ -147,18 +147,15 @@ export const TenantProperty = () => {
                     return request.length === 0 ? (
                       "None"
                     ) : (
-                      <tr>
+                      <tr key={request.id}>
                         <td>
-                          {" "}
                           {new Date(request.dateAdded).toLocaleString("en-US", {
                             year: "numeric",
                             month: "long",
                             day: "numeric",
                           })}{" "}
                         </td>
-                        {"   "}
                         <td>{request.synopsis}</td>
-                        {"   "}
                         {request.complete ? (
                           <td className="text-success">
                             Complete {DateString(request.dateComplete)}
