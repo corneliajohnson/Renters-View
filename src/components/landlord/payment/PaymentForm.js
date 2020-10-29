@@ -144,37 +144,18 @@ const Modal = ({ onRequestClose }) => {
             </Label>
 
             <Col sm={10}>
-              {/* if there is an edit disable input */}
-              {tenantId ? (
-                <Input
-                  type="select"
-                  name="tenantId"
-                  value={tenantId ? tenantId.id : payment.firstName}
-                  onChange={handleControlledInputChange}
-                  disabled
-                >
-                  <option value="0"></option>
-                  {tenants.map((tenant) => (
-                    <option key={tenant.id} value={tenant.id}>
-                      {tenant.firstName} {tenant.lastName}
-                    </option>
-                  ))}
-                </Input>
-              ) : (
-                <Input
-                  type="select"
-                  name="tenantId"
-                  value={tenantId ? tenantId.id : payment.firstName}
-                  onChange={handleControlledInputChange}
-                >
-                  <option value="0"></option>
-                  {tenants.map((tenant) => (
-                    <option key={tenant.id} value={tenant.id}>
-                      {tenant.firstName} {tenant.lastName}
-                    </option>
-                  ))}
-                </Input>
-              )}
+              <Input
+                type="select"
+                name="tenantId"
+                onChange={handleControlledInputChange}
+              >
+                <option value="0"></option>
+                {tenants.map((tenant) => (
+                  <option key={tenant.id} value={tenant.id}>
+                    {tenant.firstName} {tenant.lastName}
+                  </option>
+                ))}
+              </Input>
             </Col>
           </FormGroup>
           <Row className="p-2 m-2">

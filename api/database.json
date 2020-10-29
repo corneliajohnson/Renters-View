@@ -430,12 +430,12 @@
       "lastName": "Lee"
     },
     {
-      "firstName": "Christian",
-      "lastName": "King",
-      "propertyId": 4,
+      "id": 8,
       "date": "2020-10-26",
-      "amount": "800.00",
-      "id": 8
+      "amount": "825.00",
+      "propertyId": 4,
+      "firstName": "Christian",
+      "lastName": "King"
     },
     {
       "date": "2020-10-20",
@@ -500,6 +500,14 @@
       "date": "2020-06-01",
       "amount": "1600.00",
       "id": 16
+    },
+    {
+      "firstName": "Gabby",
+      "lastName": "Lee",
+      "propertyId": 4,
+      "date": "2020-10-29",
+      "amount": "500.00",
+      "id": 17
     }
   ]
 }
