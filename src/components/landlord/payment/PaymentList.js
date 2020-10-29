@@ -15,8 +15,8 @@ export const PaymentList = () => {
     getPayments,
     payments,
     searchTerms,
-    startPaymentDate,
-    endPaymentDate,
+    // startPaymentDate,
+    // endPaymentDate,
   } = useContext(PaymentContext);
   const [total, setTotal] = useState();
   const [sortedPaymentDates, setSortedPaymentDates] = useState([]);
@@ -83,29 +83,30 @@ export const PaymentList = () => {
   }, [filteredPayments]);
 
   //get vaild dates for date range
-  const dateRange = (start, end) => {
-    let result = filteredPayments;
-    const startDate = moment(start)._d;
-    const endDate = moment(end)._d;
-    if (
-      !startDate ||
-      !endDate ||
-      moment(start)._isValid === false ||
-      moment(end)._isValid === false
-    ) {
-      result = filteredPayments;
-    } else {
-      result = filteredPayments.filter((obj) => {
-        return new Date(obj.date) >= startDate && new Date(obj.date) <= endDate;
-      });
-    }
-    setFiltered(result);
-  };
+  // const dateRange = (start, end) => {
+  //   let result = filteredPayments;
+  //   const startDate = moment(start)._d;
+  //   const endDate = moment(end)._d;
+  //   if (
+  //     !startDate ||
+  //     !endDate
+  //||
+  //moment(start)._isValid === false ||
+  //moment(end)._isValid === false
+  //   ) {
+  //     result = filteredPayments;
+  //   } else {
+  //     result = filteredPayments.filter((obj) => {
+  //       return moment(obj.date) >= startDate && moment(obj.date) <= endDate;
+  //     });
+  //   }
+  //   setFiltered(result);
+  // };
 
   //get date range when star and end date change
-  useEffect(() => {
-    dateRange(startPaymentDate, endPaymentDate);
-  }, [startPaymentDate, endPaymentDate]);
+  // useEffect(() => {
+  //   dateRange(startPaymentDate, endPaymentDate);
+  // }, [startPaymentDate, endPaymentDate]);
 
   //Get current payments for paginantion
   const indexOfLastPayment = currentPage * paymentsPerPage;
@@ -127,9 +128,9 @@ export const PaymentList = () => {
           {" "}
           <PaymentSearch />
         </Col>
-        <Col className="text-right">
+        {/* <Col className="text-right">
           <DatePicker />
-        </Col>
+        </Col> */}
       </Row>
       <Table hover>
         <thead>

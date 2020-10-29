@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import moment from "moment";
 import "react-dates/initialize";
 import { DateRangePicker } from "react-dates";
 import "react-dates/lib/css/_datepicker.css";
@@ -15,6 +14,8 @@ export const DatePicker = () => {
   const onDatesChange = ({ startDate, endDate }) => {
     setStartDate(startDate);
     setEndDate(endDate);
+    setStartPaymentDate(startDate);
+    setEndPaymentDate(endDate);
   };
 
   return (
@@ -29,7 +30,7 @@ export const DatePicker = () => {
         startDate={startDate}
         startDateId="startDate"
       />
-      {/* set dates on button click */}
+      {/* set dates on button click
       <Button
         className="m-2"
         outline
@@ -42,7 +43,7 @@ export const DatePicker = () => {
         }}
       >
         Search
-      </Button>
+      </Button> */}
     </div>
   );
 };
