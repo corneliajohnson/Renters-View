@@ -7,27 +7,27 @@
       "state": "FL",
       "zip": "32456",
       "leaseStartDate": "2020-10-15",
-      "leaseEndDate": "2021-10-30",
+      "leaseEndDate": "2022-03-31",
       "rentAmount": 950,
       "secuirtyDesposit": 900,
       "paymentDay": "2020-11-08",
       "leaseTerm": "Seasonal",
-      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603900460/rentersview/lmy8oxzrk5plabibfrro.jpg",
+      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603999328/rentersview/vofnend26ylbya4lisc1.jpg",
       "landlordId": 1
     },
     {
       "id": 3,
-      "street": "3456 Super Way",
+      "street": "3456 Super Way, 204",
       "city": "Miami",
       "state": "FL",
       "zip": "89322",
-      "leaseStartDate": "2020-10-22",
-      "leaseEndDate": "2021-10-23",
+      "leaseStartDate": "2020-05-01",
+      "leaseEndDate": "2021-05-31",
       "rentAmount": 1600,
       "secuirtyDesposit": 1600,
       "paymentDay": "2020-10-31",
-      "leaseTerm": "Air BnB",
-      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603486934/rentersview/Multimedia__14_lrdsgs.jpg",
+      "leaseTerm": "12 Month",
+      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603999020/rentersview/sla86ks5oq74dwwaohq9.jpg",
       "landlordId": 1
     },
     {
@@ -37,48 +37,52 @@
       "state": "FL",
       "zip": "34576",
       "leaseStartDate": "2020-10-15",
-      "leaseEndDate": "2021-10-06",
+      "leaseEndDate": "2021-10-16",
       "rentAmount": 750,
       "secuirtyDesposit": 750,
       "paymentDay": "2020-11-19",
       "leaseTerm": "12 Month",
-      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603486934/rentersview/Multimedia__14_lrdsgs.jpg",
+      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603999377/rentersview/ksz8vbt7msmcmrptnfsl.jpg",
       "landlordId": 1
     },
     {
-      "street": "2345 Perry Court",
-      "city": "Quincy",
+      "id": 5,
+      "street": "2345 Perry Court A",
+      "city": "Orlando",
       "state": "FL",
       "zip": "32301",
-      "leaseStartDate": "2020-11-19",
-      "leaseEndDate": "2021-12-19",
-      "rentAmount": null,
-      "secuirtyDesposit": null,
-      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603486934/rentersview/Multimedia__14_lrdsgs.jpg",
-      "landlordId": 1,
-      "id": 5
+      "leaseStartDate": "2020-10-01",
+      "leaseEndDate": "2021-10-15",
+      "rentAmount": 300,
+      "secuirtyDesposit": 300,
+      "leaseTerm": "Air BnB",
+      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603999509/rentersview/tlfs9i0ohu1ugshelxvy.jpg",
+      "landlordId": 1
     },
     {
       "id": 7,
-      "street": "780 Spooner Street",
-      "city": "Cohog",
-      "state": "RI",
-      "zip": "4556",
-      "rentAmount": null,
-      "secuirtyDesposit": null,
-      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603488083/rentersview/brczmlxn0fs6bi1qc2ji.jpg",
+      "street": "2345 Perry Court B",
+      "city": "Orlando",
+      "state": "FL",
+      "zip": "32301",
+      "leaseStartDate": "2020-10-29",
+      "leaseEndDate": "2020-11-01",
+      "rentAmount": 300,
+      "secuirtyDesposit": 300,
+      "leaseTerm": "Air BnB",
+      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603999509/rentersview/tlfs9i0ohu1ugshelxvy.jpg",
       "landlordId": 1
     },
     {
+      "id": 8,
       "street": "4568 Beening Road",
       "city": "Tallahasee",
       "state": "FL",
       "zip": "32309",
       "rentAmount": null,
       "secuirtyDesposit": null,
-      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603488162/rentersview/rsncxknjym4ggyaclzcl.jpg",
-      "landlordId": 1,
-      "id": 8
+      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603999443/rentersview/cymmydvjfnkgkljfginz.jpg",
+      "landlordId": 1
     }
   ],
   "landlords": [
@@ -166,7 +170,7 @@
       "lastName": "King",
       "email": "chris@gmail.com",
       "phone": "325-349-7823",
-      "propertyId": 4,
+      "propertyId": 7,
       "landlordId": 1
     }
   ],
@@ -383,116 +387,28 @@
   ],
   "payments": [
     {
-      "id": 1,
-      "date": "2020-10-24",
-      "amount": "500.25",
-      "propertyId": 5,
-      "firstName": "Joe",
-      "lastName": "Wilson"
-    },
-    {
-      "id": 2,
-      "date": "2020-10-25",
-      "amount": "700.00",
-      "propertyId": 4,
-      "firstName": "Gabby",
-      "lastName": "Lee"
-    },
-    {
-      "id": 3,
-      "date": "2020-10-23",
-      "amount": "443.00",
-      "propertyId": 5,
-      "firstName": "Joe",
-      "lastName": "Wilson"
-    },
-    {
-      "id": 4,
-      "date": "2020-10-23",
-      "amount": "455.00",
-      "propertyId": 3,
-      "firstName": "Thomas",
-      "lastName": "Engles"
-    },
-    {
-      "id": 5,
-      "date": "2020-10-23",
-      "amount": "800.00",
-      "propertyId": 5,
-      "firstName": "Joe",
-      "lastName": "Wilson"
-    },
-    {
-      "id": 6,
-      "date": "2020-10-16",
-      "amount": "670.50",
-      "propertyId": 4,
-      "firstName": "Gabby",
-      "lastName": "Lee"
-    },
-    {
-      "id": 8,
-      "date": "2020-10-26",
-      "amount": "825.00",
-      "propertyId": 4,
-      "firstName": "Christian",
-      "lastName": "King"
-    },
-    {
-      "date": "2020-10-20",
-      "amount": "700.00",
-      "propertyId": 2,
       "firstName": "Cindy",
       "lastName": "Bubble",
-      "id": 9
+      "propertyId": 2,
+      "date": "2020-10-15",
+      "amount": "900.00",
+      "id": 1
     },
     {
-      "date": "2020-10-20",
-      "amount": "250.00",
-      "propertyId": 5,
-      "firstName": "Joe",
-      "lastName": "Wilson",
-      "id": 10
-    },
-    {
-      "date": "2020-10-20",
-      "amount": "200.00",
-      "propertyId": 3,
-      "firstName": "Thomas",
-      "lastName": "Engles",
-      "id": 11
-    },
-    {
-      "id": 12,
-      "date": "2020-10-26",
-      "amount": "810.00",
-      "propertyId": 4,
-      "firstName": "Christian",
-      "lastName": "King"
+      "firstName": "Cindy",
+      "lastName": "Bubble",
+      "propertyId": 2,
+      "date": "2020-10-15",
+      "amount": "950.00",
+      "id": 2
     },
     {
       "firstName": "Thomas",
       "lastName": "Engles",
       "propertyId": 3,
-      "date": "2020-09-01",
-      "amount": "1600.00",
-      "id": 13
-    },
-    {
-      "firstName": "Thomas",
-      "lastName": "Engles",
-      "propertyId": 3,
-      "date": "2020-08-01",
-      "amount": "1600.00",
-      "id": 14
-    },
-    {
-      "firstName": "Thomas",
-      "lastName": "Engles",
-      "propertyId": 3,
-      "date": "2020-07-01",
-      "amount": "1600.00",
-      "id": 15
+      "date": "2020-05-01",
+      "amount": "3200.00",
+      "id": 3
     },
     {
       "firstName": "Thomas",
@@ -500,23 +416,79 @@
       "propertyId": 3,
       "date": "2020-06-01",
       "amount": "1600.00",
-      "id": 16
+      "id": 4
     },
     {
-      "id": 17,
-      "date": "2020-10-29",
-      "amount": "575.00",
-      "propertyId": 4,
-      "firstName": "Gabby",
-      "lastName": "Lee"
-    },
-    {
-      "date": "2020-10-29",
-      "amount": "900.00",
-      "propertyId": 3,
       "firstName": "Thomas",
       "lastName": "Engles",
-      "id": 18
+      "propertyId": 3,
+      "date": "2020-07-01",
+      "amount": "1600.00",
+      "id": 5
+    },
+    {
+      "firstName": "Thomas",
+      "lastName": "Engles",
+      "propertyId": 3,
+      "date": "2020-08-01",
+      "amount": "1600.00",
+      "id": 6
+    },
+    {
+      "firstName": "Thomas",
+      "lastName": "Engles",
+      "propertyId": 3,
+      "date": "2020-09-01",
+      "amount": "1600.00",
+      "id": 7
+    },
+    {
+      "firstName": "Thomas",
+      "lastName": "Engles",
+      "propertyId": 3,
+      "date": "2020-10-01",
+      "amount": "1600.00",
+      "id": 8
+    },
+    {
+      "firstName": "Gabby",
+      "lastName": "Lee",
+      "propertyId": 4,
+      "date": "2020-10-14",
+      "amount": "1500.00",
+      "id": 9
+    },
+    {
+      "firstName": "Joe",
+      "lastName": "Wilson",
+      "propertyId": 5,
+      "date": "2020-10-01",
+      "amount": "4200.00",
+      "id": 10
+    },
+    {
+      "firstName": "Joe",
+      "lastName": "Wilson",
+      "propertyId": 5,
+      "date": "2020-10-01",
+      "amount": "300.00",
+      "id": 11
+    },
+    {
+      "firstName": "Christian",
+      "lastName": "King",
+      "propertyId": 7,
+      "date": "2020-10-29",
+      "amount": "900.00",
+      "id": 12
+    },
+    {
+      "firstName": "Christian",
+      "lastName": "King",
+      "propertyId": 7,
+      "date": "2020-10-29",
+      "amount": "300.00",
+      "id": 13
     }
   ]
 }

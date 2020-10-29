@@ -178,10 +178,10 @@ const Modal = ({ onRequestClose }) => {
               </Col>
             </Row>
             <h3 className="display-5">Payments</h3>
-            {payments.length === 0 ? <h5>None</h5> : ""}
             <small className="text-secondary">
               Limited to Last Five Payments
             </small>
+            {payments.length === 0 ? <h5>None</h5> : ""}
             {/* limit payments to last five */}
             {sortedPaymentDates.slice(0, 5).map((payment) => {
               return (
