@@ -1,7 +1,9 @@
 import React from "react";
-import { Navbar, NavbarBrand } from "reactstrap";
+import { useHistory } from "react-router-dom";
+import { Navbar, NavbarBrand, NavLink } from "reactstrap";
 
 export const NavBar = () => {
+  const history = useHistory();
   return (
     <div style={{ opacity: "0.9" }} className="sticky-top mb-5">
       <Navbar
@@ -22,14 +24,16 @@ export const NavBar = () => {
           <h1 className="display-3" style={{ color: "#fa2d2d" }}>
             Renter's View
           </h1>
-          <a
-            to="/login"
-            className="navbar_link"
+          <NavLink
+            className="navbar__link"
             style={{ color: "#fa2d2d", cursor: "pointer" }}
-            onClick={() => localStorage.clear()}
+            onClick={() => {
+              localStorage.clear();
+              history.push("/login");
+            }}
           >
             Logout
-          </a>
+          </NavLink>
         </div>
       </Navbar>
     </div>
