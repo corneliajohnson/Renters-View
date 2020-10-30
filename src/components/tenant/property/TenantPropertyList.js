@@ -60,7 +60,7 @@ export const TenantProperty = () => {
             {property.street} {property.city} {property.state}
           </h4>
           <div className="property__image">
-            <img src={require("../../../img/house.jpg")} />
+            <img width="35%" src={property.image} />
           </div>
         </div>
 

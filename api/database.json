@@ -81,7 +81,8 @@
       "zip": "32309",
       "rentAmount": null,
       "secuirtyDesposit": null,
-      "image": "https://res.cloudinary.com/cornelia/image/upload/v1603999443/rentersview/cymmydvjfnkgkljfginz.jpg",
+      "leaseTerm": "Under Repair",
+      "image": "https://res.cloudinary.com/cornelia/image/upload/v1604070012/rentersview/gyhn5dvvz5vc06htmfo8.jpg",
       "landlordId": 1
     }
   ],
@@ -91,7 +92,7 @@
       "firstName": "Cornelia",
       "lastName": "Johnson",
       "email": "corneliaj@gmail.com",
-      "phone": "850-345-2228",
+      "phone": "850-345-2555",
       "image": "https://res.cloudinary.com/cornelia/image/upload/v1603896970/rentersview/wmlbuhsafwb31wvxqvdg.jpg"
     },
     {
@@ -318,6 +319,14 @@
       "date": 1603812098112,
       "sender": "landlord",
       "id": 36
+    },
+    {
+      "tenantId": 2,
+      "landlordId": 1,
+      "text": "Hi",
+      "date": 1604070369944,
+      "sender": "tenant",
+      "id": 37
     }
   ],
   "maintenanceRequests": [
@@ -489,6 +498,14 @@
       "date": "2020-10-29",
       "amount": "300.00",
       "id": 13
+    },
+    {
+      "id": 15,
+      "date": "2020-10-29",
+      "amount": "300.50",
+      "propertyId": 4,
+      "firstName": "Gabby",
+      "lastName": "Lee"
     }
   ]
 }

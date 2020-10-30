@@ -97,7 +97,7 @@ export const MaintenanceList = () => {
         Add date to task to mark as complete
       </small>
       <Badge className="float-right" color="dark">
-        Total Pain in Maintenance ${total}
+        Total Paid in Maintenance ${total}
       </Badge>
       <ListGroup>
         {currentRequests.map((request) => {
