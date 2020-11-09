@@ -22,6 +22,7 @@ An app for landlords/property managers can manage properties and tenants and mai
 
 ## Landlords Login
 ### Properties
+Add, Edit or Delete Property
 ![homepage](https://user-images.githubusercontent.com/38992646/98566464-c7e69a80-227c-11eb-824d-e196c4965e5a.gif)
 
 ### Tenants
