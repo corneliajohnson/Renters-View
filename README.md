@@ -23,6 +23,8 @@ An app for landlords/property managers can manage properties and tenants and mai
 ### Home Page for Landlords
 ![homepage](https://user-images.githubusercontent.com/38992646/98566464-c7e69a80-227c-11eb-824d-e196c4965e5a.gif)
 
+###Tenant Cards
+
 
 ### Wireframe
 
