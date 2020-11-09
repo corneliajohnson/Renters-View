@@ -25,20 +25,30 @@ An app for landlords/property managers can manage properties and tenants and mai
 Add, Edit or Delete Property
 ![homepage](https://user-images.githubusercontent.com/38992646/98566464-c7e69a80-227c-11eb-824d-e196c4965e5a.gif)
 
+
+
 ### Tenants
 Add, Delete, Edit Tenant Information or add tenant payment
 ![tenants](https://user-images.githubusercontent.com/38992646/98569296-23665780-2280-11eb-864b-0e3bca3f1d8c.gif)
+
+
 
 ### Messages
 Message each tenant or delete message
 ![messages](https://user-images.githubusercontent.com/38992646/98569313-26f9de80-2280-11eb-8a8d-9777d5974ec6.gif)
 
+
+
 ### Maintenance Request 
 Add, Edit or Delete Maintenance Request
 ![maintenance](https://user-images.githubusercontent.com/38992646/98569316-282b0b80-2280-11eb-90a2-f1f611b034de.gif)
 
+
+
 ### Account Information
 ![account](https://user-images.githubusercontent.com/38992646/98569326-29f4cf00-2280-11eb-9fa6-c686e8f1758d.PNG)
+
+
 
 ## Tenant Login
 View of tenant page and modal to message landlord
