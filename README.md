@@ -20,6 +20,10 @@ Landlords can manage tenants, properties and maintenance along with viewing paym
 
 An app for landlords/property managers can manage properties and tenants and maintenance. Also for a tenant to see the most recent information about their payments and rental.
 
+### Home Page for Landlords
+![homepage](https://user-images.githubusercontent.com/38992646/98566464-c7e69a80-227c-11eb-824d-e196c4965e5a.gif)
+
+
 ### Wireframe
 
 ![wireframe](https://user-images.githubusercontent.com/38992646/96260040-72c0ad00-0f8c-11eb-945d-fe4e4ab00e81.PNG)
