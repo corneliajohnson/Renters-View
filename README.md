@@ -2,11 +2,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Renters View
 
-#### Setup
-In your terminal type: cd renters-view/api
-then type: json-server -p 8088 -w database.json
-Run NPM install.
-Run NPM start. (This will open a React webpage of the app)
+### Setup
+1. In your terminal type: cd renters-view/api
+2. Then type: json-server -p 8088 -w database.json
+3. Run NPM install.
+4. Run NPM start. (This will open a React webpage of the app)
 
 ### What problem does your capstone address?
 
