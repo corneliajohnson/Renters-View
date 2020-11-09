@@ -2,6 +2,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Renters View
 
+#### Setup
+In your terminal type: cd renters-view/api
+then type: json-server -p 8088 -w database.json
+Run NPM install.
+Run NPM start. (This will open a React webpage of the app)
+
 ### What problem does your capstone address?
 
 Improve the landlord/tenant experience and relationship. The application will give both parties a direct line of communication and the platform to share needed information.
